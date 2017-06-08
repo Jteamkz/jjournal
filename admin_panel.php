@@ -271,6 +271,17 @@ include 'php/db/get.php';
                                 $num_of_teachers++;
                             }
                         }
+
+                        $result = getAllData('class', $connection);
+
+                        $num_of_classes = 0;
+
+                        if ($result->num_rows > 0) {
+
+                            while($row = $result->fetch_assoc()) {
+                                $num_of_classes++;
+                            }
+                        }
                     ?>
                     <div class="col-lg-3 col-md-6">
                         <div class="panel panel-primary">
@@ -329,7 +340,7 @@ include 'php/db/get.php';
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="admin_teachers.php">
                                 <div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -346,8 +357,8 @@ include 'php/db/get.php';
                                         <i class="fa fa-support fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">13</div>
-                                        <div>Support Tickets!</div>
+                                        <div class="huge"><?php echo $num_of_classes; ?></div>
+                                        <div>Группы</div>
                                     </div>
                                 </div>
                             </div>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Июн 07 2017 г., 16:03
+-- Время создания: Июн 09 2017 г., 00:43
 -- Версия сервера: 5.7.11
 -- Версия PHP: 5.6.19
 
@@ -97,6 +97,14 @@ CREATE TABLE `relation_ts` (
   `id_s` int(4) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Дамп данных таблицы `relation_ts`
+--
+
+INSERT INTO `relation_ts` (`id`, `id_t`, `id_s`) VALUES
+(1, 1, 1),
+(2, 3, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -106,30 +114,42 @@ CREATE TABLE `relation_ts` (
 CREATE TABLE `student` (
   `id` int(11) NOT NULL,
   `firstname` text NOT NULL,
-  `lastname` text NOT NULL
+  `lastname` text NOT NULL,
+  `iin` text NOT NULL,
+  `payday` text NOT NULL,
+  `phone` text NOT NULL,
+  `phone_parent` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Дамп данных таблицы `student`
 --
 
-INSERT INTO `student` (`id`, `firstname`, `lastname`) VALUES
-(1, 'Biket', 'Nurdaulet'),
-(6, 'Danilo', 'Neko'),
-(12, 'Lil ', 'Wayne'),
-(11, 'kaz', 'Kaz');
+INSERT INTO `student` (`id`, `firstname`, `lastname`, `iin`, `payday`, `phone`, `phone_parent`) VALUES
+(1, 'Biket', 'Nurdaulet', '991203351114', '08.06.17', '87051581895', '87472081558'),
+(6, 'Danilo', 'Neko', '981205135514', '08.06.17', '87051581895', '87472081558'),
+(12, 'Lil ', 'Wayne', '981205135514', '08.06.17', '87051581895', '87472081558'),
+(11, 'kaz', 'Kaz', '981205135514', '08.06.17', '87051581895', '87472081558');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `subject`
+-- Структура таблицы `subjects`
 --
 
-CREATE TABLE `subject` (
-  `id` int(4) NOT NULL,
-  `name` varchar(60) NOT NULL,
-  `description` text NOT NULL
+CREATE TABLE `subjects` (
+  `id` int(11) NOT NULL,
+  `name` text CHARACTER SET utf8 NOT NULL,
+  `description` text CHARACTER SET utf8 NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Дамп данных таблицы `subjects`
+--
+
+INSERT INTO `subjects` (`id`, `name`, `description`) VALUES
+(1, 'Математика', 'Учим хуйню как все'),
+(2, 'Физика ', 'Учим непонятную хуйню который еще в добавок не доказано!');
 
 -- --------------------------------------------------------
 
@@ -151,11 +171,11 @@ CREATE TABLE `teacher` (
 --
 
 INSERT INTO `teacher` (`id`, `firstname`, `lastname`, `iin`, `telephone`, `subject`) VALUES
-(1, 'Meruert', 'Temirbolatova', '', '', 0),
-(3, 'Aibolat', 'Abolatov', '', '', 0),
-(4, 'Mukhiddin', 'Mukhiddinov', '', '', 0),
-(5, 'Bruno', 'Mars', '', '', 0),
-(7, 'Daniyar', 'Gilymov', '', '', 0);
+(1, 'Meruert', 'Temirbolatova', '901203351114', '87051581895', 0),
+(3, 'Aibolat', 'Abolatov', '901203351114', '87051581895', 0),
+(4, 'Mukhiddin', 'Mukhiddinov', '901203351114', '87051581895', 0),
+(5, 'Bruno', 'Mars', '901203351114', '87051581895', 0),
+(7, 'Daniyar', 'Gilymov', '901203351114', '87051581895', 0);
 
 --
 -- Индексы сохранённых таблиц
@@ -186,9 +206,9 @@ ALTER TABLE `student`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `subject`
+-- Индексы таблицы `subjects`
 --
-ALTER TABLE `subject`
+ALTER TABLE `subjects`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -215,17 +235,17 @@ ALTER TABLE `relation_cs`
 -- AUTO_INCREMENT для таблицы `relation_ts`
 --
 ALTER TABLE `relation_ts`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT для таблицы `student`
 --
 ALTER TABLE `student`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
--- AUTO_INCREMENT для таблицы `subject`
+-- AUTO_INCREMENT для таблицы `subjects`
 --
-ALTER TABLE `subject`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `subjects`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT для таблицы `teacher`
 --
