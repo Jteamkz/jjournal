@@ -1,7 +1,9 @@
 <?php 
 
 include 'php/session.php';
-
+include 'php/db/connect_db.php';
+include 'php/db/get_all_data.php';
+include 'php/db/get.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -129,7 +131,7 @@ include 'php/session.php';
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $studycenter; ?> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo $studycenter; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -217,6 +219,9 @@ include 'php/session.php';
                 <!-- /.row -->
                 <div class="row" style="text-align: center">
                     <div class="col-xs-3">
+                        <a class="btn btn-success btn-lg" href="php/add_student.php">Добавить урок</a>
+                    </div>
+                    <div class="col-xs-3">
                         <a class="btn btn-success btn-lg" href="php/add_student.php">Добавить ученика</a>
                     </div>
                     <div class="col-xs-3">
@@ -231,6 +236,42 @@ include 'php/session.php';
                 </div>
                 <hr>
                 <div class="row">
+                    <?php 
+                        // $fld = array('id');
+                        //$result = get_data($fld ,'subjects', $connection);
+                        $result = getAllData('subjects', $connection);
+
+                        $num_of_subjects = 0;
+
+                        if ($result->num_rows > 0) {
+
+                            while($row = $result->fetch_assoc()) {
+                                $num_of_subjects++;
+                            }
+                        }
+                        //unset($result);
+                        $result = getAllData('student', $connection);
+
+                        $num_of_students = 0;
+
+                        if ($result->num_rows > 0) {
+
+                            while($row = $result->fetch_assoc()) {
+                                $num_of_students++;
+                            }
+                        }
+
+                        $result = getAllData('teacher', $connection);
+
+                        $num_of_teachers = 0;
+
+                        if ($result->num_rows > 0) {
+
+                            while($row = $result->fetch_assoc()) {
+                                $num_of_teachers++;
+                            }
+                        }
+                    ?>
                     <div class="col-lg-3 col-md-6">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
@@ -239,8 +280,8 @@ include 'php/session.php';
                                         <i class="fa fa-comments fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">26</div>
-                                        <div>New Comments!</div>
+                                        <div class="huge"><?php echo $num_of_subjects; ?></div>
+                                        <div>Предметы</div>
                                     </div>
                                 </div>
                             </div>
@@ -261,8 +302,8 @@ include 'php/session.php';
                                         <i class="fa fa-tasks fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">12</div>
-                                        <div>New Tasks!</div>
+                                        <div class="huge"><?php echo $num_of_students; ?></div>
+                                        <div>Студенты!</div>
                                     </div>
                                 </div>
                             </div>
@@ -283,8 +324,8 @@ include 'php/session.php';
                                         <i class="fa fa-shopping-cart fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">124</div>
-                                        <div>New Orders!</div>
+                                        <div class="huge"><?php echo $num_of_teachers; ?></div>
+                                        <div>Учители!</div>
                                     </div>
                                 </div>
                             </div>
