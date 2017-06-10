@@ -1,8 +1,11 @@
 <?php 
 
-function get_query()
+function get_query($query, $table_name, $connection)
 {
-	# code...
+	$sql = "SELECT * FROM ".$table_name." WHERE ".$query;
+
+	$result = $connection->query($sql);	
+	return $result;
 }
 
 ?>

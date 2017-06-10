@@ -115,9 +115,9 @@
         focusBtnIcon: 'glyphicon glyphicon-screenshot',
         mainContainer: window,
         i18n: {
-            focus     : 'Focus',
-            display   : 'Display',
-            displayAll: 'Display all'
+            focus     : 'Фокусировка',
+            display   : 'Показать',
+            displayAll: 'Показать все'
         }
     };
 

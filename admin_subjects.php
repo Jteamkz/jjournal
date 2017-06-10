@@ -1,4 +1,4 @@
-﻿<?php 
+<?php 
 
 include 'php/session.php';
 include 'php/db/connect_db.php';
@@ -12,7 +12,7 @@ include 'php/db/get_query.php';
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Учетеля</title>
+	<title>Предметы</title>
 
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -141,7 +141,7 @@ include 'php/db/get_query.php';
                                 <td>18.65 x 10300</td>
                                 <td>Non-spanning</td>
                                 <td>Non-spanning</td>
-                            </tr><tr>
+                            </tr> <tr>
                                 <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
                                 <td>18.65</td>
                                 <td>12:45PM</td>
@@ -151,7 +151,7 @@ include 'php/db/get_query.php';
                                 <td>18.65 x 10300</td>
                                 <td>Non-spanning</td>
                                 <td>Non-spanning</td>
-                            </tr><tr>
+                            </tr> <tr>
                                 <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
                                 <td>18.65</td>
                                 <td>12:45PM</td>
@@ -161,7 +161,7 @@ include 'php/db/get_query.php';
                                 <td>18.65 x 10300</td>
                                 <td>Non-spanning</td>
                                 <td>Non-spanning</td>
-                            </tr><tr>
+                            </tr> <tr>
                                 <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
                                 <td>18.65</td>
                                 <td>12:45PM</td>
@@ -171,7 +171,7 @@ include 'php/db/get_query.php';
                                 <td>18.65 x 10300</td>
                                 <td>Non-spanning</td>
                                 <td>Non-spanning</td>
-                            </tr><tr>
+                            </tr> <tr>
                                 <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
                                 <td>18.65</td>
                                 <td>12:45PM</td>
@@ -181,57 +181,7 @@ include 'php/db/get_query.php';
                                 <td>18.65 x 10300</td>
                                 <td>Non-spanning</td>
                                 <td>Non-spanning</td>
-                            </tr><tr>
-                                <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                <td>18.65</td>
-                                <td>12:45PM</td>
-                                <td>0.97 (5.49%)</td>
-                                <td>17.68</td>
-                                <td>18.23</td>
-                                <td>18.65 x 10300</td>
-                                <td>Non-spanning</td>
-                                <td>Non-spanning</td>
-                            </tr><tr>
-                                <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                <td>18.65</td>
-                                <td>12:45PM</td>
-                                <td>0.97 (5.49%)</td>
-                                <td>17.68</td>
-                                <td>18.23</td>
-                                <td>18.65 x 10300</td>
-                                <td>Non-spanning</td>
-                                <td>Non-spanning</td>
-                            </tr><tr>
-                                <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                <td>18.65</td>
-                                <td>12:45PM</td>
-                                <td>0.97 (5.49%)</td>
-                                <td>17.68</td>
-                                <td>18.23</td>
-                                <td>18.65 x 10300</td>
-                                <td>Non-spanning</td>
-                                <td>Non-spanning</td>
-                            </tr><tr>
-                                <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                <td>18.65</td>
-                                <td>12:45PM</td>
-                                <td>0.97 (5.49%)</td>
-                                <td>17.68</td>
-                                <td>18.23</td>
-                                <td>18.65 x 10300</td>
-                                <td>Non-spanning</td>
-                                <td>Non-spanning</td>
-                            </tr><tr>
-                                <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                <td>18.65</td>
-                                <td>12:45PM</td>
-                                <td>0.97 (5.49%)</td>
-                                <td>17.68</td>
-                                <td>18.23</td>
-                                <td>18.65 x 10300</td>
-                                <td>Non-spanning</td>
-                                <td>Non-spanning</td>
-                            </tr><tr>
+                            </tr> <tr>
                                 <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
                                 <td>18.65</td>
                                 <td>12:45PM</td>
