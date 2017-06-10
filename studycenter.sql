@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Июн 09 2017 г., 00:43
+-- Время создания: Июн 10 2017 г., 07:10
 -- Версия сервера: 5.7.11
 -- Версия PHP: 5.6.19
 
@@ -161,21 +161,21 @@ CREATE TABLE `teacher` (
   `id` int(11) NOT NULL,
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
+  `fathername` text NOT NULL,
   `iin` varchar(15) NOT NULL,
-  `telephone` varchar(20) NOT NULL,
-  `subject` int(4) NOT NULL
+  `telephone` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Дамп данных таблицы `teacher`
 --
 
-INSERT INTO `teacher` (`id`, `firstname`, `lastname`, `iin`, `telephone`, `subject`) VALUES
-(1, 'Meruert', 'Temirbolatova', '901203351114', '87051581895', 0),
-(3, 'Aibolat', 'Abolatov', '901203351114', '87051581895', 0),
-(4, 'Mukhiddin', 'Mukhiddinov', '901203351114', '87051581895', 0),
-(5, 'Bruno', 'Mars', '901203351114', '87051581895', 0),
-(7, 'Daniyar', 'Gilymov', '901203351114', '87051581895', 0);
+INSERT INTO `teacher` (`id`, `firstname`, `lastname`, `fathername`, `iin`, `telephone`) VALUES
+(1, 'Meruert', 'Temirbolatova', 'Daniyarkizy', '901203351114', '87051581895'),
+(3, 'Aibolat', 'Abolatov', 'Daniyarkizy', '901203351114', '87051581895'),
+(4, 'Mukhiddin', 'Mukhiddinov', 'Daniyarkizy', '901203351114', '87051581895'),
+(5, 'Bruno', 'Mars', 'Daniyarkizy', '901203351114', '87051581895'),
+(7, 'Daniyar', 'Gilymov', 'Talgatuly', '901203351114', '87051581895');
 
 --
 -- Индексы сохранённых таблиц
