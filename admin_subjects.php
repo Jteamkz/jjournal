@@ -48,72 +48,65 @@ include 'php/db/get_query.php';
                     <table cellspacing="0" class="table table-small-font table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Ф.И.О</th>
-                                <th data-priority="1">Номер телефона</th>
-                                <th data-priority="1">Дата рождения</th>
-                                <th data-priority="1">Уроки</th>
+                                <th>Название</th>
                                 <th data-priority="1">Группы</th>
-                                <th data-priority="1">Зарплата</th>
-                                <th data-priority="1">ИИН</th>
-                                <th data-priority="1">Lorem</th>
-                                <th data-priority="1">Ipsum</th>
+                                <th data-priority="1">Учетеля</th>
                             </tr>
                         </thead>
                         <tbody>
                         	<?php 
-                        		$result = getAllData('teacher', $connection);
+                        		$result = getAllData('subjects', $connection);
 
                         		if ($result->num_rows > 0) {
                         			while ($row = $result->fetch_assoc()) { ?>
                         			
                         				<tr>
-			                                <th><?php echo $row['lastname']." ".$row['firstname']; ?></th>
-			                                <td><?php echo $row['telephone']; ?></td>
-			                                <td><?php echo "Enter to database"; ?></td>
-			                                <td><?php 
-			                                	$query = "id_t = ".$row['id'];
-			                                	$result_ts = get_query($query, 'relation_ts', $connection);
-			                                	if ($result_ts->num_rows > 0) {
-			                                		$temp = 0;
-			                                		while ($row_ts = $result_ts->fetch_assoc()) {
-			                                			$temp++;
-			                                			$query_s = "id = ".$row_ts['id_s'];
-			                                			$result_sb = get_query($query_s, 'subjects', $connection);
-			                                			while ($row_sb = $result_sb->fetch_assoc()) {
-			                                				if ($temp < $result_ts->num_rows) {
-			                                					echo "<a href=''>".$row_sb['name']."</a>, ";
-			                                				}else{
-			                                					echo "<a href=''>".$row_sb['name']."</a>";
-			                                				}
-			                                			}
-			                                		}
-			                                	}else{
-			                                		echo "Предмет не выбран";
-			                                	}
-			                                ?>
-			                                </td>
+			                                <th><?php echo $row['name']?></th>
 			                                <td>
-			                                <?php 
-			                                	$query_for_class = "teacher_id = ".$row['id'];
-			                                	$result_cl = get_query($query_for_class, 'class', $connection);
-			                                	if($result_cl->num_rows > 0){
-			                                		$tempp = 0;
-			                                		while ($row_cl = $result_cl->fetch_assoc()) {
-			                                			$tempp++;
-			                                			if ($tempp < $result_cl->num_rows) {
-			                                				echo "<a href=''>".$row_cl['name_group']."</a>, ";
-			                                			}else{
-			                                				echo "<a href=''>".$row_cl['name_group']."</a>";
-			                                			}
-			                                		}
-			                                	}else{
-			                                		echo "Группа не привязана";
-			                                	}
-			                                ?>
-			                                </td>
-			                                <td>30.67</td>
-			                                <td><?php echo $row['iin']; ?></td>
-			                                <td colspan="2">Spanning cell</td>
+                                            <?php 
+                                                $query_group = "subject = ".$row['id'];
+                                                $result_groups = get_query($query_group, 'class', $connection);
+
+                                                if($result_groups->num_rows > 0){
+                                                    $temp = 0;
+                                                    while ($row_groups = $result_groups->fetch_assoc()) {
+                                                        $temp++;
+                                                        if($temp < $result_groups->num_rows){
+                                                            echo $row_groups['name_group'].", ";
+                                                        }else{
+                                                            echo $row_groups['name_group'];
+                                                        }
+                                                    }
+                                                }else{
+                                                    echo "Нет привязанныч групп";
+                                                }
+
+                                            ?>
+                                                
+                                            </td>
+			                                <td>
+                                             <?php 
+                                                $query_group = "subject = ".$row['id'];
+                                                $result_groups = get_query($query_group, 'class', $connection);
+
+                                                if($result_groups->num_rows > 0){
+                                                    $temp = 0;
+                                                    while ($row_groups = $result_groups->fetch_assoc()) {
+                                                        $temp++;
+                                                        if($temp < $result_groups->num_rows){
+                                                            echo $row_groups['name_group'].", ";
+                                                        }else{
+                                                            echo $row_groups['name_group'];
+                                                        }
+                                                    }
+                                                }else{
+                                                    echo "Нет привязанныч групп";
+                                                }
+
+                                            ?>
+
+                                            </td>
+			                                
 			                            </tr>
 
                         	<?php	}
@@ -121,77 +114,6 @@ include 'php/db/get_query.php';
                         			exit('No teachers in database');
                         		}
                         	?>
-                            <tr>
-                                <th>ORCL <span class="co-name">Oracle Corporation</span></th>
-                                <td>31.15</td>
-                                <td>12:44PM</td>
-                                <td>1.41 (4.72%)</td>
-                                <td>29.74</td>
-                                <td>30.67</td>
-                                <td>31.14 x 6500</td>
-                                <td colspan="2">Spanning cell</td>
-                            </tr>
-                            <tr>
-                                <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                <td>18.65</td>
-                                <td>12:45PM</td>
-                                <td>0.97 (5.49%)</td>
-                                <td>17.68</td>
-                                <td>18.23</td>
-                                <td>18.65 x 10300</td>
-                                <td>Non-spanning</td>
-                                <td>Non-spanning</td>
-                            </tr> <tr>
-                                <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                <td>18.65</td>
-                                <td>12:45PM</td>
-                                <td>0.97 (5.49%)</td>
-                                <td>17.68</td>
-                                <td>18.23</td>
-                                <td>18.65 x 10300</td>
-                                <td>Non-spanning</td>
-                                <td>Non-spanning</td>
-                            </tr> <tr>
-                                <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                <td>18.65</td>
-                                <td>12:45PM</td>
-                                <td>0.97 (5.49%)</td>
-                                <td>17.68</td>
-                                <td>18.23</td>
-                                <td>18.65 x 10300</td>
-                                <td>Non-spanning</td>
-                                <td>Non-spanning</td>
-                            </tr> <tr>
-                                <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                <td>18.65</td>
-                                <td>12:45PM</td>
-                                <td>0.97 (5.49%)</td>
-                                <td>17.68</td>
-                                <td>18.23</td>
-                                <td>18.65 x 10300</td>
-                                <td>Non-spanning</td>
-                                <td>Non-spanning</td>
-                            </tr> <tr>
-                                <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                <td>18.65</td>
-                                <td>12:45PM</td>
-                                <td>0.97 (5.49%)</td>
-                                <td>17.68</td>
-                                <td>18.23</td>
-                                <td>18.65 x 10300</td>
-                                <td>Non-spanning</td>
-                                <td>Non-spanning</td>
-                            </tr> <tr>
-                                <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                <td>18.65</td>
-                                <td>12:45PM</td>
-                                <td>0.97 (5.49%)</td>
-                                <td>17.68</td>
-                                <td>18.23</td>
-                                <td>18.65 x 10300</td>
-                                <td>Non-spanning</td>
-                                <td>Non-spanning</td>
-                            </tr>
                             <!-- Repeat -->
                             
                         </tbody>
@@ -210,6 +132,8 @@ include 'php/db/get_query.php';
     <script src="js/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="js/rwd-table.js"></script>
-
+    <script type="text/javascript">
+    
+    </script>
 </body>
 </html>

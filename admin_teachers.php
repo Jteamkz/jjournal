@@ -111,7 +111,7 @@ include 'php/db/get_query.php';
 			                                	}
 			                                ?>
 			                                </td>
-			                                <td>30.67</td>
+			                                <td>Enter to database</td>
 			                                <td><?php echo $row['iin']; ?></td>
 			                                <td colspan="2">Spanning cell</td>
 			                            </tr>
@@ -121,127 +121,7 @@ include 'php/db/get_query.php';
                         			exit('No teachers in database');
                         		}
                         	?>
-                            <tr>
-                                <th>ORCL <span class="co-name">Oracle Corporation</span></th>
-                                <td>31.15</td>
-                                <td>12:44PM</td>
-                                <td>1.41 (4.72%)</td>
-                                <td>29.74</td>
-                                <td>30.67</td>
-                                <td>31.14 x 6500</td>
-                                <td colspan="2">Spanning cell</td>
-                            </tr>
-                            <tr>
-                                <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                <td>18.65</td>
-                                <td>12:45PM</td>
-                                <td>0.97 (5.49%)</td>
-                                <td>17.68</td>
-                                <td>18.23</td>
-                                <td>18.65 x 10300</td>
-                                <td>Non-spanning</td>
-                                <td>Non-spanning</td>
-                            </tr><tr>
-                                <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                <td>18.65</td>
-                                <td>12:45PM</td>
-                                <td>0.97 (5.49%)</td>
-                                <td>17.68</td>
-                                <td>18.23</td>
-                                <td>18.65 x 10300</td>
-                                <td>Non-spanning</td>
-                                <td>Non-spanning</td>
-                            </tr><tr>
-                                <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                <td>18.65</td>
-                                <td>12:45PM</td>
-                                <td>0.97 (5.49%)</td>
-                                <td>17.68</td>
-                                <td>18.23</td>
-                                <td>18.65 x 10300</td>
-                                <td>Non-spanning</td>
-                                <td>Non-spanning</td>
-                            </tr><tr>
-                                <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                <td>18.65</td>
-                                <td>12:45PM</td>
-                                <td>0.97 (5.49%)</td>
-                                <td>17.68</td>
-                                <td>18.23</td>
-                                <td>18.65 x 10300</td>
-                                <td>Non-spanning</td>
-                                <td>Non-spanning</td>
-                            </tr><tr>
-                                <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                <td>18.65</td>
-                                <td>12:45PM</td>
-                                <td>0.97 (5.49%)</td>
-                                <td>17.68</td>
-                                <td>18.23</td>
-                                <td>18.65 x 10300</td>
-                                <td>Non-spanning</td>
-                                <td>Non-spanning</td>
-                            </tr><tr>
-                                <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                <td>18.65</td>
-                                <td>12:45PM</td>
-                                <td>0.97 (5.49%)</td>
-                                <td>17.68</td>
-                                <td>18.23</td>
-                                <td>18.65 x 10300</td>
-                                <td>Non-spanning</td>
-                                <td>Non-spanning</td>
-                            </tr><tr>
-                                <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                <td>18.65</td>
-                                <td>12:45PM</td>
-                                <td>0.97 (5.49%)</td>
-                                <td>17.68</td>
-                                <td>18.23</td>
-                                <td>18.65 x 10300</td>
-                                <td>Non-spanning</td>
-                                <td>Non-spanning</td>
-                            </tr><tr>
-                                <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                <td>18.65</td>
-                                <td>12:45PM</td>
-                                <td>0.97 (5.49%)</td>
-                                <td>17.68</td>
-                                <td>18.23</td>
-                                <td>18.65 x 10300</td>
-                                <td>Non-spanning</td>
-                                <td>Non-spanning</td>
-                            </tr><tr>
-                                <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                <td>18.65</td>
-                                <td>12:45PM</td>
-                                <td>0.97 (5.49%)</td>
-                                <td>17.68</td>
-                                <td>18.23</td>
-                                <td>18.65 x 10300</td>
-                                <td>Non-spanning</td>
-                                <td>Non-spanning</td>
-                            </tr><tr>
-                                <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                <td>18.65</td>
-                                <td>12:45PM</td>
-                                <td>0.97 (5.49%)</td>
-                                <td>17.68</td>
-                                <td>18.23</td>
-                                <td>18.65 x 10300</td>
-                                <td>Non-spanning</td>
-                                <td>Non-spanning</td>
-                            </tr><tr>
-                                <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                <td>18.65</td>
-                                <td>12:45PM</td>
-                                <td>0.97 (5.49%)</td>
-                                <td>17.68</td>
-                                <td>18.23</td>
-                                <td>18.65 x 10300</td>
-                                <td>Non-spanning</td>
-                                <td>Non-spanning</td>
-                            </tr>
+                            
                             <!-- Repeat -->
                             
                         </tbody>
