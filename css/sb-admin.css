@@ -1,10 +1,3 @@
-/*!
- * Start Bootstrap - SB Admin (http://startbootstrap.com/)
- * Copyright 2013-2016 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
- */
-
-/* Global Styles */
 
 body {
     margin-top: 100px;
@@ -135,7 +128,7 @@ ul.alert-dropdown {
     .side-nav li a:hover,
     .side-nav li a:focus {
         outline: none;
-        background-color: #000 !important;
+        background-color: #283746 !important;
     }
 }
 

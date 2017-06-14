@@ -24,12 +24,16 @@ include 'php/db/get.php';
 
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
+    <!-- Custun JJournal CSS -->
+    
 
     <!-- Morris Charts CSS -->
     <link href="css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" type="text/css" href="css/custum.css">
 
 </head>
 
@@ -38,7 +42,7 @@ include 'php/db/get.php';
     <div id="wrapper">
 
         <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-default navbar-jjournal navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -152,24 +156,24 @@ include 'php/db/get.php';
             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
+                <ul class="nav navbar-nav side-nav side-jjournal">
                     <li class="active">
-                        <a href="admin_panel.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a class="jjournal-white" href="admin_panel.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                        <a  class="jjournal-white" href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
                     </li>
                     <li>
-                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
+                        <a  class="jjournal-white" href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
                     </li>
                     <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                        <a  class="jjournal-white" href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
                     </li>
                     <li>
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                        <a  class="jjournal-white" href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
                     </li>
                     <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                        <a  class="jjournal-white" href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
