@@ -1,6 +1,6 @@
 <?php 
-
-include 'php/session.php';
+session_start();
+$db_name = $_SESSION['studycenter'];
 include 'php/db/connect_db.php';
 include 'php/db/get_all_data.php';
 include 'php/db/get.php';
@@ -86,23 +86,28 @@ include 'php/db/get_query.php';
                                             </td>
 			                                <td>
                                              <?php 
-                                                $query_group = "subject = ".$row['id'];
-                                                $result_groups = get_query($query_group, 'class', $connection);
+                                                $query_ts = "id_s = ".$row['id'];
+                                                $result_ts = get_query($query_ts, 'relation_ts', $connection);
 
-                                                if($result_groups->num_rows > 0){
-                                                    $temp = 0;
-                                                    while ($row_groups = $result_groups->fetch_assoc()) {
-                                                        $temp++;
-                                                        if($temp < $result_groups->num_rows){
-                                                            echo $row_groups['name_group'].", ";
-                                                        }else{
-                                                            echo $row_groups['name_group'];
-                                                        }
+                                                if($result_ts->num_rows > 0){
+                                                    $tess = 0;
+                                                    while ($row_groups = $result_ts->fetch_assoc()) {
+                                                        $query_te = "id = ".$row_groups['id_t'];
+                                                        $result_te = get_query($query_te, 'teacher', $connection);
+                                                        
+                                                        
+                                                        $row_teachers = $result_te->fetch_assoc(); 
+                                                            $tess++;
+                                                            if($tess < $result_ts->num_rows){
+                                                            echo $row_teachers['firstname']." ".$row_teachers['lastname'].", ";
+                                                            }else{
+                                                                echo $row_teachers['firstname']." ".$row_teachers['lastname'];
+                                                            }
+                                                        
                                                     }
                                                 }else{
-                                                    echo "Нет привязанныч групп";
+                                                    echo "Нет обучающих училок";
                                                 }
-
                                             ?>
 
                                             </td>
