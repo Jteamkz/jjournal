@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Июн 10 2017 г., 07:10
+-- Время создания: Июн 14 2017 г., 07:29
 -- Версия сервера: 5.7.11
 -- Версия PHP: 5.6.19
 
@@ -48,18 +48,19 @@ INSERT INTO `admin` (`id`, `login`, `password`) VALUES
 CREATE TABLE `class` (
   `id` int(11) NOT NULL,
   `name_group` varchar(50) NOT NULL,
-  `teacher_id` int(11) DEFAULT NULL
+  `teacher_id` int(11) DEFAULT NULL,
+  `subject` int(3) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Дамп данных таблицы `class`
 --
 
-INSERT INTO `class` (`id`, `name_group`, `teacher_id`) VALUES
-(1, 'English A1', 3),
-(2, 'English A2', 4),
-(3, 'Math A1', 3),
-(4, 'Daniyartanu', NULL);
+INSERT INTO `class` (`id`, `name_group`, `teacher_id`, `subject`) VALUES
+(1, 'English A1', 3, 1),
+(2, 'English A2', 4, 1),
+(3, 'Math A1', 3, 2),
+(4, 'Daniyartanu', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -103,7 +104,8 @@ CREATE TABLE `relation_ts` (
 
 INSERT INTO `relation_ts` (`id`, `id_t`, `id_s`) VALUES
 (1, 1, 1),
-(2, 3, 2);
+(2, 3, 2),
+(3, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -235,7 +237,7 @@ ALTER TABLE `relation_cs`
 -- AUTO_INCREMENT для таблицы `relation_ts`
 --
 ALTER TABLE `relation_ts`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT для таблицы `student`
 --
