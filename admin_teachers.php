@@ -1,6 +1,7 @@
 ﻿<?php 
+session_start();
+$db_name = $_SESSION['studycenter'];
 
-include 'php/session.php';
 include 'php/db/connect_db.php';
 include 'php/db/get_all_data.php';
 include 'php/db/get.php';
