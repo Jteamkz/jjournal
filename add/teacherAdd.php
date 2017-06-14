@@ -2,6 +2,7 @@
 	session_start();
 	$db_name = $_SESSION['studycenter'];
 	include "../php/SQLconnect.php";
+	include "../php/connectOS.php";
 	$n = $_GET['numberTeacher'];
 	for($i = 0; $i < $n; $i++){
 		$IIN = $_POST["IIN".$i];
@@ -11,10 +12,18 @@
 		$father = $_POST["father".$i];
 		$birthday = $_POST["birthday".$i];
 		$phone = $_POST["phone".$i];
-		$sql = "INSERT INTO teachers (IIN, password, name, surname, father, birthday, phone) VALUES ('$IIN', '$password', '$name', '$surname', '$father', '$birthday', '$phone')";
+
+		$sql = "INSERT INTO users (iin, password, status, database_name, tele) VALUES ('$IIN', '$password', 'teacher', '$db_name', '$phone')";
+
+		if ($cuni->query($sql) === TRUE) {
+		    
+		} else {
+		    echo "Error: " . $sql . "<br>" . $cuni->error;
+		}
+
+		$sql = "INSERT INTO teacher (IIN, firstname, lastname, fathername, birthday, telephone) VALUES ('$IIN', '$name', '$surname', '$father', '$birthday', '$phone')";
 
 		if ($con->query($sql) === TRUE) {
-		    echo "New record created successfully";
 		    echo "<script>window.location = '../admin_panel.php'</script>";
 		} else {
 		    echo "Error: " . $sql . "<br>" . $con->error;
