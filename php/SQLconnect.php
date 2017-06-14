@@ -1,11 +1,7 @@
 <?php
 	$username = "root";
 	$password = "";
-	$DBname = "jj";
-	// Create connection
-	$con = new mysqli("localhost", $username, $password, $DBname);
-
-	// Check connection
+	$con = new mysqli("localhost", $username, $password, $db_name);
 	if ($con->connect_error) {
 	    die("Connection failed: " . $con->connect_error);
 	}

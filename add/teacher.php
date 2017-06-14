@@ -10,10 +10,10 @@
 		$n = $_POST['numberTeacher'];
 		echo "<form method='post' action='teacherAdd.php?numberTeacher=".$n."'>";
 		for($i = 0; $i < $n; $i++){
-			echo "<input type='text' name='IIN".$i."'><input type='text' name='password".$i."'>
-			<input type='text' name='name".$i."'><input type='text' name='surname".$i."'>
-			<input type='text' name='father".$i."''><input type='text' name='birthday".$i."'>
-			<input type='text' name='phone".$i."'>";
+			echo "<input type='text' name='IIN".$i."' placeholder='ИИН'><input type='text' name='password".$i."' placeholder='Пароль'>
+			<input type='text' name='name".$i."' placeholder='Имя'><input type='text' name='surname".$i."' placeholder='Фамилия'>
+			<input type='text' name='father".$i."' placeholder='Отчество'><input type='text' name='birthday".$i."' placeholder='День рождения'>
+			<input type='text' name='phone".$i."' placeholder='Телефон'>";
 		}
 		echo "<br><button>Add</button></form>";
 	?>

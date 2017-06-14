@@ -1,4 +1,6 @@
 <?php
+	session_start();
+	$db_name = $_SESSION['studycenter'];
 	include "../php/SQLconnect.php";
 	$n = $_GET['numberTeacher'];
 	for($i = 0; $i < $n; $i++){
@@ -13,6 +15,7 @@
 
 		if ($con->query($sql) === TRUE) {
 		    echo "New record created successfully";
+		    echo "<script>window.location = '../admin_panel.php'</script>";
 		} else {
 		    echo "Error: " . $sql . "<br>" . $con->error;
 		}

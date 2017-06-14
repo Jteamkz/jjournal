@@ -220,16 +220,27 @@ include 'php/db/get.php';
                 <!-- /.row -->
                 <div class="row" style="text-align: center">
                     <div class="col-xs-3">
-                        <a class="btn btn-success btn-lg" href="php/add_student.php">Добавить урок</a>
+                        <form method="POST" action="add/subject.php">
+                            <input type="text" name="numberSubject" class="form-control" autocomplete="off" placeholder="Количество">
+                            <button class="btn btn-success btn-lg">Добавить уроки</button>
+                        </form>
                     </div>
                     <div class="col-xs-3">
-                        <a class="btn btn-success btn-lg" href="php/add_student.php">Добавить ученика</a>
+                        <form method="POST" action="add/student.php">
+                            <input type="text" name="numberStudent" class="form-control" autocomplete="off" placeholder="Количество">
+                            <button class="btn btn-success btn-lg">Добавить учеников</button>
+                        </form>
                     </div>
                     <div class="col-xs-3">
-                        <a href="php/add_teacher.php" class="btn btn-primary btn-lg">Добавить учителя</a>
+                        <form method="POST" action="add/teacher.php">
+                            <input type="text" name="numberTeacher" class="form-control" autocomplete="off" placeholder="Количество">
+                            <button class="btn btn-primary btn-lg">Добавить учителя</button>
+                        </form>
                     </div>
                     <div class="col-xs-3">
-                        <a href="php/add_class.php" class="btn btn-warning btn-lg">Добавить группу</a>
+                        <form method="POST" action="add/group.php">
+                            <button class="btn btn-warning btn-lg">Добавить группу</button>
+                        </form>
                     </div>
                      <div class="col-xs-3">
                         <a href="php/all_relations.php" class="btn btn-warning btn-lg">Связи</a>

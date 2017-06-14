@@ -1,4 +1,6 @@
 <?php
+		session_start();
+		$db_name = $_SESSION['studycenter'];
 		include "../php/SQLconnect.php";
 		$name = $_POST["name"];
 		$subject = $_POST["subject"];
@@ -13,6 +15,13 @@
 		$sunday = $_POST["sunday1"]." ".$_POST["sunday2"]." ".$_POST["sundayroom"];
 		if($_POST['checkbox']){
 			$students = join(',',$_POST['checkbox']);
+			$sql = "UPDATE students SET bool='false' WHERE id IN(".$students.")";
+
+			if ($con->query($sql) === TRUE) {
+			    echo "Record updated successfully";
+			} else {
+			    echo "Error updating record: " . $conn->error;
+			}
 		}
 		$sql = "INSERT INTO schedules (monday, tuesday, wednesday, thursday, friday, saturday, sunday) VALUES ('$monday', '$tuesday', '$wednesday', '$thursday', '$friday', '$saturday', '$sunday')";
 
@@ -27,6 +36,7 @@
 
 		if ($con->query($sql) === TRUE) {
 		    echo "New record created successfully";
+		    echo "<script>window.location = '../admin_panel.php'</script>";
 		} else {
 		    echo "Error: " . $sql . "<br>" . $con->error;
 		}
