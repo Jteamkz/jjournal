@@ -1,4 +1,4 @@
-﻿<?php 
+<?php 
 session_start();
 $db_name = $_SESSION['studycenter'];
 
@@ -70,7 +70,7 @@ include 'php/db/get_query.php';
                         				<tr>
 			                                <th><?php echo $row['lastname']." ".$row['firstname']; ?></th>
 			                                <td><?php echo $row['telephone']; ?></td>
-			                                <td><?php echo "Enter to database"; ?></td>
+			                                <td><?php echo $row['birthday']; ?></td>
 			                                <td><?php 
 			                                	$query = "id_t = ".$row['id'];
 			                                	$result_ts = get_query($query, 'relation_ts', $connection);

@@ -1,10 +1,19 @@
-﻿<html>
+<?php
+			session_start();
+			$db_name = $_SESSION['studycenter'];
+?>
+<html>
 	<head>
 		<link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
 		<link rel="stylesheet" href="../css/style.css" type="text/css">
 	    <script src="../js/jquery.js"></script>
 	    <script src="../js/bootstrap.js"></script>
-		<?php include '../php/SQLconnect.php'; ?>
+		<?php 
+			session_start();
+			$db_name = $_SESSION['studycenter'];
+			include '../php/SQLconnect.php';
+			include '../php/connectOS.php';
+		?>
 		<script>
 			$(document).ready(function(){
 				$("#toggling").hide();
@@ -26,7 +35,7 @@
 				if ($result->num_rows > 0) {
 				    // output data of each row
 				    while($row = $result->fetch_assoc()) {
-				        echo "<option value='".$row['id']."'' title='".$row['defenition']."''>".$row['name']."</option>";
+				        echo "<option value='".$row['id']."'' title='".$row['description']."''>".$row['name']."</option>";
 				    }
 				} else {
 				    echo "0 results";
@@ -35,13 +44,13 @@
 		</select>
 		<select name="teacher">
 			<?php
-				$sql = "SELECT * FROM teachers";
+				$sql = "SELECT * FROM teacher";
 				$result = $con->query($sql);
 
 				if ($result->num_rows > 0) {
 				    // output data of each row
 				    while($row = $result->fetch_assoc()) {
-				        echo "<option value='".$row['id']."'' title='teacher''>".$row['name']." ".$row['surname']." ".$row['father']."</option>";
+				        echo "<option value='".$row['id']."'' title='teacher''>".$row['firstname']." ".$row['lastname']." ".$row['fathername']."</option>";
 				    }
 				} else {
 				    echo "0 results";
@@ -50,25 +59,25 @@
 		</select>
 		<br>
 		<?php
-				$sql = "SELECT * FROM students WHERE bool='true'";
+				$sql = "SELECT * FROM student WHERE bool='true'";
 				$result = $con->query($sql);
 
 				if ($result->num_rows > 0) {
 				    // output data of each row
 				    while($row = $result->fetch_assoc()) {
-				        echo "<input name='checkbox[]' type='checkbox'  id='".$row['id']."'  value='".$row['id']."'/>".$row['name']." ".$row['surname']." ".$row['father']."<br>";
+				        echo "<input name='checkbox[]' type='checkbox'  id='".$row['id']."'  value='".$row['id']."'/>".$row['firstname']." ".$row['lastname']." ".$row['father']."<br>";
 				    }
 				} else {
 				    echo "0 results";
 				}
 				echo "<a id='toggler'>Show all</a><br>";
-				$sql = "SELECT * FROM students WHERE bool='false'";
+				$sql = "SELECT * FROM student WHERE bool='false'";
 				$result = $con->query($sql);
 					echo "<div id='toggling'>";
 				if ($result->num_rows > 0) {
 				    // output data of each row
 				    while($row = $result->fetch_assoc()) {
-				        echo "<input name='checkbox[]' type='checkbox'  value='".$row['id']."'/>".$row['name']." ".$row['surname']." ".$row['father']."<br>";
+				        echo "<input name='checkbox[]' type='checkbox'  value='".$row['id']."'/>".$row['firstname']." ".$row['lastname']." ".$row['father']."<br>";
 				    }
 				} else {
 				    echo "0 results";

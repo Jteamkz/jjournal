@@ -99,7 +99,7 @@ include 'php/db/get_query.php';
                                         </td>
                                         <td><?php echo $row['payday']; ?></td>
                                         <td><?php echo $row['iin']; ?></td>
-                                        <td>Insert to database</td>
+                                        <td><?php echo $row['birthday']; ?></td>
                                     <tr>
                         	<?php	}
                         		}else{

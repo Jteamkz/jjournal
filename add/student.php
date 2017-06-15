@@ -14,7 +14,7 @@
 			<input type='text' name='name".$i."' placeholder='Имя'><input type='text' name='surname".$i."' placeholder='Фамилия'>
 			<input type='text' name='father".$i."'' placeholder='Отчество'><input type='text' name='birthday".$i."' placeholder='День рождения'>
 			<input type='text' name='phone".$i."' placeholder='Телефон'><input type='text' name='phoneparent".$i."' placeholder='Телефон Мамки'>
-			<input type='text' name='payday".$i."' placeholder='День Оплаты'>";
+			<input type='text' name='payday".$i."' placeholder='День Оплаты'><br>";
 		}
 		echo "<br><button>Add</button></form>";
 	?>

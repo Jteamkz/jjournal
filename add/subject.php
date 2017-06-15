@@ -10,7 +10,7 @@
 		$n = $_POST['numberSubject'];
 		echo "<form method='post' action='subjectAdd.php?numberSubject=".$n."'>";
 		for($i = 0; $i < $n; $i++){
-			echo "<input type='text' name='name".$i."'><input type='text' name='defenition".$i."'><br>";
+			echo "<input type='text' placeholder='Название' name='name".$i."'><input type='text' placeholder='Описание' name='defenition".$i."'><br>";
 		}
 		echo "<br><button>Add</button></form>";
 	?>

@@ -2,6 +2,7 @@
 		session_start();
 		$db_name = $_SESSION['studycenter'];
 		include "../php/SQLconnect.php";
+		include "../php/connectOS.php";
 		$name = $_POST["name"];
 		$subject = $_POST["subject"];
 		$name = $_POST["name".$i];
@@ -13,31 +14,56 @@
 		$friday = $_POST["friday1"]." ".$_POST["friday2"]." ".$_POST["fridayroom"];
 		$saturday = $_POST["saturday1"]." ".$_POST["saturday2"]." ".$_POST["saturdayoom"];
 		$sunday = $_POST["sunday1"]." ".$_POST["sunday2"]." ".$_POST["sundayroom"];
+		
 		if($_POST['checkbox']){
 			$students = join(',',$_POST['checkbox']);
-			$sql = "UPDATE students SET bool='false' WHERE id IN(".$students.")";
+			$sql = "UPDATE student SET bool='false' WHERE id IN(".$students.")";
 
 			if ($con->query($sql) === TRUE) {
-			    echo "Record updated successfully";
+
 			} else {
-			    echo "Error updating record: " . $conn->error;
+			    echo "Kulager: " . $conn->error;
 			}
 		}
-		$sql = "INSERT INTO schedules (monday, tuesday, wednesday, thursday, friday, saturday, sunday) VALUES ('$monday', '$tuesday', '$wednesday', '$thursday', '$friday', '$saturday', '$sunday')";
+		$sql = "INSERT INTO schedule (monday, tuesday, wednesday, thursday, friday, saturday, sunday) VALUES ('$monday', '$tuesday', '$wednesday', '$thursday', '$friday', '$saturday', '$sunday')";
 
 		if ($con->query($sql) === TRUE) {
 			$last_id = $con->insert_id;
-		    echo "New record created successfully";
 		} else {
 		    echo "Error: " . $sql . "<br>" . $con->error;
 		}
-		$students = $students.",";
-		$sql = "INSERT INTO groups (name, subject, teacher, students, schedule) VALUES ('$name', '$subject', '$teacher', '$students', '$last_id')";
+
+		$sql = "INSERT INTO class (name_group, subject, teacher_id, schedule) VALUES ('$name', '$subject', '$teacher', '$last_id')";
 
 		if ($con->query($sql) === TRUE) {
-		    echo "New record created successfully";
-		    echo "<script>window.location = '../admin_panel.php'</script>";
+			$lastik = $con->insert_id;
 		} else {
 		    echo "Error: " . $sql . "<br>" . $con->error;
 		}
+		
+		$students = $students.",";
+		$size = strlen($students);
+		$idiwka = "";
+
+		for($i = 0; $i < $size; $i++){
+			
+			if($students[$i] == ','){
+				$sql = "INSERT INTO relation_cs (class_id, student_id) VALUES ('$lastik','$idiwka')";
+
+				if ($con->query($sql) === TRUE) {
+					
+				} else {
+					
+			    	echo "EKuma: " . $conn->error;
+				}
+				$idiwka = "";
+
+			}else{
+				
+				$idiwka = $idiwka.$students[$i];
+
+			}
+		}
+		echo "<script>window.location = '../admin_panel.php'</script>";
+		
 ?>
