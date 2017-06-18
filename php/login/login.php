@@ -24,7 +24,9 @@ if($result->num_rows > 0){
 		}else if($row['status'] == 'student'){
 			echo 'student';
 		}else if($row['status'] == 'teacher'){
-			echo 'teacher';
+			$to_admin = 'Location: ../../teacher_panel.php';
+			$_SESSION['studycenter'] = $export_db_name;
+			header($to_admin);
 		}
 		
 	}else{

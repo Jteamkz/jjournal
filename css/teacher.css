@@ -1,0 +1,57 @@
+.panel-default>.panel-heading {
+    color: #fff;
+    background-color: #34495e;
+    border-color: #283746;
+}
+.panel-default>.panel-body {
+    color: #5c5c5c;
+    min-height: 10px;
+}
+.jjournal-orders{
+	list-style-type: none;
+	background-color: #fff;
+	border: 1px solid #e7e7e7;
+}
+.jjournal-orders > li{
+	border-bottom: 1px solid #e7e7e7;
+	padding: 10px;
+
+}
+.jjournal-orders > li:hover, .jjournal-orders > li:focus, .jjournal-orders > li:active{
+	border-left: 3px solid #283746;
+	background-color: #f6f8fc; 
+}
+
+@media (min-width: 1200px){
+	.jjournal-orders{
+		list-style-type: none;
+		background-color: #fff;
+		border: 1px solid #e7e7e7;
+		padding: 0px;
+		padding-left: 0px;
+	}
+
+	.jjournal-orders > li{
+		border-left: 3px solid #34495e;
+		padding: 20px;
+		font-size: 14px;
+	}
+	
+	.navbar-jjournal a.navbar-brand{
+		width: 225px;
+		background-color: transparent;
+		color: #999;
+	}
+	
+	.navbar-jjournal a.navbar-brand:hover, .navbar-jjournal a.navbar-brand:focus{
+		width: 225px;
+		background-color: transparent;
+		color: #999;
+	}
+}
+@media (max-width: 1199px){
+	.jjournal-orders{
+		padding: 0px;
+		padding-left: 0px;
+	}
+}
