@@ -307,11 +307,10 @@ include 'php/db/get.php';
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-3">
-                                                <form method="POST" action="add/subject.php">
-                                                    <input type="text" name="numberSubject" class="form-control" autocomplete="off" placeholder="Количество"><br>
-                                                    <button class="btn btn-success btn-lg">Добавить уроки</button>
-                                                </form>
+                                            <div class="col-lg-6" id="urokitab">
+                                                <br>
+                                                    <button id="uroki" class="btn btn-success btn-lg">Добавить уроки</button>
+                                                
                                             </div>
 
                                         </div>
@@ -594,10 +593,15 @@ include 'php/db/get.php';
     <!-- /#wrapper -->
 
     <!-- jQuery -->
+
     <script src="js/jquery.js"></script>
+
+    <script src="js/actions.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+
+    
 
     <!-- Morris Charts JavaScript -->
     <script src="js/plugins/morris/raphael.min.js"></script>

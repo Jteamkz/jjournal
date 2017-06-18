@@ -1,0 +1,15 @@
+﻿	<script>
+		var a = "0";
+		document.getElementById('namesubject').name = "name0";
+		$("#eweSubject").click(function(){
+			 a++;
+   			 $("#subjectP").append("<input type='text' id='namesubject' name='name"+a+"' placeholder='Название'><input type='text' placeholder='Описание' name='defenition"+a+"'>");
+		});
+	</script>
+	<br><button id="eweSubject">Еще</button>
+	<form id="subjectForm" method='post' action='add/subjectAdd.php?numberSubject=".$n."'>
+		<div style="max-height:150px; height:149px; overflow-y: scroll; padding-top:5px;">
+		<input type='text' id='namesubject' placeholder='Название'><input type='text' placeholder='Описание' name='defenition".$i."'>
+		<p id="subjectP"></p>
+		</div>
+	<br><button>Add</button></form>
