@@ -4,7 +4,7 @@
 	include "../php/SQLconnect.php";
 	include "../php/connectOS.php";
 	$n = $_GET['numberStudent'];
-	for($i = 0; $i < $n; $i++){
+	for($i = 0; $i <= $n; $i++){
 		$IIN = $_POST["IIN".$i];
 		$password = $_POST["password".$i];
 		$name = $_POST["name".$i];

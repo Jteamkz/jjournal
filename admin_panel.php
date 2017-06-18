@@ -264,7 +264,7 @@ include 'php/db/get.php';
                         }
                     ?>
                 <div class="row">
-                    <div class="col-xs-10">
+                    <div class="col-xs-12">
                         <div class="panel with-nav-tabs panel-default">
                             <div class="panel-heading">
                                     <ul class="nav nav-tabs">
@@ -281,7 +281,7 @@ include 'php/db/get.php';
                                         </li> -->
                                     </ul>
                             </div>
-                            <div class="panel-body">
+                            <div class="panel-body" id="panel-body">
                                 <div class="tab-content">
                                     <div class="tab-pane fade in active" id="tab1default">
                                         <div class="row">
@@ -340,11 +340,9 @@ include 'php/db/get.php';
                                             </div>
                                         </div>
                                         
-                                             <div class="col-lg-3">
-                                                <form method="POST" action="add/student.php">
-                                                    <input type="text" name="numberStudent" class="form-control" autocomplete="off" placeholder="Количество"><br>
-                                                    <button class="btn btn-success btn-lg">Добавить учеников</button>
-                                                </form>
+                                             <div class="col-lg-6" id="uchenikitab">
+                                             <br>
+                                                    <button id="ucheniki" class="btn btn-success btn-lg">Добавить учеников</button>
                                             </div>
                                         </div>
                                     </div>
