@@ -1,6 +1,9 @@
 #wrapper{
 	min-height: 100%;
 }
+.middlel > th, .middlel > td{
+	vertical-align: middle !important;
+}
 .navbar-jjournal{
 	background-color: #fff;
 	border-width: medium;

@@ -12,7 +12,7 @@ include 'php/db/get_query.php';
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Студенты</title>
+    <title>Группы</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,7 +39,9 @@ include 'php/db/get_query.php';
     <link rel="stylesheet" type="text/css" href="css/finder.css">
 
     <link rel="stylesheet" type="text/css" href="css/custum.css">
-
+    <style type="text/css">
+        
+    </style>
 </head>
 <body>
 <div id="wrapper">
@@ -161,11 +163,11 @@ include 'php/db/get_query.php';
                     <li class="">
                         <a class="jjournal-white" href="admin_panel.php"><i class="fa fa-fw fa-dashboard"></i> Панель управления</a>
                     </li>
-                    <li class="active">
+                    <li >
                         <a  class="jjournal-white" href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Студенты</a>
                     </li>
-                    <li>
-                        <a  class="jjournal-white" href="tables.html"><i class="fa fa-fw fa-table"></i> Учетели</a>
+                    <li class="active">
+                        <a  class="jjournal-white" href="tables.html"><i class="fa fa-fw fa-table"></i> Учители</a>
                     </li>
                     <li>
                         <a  class="jjournal-white" href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
@@ -200,11 +202,16 @@ include 'php/db/get_query.php';
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-header">
-                        <h2>Список обучающих предметов</h2>
+                        <h2>Список групп</h2>
                     </div>
                     <div>
                         <p>Искать</p>
-                        <input type="text" class="search form-control" placeholder="Введите что вы ищете">
+                        <input type="text" class="search form-control" placeholder="Введите что вы ищете" 
+                        <?php 
+                            if (isset($_GET['name'])) {
+                                echo "value='".$_GET['name']."'";
+                            }
+                        ?>>
                         <span class="counter pull-right"></span>
 
                     </div>
@@ -213,77 +220,89 @@ include 'php/db/get_query.php';
                     <table cellspacing="0" class="table table-small-font table-bordered table-striped results">
                         <thead>
                             <tr>
-                                <th>Название</th>
-                                <th data-priority="1">Группы</th>
-                                <th data-priority="1">Учетеля</th>
+                                <th>Название группы</th>
+                                <th data-priority="1">Учитель</th>
+                                <th data-priority="1">Предмет</th>
+                                <th data-priority="1">Расписние</th>
+                                <th data-priority="1">Студенты</th>
+                            </tr>
+                            <tr class="warning no-result">
+                              <td colspan="7"><i class="fa fa-warning"></i> Ничего не найдено</td>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php 
-                                $result = getAllData('subjects', $connection);
-
-                                if ($result->num_rows > 0) {
+                            <?php
+                                $result = getAllData('class', $connection);
+                                if ($result->num_rows > 1) {
                                     while ($row = $result->fetch_assoc()) { ?>
-                                    
-                                        <tr>
-                                            <th><?php echo $row['name']?></th>
-                                            <td>
-                                            <?php 
-                                                $query_group = "subject = ".$row['id'];
-                                                $result_groups = get_query($query_group, 'class', $connection);
-
-                                                if($result_groups->num_rows > 0){
-                                                    $temp = 0;
-                                                    while ($row_groups = $result_groups->fetch_assoc()) {
-                                                        $temp++;
-                                                        if($temp < $result_groups->num_rows){
-                                                            echo $row_groups['name_group'].", ";
-                                                        }else{
-                                                            echo $row_groups['name_group'];
-                                                        }
-                                                    }
-                                                }else{
-                                                    echo "Нет привязанныч групп";
+                                    <tr>
+                                    <th><?php echo $row['name_group']; ?></th>
+                                    <td><?php 
+                                        if ($row['teacher_id']!=null) {
+                                            $query = "id = ".$row['teacher_id'];
+                                            $teacher = get_query($query, 'teacher', $connection);
+                                            $row_teacher = $teacher->fetch_assoc();
+                                            echo $row_teacher['firstname']." ".$row_teacher['lastname']." ".$row_teacher['fathername'];
+                                            unset($query);
+                                        }else{
+                                            echo "Учитель не привязан";
+                                        }
+                                    ?></td>
+                                    <td>
+                                        <?php 
+                                            $query = "id = ".$row['subject'];
+                                            $subject = get_query($query, 'subjects', $connection);
+                                            $row_subject = $subject->fetch_assoc();
+                                            echo $row_subject['name'];
+                                            unset($query);
+                                        ?>
+                                    </td>
+                                    <td>Insert to Database</td>
+                                    <td>
+                                        <ul style="list-style: none; padding-left: 10px">
+                                        <?php 
+                                            $query = "class_id = ".$row['id'];
+                                            $students = get_query($query, 'relation_cs', $connection);
+                                            if ($students->num_rows > 1) {
+                                                while ($row_students = $students->fetch_assoc()) {
+                                                    $query_ins = "id = ".$row_students['student_id'];
+                                                    $single = get_query($query_ins, 'student', $connection);
+                                                    $row_student = $single->fetch_assoc();
+                                                    echo "<li><a href=''>".$row_student['firstname']." ".$row_student['lastname']."</a></li>";
                                                 }
-
-                                            ?>
-                                                
-                                            </td>
-                                            <td>
-                                             <?php 
-                                                $query_ts = "id_s = ".$row['id'];
-                                                $result_ts = get_query($query_ts, 'relation_ts', $connection);
-
-                                                if($result_ts->num_rows > 0){
-                                                    $tess = 0;
-                                                    while ($row_groups = $result_ts->fetch_assoc()) {
-                                                        $query_te = "id = ".$row_groups['id_t'];
-                                                        $result_te = get_query($query_te, 'teacher', $connection);
-                                                        
-                                                        
-                                                        $row_teachers = $result_te->fetch_assoc(); 
-                                                            $tess++;
-                                                            if($tess < $result_ts->num_rows){
-                                                            echo "<a href='admin_teachers.php?name=".$row_teachers['firstname']." ".$row_teachers['lastname']."'>".$row_teachers['firstname']." ".$row_teachers['lastname']."</a>, ";
-                                                            }else{
-                                                                echo "<a href='admin_teachers.php?name=".$row_teachers['firstname']." ".$row_teachers['lastname']."'>".$row_teachers['firstname']." ".$row_teachers['lastname']."</a>";
-                                                            }
-                                                        
-                                                    }
-                                                }else{
-                                                    echo "Нет обучающих училок";
-                                                }
-                                            ?>
-
-                                            </td>
-                                            
-                                        </tr>
-
-                            <?php   }
+                                            }else{
+                                                echo "Ученики не привязаны";
+                                            }                                            
+                                        ?>
+                                        </ul>
+                                    </td>
+                                    </tr>
+                            <?php             
+                                    }
                                 }else{
-                                    exit('No teachers in database');
+
                                 }
                             ?>
+                            <tr class="middlel">
+                                <th>Секс без обязательств</th>
+                                <td class="middlel">Омар Осман</td>
+                                <td>Сексалогия</td>
+                                <td>smth in smth</td>
+                                <td>
+                                    <ul style="list-style: none; padding-left: 10px">
+                                        <li>
+                                            Ноут
+                                        </li>
+                                        <li>
+                                            Бешка
+                                        </li>
+                                        <li>
+                                            Шешка
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            
                             <!-- Repeat -->
                             
                         </tbody>
