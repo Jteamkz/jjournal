@@ -204,7 +204,12 @@ include 'php/db/get_query.php';
                     </div>
                     <div>
                         <p>Искать</p>
-                        <input type="text" class="search form-control" placeholder="Введите что вы ищете">
+                        <input type="text" class="search form-control" placeholder="Введите что вы ищете" 
+                        <?php 
+                            if (isset($_GET['name'])) {
+                                echo "value='".$_GET['name']."'";
+                            }
+                        ?>>
                         <span class="counter pull-right"></span>
 
                     </div>
