@@ -4,7 +4,7 @@
 	include "../php/SQLconnect.php";
 	include "../php/connectOS.php";
 	$n = $_GET['numberTeacher'];
-	for($i = 0; $i < $n; $i++){
+	for($i = 0; $i <= $n; $i++){
 		$IIN = $_POST["IIN".$i];
 		$password = $_POST["password".$i];
 		$name = $_POST["name".$i];
@@ -22,7 +22,7 @@
 		    echo "Error: " . $sql . "<br>" . $cuni->error;
 		}
 
-		$sql = "INSERT INTO teacher (IIN, firstname, lastname, fathername, birthday, telephone) VALUES ('$IIN', '$name', '$surname', '$father', '$birthday', '$phone')";
+		$sql = "INSERT INTO teacher (iin, firstname, lastname, fathername, birthday, telephone) VALUES ('$IIN', '$name', '$surname', '$father', '$birthday', '$phone')";
 
 		if ($con->query($sql) === TRUE) {
 		    $lastik = $con->insert_id;

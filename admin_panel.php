@@ -370,11 +370,9 @@ include 'php/db/get.php';
                                             </a>
                                         </div>
                                             </div>
-                                             <div class="col-lg-3">
-                                                <form method="POST" action="add/teacher.php">
-                                                    <input type="text" name="numberTeacher" class="form-control" autocomplete="off" placeholder="Количество"><br>
-                                                    <button class="btn btn-success btn-lg">Добавить учителя</button>
-                                                </form>
+                                             <div class="col-lg-6" id="uchitelitab">
+                                             <br>
+                                                    <button id="uchiteli" class="btn btn-success btn-lg">Добавить учителей</button>
                                             </div>
                                         </div>
                                     </div>

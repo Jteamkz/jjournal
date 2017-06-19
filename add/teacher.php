@@ -5,23 +5,52 @@
 	include '../php/SQLconnect.php';
 	include '../php/connectOS.php'
 	?>
-<html>
-	<head>
-		<link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
-		<link rel="stylesheet" href="../css/style.css" type="text/css">
-		<script src="/js/jquery.js"></script>
-	</head>
+	<script>
+		var a = "0";
+		$("#eweTeacher").click(function(){
+			 a++;
+   			 $("#teacherP").append("<h5>teacher"+(a+1)+"</h5><input type='text' name='IIN"+a+"' placeholder='ИИН'><input type='text' name='password"+a+"' placeholder='Пароль'><input type='text' name='name"+a+"' placeholder='Имя'><input type='text' name='surname"+a+"' placeholder='Фамилия'><input type='text' name='father"+a+"'' placeholder='Отчество'><input type='text' name='birthday"+a+"' placeholder='День рождения'><input type='text' name='phone"+a+"' placeholder='Телефон'>");
+   			 $.ajax({
+		       url: 'add/teacherSelect.php?numberTeacher='+a,
+		       success: function(html) {
+          	$("#teacherP").append(html);
+       }
+    });
+		});
+	
+			
+	$(document).ready(function(){
+	
+			
+	$("#addteacher").click(function(){
+		
+			
+			var $form = $("#teacherForm");
 
-	<body>
-	<?php
-		$n = $_POST['numberTeacher'];
-		echo "<form method='post' action='teacherAdd.php?numberTeacher=".$n."'>";
-		for($i = 0; $i < $n; $i++){
-			echo "<input type='text' name='IIN".$i."' placeholder='ИИН'><input type='text' name='password".$i."' placeholder='Пароль'>
-			<input type='text' name='name".$i."' placeholder='Имя'><input type='text' name='surname".$i."' placeholder='Фамилия'>
-			<input type='text' name='father".$i."' placeholder='Отчество'><input type='text' name='birthday".$i."' placeholder='День рождения'>
-			<input type='text' name='phone".$i."' placeholder='Телефон'>";
-			echo "<select name='subject".$i."'>";
+			var serializedData = $form.serialize();
+			
+			$.ajax({
+				url: 'add/teacherAdd.php?numberTeacher='+a,
+				type: 'POST',
+				data: serializedData,
+				success: function(data){
+					 alert("Добавлено!!!");
+				}
+			})
+		
+	})
+	})
+	</script>
+	<br><button id="eweTeacher">Еще</button>
+	<form method='post' id="teacherForm">
+		<div style="max-height:100px; height:100px; overflow-y: scroll; padding:10px;">
+		<h5>teacher1</h5>
+		<input type='text' name='IIN0' placeholder='ИИН'><input type='text' name='password0' placeholder='Пароль'>
+			<input type='text' name='name0' placeholder='Имя'><input type='text' name='surname0' placeholder='Фамилия'>
+			<input type='text' name='father0'' placeholder='Отчество'><input type='text' name='birthday0' placeholder='День рождения'>
+			<input type='text' name='phone0' placeholder='Телефон'>
+			<?php 
+				echo "<select name='subject0'>";
 			$sql = "SELECT * FROM subjects";
 				$result = $con->query($sql);
 
@@ -34,10 +63,7 @@
 				    echo "0 results";
 				}
 				echo "</select>";
-		}
-	?>
-		<br>
-		<button>Add</button>
-	</form>
-	</body>
-</html>
+			?><br>
+		<p id="teacherP"></p>
+		</div>
+	<br><button id="addteacher">Add</button></form>

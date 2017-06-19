@@ -6,4 +6,8 @@ $(document).ready(function(){
                  $("#ucheniki").click(function(){
                      $("#uchenikitab").load("add/student.html");
                  });
+
+                 $("#uchiteli").click(function(){
+                     $("#uchitelitab").load("add/teacher.php");
+                 });
 });
