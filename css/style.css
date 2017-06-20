@@ -1,0 +1,29 @@
+.headerGroupAdding{
+	height:70px;
+	background-color:red;
+}
+.formGroupAdding{
+	padding:50px;
+}
+#toggler{
+	cursor:pointer;
+	-moz-user-select: none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+#toggler:hover{
+	text-decoration: none;
+}
+.togglerH5{
+	cursor:pointer;
+	-moz-user-select: none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+.togglerH5:hover{
+	text-decoration: none;
+}

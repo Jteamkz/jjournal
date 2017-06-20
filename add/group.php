@@ -18,16 +18,84 @@
 			$(document).ready(function(){
 				$("#toggling").hide();
 			    $("#toggler").click(function(){
-			        $("#toggling").toggle();
+			        $("#toggling").toggle(500);
+			    });
+			    $("#mondayDiv").hide();
+			    $("#tuesdayDiv").hide();
+			    $("#wednesdayDiv").hide();
+			    $("#thursdayDiv").hide();
+			    $("#fridayDiv").hide();
+			    $("#saturdayDiv").hide();
+			    $("#sundayDiv").hide();
+			    $("#mondayToggler").click(function(){
+			        $("#mondayDiv").toggle(300);
+			        $('input[name=mondayroom]').val("");
+			        $('input[name=monday1]').val("");
+			        $('input[name=monday2]').val("");
+			        $('input[name=monday3]').val("");
+			        $('input[name=monday4]').val("");
+			    });
+			    $("#tuesdayToggler").click(function(){
+			        $("#tuesdayDiv").toggle(300);
+			        $('input[name=tuesdayroom]').val("");
+			        $('input[name=tuesday1]').val("");
+			        $('input[name=tuesday2]').val("");
+			        $('input[name=tuesday3]').val("");
+			        $('input[name=tuesday4]').val("");
+			    });
+			    $("#wednesdayToggler").click(function(){
+			        $("#wednesdayDiv").toggle(300);
+			        $('input[name=wednesdayroom]').val("");
+			        $('input[name=wednesday1]').val("");
+			        $('input[name=wednesday2]').val("");
+			        $('input[name=wednesday3]').val("");
+			        $('input[name=wednesday4]').val("");
+			    });
+			    $("#thursdayToggler").click(function(){
+			        $("#thursdayDiv").toggle(300);
+			        $('input[name=thursdayroom]').val("");
+			        $('input[name=thursday1]').val("");
+			        $('input[name=thursday2]').val("");
+			        $('input[name=thursday3]').val("");
+			        $('input[name=thursday4]').val("");
+			    });
+			    $("#fridayToggler").click(function(){
+			        $("#fridayDiv").toggle(300);
+			        $('input[name=fridayroom]').val("");
+			        $('input[name=friday1]').val("");
+			        $('input[name=friday2]').val("");
+			        $('input[name=friday3]').val("");
+			        $('input[name=friday4]').val("");
+			    });
+			    $("#saturdayToggler").click(function(){
+			        $("#saturdayDiv").toggle(300);
+			        $('input[name=saturdayroom]').val("");
+			        $('input[name=saturday1]').val("");
+			        $('input[name=saturday2]').val("");
+			        $('input[name=saturday3]').val("");
+			        $('input[name=saturday4]').val("");
+			    });
+			    $("#sundayToggler").click(function(){
+			        $("#sundayDiv").toggle(300);
+			        $('input[name=sundayroom]').val("");
+			        $('input[name=sunday1]').val("");
+			        $('input[name=sunday2]').val("");
+			        $('input[name=sunday3]').val("");
+			        $('input[name=sunday4]').val("");
 			    });
 			});
 </script>
 	</head>
 
 	<body>
+	<div class="headerGroupAdding">
+		<a href="../admin_panel.php">Назад</a>
+	</div>
+	<div class="formGroupAdding">
 	<form method="post" action="groupAdd.php">
-		<input type="text" placeholder="name" name="name">
-		<select name="subject">
+		<input type="text" placeholder="Название группы" name="name">
+		<select name="subject" required>
+		<option value="" disabled selected>Выберите предмет</option>
 			<?php
 				$sql = "SELECT * FROM subjects";
 				$result = $con->query($sql);
@@ -42,7 +110,8 @@
 				}
 			?>
 		</select>
-		<select name="teacher">
+		<select name="teacher" required>
+		<option value="" disabled selected>Выберите учителя</option>
 			<?php
 				$sql = "SELECT * FROM teacher";
 				$result = $con->query($sql);
@@ -58,6 +127,7 @@
 			?>
 		</select>
 		<br>
+		Выберите учеников<br>
 		<?php
 				$sql = "SELECT * FROM student WHERE bool='true'";
 				$result = $con->query($sql);
@@ -70,7 +140,7 @@
 				} else {
 				    echo "0 results";
 				}
-				echo "<a id='toggler'>Show all</a><br>";
+				echo "<a id='toggler'>Показать все</a><br>";
 				$sql = "SELECT * FROM student WHERE bool='false'";
 				$result = $con->query($sql);
 					echo "<div id='toggling'>";
@@ -84,412 +154,43 @@
 				}
 				echo "</div>";
 			?>
-    		<table border="1">
-    			<tr>
-    				<td>Monday</td>
-    				<td>Tuesday</td>
-    				<td>Wednesday</td>
-    				<td>Thursday</td>
-    				<td>Friday</td>
-    				<td>Saturday</td>
-    				<td>Sunday</td>
-    			</tr>
-    			<tr>
-    				<td>
-    					<select name="monday1">
-		<option value="none">none</option>
-		<option value="00">00</option>
-		<option value="01">01</option>
-		<option value="02">02</option>
-		<option value="03">03</option>
-		<option value="04">04</option>
-		<option value="05">05</option>
-		<option value="06">06</option>
-		<option value="07">07</option>
-		<option value="08">08</option>
-		<option value="09">09</option>
-		<option value="10">10</option>
-		<option value="11">11</option>
-		<option value="12">12</option>
-		<option value="13">13</option>
-		<option value="14">14</option>
-		<option value="15">15</option>
-		<option value="16">16</option>
-		<option value="17">17</option>
-		<option value="18">18</option>
-		<option value="19">19</option>
-		<option value="20">20</option>
-		<option value="21">21</option>
-		<option value="22">22</option>
-		<option value="23">23</option>
-		</select>&nbsp;до&nbsp;<select name="monday2">
-		<option value="none">none</option>
-		<option value="00">00</option>
-		<option value="01">01</option>
-		<option value="02">02</option>
-		<option value="03">03</option>
-		<option value="04">04</option>
-		<option value="05">05</option>
-		<option value="06">06</option>
-		<option value="07">07</option>
-		<option value="08">08</option>
-		<option value="09">09</option>
-		<option value="10">10</option>
-		<option value="11">11</option>
-		<option value="12">12</option>
-		<option value="13">13</option>
-		<option value="14">14</option>
-		<option value="15">15</option>
-		<option value="16">16</option>
-		<option value="17">17</option>
-		<option value="18">18</option>
-		<option value="19">19</option>
-		<option value="20">20</option>
-		<option value="21">21</option>
-		<option value="22">22</option>
-		<option value="23">23</option>
-		</select>
-			<input type="text" placeholder="room"  name="mondayroom">
-    				</td>
-    				<td>
-    					<select name="tuesday1">
-		<option value="none">none</option>
-		<option value="00">00</option>
-		<option value="01">01</option>
-		<option value="02">02</option>
-		<option value="03">03</option>
-		<option value="04">04</option>
-		<option value="05">05</option>
-		<option value="06">06</option>
-		<option value="07">07</option>
-		<option value="08">08</option>
-		<option value="09">09</option>
-		<option value="10">10</option>
-		<option value="11">11</option>
-		<option value="12">12</option>
-		<option value="13">13</option>
-		<option value="14">14</option>
-		<option value="15">15</option>
-		<option value="16">16</option>
-		<option value="17">17</option>
-		<option value="18">18</option>
-		<option value="19">19</option>
-		<option value="20">20</option>
-		<option value="21">21</option>
-		<option value="22">22</option>
-		<option value="23">23</option>
-		</select>&nbsp;до&nbsp;<select name="tuesday2">
-		<option value="none">none</option>
-		<option value="00">00</option>
-		<option value="01">01</option>
-		<option value="02">02</option>
-		<option value="03">03</option>
-		<option value="04">04</option>
-		<option value="05">05</option>
-		<option value="06">06</option>
-		<option value="07">07</option>
-		<option value="08">08</option>
-		<option value="09">09</option>
-		<option value="10">10</option>
-		<option value="11">11</option>
-		<option value="12">12</option>
-		<option value="13">13</option>
-		<option value="14">14</option>
-		<option value="15">15</option>
-		<option value="16">16</option>
-		<option value="17">17</option>
-		<option value="18">18</option>
-		<option value="19">19</option>
-		<option value="20">20</option>
-		<option value="21">21</option>
-		<option value="22">22</option>
-		<option value="23">23</option>
-		</select>
-			<input type="text" placeholder="room"  name="tuesdayroom">
-    				</td>
-    				<td>
-    					<select name="wednesday1">
-		<option value="none">none</option>
-		<option value="00">00</option>
-		<option value="01">01</option>
-		<option value="02">02</option>
-		<option value="03">03</option>
-		<option value="04">04</option>
-		<option value="05">05</option>
-		<option value="06">06</option>
-		<option value="07">07</option>
-		<option value="08">08</option>
-		<option value="09">09</option>
-		<option value="10">10</option>
-		<option value="11">11</option>
-		<option value="12">12</option>
-		<option value="13">13</option>
-		<option value="14">14</option>
-		<option value="15">15</option>
-		<option value="16">16</option>
-		<option value="17">17</option>
-		<option value="18">18</option>
-		<option value="19">19</option>
-		<option value="20">20</option>
-		<option value="21">21</option>
-		<option value="22">22</option>
-		<option value="23">23</option>
-		</select>&nbsp;до&nbsp;<select name="wednesday2">
-		<option value="none">none</option>
-		<option value="00">00</option>
-		<option value="01">01</option>
-		<option value="02">02</option>
-		<option value="03">03</option>
-		<option value="04">04</option>
-		<option value="05">05</option>
-		<option value="06">06</option>
-		<option value="07">07</option>
-		<option value="08">08</option>
-		<option value="09">09</option>
-		<option value="10">10</option>
-		<option value="11">11</option>
-		<option value="12">12</option>
-		<option value="13">13</option>
-		<option value="14">14</option>
-		<option value="15">15</option>
-		<option value="16">16</option>
-		<option value="17">17</option>
-		<option value="18">18</option>
-		<option value="19">19</option>
-		<option value="20">20</option>
-		<option value="21">21</option>
-		<option value="22">22</option>
-		<option value="23">23</option>
-		</select>
-			<input type="text" placeholder="room"  name="wednesdayroom">
-    				</td>
-    				<td>
-    					<select name="thursday1">
-		<option value="none">none</option>
-		<option value="00">00</option>
-		<option value="01">01</option>
-		<option value="02">02</option>
-		<option value="03">03</option>
-		<option value="04">04</option>
-		<option value="05">05</option>
-		<option value="06">06</option>
-		<option value="07">07</option>
-		<option value="08">08</option>
-		<option value="09">09</option>
-		<option value="10">10</option>
-		<option value="11">11</option>
-		<option value="12">12</option>
-		<option value="13">13</option>
-		<option value="14">14</option>
-		<option value="15">15</option>
-		<option value="16">16</option>
-		<option value="17">17</option>
-		<option value="18">18</option>
-		<option value="19">19</option>
-		<option value="20">20</option>
-		<option value="21">21</option>
-		<option value="22">22</option>
-		<option value="23">23</option>
-		</select>&nbsp;до&nbsp;<select name="thursday2">
-		<option value="none">none</option>
-		<option value="00">00</option>
-		<option value="01">01</option>
-		<option value="02">02</option>
-		<option value="03">03</option>
-		<option value="04">04</option>
-		<option value="05">05</option>
-		<option value="06">06</option>
-		<option value="07">07</option>
-		<option value="08">08</option>
-		<option value="09">09</option>
-		<option value="10">10</option>
-		<option value="11">11</option>
-		<option value="12">12</option>
-		<option value="13">13</option>
-		<option value="14">14</option>
-		<option value="15">15</option>
-		<option value="16">16</option>
-		<option value="17">17</option>
-		<option value="18">18</option>
-		<option value="19">19</option>
-		<option value="20">20</option>
-		<option value="21">21</option>
-		<option value="22">22</option>
-		<option value="23">23</option>
-		</select>
-			<input type="text" placeholder="room"  name="thursdayroom">
-    				</td>
-    				<td>
-    					<select name="friday1">
-		<option value="none">none</option>
-		<option value="00">00</option>
-		<option value="01">01</option>
-		<option value="02">02</option>
-		<option value="03">03</option>
-		<option value="04">04</option>
-		<option value="05">05</option>
-		<option value="06">06</option>
-		<option value="07">07</option>
-		<option value="08">08</option>
-		<option value="09">09</option>
-		<option value="10">10</option>
-		<option value="11">11</option>
-		<option value="12">12</option>
-		<option value="13">13</option>
-		<option value="14">14</option>
-		<option value="15">15</option>
-		<option value="16">16</option>
-		<option value="17">17</option>
-		<option value="18">18</option>
-		<option value="19">19</option>
-		<option value="20">20</option>
-		<option value="21">21</option>
-		<option value="22">22</option>
-		<option value="23">23</option>
-		</select>&nbsp;до&nbsp;<select name="friday2">
-		<option value="none">none</option>
-		<option value="00">00</option>
-		<option value="01">01</option>
-		<option value="02">02</option>
-		<option value="03">03</option>
-		<option value="04">04</option>
-		<option value="05">05</option>
-		<option value="06">06</option>
-		<option value="07">07</option>
-		<option value="08">08</option>
-		<option value="09">09</option>
-		<option value="10">10</option>
-		<option value="11">11</option>
-		<option value="12">12</option>
-		<option value="13">13</option>
-		<option value="14">14</option>
-		<option value="15">15</option>
-		<option value="16">16</option>
-		<option value="17">17</option>
-		<option value="18">18</option>
-		<option value="19">19</option>
-		<option value="20">20</option>
-		<option value="21">21</option>
-		<option value="22">22</option>
-		<option value="23">23</option>
-		</select>
-			<input type="text" placeholder="room"  name="fridayroom">
-    				</td>
-    				<td>
-    					<select name="saturday1">
-		<option value="none">none</option>
-		<option value="00">00</option>
-		<option value="01">01</option>
-		<option value="02">02</option>
-		<option value="03">03</option>
-		<option value="04">04</option>
-		<option value="05">05</option>
-		<option value="06">06</option>
-		<option value="07">07</option>
-		<option value="08">08</option>
-		<option value="09">09</option>
-		<option value="10">10</option>
-		<option value="11">11</option>
-		<option value="12">12</option>
-		<option value="13">13</option>
-		<option value="14">14</option>
-		<option value="15">15</option>
-		<option value="16">16</option>
-		<option value="17">17</option>
-		<option value="18">18</option>
-		<option value="19">19</option>
-		<option value="20">20</option>
-		<option value="21">21</option>
-		<option value="22">22</option>
-		<option value="23">23</option>
-		</select>&nbsp;до&nbsp;<select name="saturday2">
-		<option value="none">none</option>
-		<option value="00">00</option>
-		<option value="01">01</option>
-		<option value="02">02</option>
-		<option value="03">03</option>
-		<option value="04">04</option>
-		<option value="05">05</option>
-		<option value="06">06</option>
-		<option value="07">07</option>
-		<option value="08">08</option>
-		<option value="09">09</option>
-		<option value="10">10</option>
-		<option value="11">11</option>
-		<option value="12">12</option>
-		<option value="13">13</option>
-		<option value="14">14</option>
-		<option value="15">15</option>
-		<option value="16">16</option>
-		<option value="17">17</option>
-		<option value="18">18</option>
-		<option value="19">19</option>
-		<option value="20">20</option>
-		<option value="21">21</option>
-		<option value="22">22</option>
-		<option value="23">23</option>
-		</select>
-			<input type="text" placeholder="room"  name="saturdayroom">
-    				</td>
-    				<td>
-    					<select name="sunday1">
-		<option value="none">none</option>
-		<option value="00">00</option>
-		<option value="01">01</option>
-		<option value="02">02</option>
-		<option value="03">03</option>
-		<option value="04">04</option>
-		<option value="05">05</option>
-		<option value="06">06</option>
-		<option value="07">07</option>
-		<option value="08">08</option>
-		<option value="09">09</option>
-		<option value="10">10</option>
-		<option value="11">11</option>
-		<option value="12">12</option>
-		<option value="13">13</option>
-		<option value="14">14</option>
-		<option value="15">15</option>
-		<option value="16">16</option>
-		<option value="17">17</option>
-		<option value="18">18</option>
-		<option value="19">19</option>
-		<option value="20">20</option>
-		<option value="21">21</option>
-		<option value="22">22</option>
-		<option value="23">23</option>
-		</select>&nbsp;до&nbsp;<select name="sunday2">
-		<option value="none">none</option>
-		<option value="00">00</option>
-		<option value="01">01</option>
-		<option value="02">02</option>
-		<option value="03">03</option>
-		<option value="04">04</option>
-		<option value="05">05</option>
-		<option value="06">06</option>
-		<option value="07">07</option>
-		<option value="08">08</option>
-		<option value="09">09</option>
-		<option value="10">10</option>
-		<option value="11">11</option>
-		<option value="12">12</option>
-		<option value="13">13</option>
-		<option value="14">14</option>
-		<option value="15">15</option>
-		<option value="16">16</option>
-		<option value="17">17</option>
-		<option value="18">18</option>
-		<option value="19">19</option>
-		<option value="20">20</option>
-		<option value="21">21</option>
-		<option value="22">22</option>
-		<option value="23">23</option>
-		</select>
-			<input type="text" placeholder="room"  name="sundayroom">
-    				</td>
-    			</tr>
-    		</table>
+				<h5 class="togglerH5" id="mondayToggler">Понедельник</h5>
+				<div id="mondayDiv">
+					<input type="text" placeholder="Кабинет" name="mondayroom">
+					с <input type="text" placeholder="ч" style="width:23px" name="monday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="monday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="monday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="monday4" maxlength="2">
+				</div>
+				<h5 class="togglerH5" id="tuesdayToggler">Вторник</h5>
+				<div id="tuesdayDiv">
+					<input type="text" placeholder="Кабинет" name="tuesdayroom">
+					с <input type="text" placeholder="ч" style="width:23px" name="tuesday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="tuesday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="tuesday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="tuesday4" maxlength="2">
+				</div>
+				<h5 class="togglerH5" id="wednesdayToggler">Среда</h5>
+				<div id="wednesdayDiv">
+					<input type="text" placeholder="Кабинет" name="wednesdayroom">
+					с <input type="text" placeholder="ч" style="width:23px" name="wednesday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="wednesday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="wednesday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="wednesday4" maxlength="2">
+				</div>
+				<h5 class="togglerH5" id="thursdayToggler">Четверг</h5>
+				<div id="thursdayDiv">
+					<input type="text" placeholder="Кабинет" name="thursdayroom">
+					с <input type="text" placeholder="ч" style="width:23px" name="thursday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="thursday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="thursday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="thursday4" maxlength="2">
+				</div>
+				<h5 class="togglerH5" id="fridayToggler">Пятница</h5>
+				<div id="fridayDiv">
+					<input type="text" placeholder="Кабинет" name="fridayroom">
+					с <input type="text" placeholder="ч" style="width:23px" name="friday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="friday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="friday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="friday4" maxlength="2">
+				</div>
+				<h5 class="togglerH5" id="saturdayToggler">Суббота</h5>
+				<div id="saturdayDiv">
+					<input type="text" placeholder="Кабинет" name="saturdayroom">
+					с <input type="text" placeholder="ч" style="width:23px" name="saturday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="saturday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="saturday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="saturday4" maxlength="2">
+				</div>
+				<h5 class="togglerH5" id="sundayToggler">Воскресенье</h5>
+				<div id="sundayDiv">
+					<input type="text" placeholder="Кабинет" name="sundayroom">
+					с <input type="text" placeholder="ч" style="width:23px" name="sunday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="sunday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="sunday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="sunday4" maxlength="2">
+				</div>
     	<button>Add a group</button>
-	</form>
+    	</form>
+	</div>
 	</body>
 </html>

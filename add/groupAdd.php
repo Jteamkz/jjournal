@@ -7,13 +7,41 @@
 		$subject = $_POST["subject"];
 		$name = $_POST["name".$i];
 		$teacher = $_POST["teacher"];
-		$monday = $_POST["monday1"]." ".$_POST["monday2"]." ".$_POST["mondayroom"];
-		$tuesday = $_POST["tuesday1"]." ".$_POST["tuesday2"]." ".$_POST["tuesdayroom"];
-		$wednesday = $_POST["wednesday1"]." ".$_POST["wednesday2"]." ".$_POST["wednesdayroom"];
-		$thursday = $_POST["thursday1"]." ".$_POST["thursday2"]." ".$_POST["thursdayroom"];
-		$friday = $_POST["friday1"]." ".$_POST["friday2"]." ".$_POST["fridayroom"];
-		$saturday = $_POST["saturday1"]." ".$_POST["saturday2"]." ".$_POST["saturdayoom"];
-		$sunday = $_POST["sunday1"]." ".$_POST["sunday2"]." ".$_POST["sundayroom"];
+		$_POST["monday1"] = foo($_POST["monday1"]);
+		$_POST["monday2"] = foo($_POST["monday2"]);
+		$_POST["monday3"] = foo($_POST["monday3"]);
+		$_POST["monday4"] = foo($_POST["monday4"]);
+		$_POST["tuesday1"] = foo($_POST["tuesday1"]);
+		$_POST["tuesday2"] = foo($_POST["tuesday2"]);
+		$_POST["tuesday3"] = foo($_POST["tuesday3"]);
+		$_POST["tuesday4"] = foo($_POST["tuesday4"]);
+		$_POST["wednesday1"] = foo($_POST["wednesday1"]);
+		$_POST["wednesday2"] = foo($_POST["wednesday2"]);
+		$_POST["wednesday3"] = foo($_POST["wednesday3"]);
+		$_POST["wednesday4"] = foo($_POST["wednesday4"]);
+		$_POST["thursday1"] = foo($_POST["thursday1"]);
+		$_POST["thursday2"] = foo($_POST["thursday2"]);
+		$_POST["thursday3"] = foo($_POST["thursday3"]);
+		$_POST["thursday4"] = foo($_POST["thursday4"]);
+		$_POST["friday1"] = foo($_POST["friday1"]);
+		$_POST["friday2"] = foo($_POST["friday2"]);
+		$_POST["friday3"] = foo($_POST["friday3"]);
+		$_POST["friday4"] = foo($_POST["friday4"]);
+		$_POST["saturday1"] = foo($_POST["saturday1"]);
+		$_POST["saturday2"] = foo($_POST["saturday2"]);
+		$_POST["saturday3"] = foo($_POST["saturday3"]);
+		$_POST["saturday4"] = foo($_POST["saturday4"]);
+		$_POST["sunday1"] = foo($_POST["sunday1"]);
+		$_POST["sunday2"] = foo($_POST["sunday2"]);
+		$_POST["sunday3"] = foo($_POST["sunday3"]);
+		$_POST["sunday4"] = foo($_POST["sunday4"]);
+		$monday = $_POST["monday1"]." ".$_POST["monday2"]." ".$_POST["monday3"]." ".$_POST["monday4"]." ".$_POST["mondayroom"];
+		$tuesday = $_POST["tuesday1"]." ".$_POST["tuesday2"]." ".$_POST["tuesday3"]." ".$_POST["tuesday4"]." ".$_POST["tuesdayroom"];
+		$wednesday = $_POST["wednesday1"]." ".$_POST["wednesday2"]." ".$_POST["wednesday3"]." ".$_POST["wednesday4"]." ".$_POST["wednesdayroom"];
+		$thursday = $_POST["thursday1"]." ".$_POST["thursday2"]." ".$_POST["thursday3"]." ".$_POST["thursday4"]." ".$_POST["thursdayroom"];
+		$friday = $_POST["friday1"]." ".$_POST["friday2"]." ".$_POST["friday3"]." ".$_POST["friday4"]." ".$_POST["fridayroom"];
+		$saturday = $_POST["saturday1"]." ".$_POST["saturday2"]." ".$_POST["saturday3"]." ".$_POST["saturday4"]." ".$_POST["saturdayroom"];
+		$sunday = $_POST["sunday1"]." ".$_POST["sunday2"]." ".$_POST["sunday3"]." ".$_POST["sunday4"]." ".$_POST["sundayroom"];
 		
 		if($_POST['checkbox']){
 			$students = join(',',$_POST['checkbox']);
@@ -65,5 +93,10 @@
 			}
 		}
 		echo "<script>window.location = '../admin_panel.php'</script>";
-		
+		function foo($ss){
+			if(strlen($ss)==1){
+				$ss = "0".$ss;
+			}
+			return $ss;
+		}
 ?>
