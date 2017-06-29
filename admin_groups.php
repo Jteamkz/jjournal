@@ -164,16 +164,16 @@ include 'php/db/get_query.php';
                         <a class="jjournal-white" href="admin_panel.php"><i class="fa fa-fw fa-dashboard"></i> Панель управления</a>
                     </li>
                     <li >
-                        <a  class="jjournal-white" href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Студенты</a>
+                        <a  class="jjournal-white" href="admin_studens.php"><i class="fa fa-fw fa-bar-chart-o"></i> Студенты</a>
+                    </li>
+                    <li >
+                        <a  class="jjournal-white" href="admin_teachers.php"><i class="fa fa-fw fa-table"></i> Учители</a>
+                    </li>
+                    <li>
+                        <a  class="jjournal-white" href="admin_subjects.php"><i class="fa fa-fw fa-edit"></i> Предметы</a>
                     </li>
                     <li class="active">
-                        <a  class="jjournal-white" href="tables.html"><i class="fa fa-fw fa-table"></i> Учители</a>
-                    </li>
-                    <li>
-                        <a  class="jjournal-white" href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
-                    </li>
-                    <li>
-                        <a  class="jjournal-white" href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                        <a  class="jjournal-white" href="admin_groups.php"><i class="fa fa-fw fa-desktop"></i> Группы</a>
                     </li>
                     <li>
                         <a  class="jjournal-white" href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
@@ -225,6 +225,7 @@ include 'php/db/get_query.php';
                                 <th data-priority="1">Предмет</th>
                                 <th data-priority="1">Расписние</th>
                                 <th data-priority="1">Студенты</th>
+                                <th></th>
                             </tr>
                             <tr class="warning no-result">
                               <td colspan="7"><i class="fa fa-warning"></i> Ничего не найдено</td>
@@ -235,7 +236,7 @@ include 'php/db/get_query.php';
                                 $result = getAllData('class', $connection);
                                 if ($result->num_rows > 1) {
                                     while ($row = $result->fetch_assoc()) { ?>
-                                    <tr>
+                                    <tr class="middlel">
                                     <th><?php echo $row['name_group']; ?></th>
                                     <td><?php 
                                         if ($row['teacher_id']!=null) {
@@ -268,7 +269,7 @@ include 'php/db/get_query.php';
                                                     $query_ins = "id = ".$row_students['student_id'];
                                                     $single = get_query($query_ins, 'student', $connection);
                                                     $row_student = $single->fetch_assoc();
-                                                    echo "<li><a href=''>".$row_student['firstname']." ".$row_student['lastname']."</a></li>";
+                                                    echo "<li><a href='admin_studens.php?name=".$row_student['firstname']." ".$row_student['lastname']."'>".$row_student['firstname']." ".$row_student['lastname']."</a></li>";
                                                 }
                                             }else{
                                                 echo "Ученики не привязаны";
@@ -276,6 +277,12 @@ include 'php/db/get_query.php';
                                         ?>
                                         </ul>
                                     </td>
+                                    <td>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
+                                                    <button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                                                </div>
+                                            </td>
                                     </tr>
                             <?php             
                                     }
@@ -283,25 +290,6 @@ include 'php/db/get_query.php';
 
                                 }
                             ?>
-                            <tr class="middlel">
-                                <th>Секс без обязательств</th>
-                                <td class="middlel">Омар Осман</td>
-                                <td>Сексалогия</td>
-                                <td>smth in smth</td>
-                                <td>
-                                    <ul style="list-style: none; padding-left: 10px">
-                                        <li>
-                                            Ноут
-                                        </li>
-                                        <li>
-                                            Бешка
-                                        </li>
-                                        <li>
-                                            Шешка
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
                             
                             <!-- Repeat -->
                             

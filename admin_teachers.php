@@ -162,16 +162,16 @@ include 'php/db/get_query.php';
                         <a class="jjournal-white" href="admin_panel.php"><i class="fa fa-fw fa-dashboard"></i> Панель управления</a>
                     </li>
                     <li >
-                        <a  class="jjournal-white" href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Студенты</a>
+                        <a  class="jjournal-white" href="admin_studens.php"><i class="fa fa-fw fa-bar-chart-o"></i> Студенты</a>
                     </li>
                     <li class="active">
-                        <a  class="jjournal-white" href="tables.html"><i class="fa fa-fw fa-table"></i> Учители</a>
+                        <a  class="jjournal-white" href="#"><i class="fa fa-fw fa-table"></i> Учители</a>
                     </li>
                     <li>
-                        <a  class="jjournal-white" href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                        <a  class="jjournal-white" href="admin_subjects.php"><i class="fa fa-fw fa-edit"></i> Предметы</a>
                     </li>
                     <li>
-                        <a  class="jjournal-white" href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                        <a  class="jjournal-white" href="admin_groups.php"><i class="fa fa-fw fa-desktop"></i> Группы</a>
                     </li>
                     <li>
                         <a  class="jjournal-white" href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
@@ -225,6 +225,7 @@ include 'php/db/get_query.php';
                                 <th data-priority="1">Группы</th>
                                 <th data-priority="1">Зарплата</th>
                                 <th data-priority="1">ИИН</th>
+                                <th></th>
                             </tr>
                             <tr class="warning no-result">
                               <td colspan="7"><i class="fa fa-warning"></i> Ничего не найдено</td>
@@ -235,9 +236,8 @@ include 'php/db/get_query.php';
                                 $result = getAllData('teacher', $connection);
 
                                 if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) { ?>
-                                    
-                                        <tr>
+                                    while ($row = $result->fetch_assoc()) { ?>                                    
+                                        <tr class="middlel">
                                             <th><?php echo $row['lastname']." ".$row['firstname']; ?></th>
                                             <td><?php echo $row['telephone']; ?></td>
                                             <td><?php echo $row['birthday']; ?></td>
@@ -252,9 +252,9 @@ include 'php/db/get_query.php';
                                                         $result_sb = get_query($query_s, 'subjects', $connection);
                                                         while ($row_sb = $result_sb->fetch_assoc()) {
                                                             if ($temp < $result_ts->num_rows) {
-                                                                echo "<a href=''>".$row_sb['name']."</a>, ";
+                                                                echo "<a href='admin_subjects.php?name=".$row_sb['name']."'>".$row_sb['name']."</a>, ";
                                                             }else{
-                                                                echo "<a href=''>".$row_sb['name']."</a>";
+                                                                echo "<a href='admin_subjects.php?name=".$row_sb['name']."'>".$row_sb['name']."</a>";
                                                             }
                                                         }
                                                     }
@@ -272,9 +272,9 @@ include 'php/db/get_query.php';
                                                     while ($row_cl = $result_cl->fetch_assoc()) {
                                                         $tempp++;
                                                         if ($tempp < $result_cl->num_rows) {
-                                                            echo "<a href=''>".$row_cl['name_group']."</a>, ";
+                                                            echo "<a href='admin_subjects.php?name=".$row_cl['name_group']."'>".$row_cl['name_group']."</a>, ";
                                                         }else{
-                                                            echo "<a href=''>".$row_cl['name_group']."</a>";
+                                                            echo "<a href='admin_subjects.php?name=".$row_cl['name_group']."'>".$row_cl['name_group']."</a>";
                                                         }
                                                     }
                                                 }else{
@@ -284,6 +284,12 @@ include 'php/db/get_query.php';
                                             </td>
                                             <td>Enter to database</td>
                                             <td><?php echo $row['iin']; ?></td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
+                                                    <button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                                                </div>
+                                            </td>
                                         </tr>
 
                             <?php   }

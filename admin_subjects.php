@@ -161,17 +161,17 @@ include 'php/db/get_query.php';
                     <li class="">
                         <a class="jjournal-white" href="admin_panel.php"><i class="fa fa-fw fa-dashboard"></i> Панель управления</a>
                     </li>
+                    <li >
+                        <a  class="jjournal-white" href="admin_studens.php"><i class="fa fa-fw fa-bar-chart-o"></i> Студенты</a>
+                    </li>
+                    <li>
+                        <a  class="jjournal-white" href="admin_teachers.php"><i class="fa fa-fw fa-table"></i> Учители</a>
+                    </li>
                     <li class="active">
-                        <a  class="jjournal-white" href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Студенты</a>
+                        <a  class="jjournal-white" href="admin_subjects.php"><i class="fa fa-fw fa-edit"></i> Предметы</a>
                     </li>
                     <li>
-                        <a  class="jjournal-white" href="tables.html"><i class="fa fa-fw fa-table"></i> Учетели</a>
-                    </li>
-                    <li>
-                        <a  class="jjournal-white" href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
-                    </li>
-                    <li>
-                        <a  class="jjournal-white" href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                        <a  class="jjournal-white" href="admin_groups.php"><i class="fa fa-fw fa-desktop"></i> Группы</a>
                     </li>
                     <li>
                         <a  class="jjournal-white" href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
@@ -204,7 +204,11 @@ include 'php/db/get_query.php';
                     </div>
                     <div>
                         <p>Искать</p>
-                        <input type="text" class="search form-control" placeholder="Введите что вы ищете">
+                        <input type="text" class="search form-control" placeholder="Введите что вы ищете" value="<?php 
+                            if (isset($_GET['name'])) {
+                                echo $_GET['name'];
+                            }
+                        ?>">
                         <span class="counter pull-right"></span>
 
                     </div>
@@ -216,6 +220,7 @@ include 'php/db/get_query.php';
                                 <th>Название</th>
                                 <th data-priority="1">Группы</th>
                                 <th data-priority="1">Учетеля</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -225,7 +230,7 @@ include 'php/db/get_query.php';
                                 if ($result->num_rows > 0) {
                                     while ($row = $result->fetch_assoc()) { ?>
                                     
-                                        <tr>
+                                        <tr class="middlel">
                                             <th><?php echo $row['name']?></th>
                                             <td>
                                             <?php 
@@ -276,7 +281,12 @@ include 'php/db/get_query.php';
                                             ?>
 
                                             </td>
-                                            
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
+                                                    <button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                                                </div>
+                                            </td>
                                         </tr>
 
                             <?php   }
