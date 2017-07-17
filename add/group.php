@@ -9,8 +9,6 @@
 	    <script src="../js/jquery.js"></script>
 	    <script src="../js/bootstrap.js"></script>
 		<?php 
-			session_start();
-			$db_name = $_SESSION['studycenter'];
 			include '../php/SQLconnect.php';
 			include '../php/connectOS.php';
 		?>
@@ -106,7 +104,7 @@
 				        echo "<option value='".$row['id']."'' title='".$row['description']."''>".$row['name']."</option>";
 				    }
 				} else {
-				    echo "0 results";
+				    
 				}
 			?>
 		</select>
@@ -122,7 +120,7 @@
 				        echo "<option value='".$row['id']."'' title='teacher''>".$row['firstname']." ".$row['lastname']." ".$row['fathername']."</option>";
 				    }
 				} else {
-				    echo "0 results";
+				    
 				}
 			?>
 		</select>
@@ -138,7 +136,7 @@
 				        echo "<input name='checkbox[]' type='checkbox'  id='".$row['id']."'  value='".$row['id']."'/>".$row['firstname']." ".$row['lastname']." ".$row['father']."<br>";
 				    }
 				} else {
-				    echo "0 results";
+				    
 				}
 				echo "<a id='toggler'>Показать все</a><br>";
 				$sql = "SELECT * FROM student WHERE bool='false'";
@@ -150,7 +148,7 @@
 				        echo "<input name='checkbox[]' type='checkbox'  value='".$row['id']."'/>".$row['firstname']." ".$row['lastname']." ".$row['father']."<br>";
 				    }
 				} else {
-				    echo "0 results";
+				    
 				}
 				echo "</div>";
 			?>
