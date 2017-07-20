@@ -3,7 +3,7 @@
 	$db_name = $_SESSION['studycenter'];
 	include "../php/SQLconnect.php";
 	include "../php/connectOS.php";
-	$n = $_GET['numberTeacher'];
+		$n = $_GET['numbervopros'];
 		$name = $_POST["name"];
 		$description = $_POST["description"];
 		
@@ -16,31 +16,13 @@
 		}
 
 	for($i = 0; $i <= $n; $i++){
-		$IIN = $_POST["IIN".$i];
-		$password = $_POST["password".$i];
-		$surname = $_POST["surname".$i];
-		$father = $_POST["father".$i];
-		$birthday = $_POST["birthday".$i];
-		$phone = $_POST["phone".$i];
-		$subject = $_POST["subject".$i];
+		$question = $_POST["vopros".$i];
+		$right = $_POST["right".$i];
+		$wrong0 = $_POST["wrong".$i."0"];
+		$wrong1 = $_POST["wrong".$i."1"];
+		$wrong2 = $_POST["wrong".$i."2"];
 
-		$sql = "INSERT INTO users (iin, password, status, database_name, tele) VALUES ('$IIN', '$password', 'teacher', '$db_name', '$phone')";
-
-		if ($cuni->query($sql) === TRUE) {
-		    
-		} else {
-		    echo "Error: " . $sql . "<br>" . $cuni->error;
-		}
-
-		$sql = "INSERT INTO teacher (iin, firstname, lastname, fathername, birthday, telephone) VALUES ('$IIN', '$name', '$surname', '$father', '$birthday', '$phone')";
-
-		if ($con->query($sql) === TRUE) {
-		    $lastik = $con->insert_id;
-		} else {
-		    echo "Error: " . $sql . "<br>" . $con->error;
-		}
-
-		$sql = "INSERT INTO relation_ts (id_t, id_s) VALUES ('$lastik', '$subject')";
+		$sql = "INSERT INTO questions (question, rightanswer, wrong0, wrong1, wrong2, ids) VALUES ('$question', '$right', '$wrong0', '$wrong1', '$wrong2', '$kongo')";
 
 		if ($con->query($sql) === TRUE) {
 		    
@@ -48,5 +30,5 @@
 		    echo "Error: " . $sql . "<br>" . $con->error;
 		}
 	}
-	echo "<script>window.location = '../admin_panel.php'</script>";
+	
 ?>
