@@ -12,7 +12,7 @@
 		$(document).ready(function(){
 		$("#ewevopros").click(function(){
 			 a++;
-   			 $("#voprosP").append("<h5>Вопрос "+(a+1)+"</h5><input type='text' name='IIN"+a+"' placeholder='Вопрос'><button id='eweotvet'>Еще</button><br><input type='text' class='rightanswer' name='password"+a+"' placeholder='Правильный ответ'><input class='wronganswer' type='text' name='name"+a+"' placeholder='Неправильный ответ'>");
+   			 $("#voprosP").append("<h5>Вопрос "+(a+1)+"</h5><input type='text' name='IIN"+a+"' placeholder='Вопрос'><text id='eweotvet'>Еще</text><br><input type='text' class='rightanswer' name='password"+a+"' placeholder='Правильный ответ'><input class='wronganswer' type='text' name='name"+a+"' placeholder='Неправильный ответ'>");
 		});
 	});
 			
@@ -43,7 +43,7 @@
 	<input type='text' name='name' placeholder='Название'>
 	<input type='text' name='description' placeholder='Описание'>
 		<h5>Вопрос 1</h5>
-		<input type='text' name='IIN0' placeholder='Вопрос'><button class="eweotvet" id='eweotvet0'>Еще</button>
+		<input type='text' name='IIN0' placeholder='Вопрос'><text class="eweotvet" id='eweotvet0'>Еще</text>
 		<br><input type='text' name='password0' placeholder='Правильный ответ' class="rightanswer">
 			<input type='text' name='name0' placeholder='Неправильный ответ' class="wronganswer">
 			<p id="otvetP0"></p><br>
