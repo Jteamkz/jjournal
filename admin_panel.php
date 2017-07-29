@@ -5,6 +5,8 @@ $db_name = $_SESSION['studycenter'];
 include 'php/db/connect_db.php';
 include 'php/db/get_all_data.php';
 include 'php/db/get.php';
+include 'php/SQLconnect.php';
+include 'php/connectOS.php'
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -307,11 +309,37 @@ include 'php/db/get.php';
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6" id="urokitab">
+                                            <div class="col-lg-6">
                                                 <br>
-                                                    <button id="uroki" class="btn btn-success btn-lg">Добавить уроки</button>
-                                                
+                                                    <button data-toggle="modal" data-target="#myModal" class="btn btn-success btn-lg">Добавить уроки</button>
                                             </div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Добавьте уроки</h4>
+      </div>
+      <div class="modal-body">
+	<br><button id="eweSubject">Еще</button>
+	<form id="subjectForm" method='post'>
+		<div style="max-height:100px; height:100px; overflow-y: scroll; padding:10px;">
+		<input type='text' id='namesubject' name='name0' placeholder='Название'><input type='text' placeholder='Описание' name='defenition0' required>
+		<p id="subjectP"></p>
+		</div>
+	<br><button id="addSubject">Добавить</button></form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
                                         </div>
                                     </div>
@@ -340,10 +368,42 @@ include 'php/db/get.php';
                                             </div>
                                         </div>
                                         
-                                             <div class="col-lg-6" id="uchenikitab">
+                                             <div class="col-lg-6">
                                              <br>
-                                                    <button id="ucheniki" class="btn btn-success btn-lg">Добавить учеников</button>
+                                                    <button data-toggle="modal" data-target="#myModal2" class="btn btn-success btn-lg">Добавить учеников</button>
                                             </div>
+
+<!-- Modal -->
+<div id="myModal2" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Добавьте учеников</h4>
+      </div>
+      <div class="modal-body">
+        <button id="eweStudent">Еще</button>
+	<form method='post' id="studentForm">
+		<div style="max-height:100px; height:100px; overflow-y: scroll; padding:10px;">
+		<h5>Student1</h5>
+		<input type='text' name='IIN0' placeholder='ИИН'><input type='text' name='password0' placeholder='Пароль'>
+			<input type='text' name='name0' placeholder='Имя'><input type='text' name='surname0' placeholder='Фамилия'>
+			<input type='text' name='father0'' placeholder='Отчество'><input type='text' name='birthday0' placeholder='День рождения'>
+			<input type='text' name='phone0' placeholder='Телефон'><input type='text' name='phoneparent0' placeholder='Телефон Мамки'>
+			<input type='text' name='payday0' placeholder='День Оплаты'><br>
+		<p id="studentP"></p>
+		</div>
+	<br><button id="addStudent">Добавить</button></form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+
+  </div>
+</div>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="tab3default">
@@ -370,10 +430,56 @@ include 'php/db/get.php';
                                             </a>
                                         </div>
                                             </div>
-                                             <div class="col-lg-6" id="uchitelitab">
+                                             <div class="col-lg-6">
                                              <br>
-                                                    <button id="uchiteli" class="btn btn-success btn-lg">Добавить учителей</button>
+                                                    <button data-toggle="modal" data-target="#myModal3" class="btn btn-success btn-lg">Добавить учителей</button>
                                             </div>
+
+<!-- Modal -->
+<div id="myModal3" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Добавьте учителей</h4>
+      </div>
+      <div class="modal-body">
+        <button id="eweTeacher">Еще</button>
+	<form method='post' id="teacherForm">
+		<div style="max-height:100px; height:100px; overflow-y: scroll; padding:10px;">
+		<h5>teacher1</h5>
+		<input type='text' name='IIN0' placeholder='ИИН'><input type='text' name='password0' placeholder='Пароль'>
+			<input type='text' name='name0' placeholder='Имя'><input type='text' name='surname0' placeholder='Фамилия'>
+			<input type='text' name='father0'' placeholder='Отчество'><input type='text' name='birthday0' placeholder='День рождения'>
+			<input type='text' name='phone0' placeholder='Телефон'>
+			<?php 
+				echo "<select name='subject0'>";
+			$sql = "SELECT * FROM subjects";
+				$result = $con->query($sql);
+
+				if ($result->num_rows > 0) {
+				    // output data of each row
+				    while($row = $result->fetch_assoc()) {
+				        echo "<option value='".$row['id']."'' title='".$row['description']."''>".$row['name']."</option>";
+				    }
+				} else {
+				    echo "0 results";
+				}
+				echo "</select>";
+			?><br>
+		<p id="teacherP"></p>
+		</div>
+	<br><button id="addteacher">Добавить</button></form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+
+  </div>
+</div>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="tab4default">
@@ -401,9 +507,130 @@ include 'php/db/get.php';
                                                 </div>
                                             </div>
                                              <div class="col-xs-3">
-                                                <form method="POST" action="add/group.php">
-                                                    <button class="btn btn-success btn-lg">Добавить группу</button>
-                                                </form>
+                                                <!--<form method="POST" action="add/group.php">-->
+                                                    <button data-toggle="modal" data-target="#myModal4" class="btn btn-success btn-lg">Добавить группу</button>
+                                                <!--</form>-->
+
+<!-- Modal -->
+<div id="myModal4" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Добавьте группу</h4>
+      </div>
+      <div class="modal-body">
+	<div class="formGroupAdding">
+	<form method="post" action="add/groupAdd.php">
+		<input type="text" placeholder="Название группы" name="name">
+		<select name="subject" required>
+		<option value="" disabled selected>Выберите предмет</option>
+			<?php
+				$sql = "SELECT * FROM subjects";
+				$result = $con->query($sql);
+
+				if ($result->num_rows > 0) {
+				    // output data of each row
+				    while($row = $result->fetch_assoc()) {
+				        echo "<option value='".$row['id']."'' title='".$row['description']."''>".$row['name']."</option>";
+				    }
+				} else {
+				    
+				}
+			?>
+		</select>
+		<select name="teacher" required>
+		<option value="" disabled selected>Выберите учителя</option>
+			<?php
+				$sql = "SELECT * FROM teacher";
+				$result = $con->query($sql);
+
+				if ($result->num_rows > 0) {
+				    // output data of each row
+				    while($row = $result->fetch_assoc()) {
+				        echo "<option value='".$row['id']."'' title='teacher''>".$row['firstname']." ".$row['lastname']." ".$row['fathername']."</option>";
+				    }
+				} else {
+				    
+				}
+			?>
+		</select>
+		<br>
+		Выберите учеников<br>
+		<?php
+				$sql = "SELECT * FROM student WHERE bool='true'";
+				$result = $con->query($sql);
+
+				if ($result->num_rows > 0) {
+				    // output data of each row
+				    while($row = $result->fetch_assoc()) {
+				        echo "<input name='checkbox[]' type='checkbox'  id='".$row['id']."'  value='".$row['id']."'/>".$row['firstname']." ".$row['lastname']." ".$row['father']."<br>";
+				    }
+				} else {
+				    
+				}
+				echo "<a id='toggler'>Показать все</a><br>";
+				$sql = "SELECT * FROM student WHERE bool='false'";
+				$result = $con->query($sql);
+					echo "<div id='toggling'>";
+				if ($result->num_rows > 0) {
+				    // output data of each row
+				    while($row = $result->fetch_assoc()) {
+				        echo "<input name='checkbox[]' type='checkbox'  value='".$row['id']."'/>".$row['firstname']." ".$row['lastname']." ".$row['father']."<br>";
+				    }
+				} else {
+				    
+				}
+				echo "</div>";
+			?>
+				<h5 class="togglerH5" id="mondayToggler">Понедельник</h5>
+				<div id="mondayDiv">
+					<input type="text" placeholder="Кабинет" name="mondayroom">
+					с <input type="text" placeholder="ч" style="width:23px" name="monday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="monday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="monday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="monday4" maxlength="2">
+				</div>
+				<h5 class="togglerH5" id="tuesdayToggler">Вторник</h5>
+				<div id="tuesdayDiv">
+					<input type="text" placeholder="Кабинет" name="tuesdayroom">
+					с <input type="text" placeholder="ч" style="width:23px" name="tuesday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="tuesday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="tuesday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="tuesday4" maxlength="2">
+				</div>
+				<h5 class="togglerH5" id="wednesdayToggler">Среда</h5>
+				<div id="wednesdayDiv">
+					<input type="text" placeholder="Кабинет" name="wednesdayroom">
+					с <input type="text" placeholder="ч" style="width:23px" name="wednesday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="wednesday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="wednesday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="wednesday4" maxlength="2">
+				</div>
+				<h5 class="togglerH5" id="thursdayToggler">Четверг</h5>
+				<div id="thursdayDiv">
+					<input type="text" placeholder="Кабинет" name="thursdayroom">
+					с <input type="text" placeholder="ч" style="width:23px" name="thursday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="thursday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="thursday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="thursday4" maxlength="2">
+				</div>
+				<h5 class="togglerH5" id="fridayToggler">Пятница</h5>
+				<div id="fridayDiv">
+					<input type="text" placeholder="Кабинет" name="fridayroom">
+					с <input type="text" placeholder="ч" style="width:23px" name="friday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="friday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="friday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="friday4" maxlength="2">
+				</div>
+				<h5 class="togglerH5" id="saturdayToggler">Суббота</h5>
+				<div id="saturdayDiv">
+					<input type="text" placeholder="Кабинет" name="saturdayroom">
+					с <input type="text" placeholder="ч" style="width:23px" name="saturday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="saturday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="saturday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="saturday4" maxlength="2">
+				</div>
+				<h5 class="togglerH5" id="sundayToggler">Воскресенье</h5>
+				<div id="sundayDiv">
+					<input type="text" placeholder="Кабинет" name="sundayroom">
+					с <input type="text" placeholder="ч" style="width:23px" name="sunday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="sunday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="sunday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="sunday4" maxlength="2">
+				</div>
+    	<button>Добавить</button>
+    	</form>
+	</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+
+  </div>
+</div>
                                             </div>
                                         </div>
                                     </div>
@@ -603,7 +830,173 @@ include 'php/db/get.php';
     <script src="js/plugins/morris/raphael.min.js"></script>
     <script src="js/plugins/morris/morris.min.js"></script>
     <script src="js/plugins/morris/morris-data.js"></script>
+    <script>
+		var a = "0";
+		$("#eweSubject").click(function(){
+			 a++;
+   			 $("#subjectP").append("<input type='text' id='namesubject' name='name"+a+"' placeholder='Название'><input type='text' placeholder='Описание' name='defenition"+a+"' required><br>");
+		});
+	
+			
+	$(document).ready(function(){
+	
+			
+	$("#addSubject").click(function(){
+		
+			
+			var $form = $("#subjectForm");
 
+			var serializedData = $form.serialize();
+			
+			$.ajax({
+				url: 'add/subjectAdd.php?numberSubject='+a,
+				type: 'POST',
+				data: serializedData,
+				success: function(data){
+					 alert("Добавлено!!!");
+				}
+			})
+		
+	})
+	})
+	</script>
+		<script>
+		var a = "0";
+		$("#eweStudent").click(function(){
+			 a++;
+   			 $("#studentP").append("<h5>Student"+(a+1)+"</h5><input type='text' name='IIN"+a+"' placeholder='ИИН'><input type='text' name='password"+a+"' placeholder='Пароль'><input type='text' name='name"+a+"' placeholder='Имя'><input type='text' name='surname"+a+"' placeholder='Фамилия'><input type='text' name='father"+a+"'' placeholder='Отчество'><input type='text' name='birthday"+a+"' placeholder='День рождения'><input type='text' name='phone"+a+"' placeholder='Телефон'><input type='text' name='phoneparent"+a+"' placeholder='Телефон Мамки'><input type='text' name='payday"+a+"' placeholder='День Оплаты'><br>");
+		});
+	
+			
+	$(document).ready(function(){
+	
+			
+	$("#addStudent").click(function(){
+		
+			
+			var $form = $("#studentForm");
+
+			var serializedData = $form.serialize();
+			
+			$.ajax({
+				url: 'add/studentAdd.php?numberStudent='+a,
+				type: 'POST',
+				data: serializedData,
+				success: function(data){
+					 alert("Добавлено!!!");
+				}
+			})
+		
+	})
+	})
+	</script>
+		<script>
+		var a = "0";
+		$("#eweTeacher").click(function(){
+			 a++;
+   			 $("#teacherP").append("<h5>teacher"+(a+1)+"</h5><input type='text' name='IIN"+a+"' placeholder='ИИН'><input type='text' name='password"+a+"' placeholder='Пароль'><input type='text' name='name"+a+"' placeholder='Имя'><input type='text' name='surname"+a+"' placeholder='Фамилия'><input type='text' name='father"+a+"'' placeholder='Отчество'><input type='text' name='birthday"+a+"' placeholder='День рождения'><input type='text' name='phone"+a+"' placeholder='Телефон'>");
+   			 $.ajax({
+		       url: 'add/teacherSelect.php?numberTeacher='+a,
+		       success: function(html) {
+          	$("#teacherP").append(html);
+       }
+    });
+		});
+	
+			
+	$(document).ready(function(){
+	
+			
+	$("#addteacher").click(function(){
+		
+			
+			var $form = $("#teacherForm");
+
+			var serializedData = $form.serialize();
+			
+			$.ajax({
+				url: 'add/teacherAdd.php?numberTeacher='+a,
+				type: 'POST',
+				data: serializedData,
+				success: function(data){
+					 alert("Добавлено!!!");
+				}
+			})
+		
+	})
+	})
+	</script>
+	<script>
+			$(document).ready(function(){
+				$("#toggling").hide();
+			    $("#toggler").click(function(){
+			        $("#toggling").toggle(500);
+			    });
+			    $("#mondayDiv").hide();
+			    $("#tuesdayDiv").hide();
+			    $("#wednesdayDiv").hide();
+			    $("#thursdayDiv").hide();
+			    $("#fridayDiv").hide();
+			    $("#saturdayDiv").hide();
+			    $("#sundayDiv").hide();
+			    $("#mondayToggler").click(function(){
+			        $("#mondayDiv").toggle(300);
+			        $('input[name=mondayroom]').val("");
+			        $('input[name=monday1]').val("");
+			        $('input[name=monday2]').val("");
+			        $('input[name=monday3]').val("");
+			        $('input[name=monday4]').val("");
+			    });
+			    $("#tuesdayToggler").click(function(){
+			        $("#tuesdayDiv").toggle(300);
+			        $('input[name=tuesdayroom]').val("");
+			        $('input[name=tuesday1]').val("");
+			        $('input[name=tuesday2]').val("");
+			        $('input[name=tuesday3]').val("");
+			        $('input[name=tuesday4]').val("");
+			    });
+			    $("#wednesdayToggler").click(function(){
+			        $("#wednesdayDiv").toggle(300);
+			        $('input[name=wednesdayroom]').val("");
+			        $('input[name=wednesday1]').val("");
+			        $('input[name=wednesday2]').val("");
+			        $('input[name=wednesday3]').val("");
+			        $('input[name=wednesday4]').val("");
+			    });
+			    $("#thursdayToggler").click(function(){
+			        $("#thursdayDiv").toggle(300);
+			        $('input[name=thursdayroom]').val("");
+			        $('input[name=thursday1]').val("");
+			        $('input[name=thursday2]').val("");
+			        $('input[name=thursday3]').val("");
+			        $('input[name=thursday4]').val("");
+			    });
+			    $("#fridayToggler").click(function(){
+			        $("#fridayDiv").toggle(300);
+			        $('input[name=fridayroom]').val("");
+			        $('input[name=friday1]').val("");
+			        $('input[name=friday2]').val("");
+			        $('input[name=friday3]').val("");
+			        $('input[name=friday4]').val("");
+			    });
+			    $("#saturdayToggler").click(function(){
+			        $("#saturdayDiv").toggle(300);
+			        $('input[name=saturdayroom]').val("");
+			        $('input[name=saturday1]').val("");
+			        $('input[name=saturday2]').val("");
+			        $('input[name=saturday3]').val("");
+			        $('input[name=saturday4]').val("");
+			    });
+			    $("#sundayToggler").click(function(){
+			        $("#sundayDiv").toggle(300);
+			        $('input[name=sundayroom]').val("");
+			        $('input[name=sunday1]').val("");
+			        $('input[name=sunday2]').val("");
+			        $('input[name=sunday3]').val("");
+			        $('input[name=sunday4]').val("");
+			    });
+			});
+</script>
 </body>
 
 </html>

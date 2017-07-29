@@ -1,10 +1,3 @@
-<?php 
-	session_start();
-	$db_name = $_SESSION['studycenter'];
-
-	include '../php/SQLconnect.php';
-	include '../php/connectOS.php'
-	?>
 	<script>
 		var a = "0";
 		$("#eweTeacher").click(function(){
