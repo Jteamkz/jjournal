@@ -12,7 +12,7 @@ include 'php/db/get_query.php';
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Студенты</title>
+    <title>Предметы</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -228,7 +228,10 @@ include 'php/db/get_query.php';
                                 $result = getAllData('subjects', $connection);
 
                                 if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) { ?>
+                                    $shady = 0;
+                                    while ($row = $result->fetch_assoc()) { 
+                                        $shady++;
+                                    ?>
                                     
                                         <tr class="middlel">
                                             <th><?php echo $row['name']?></th>
@@ -282,10 +285,7 @@ include 'php/db/get_query.php';
 
                                             </td>
                                             <td>
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
-                                                    <button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
-                                                </div>
+                                                <button style="width: 25px; height: 25px" type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
                                             </td>
                                         </tr>
 

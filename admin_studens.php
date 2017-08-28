@@ -257,9 +257,10 @@ include 'php/db/get_query.php';
                                                 $q = "student_id = ".$row['id'];
                                                 $result_groups = get_query($q, 'relation_cs', $connection);
                                                 $order = 0;
+
                                                 if($result_groups->num_rows > 0){
 
-                                                    
+                                                    // print_r($result_groups);
                                                     while ($row_cs = $result_groups->fetch_assoc()) {
                                                         $qo = "id = ".$row_cs['class_id'];
                                                         $result_group = get_query($qo, 'class', $connection);
@@ -268,6 +269,7 @@ include 'php/db/get_query.php';
                                                         }
                                                         $order++;
                                                     }
+                                                    // print_r($data);
                                                     for ($i=0; $i < $order; $i++) {
                                                         if($i == $order-1){
                                                             echo "<a href ='admin_groups.php?name=".$data[$i]."'>".$data[$i]."</a>";
@@ -337,6 +339,7 @@ include 'php/db/get_query.php';
                                                                         <div class="form-group">
                                                                             <label for="IIIN">ИИН</label>
                                                                             <input name="iin" type="text" class="form-control" id="IIIN" placeholder="Отчество" value="<?php echo $row['iin']; ?>">
+                                                                            <input name="id" type="text" style="display: none" value="<?php echo $row['id']; ?>">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -367,32 +370,32 @@ include 'php/db/get_query.php';
                                                                         <div class="form-group">
                                                                             <label>Группы</label>
                                                                             <div style="max-height: 105px; overflow-y:scroll">
-<?php 
-$result_all_group = getAllData('class', $connection);
-if ($result_all_group->num_rows > 0) {
-    while ($ross = $result_all_group->fetch_assoc()) {
-    $t = false;
-    if ($order > 0) {
-        for($y=0; $y < $order; $y++){
-            if ($ross['name_group'] == $data[$y]) {
-                echo "<label>\n";
-                echo "<input type='checkbox' name='checkboxname[]' value='".$ross['name_group']."' checked> ".$ross['name_group']."\n";
-                echo "</label><br>";
-                $t = true;
-            }
-        }   
-    }
-    
-    if ($t != true) {
-        echo "<label>\n";
-        echo "<input type='checkbox' value='".$ross['name_group']."' name='checkboxname[]'> ".$ross['name_group']."\n";
-        echo "</label><br>";
-    }
-    }
-    }else{
-        echo "Группы не добавлены";
-    }
-?>
+                                                                    <?php 
+                                                                    $result_all_group = getAllData('class', $connection);
+                                                                    if ($result_all_group->num_rows > 0) {
+                                                                        while ($ross = $result_all_group->fetch_assoc()) {
+                                                                        $t = false;
+                                                                        if ($order > 0) {
+                                                                            for($y=0; $y < $order; $y++){
+                                                                                if ($ross['name_group'] == $data[$y]) {
+                                                                                    echo "<label>\n";
+                                                                                    echo "<input type='checkbox' atta='".$ross['id']."' name='checkboxname[]' value='".$ross['name_group']."' checked> ".$ross['name_group']."\n";
+                                                                                    echo "</label><br>";
+                                                                                    $t = true;
+                                                                                }
+                                                                            }   
+                                                                        }
+                                                                        
+                                                                        if ($t != true) {
+                                                                            echo "<label>\n";
+                                                                            echo "<input type='checkbox' atta='".$ross['id']."' value='".$ross['name_group']."' name='checkboxname[]'> ".$ross['name_group']."\n";
+                                                                            echo "</label><br>";
+                                                                        }
+                                                                        }
+                                                                        }else{
+                                                                            echo "Группы не добавлены";
+                                                                        }
+                                                                    ?>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -440,16 +443,15 @@ if ($result_all_group->num_rows > 0) {
                 <br>
 
 
-            </div> <!-- end container -->
+            </div>
     </div>
 </div>
     
 
-   <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
-   <script type="text/javascript" src="js/jquery.js"></script>
-    <!-- Bootstrap Core JavaScript -->
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+   <!-- <script type="text/javascript" src="js/jquery.js"></script> -->
     <script src="js/bootstrap.min.js"></script>
-
+ 
     <script type="text/javascript" src="js/spinn.js"></script>
     <script type="text/javascript" src="js/finder.js"></script>
     <script type="text/javascript" src="js/rwd-table.js"></script>

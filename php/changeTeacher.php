@@ -1,0 +1,128 @@
+<?php 
+session_start();
+
+$db_name = $_SESSION['studycenter'];
+include 'db/connect_db.php';
+include 'db/get_all_data.php';
+include 'db/get.php';
+include 'db/get_query.php';
+
+$connection->set_charset("utf8");
+
+$shady = $_GET['shady'];
+
+$izno = $_GET['izno'];
+
+
+
+$firstname = $_POST['name'];
+$lastname = $_POST['surname'];
+$fathername = $_POST['fathername'];
+$phone = $_POST['tele'];
+
+$iin = $_POST['iin'];
+$birthday = $_POST['birthday'];
+
+$password = $_POST['password'];
+$id = $_POST['id'];
+if (isset($_POST['checkboxname'])) {
+	$groups = $_POST['checkboxname'];
+    $group_subjects = array();
+
+    for ($h=0; $h < sizeof($groups); $h++) { 
+        $temp_name = $groups[$h];
+        $subjectAlu = "SELECT subject FROM class WHERE name_group = '$temp_name'";
+
+        $tezis = $connection->query($subjectAlu);
+            $pomp = $tezis->fetch_assoc();
+            $group_subjects[$h] = $pomp['subject'];
+    }
+}else{
+	$groups = array();
+}
+if (isset($_POST['checkboxnames'])) {
+    $subjects = $_POST['checkboxnames'];
+}else{
+    $subjects = array();
+}
+
+$update_query_groups = "UPDATE class SET teacher_id = NULL WHERE teacher_id = ".$id."";
+$id_groups = array();
+// echo $id;
+if ($connection->query($update_query_groups) === TRUE) {
+    print_r($groups);
+    $group_ids = array();
+    for ($b=0; $b < sizeof($groups); $b++) { 
+        $huntkey = $groups[$b];
+        $papitoo = "SELECT id FROM class WHERE name_group = '$huntkey'";
+        $baby = $connection->query($papitoo);
+        $mineup = $baby->fetch_assoc();
+        $group_ids[$b] = $mineup['id'];
+    }
+    for ($b=0; $b < sizeof($groups); $b++) { 
+        $huntkey = $groups[$b];
+        $papitoo = "DELETE FROM class WHERE name_group = '$huntkey'";
+        if ($connection->query($papitoo) === TRUE) {
+            continue;
+        }else{
+            exit("Error in deleting groups, something gone wrong");
+        }
+    }
+    $checker = 0;
+
+    for ($d=0; $d < sizeof($groups); $d++) { 
+        $poki = $groups[$d];
+        $garry = $group_subjects[$d];
+        $temp_id_group = $group_ids[$d];
+        $query_single = "INSERT INTO class (id ,name_group, teacher_id, subject) VALUES ('$temp_id_group' ,'$poki', '$id', '$garry')";
+        if ($connection->query($query_single) === TRUE) {
+            $checker++;
+            continue;
+        }else{
+            exit("Error in instertiong to the groups");
+        }
+    }
+
+}else{
+    exit($connection->error);
+}
+
+
+$delete_realtion = "DELETE FROM relation_ts WHERE id_t = '$id'";
+$id_subjects= array();
+// print_r($subjects);
+for ($d=0; $d < sizeof($subjects); $d++) { 
+    $poki = $subjects[$d];
+    $query_single = "SELECT id FROM subjects WHERE  name = '$poki'";
+    $tempo = $connection->query($query_single);
+    
+    $pompei = $tempo->fetch_assoc();
+    $id_subjecti[$d] = $pompei['id'];
+    
+}
+
+if ($connection->query($delete_realtion) === TRUE) {
+	for ($g=0; $g < sizeof($subjects); $g++) { 
+		$temp_id = $id_subjecti[$g];
+		$insertion = "INSERT INTO relation_ts (id_t, id_s) VALUES ('$id', '$temp_id')";
+		
+		if ($connection->query($insertion) === TRUE) {
+			continue;
+		}else{
+			exit("INSERTION ERROR GROUPS");
+			break;
+		}
+	}
+}
+
+
+$update_query = "UPDATE teacher SET firstname = '$firstname', lastname = '$lastname', fathername = '$fathername', telephone = '$phone', iin = '$iin', birthday = '$birthday', password = '$password' WHERE iin = '$izno'";
+
+if ($connection->query($update_query) === TRUE) {
+    
+} else {
+    echo "Error updating record: " . $connection->error;
+}
+
+$connection->close();
+?>
