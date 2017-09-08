@@ -19,6 +19,6 @@
 				} else {
 				    echo "0 results";
 				}
-				echo "</select><br>";
+				echo "</select></div></div><br>";
 		
 	?>

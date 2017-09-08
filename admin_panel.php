@@ -325,17 +325,35 @@ include 'php/connectOS.php'
         <h4 class="modal-title">Добавьте уроки</h4>
       </div>
       <div class="modal-body">
-	<br><button id="eweSubject">Еще</button>
+	<br><button id="eweSubject" class="btn">Еще</button>
 	<form id="subjectForm" method='post'>
-		<div style="max-height:100px; height:100px; overflow-y: scroll; padding:10px;">
-		<input type='text' id='namesubject' name='name0' placeholder='Название'><input type='text' placeholder='Описание' name='defenition0' required>
+		<div style="max-height:250px; height:250px; overflow-y: scroll; padding:10px; overflow-x:hidden;">
+		<div class="row">
+		<div class="col-lg-6">
+		<input type='text' id='namesubject' name='name0' class="form-control" placeholder='Название'>
+		</div>
+		<div class="col-lg-6">
+		<input type='text' class="form-control" placeholder='Описание' name='defenition0' required>
+		</div>
+		</div>
+		<br>
 		<p id="subjectP"></p>
 		</div>
-	<br><button id="addSubject">Добавить</button></form>
+	<br></form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-      </div>
+			<div class="btn-group btn-group-justified" role="group" aria-label="group button">
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+				</div>
+				<div class="btn-group btn-delete hidden" role="group">
+					<button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
+				</div>
+				<div class="btn-group" role="group">
+					<button type="button" id="addSubject" class="btn btn-default btn-hover-green" data-action="save" role="button">Add</button>
+				</div>
+			</div>
+		</div>
     </div>
 
   </div>
@@ -384,22 +402,44 @@ include 'php/connectOS.php'
         <h4 class="modal-title">Добавьте учеников</h4>
       </div>
       <div class="modal-body">
-        <button id="eweStudent">Еще</button>
+        <button class='btn' id="eweStudent">Еще</button>
 	<form method='post' id="studentForm">
-		<div style="max-height:100px; height:100px; overflow-y: scroll; padding:10px;">
-		<h5>Student1</h5>
-		<input type='text' name='IIN0' placeholder='ИИН'><input type='text' name='password0' placeholder='Пароль'>
-			<input type='text' name='name0' placeholder='Имя'><input type='text' name='surname0' placeholder='Фамилия'>
-			<input type='text' name='father0'' placeholder='Отчество'><input type='text' name='birthday0' placeholder='День рождения'>
-			<input type='text' name='phone0' placeholder='Телефон'><input type='text' name='phoneparent0' placeholder='Телефон Мамки'>
-			<input type='text' name='payday0' placeholder='День Оплаты'><br>
+		<div style="max-height:350px; height:350px; overflow-y: scroll; padding:10px; overflow-x:hidden;">
+		<div class="row">
+		<div class="col-lg-4">
+		<input class="form-control" type='text' name='IIN0' placeholder='ИИН'>
+		</div><div class="col-lg-4"><input class="form-control" type='text' name='password0' placeholder='Пароль'>
+		</div>
+		<div class="col-lg-4">
+		<input class="form-control" type='text' name='name0' placeholder='Имя'></div><div class="col-lg-4"><input class="form-control" type='text' name='surname0' placeholder='Фамилия'>
+		</div>
+		<div class="col-lg-4">
+		<input class="form-control" type='text' name='father0'' placeholder='Отчество'></div><div class="col-lg-4"><input class="form-control" type='text' name='birthday0' placeholder='День рождения'>
+		</div>
+		<div class="col-lg-4">
+		<input class="form-control" type='text' name='phone0' placeholder='Телефон'></div><div class="col-lg-4"><input class="form-control" type='text' name='phoneparent0' placeholder='Телефон Мамки'>
+		</div>
+		<div class="col-lg-4">
+		<input class="form-control" type='text' name='payday0' placeholder='День Оплаты'><br>
+		</div>
+		</div>
 		<p id="studentP"></p>
 		</div>
-	<br><button id="addStudent">Добавить</button></form>
+	<br></form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-      </div>
+			<div class="btn-group btn-group-justified" role="group" aria-label="group button">
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+				</div>
+				<div class="btn-group btn-delete hidden" role="group">
+					<button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
+				</div>
+				<div class="btn-group" role="group">
+					<button type="button" id="addStudent" class="btn btn-default btn-hover-green" data-action="save" role="button">Add</button>
+				</div>
+			</div>
+		</div>
     </div>
 
   </div>
@@ -446,16 +486,20 @@ include 'php/connectOS.php'
         <h4 class="modal-title">Добавьте учителей</h4>
       </div>
       <div class="modal-body">
-        <button id="eweTeacher">Еще</button>
+        <button id="eweTeacher" class="btn">Еще</button>
 	<form method='post' id="teacherForm">
-		<div style="max-height:100px; height:100px; overflow-y: scroll; padding:10px;">
-		<h5>teacher1</h5>
-		<input type='text' name='IIN0' placeholder='ИИН'><input type='text' name='password0' placeholder='Пароль'>
-			<input type='text' name='name0' placeholder='Имя'><input type='text' name='surname0' placeholder='Фамилия'>
-			<input type='text' name='father0'' placeholder='Отчество'><input type='text' name='birthday0' placeholder='День рождения'>
-			<input type='text' name='phone0' placeholder='Телефон'>
+		<div style="max-height:350px; height:350px; overflow-y: scroll; padding:10px; overflow-x:hidden;">
+		<div class="row">
+		<div class="col-lg-3">
+		<input class="form-control" type='text' name='IIN0' placeholder='ИИН'></div><div class="col-lg-3"><input class="form-control" type='text' name='password0' placeholder='Пароль'></div>
+			<div class="col-lg-3"><input class="form-control" type='text' name='name0' placeholder='Имя'></div><div class="col-lg-3"><input class="form-control" type='text' name='surname0' placeholder='Фамилия'></div>
+			<div class="col-lg-3"><input class="form-control" type='text' name='father0'' placeholder='Отчество'></div>
+			<div class="col-lg-3"><input class="form-control" type='text' name='birthday0' placeholder='День рождения'></div>
+			<div class="col-lg-3"><input class="form-control" type='text' name='phone0' placeholder='Телефон'>
+			</div>
+			<div class="col-lg-3">
 			<?php 
-				echo "<select name='subject0'>";
+				echo "<select class='form-control' name='subject0'>";
 			$sql = "SELECT * FROM subjects";
 				$result = $con->query($sql);
 
@@ -468,14 +512,24 @@ include 'php/connectOS.php'
 				    echo "0 results";
 				}
 				echo "</select>";
-			?><br>
+			?></div></div><br>
 		<p id="teacherP"></p>
 		</div>
-	<br><button id="addteacher">Добавить</button></form>
+	<br></form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-      </div>
+			<div class="btn-group btn-group-justified" role="group" aria-label="group button">
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+				</div>
+				<div class="btn-group btn-delete hidden" role="group">
+					<button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
+				</div>
+				<div class="btn-group" role="group">
+					<button type="button" id="addteacher" class="btn btn-default btn-hover-green" data-action="save" role="button">Add</button>
+				</div>
+			</div>
+		</div>
     </div>
 
   </div>
@@ -508,7 +562,7 @@ include 'php/connectOS.php'
                                             </div>
                                              <div class="col-xs-3">
                                                 <!--<form method="POST" action="add/group.php">-->
-                                                    <button data-toggle="modal" data-target="#myModal4" class="btn btn-success btn-lg">Добавить группу</button>
+                                                    <br><button data-toggle="modal" data-target="#myModal4" class="btn btn-success btn-lg">Добавить группу</button>
                                                 <!--</form>-->
 
 <!-- Modal -->
@@ -625,8 +679,18 @@ include 'php/connectOS.php'
 	</div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-      </div>
+			<div class="btn-group btn-group-justified" role="group" aria-label="group button">
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+				</div>
+				<div class="btn-group btn-delete hidden" role="group">
+					<button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
+				</div>
+				<div class="btn-group" role="group">
+					<button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">Save</button>
+				</div>
+			</div>
+		</div>
     </div>
 
   </div>
@@ -834,7 +898,7 @@ include 'php/connectOS.php'
 		var a = "0";
 		$("#eweSubject").click(function(){
 			 a++;
-   			 $("#subjectP").append("<input type='text' id='namesubject' name='name"+a+"' placeholder='Название'><input type='text' placeholder='Описание' name='defenition"+a+"' required><br>");
+   			 $("#subjectP").append("<div class='row'><div class='col-lg-6'><input type='text' id='namesubject' class='form-control' name='name"+a+"' placeholder='Название'></div><div class='col-lg-6'><input class='form-control' type='text' placeholder='Описание' name='defenition"+a+"' required></div></div><br>");
 		});
 	
 			
@@ -864,7 +928,7 @@ include 'php/connectOS.php'
 		var a = "0";
 		$("#eweStudent").click(function(){
 			 a++;
-   			 $("#studentP").append("<h5>Student"+(a+1)+"</h5><input type='text' name='IIN"+a+"' placeholder='ИИН'><input type='text' name='password"+a+"' placeholder='Пароль'><input type='text' name='name"+a+"' placeholder='Имя'><input type='text' name='surname"+a+"' placeholder='Фамилия'><input type='text' name='father"+a+"'' placeholder='Отчество'><input type='text' name='birthday"+a+"' placeholder='День рождения'><input type='text' name='phone"+a+"' placeholder='Телефон'><input type='text' name='phoneparent"+a+"' placeholder='Телефон Мамки'><input type='text' name='payday"+a+"' placeholder='День Оплаты'><br>");
+   			 $("#studentP").append("<div class='row'><div class='col-lg-4'><input class='form-control' type='text' name='IIN"+a+"' placeholder='ИИН'></div><div class='col-lg-4'><input class='form-control' type='text' name='password"+a+"' placeholder='Пароль'></div><div class='col-lg-4'><input class='form-control' type='text' name='name"+a+"' placeholder='Имя'></div><div class='col-lg-4'><input class='form-control' type='text' name='surname"+a+"' placeholder='Фамилия'></div><div class='col-lg-4'><input class='form-control' type='text' name='father"+a+"'' placeholder='Отчество'></div><div class='col-lg-4'><input class='form-control' type='text' name='birthday"+a+"' placeholder='День рождения'></div><div class='col-lg-4'><input class='form-control' type='text' name='phone"+a+"' placeholder='Телефон'></div><div class='col-lg-4'><input class='form-control' type='text' name='phoneparent"+a+"' placeholder='Телефон Мамки'></div><div class='col-lg-4'><input class='form-control' type='text' name='payday"+a+"' placeholder='День Оплаты'></div></div><br>");
 		});
 	
 			
@@ -894,7 +958,7 @@ include 'php/connectOS.php'
 		var a = "0";
 		$("#eweTeacher").click(function(){
 			 a++;
-   			 $("#teacherP").append("<h5>teacher"+(a+1)+"</h5><input type='text' name='IIN"+a+"' placeholder='ИИН'><input type='text' name='password"+a+"' placeholder='Пароль'><input type='text' name='name"+a+"' placeholder='Имя'><input type='text' name='surname"+a+"' placeholder='Фамилия'><input type='text' name='father"+a+"'' placeholder='Отчество'><input type='text' name='birthday"+a+"' placeholder='День рождения'><input type='text' name='phone"+a+"' placeholder='Телефон'>");
+   			 $("#teacherP").append("<div class='row'><div class='col-lg-3'><input class='form-control' type='text' name='IIN"+a+"' placeholder='ИИН'></div><div class='col-lg-3'><input class='form-control' type='text' name='password"+a+"' placeholder='Пароль'></div><div class='col-lg-3'><input class='form-control' type='text' name='name"+a+"' placeholder='Имя'></div><div class='col-lg-3'><input class='form-control' type='text' name='surname"+a+"' placeholder='Фамилия'></div><div class='col-lg-3'><input class='form-control' type='text' name='father"+a+"'' placeholder='Отчество'></div><div class='col-lg-3'><input class='form-control' type='text' name='birthday"+a+"' placeholder='День рождения'></div><div class='col-lg-3'><input class='form-control' type='text' name='phone"+a+"' placeholder='Телефон'></div><div class='col-lg-3'>");
    			 $.ajax({
 		       url: 'add/teacherSelect.php?numberTeacher='+a,
 		       success: function(html) {
