@@ -7,7 +7,7 @@
 	?>
 	<?php
 		$n = $_GET['numberTeacher'];
-			echo "<select name='subject".$n."'>";
+			echo "<select id='subjectTeacher".$n."' name='subject".$n."'>";
 			$sql = "SELECT * FROM subjects";
 				$result = $con->query($sql);
 
@@ -19,6 +19,6 @@
 				} else {
 				    echo "0 results";
 				}
-				echo "</select></div></div><br>";
+				echo "</select><br id='brteacher".$n."'>";
 		
 	?>

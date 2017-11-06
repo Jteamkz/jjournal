@@ -325,7 +325,7 @@ include 'php/connectOS.php'
         <h4 class="modal-title">Добавьте уроки</h4>
       </div>
       <div class="modal-body">
-	<br><button id="eweSubject" class="btn">Еще</button>
+	<br><button id="eweSubject" class="btn">Еще</button><button id="eweSubjectdelete" class="btn">Удалить</button>
 	<form id="subjectForm" method='post'>
 		<div style="max-height:250px; height:250px; overflow-y: scroll; padding:10px; overflow-x:hidden;">
 		<div class="row">
@@ -403,6 +403,7 @@ include 'php/connectOS.php'
       </div>
       <div class="modal-body">
         <button class='btn' id="eweStudent">Еще</button>
+        <button class='btn' id="eweStudentdelete">Удалить</button>
 	<form method='post' id="studentForm">
 		<div style="max-height:350px; height:350px; overflow-y: scroll; padding:10px; overflow-x:hidden;">
 		<div class="row">
@@ -487,6 +488,7 @@ include 'php/connectOS.php'
       </div>
       <div class="modal-body">
         <button id="eweTeacher" class="btn">Еще</button>
+        <button id="eweTeacherdelete" class="btn">Удалить</button>
 	<form method='post' id="teacherForm">
 		<div style="max-height:350px; height:350px; overflow-y: scroll; padding:10px; overflow-x:hidden;">
 		<div class="row">
@@ -898,7 +900,7 @@ include 'php/connectOS.php'
 		var a = "0";
 		$("#eweSubject").click(function(){
 			 a++;
-   			 $("#subjectP").append("<div class='row'><div class='col-lg-6'><input type='text' id='namesubject' class='form-control' name='name"+a+"' placeholder='Название'></div><div class='col-lg-6'><input class='form-control' type='text' placeholder='Описание' name='defenition"+a+"' required></div></div><br>");
+   			 $("#subjectP").append("<div class='row' id='subjectrow"+a+"'><div class='col-lg-6'><input type='text' class='form-control' id='subjectName"+a+"' name='name"+a+"' placeholder='Название'></div><div class='col-lg-6'><input class='form-control' type='text' placeholder='Описание' id='subjectDefenition"+a+"' name='defenition"+a+"' required></div></div><br id='brsubject"+a+"'>");
 		});
 	
 			
@@ -921,14 +923,21 @@ include 'php/connectOS.php'
 				}
 			})
 		
-	})
+	});
+	$("#eweSubjectdelete").click(function(){
+		if(a>0){
+			$("#subjectrow"+a).remove();
+			$("#brsubject"+a).remove();
+			a = a - 1;
+		}
+	});
 	})
 	</script>
 		<script>
-		var a = "0";
+		var b = "0";
 		$("#eweStudent").click(function(){
-			 a++;
-   			 $("#studentP").append("<div class='row'><div class='col-lg-4'><input class='form-control' type='text' name='IIN"+a+"' placeholder='ИИН'></div><div class='col-lg-4'><input class='form-control' type='text' name='password"+a+"' placeholder='Пароль'></div><div class='col-lg-4'><input class='form-control' type='text' name='name"+a+"' placeholder='Имя'></div><div class='col-lg-4'><input class='form-control' type='text' name='surname"+a+"' placeholder='Фамилия'></div><div class='col-lg-4'><input class='form-control' type='text' name='father"+a+"'' placeholder='Отчество'></div><div class='col-lg-4'><input class='form-control' type='text' name='birthday"+a+"' placeholder='День рождения'></div><div class='col-lg-4'><input class='form-control' type='text' name='phone"+a+"' placeholder='Телефон'></div><div class='col-lg-4'><input class='form-control' type='text' name='phoneparent"+a+"' placeholder='Телефон Мамки'></div><div class='col-lg-4'><input class='form-control' type='text' name='payday"+a+"' placeholder='День Оплаты'></div></div><br>");
+			 b++;
+   			 $("#studentP").append("<div class='row' id='studentrow"+b+"'><div class='col-lg-4'><input class='form-control' type='text' name='IIN"+b+"' placeholder='ИИН'></div><div class='col-lg-4'><input class='form-control' type='text' name='password"+b+"' placeholder='Пароль'></div><div class='col-lg-4'><input class='form-control' type='text' name='name"+b+"' placeholder='Имя'></div><div class='col-lg-4'><input class='form-control' type='text' name='surname"+b+"' placeholder='Фамилия'></div><div class='col-lg-4'><input class='form-control' type='text' name='father"+b+"'' placeholder='Отчество'></div><div class='col-lg-4'><input class='form-control' type='text' name='birthday"+b+"' placeholder='День рождения'></div><div class='col-lg-4'><input class='form-control' type='text' name='phone"+b+"' placeholder='Телефон'></div><div class='col-lg-4'><input class='form-control' type='text' name='phoneparent"+b+"' placeholder='Телефон Мамки'></div><div class='col-lg-4'><input class='form-control' type='text' name='payday"+b+"' placeholder='День Оплаты'></div></div><br id='brstudent"+b+"'>");
 		});
 	
 			
@@ -943,7 +952,7 @@ include 'php/connectOS.php'
 			var serializedData = $form.serialize();
 			
 			$.ajax({
-				url: 'add/studentAdd.php?numberStudent='+a,
+				url: 'add/studentAdd.php?numberStudent='+b,
 				type: 'POST',
 				data: serializedData,
 				success: function(data){
@@ -951,16 +960,23 @@ include 'php/connectOS.php'
 				}
 			})
 		
-	})
+	});
+	$("#eweStudentdelete").click(function(){
+		if(b > 0){
+			$("#studentrow"+b).remove();
+			$(" #brstudent"+b ).remove();
+			b = b - 1;
+		}
+	});
 	})
 	</script>
 		<script>
-		var a = "0";
+		var c = "0";
 		$("#eweTeacher").click(function(){
-			 a++;
-   			 $("#teacherP").append("<div class='row'><div class='col-lg-3'><input class='form-control' type='text' name='IIN"+a+"' placeholder='ИИН'></div><div class='col-lg-3'><input class='form-control' type='text' name='password"+a+"' placeholder='Пароль'></div><div class='col-lg-3'><input class='form-control' type='text' name='name"+a+"' placeholder='Имя'></div><div class='col-lg-3'><input class='form-control' type='text' name='surname"+a+"' placeholder='Фамилия'></div><div class='col-lg-3'><input class='form-control' type='text' name='father"+a+"'' placeholder='Отчество'></div><div class='col-lg-3'><input class='form-control' type='text' name='birthday"+a+"' placeholder='День рождения'></div><div class='col-lg-3'><input class='form-control' type='text' name='phone"+a+"' placeholder='Телефон'></div><div class='col-lg-3'>");
+			 c++;
+   			 $("#teacherP").append("<div class='row' id='teacherrow"+c+"'><div class='col-lg-3'><input class='form-control' type='text' name='IIN"+c+"' placeholder='ИИН'></div><div class='col-lg-3'><input class='form-control' type='text' name='password"+c+"' placeholder='Пароль'></div><div class='col-lg-3'><input class='form-control' type='text' name='name"+c+"' placeholder='Имя'></div><div class='col-lg-3'><input class='form-control' type='text' name='surname"+c+"' placeholder='Фамилия'></div><div class='col-lg-3'><input class='form-control' type='text' name='father"+c+"'' placeholder='Отчество'></div><div class='col-lg-3'><input class='form-control' type='text' name='birthday"+c+"' placeholder='День рождения'></div><div class='col-lg-3'><input class='form-control' type='text' name='phone"+c+"' placeholder='Телефон'></div>");
    			 $.ajax({
-		       url: 'add/teacherSelect.php?numberTeacher='+a,
+		       url: 'add/teacherSelect.php?numberTeacher='+c,
 		       success: function(html) {
           	$("#teacherP").append(html);
        }
@@ -979,7 +995,7 @@ include 'php/connectOS.php'
 			var serializedData = $form.serialize();
 			
 			$.ajax({
-				url: 'add/teacherAdd.php?numberTeacher='+a,
+				url: 'add/teacherAdd.php?numberTeacher='+c,
 				type: 'POST',
 				data: serializedData,
 				success: function(data){
@@ -987,7 +1003,15 @@ include 'php/connectOS.php'
 				}
 			})
 		
-	})
+	});
+	$("#eweTeacherdelete").click(function(){
+		if(c>0){
+			$("#teacherrow"+c).remove();
+			$(" #brteacher"+c ).remove();
+            $("#subjectTeacher"+c).remove();
+			c = c - 1;
+		}
+	});
 	})
 	</script>
 	<script>
