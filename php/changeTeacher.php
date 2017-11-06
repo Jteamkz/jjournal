@@ -1,4 +1,5 @@
 <?php 
+
 session_start();
 
 $db_name = $_SESSION['studycenter'];
@@ -24,10 +25,12 @@ $iin = $_POST['iin'];
 $birthday = $_POST['birthday'];
 
 $password = $_POST['password'];
+
 $id = $_POST['id'];
+$group_subjects = array();
+$groups = array();
 if (isset($_POST['checkboxname'])) {
 	$groups = $_POST['checkboxname'];
-    $group_subjects = array();
 
     for ($h=0; $h < sizeof($groups); $h++) { 
         $temp_name = $groups[$h];
@@ -47,40 +50,50 @@ if (isset($_POST['checkboxnames'])) {
 }
 
 $update_query_groups = "UPDATE class SET teacher_id = NULL WHERE teacher_id = ".$id."";
+
 $id_groups = array();
-// echo $id;
+
 if ($connection->query($update_query_groups) === TRUE) {
-    print_r($groups);
-    $group_ids = array();
-    for ($b=0; $b < sizeof($groups); $b++) { 
-        $huntkey = $groups[$b];
-        $papitoo = "SELECT id FROM class WHERE name_group = '$huntkey'";
-        $baby = $connection->query($papitoo);
-        $mineup = $baby->fetch_assoc();
-        $group_ids[$b] = $mineup['id'];
-    }
-    for ($b=0; $b < sizeof($groups); $b++) { 
-        $huntkey = $groups[$b];
-        $papitoo = "DELETE FROM class WHERE name_group = '$huntkey'";
-        if ($connection->query($papitoo) === TRUE) {
-            continue;
-        }else{
-            exit("Error in deleting groups, something gone wrong");
-        }
-    }
-    $checker = 0;
+    
+    
+
+    // $group_ids = array();
+    // for ($b=0; $b < sizeof($groups); $b++) { 
+    //     $huntkey = $groups[$b];
+    //     $papitoo = "SELECT id FROM class WHERE name_group = '$huntkey'";
+    //     $baby = $connection->query($papitoo);
+    //     $mineup = $baby->fetch_assoc();
+    //     $group_ids[$b] = $mineup['id'];
+    // }
+    // for ($b=0; $b < sizeof($groups); $b++) { 
+    //     $huntkey = $group_ids[$b];
+    //     $papitoo = "DELETE FROM class WHERE id = '$huntkey'";
+    //     if ($connection->query($papitoo) === TRUE) {
+    //         continue;
+    //     }else{
+    //         exit("Error in deleting groups, something gone wrong");
+    //     }
+    // }
+    // $checker = 0;
 
     for ($d=0; $d < sizeof($groups); $d++) { 
         $poki = $groups[$d];
-        $garry = $group_subjects[$d];
-        $temp_id_group = $group_ids[$d];
-        $query_single = "INSERT INTO class (id ,name_group, teacher_id, subject) VALUES ('$temp_id_group' ,'$poki', '$id', '$garry')";
-        if ($connection->query($query_single) === TRUE) {
-            $checker++;
-            continue;
-        }else{
-            exit("Error in instertiong to the groups");
-        }
+        $kongo = "UPDATE class SET teacher_id = '$id' WHERE name_group = '$poki'";
+        
+        $connection->query($kongo);
+
+
+        // $poki = $groups[$d];
+        // $garry = $group_subjects[$d];
+        // $temp_id_group = $group_ids[$d];
+        
+        // $query_single = "INSERT INTO class (id ,name_group, teacher_id, subject) VALUES ('$temp_id_group' ,'$poki', '$id', '$garry')";
+        // if ($connection->query($query_single) === TRUE) {
+        //     $checker++;
+        //     continue;
+        // }else{
+        //     exit("Error in instertiong to the groups");
+        // }
     }
 
 }else{
@@ -98,7 +111,6 @@ for ($d=0; $d < sizeof($subjects); $d++) {
     
     $pompei = $tempo->fetch_assoc();
     $id_subjecti[$d] = $pompei['id'];
-    
 }
 
 if ($connection->query($delete_realtion) === TRUE) {

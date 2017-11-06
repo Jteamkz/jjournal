@@ -1,3 +1,4 @@
+    <?php
     echo " <th>".$firstname." ".$lastname." ".$fathername."</td>
     <td>".$phone."</td>
     <td>".$phone_parent."</td>
@@ -110,4 +111,4 @@
                                     </form>
                                 </div>
                             </div>
-                                            </div>";
+                                            </div>"; ?>
