@@ -266,6 +266,7 @@ include 'php/db/get_query.php';
                                                 $group_subject = $row_subject['name'];
                                                 unset($query);
                                                 $subect = $row_subject['id'];
+                                                $subject = -9;
                                             }
                                             
                                         ?>
@@ -276,7 +277,7 @@ include 'php/db/get_query.php';
                                         <?php 
                                             $query = "class_id = ".$row['id'];
                                             $students = get_query($query, 'relation_cs', $connection);
-                                            if ($students->num_rows > 1) {
+                                            if ($students->num_rows >= 1) {
                                                 while ($row_students = $students->fetch_assoc()) {
                                                     $query_ins = "id = ".$row_students['student_id'];
                                                     $single = get_query($query_ins, 'student', $connection);

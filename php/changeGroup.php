@@ -33,14 +33,14 @@ if ($teacher == -1) {
 $teacher_data = "SELECT * FROM teacher WHERE id='$teacher'";
 $subject_data = "SELECT * FROM subjects WHERE id='$subject'";
 if ($connection->query($update_query) === TRUE) {
-if ($teacher != -1) {
-	$aible = $connection->query($teacher_data);
-	$showme = $aible->fetch_assoc();
+    if ($teacher != -1) {
+        $aible = $connection->query($teacher_data);
+        $showme = $aible->fetch_assoc();
 
-	$all = "<a href='admin_teachers.php'>".$showme['lastname']." ".$showme['firstname']." ".$showme['fathername']."</a>";
-}else{
-	$all = "Учитель не привязан";
-}
+        $all = "<a href='admin_teachers.php'>".$showme['lastname']." ".$showme['firstname']." ".$showme['fathername']."</a>";
+    }else{
+        $all = "Учитель не привязан";
+    }
     $subect = 0;
 	$lll = $connection->query($subject_data);
 	$zhk = $lll->fetch_assoc();
@@ -52,13 +52,15 @@ if ($teacher != -1) {
 echo "
     <th>".$name."</th>
     <td>";
+    echo $all;
+echo "</td>
+    <td>";
     if ($subect == -1) {
         echo "Предмет не привязан";
     }else{
         echo $zhk['name'];
     }
-echo "</td>
-    <td>".$zhk['name']."</td>
+    echo "</td>
     <td>Insert to Database</td>
     <td>
 <ul style='list-style: none; padding-left: 10px'>";

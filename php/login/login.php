@@ -8,7 +8,7 @@ if (!isset($user_name) || !isset($password)) {
 }
 
 include '../db/get_all_db.php';
-
+include '../db/get_query.php';
 $sql = "SELECT * FROM users WHERE iin = '".$user_name."' OR tele = '".$user_name."'";
 
 $result = $conn->query($sql);	
@@ -24,8 +24,16 @@ if($result->num_rows > 0){
 		}else if($row['status'] == 'student'){
 			echo 'student';
 		}else if($row['status'] == 'teacher'){
-			$to_admin = 'Location: ../../teacher_panel.php';
-			$_SESSION['studycenter'] = $export_db_name;
+			// 12
+			if(strlen($user_name) > 11){
+				$to_admin = "Location: ../../teacher_panel.php?iin=".$row['iin'];
+				$_SESSION['studycenter'] = $export_db_name;
+			}else{
+				$to_admin = "Location: ../../teacher_panel.php?tele=".$row['tele'];
+				$_SESSION['studycenter'] = $export_db_name;
+			}
+			// 87051581895
+			// 998877665544
 			header($to_admin);
 		}
 		

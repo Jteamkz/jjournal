@@ -1,10 +1,20 @@
 ﻿<?php 
 session_start();
+
 $db_name = $_SESSION['studycenter'];
 
+if (isset($_GET['tele'])) {
+    $iin_b = FALSE;
+    $tele = $_GET['tele'];
+}
+else{
+    $iin_b = TRUE;
+    $iin = $_GET['iin'];
+}
 include 'php/db/connect_db.php';
 include 'php/db/get_all_data.php';
 include 'php/db/get.php';
+include 'php/db/get_query.php';
 
 $connection->set_charset("utf8");
 
@@ -164,80 +174,104 @@ $row = $result->fetch_assoc();
             <div class="container">
 
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Поставить посещаемость</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-lg-6 col-lg-12">
-                                        <h2>Группа: I 1603</h2>
-                                    </div>
-                                    <div class="col-lg-6 col-lg-12 left-grey">
-                                         <h2>Понедельник в 15:00</h2>
+                    <div>
+                        <div class="col-lg-6">
+
+                                
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Поставить посещаемость</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-lg-12">
+                                            <h2>Группа: I 1603</h2>
+                                        </div>
+                                        <div class="col-lg-6 col-lg-12 left-grey">
+                                             <h2>Понедельник в 15:00</h2>
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
-                        </div>
+                            <div class="jjournal-panel-top">
+                                <p class="jjournal-orange">Предстоящие занятия</p>
+                                <p class="jjournal-orange" style="float: right"><a href="">Посмотреть расписание</a></p>
+                            </div>
+                            <ul class="jjournal-orders">
+                                <li>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            Группа: I 1603                                         
+                                        </div>
+                                        <div class="col-lg-6">
+                                            в Понедельник 16:30
+                                        </div>
+                                    </div>  
+                                </li>
+                                <li>
+                                  rewq  
+                                </li>
+                                <li>
+                                   asdf 
+                                </li>
+                                <li>
+                                    fdsa
+                                </li>
+                            </ul>
                     </div>
                     <div class="col-lg-6">
+                        <div class="jjournal-panel-top">
+                            <p class="jjournal-green">Предстоящие дни рождения</p>
+                           <?php 
+                                if ($iin_b) {
+                                    $query_t = "iin = ".$iin;
+                                }else{
+                                    $query_t = "telephone = ".$tele;
+                                }
+                                $data = get_query($query_t, "teacher", $connection);
+                                $teacher_d = $data->fetch_assoc();
+                                // end teacher data taking
+                                $fathername_t = $teacher_d['fathername'];
+                                $id_t = $teacher_d['id'];
+                                $query_c = "teacher_id = ".$id_t;
+                                $data_groups = get_query($query_c, "class", $connection);
+                                $students_b = array();
+                                $order = 0;
+                                while ($data_group = $data_groups->fetch_assoc()) {
+                                    $id_g = $data_group['id'];
+                                    $query_ccs = "class_id = ".$id_g;
+                                    $relation_cs = get_query($query_ccs, "relation_cs", $connection);
+                                    while ($relation_cs_s = $relation_cs->fetch_assoc()) {
+                                        $student_id = $relation_cs_s['student_id'];
+                                        $query_s = "id = ".$student_id;
+                                        $student_d = get_query($query_s, "student", $connection);
+                                        $single_student_d = $student_d->fetch_assoc();
+                                        $students_b[$order] = $single_student_d['birthday'];
+                                        $order++;
+                                    }
+                                }   
+                                print_r($students_b);
+                            ?>
+                        </div>
+                        <ul class="jjournal-orders">
+                            
+                        </ul>
+                    </div>
+                    <!-- <div class="col-lg-6">
                         <div class="alert alert-info alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <i class="fa fa-info-circle"></i>  <strong>Like SB Admin?</strong> Try out <a href="http://startbootstrap.com/template-overviews/sb-admin-2" class="alert-link">SB Admin 2</a> for additional features!
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
 
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="jjournal-panel-top">
-                            <p class="jjournal-orange">Предстоящие занятия</p>
-                            <p class="jjournal-orange" style="float: right"><a href="">Посмотреть расписание</a></p>
-                        </div>
-                        <ul class="jjournal-orders">
-                            <li>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        Группа: I 1603                                         
-                                    </div>
-                                    <div class="col-lg-6">
-                                        в Понедельник 16:30
-                                    </div>
-                                </div>  
-                            </li>
-                            <li>
-                              rewq  
-                            </li>
-                            <li>
-                               asdf 
-                            </li>
-                            <li>
-                                fdsa
-                            </li>
-                        </ul>
+                        
                     </div>
-                    <div class="col-lg-6">
-                        <div class="jjournal-panel-top">
-                            <p class="jjournal-green">Предстоящие дни рождения</p>
-                            <p class="jjournal-orange" style="float: right"><a href="">Посмотреть календарь</a></p>
-                        </div>
-                        <ul class="jjournal-orders">
-                            <li>
-                                qwer    
-                            </li>
-                            <li>
-                              rewq  
-                            </li>
-                            <li>
-                               asdf 
-                            </li>
-                            <li>
-                                fdsa
-                            </li>
-                        </ul>
-                    </div>
+                    
                 </div>
                 
                 <div>
