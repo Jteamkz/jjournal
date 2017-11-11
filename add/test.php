@@ -12,7 +12,7 @@
 		$(document).ready(function(){
 		$("#ewevopros").click(function(){
 			 a++;
-   			 $("#voprosP").append("<h5 id='slovo"+a+"''>Вопрос "+(a+1)+"</h5><input type='text' name='vopros"+a+"' placeholder='Вопрос'><br id='br"+a+"'><input type='text' class='rightanswer' name='right"+a+"' placeholder='Правильный ответ'><input class='wronganswer' type='text' name='wrong"+a+"0' placeholder='Неправильный ответ'><input class='wronganswer' type='text' name='wrong"+a+"1' placeholder='Неправильный ответ'><input class='wronganswer' type='text' name='wrong"+a+"2' placeholder='Неправильный ответ'>");
+   			 $("#voprosP").append("<h5 id='slovo"+a+"''>Вопрос "+(a+1)+"</h5><input type='text' name='vopros"+a+"' placeholder='Вопрос'><br id='br"+a+"'><input type='text' class='rightanswer' name='right"+a+"' placeholder='Правильный ответ'><input class='wronganswer' type='text' name='wrong"+a+"0' placeholder='Неправильный ответ'><input class='wronganswer' type='text' name='wrong"+a+"1' placeholder='Неправильный ответ'><input class='wronganswer' type='text' name='wrong"+a+"2' placeholder='Неправильный ответ'><button type='button' id='"+a+"' class='deleteAns'>Удалить</button>");
 		});
 	});
 			
@@ -30,28 +30,36 @@
 				url: 'testAdd.php?numbervopros='+a,
 				type: 'POST',
 				data: serializedData,
-				success: function(data){
-					 
-				}
 			})
 		
 	});
-	$("#delete").click(function(){
-		if(a > 0){
-			$("#br"+a).remove();
-			$("#slovo"+a).remove();
-			$("input[name=vopros"+a+"]").remove();
-			$("input[name=right"+a+"]").remove();
-			$("input[name=wrong"+a+"0]").remove();
-			$("input[name=wrong"+a+"1]").remove();
-			$("input[name=wrong"+a+"2]").remove();
-			a = a - 1;
-		}
+	$(document).on('click', '.deleteAns', function(){
+			var id = $(this).attr('id');
+			$("#br"+id).remove();
+			$("#slovo"+id).remove();
+			$("input[name=vopros"+id+"]").remove();
+			$("input[name=right"+id+"]").remove();
+			$("input[name=wrong"+id+"0]").remove();
+			$("input[name=wrong"+id+"1]").remove();
+			$("input[name=wrong"+id+"2]").remove();
+			for(var i=id; i<=a;i++){
+				$("#br"+i).attr('id','br'+(i-1));
+				$("#slovo"+i).html("Вопрос "+(i));
+				$("#slovo"+i).attr('id','slovo'+(i-1));
+				$("input[name=vopros"+i+"]").attr('name','vopros'+(i-1));
+				$("input[name=right"+i+"]").attr('name','right'+(i-1));
+				$("input[name=wrong"+i+"0]").attr('name','wrong'+(i-1)+'0');
+				$("input[name=wrong"+i+"1]").attr('name','wrong'+(i-1)+'1');
+				$("input[name=wrong"+i+"2]").attr('name','wrong'+(i-1)+'2');
+				$('#'+i).attr('id',i-1);	
+			}
+			a--;
+			$(this).remove();
+		
 	});
 	});
 	</script>
-	<br><button id="ewevopros">Еще</button>
-	<button id="delete">Удалить</button>
+	<br><button type="button" id="ewevopros">Еще</button>
 	<form method='post' id="voprosForm">
 	<input type='text' name='name' placeholder='Название'>
 	<input type='text' name='description' placeholder='Описание'>
