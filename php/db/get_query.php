@@ -7,5 +7,4 @@ function get_query($query, $table_name, $connection)
 	$result = $connection->query($sql);	
 	return $result;
 }
-
 ?>

@@ -2,24 +2,31 @@
 session_start();
 
 $db_name = $_SESSION['studycenter'];
-
-if (isset($_GET['tele'])) {
+// if(isset($_SESSION['id'])){
+    
+// }
+if (isset($_SESSION['tele'])) {
     $iin_b = FALSE;
-    $tele = $_GET['tele'];
+    $tele = $_SESSION['tele'];
 }
-else{
+else if(isset($_SESSION['iin'])){
     $iin_b = TRUE;
-    $iin = $_GET['iin'];
+    $iin = $_SESSION['iin'];
 }
+
 include 'php/db/connect_db.php';
 include 'php/db/get_all_data.php';
 include 'php/db/get.php';
 include 'php/db/get_query.php';
+include 'php/db/get_personal.php';
 
+$_SESSION['id'] = $personal['id'];
+$_SESSION['iin'] = $personal['iin'];
 $connection->set_charset("utf8");
 
 $result = getAllData('about', $connection);
-$row = $result->fetch_assoc();
+$about = $result->fetch_assoc();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +39,7 @@ $row = $result->fetch_assoc();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Thousand - Admin Page</title>
+    <title>Jjournal <?php echo $personal['id']; ?></title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -42,16 +49,15 @@ $row = $result->fetch_assoc();
 
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <link rel="stylesheet" type="text/css" href="css/teacher.css">
     <link rel="stylesheet" type="text/css" href="css/custum.css">
 
-    <link rel="stylesheet" type="text/css" href="css/teacher.css">
 </head>
 
 <body>
 
-    <div>
+    <div id="wrapper">
 
-        <!-- Navigation -->
         <nav class="navbar navbar-default navbar-jjournal navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -61,7 +67,7 @@ $row = $result->fetch_assoc();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="admin_panel.php"><?php echo $row['name']; ?></a>
+                <a class="navbar-brand" href="te.php"><?php echo $about['name']; ?></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -164,21 +170,56 @@ $row = $result->fetch_assoc();
                     </ul>
                 </li>
             </ul>
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-           
+            
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav side-jjournal">
+                    <li class="active">
+                        <a class="jjournal-white" href=""><i class="fa fa-fw fa-dashboard"></i> Панель управления</a>
+                    </li>
+                    <li>
+                        <a  class="jjournal-white" href="teacher_students.php"><i class="fa fa-fw fa-bar-chart-o"></i> Студенты</a>
+                    </li>
+                    <li>
+                        <a  class="jjournal-white" href="admin_teachers.php"><i class="fa fa-fw fa-table"></i> Учители</a>
+                    </li>
+                    <li>
+                        <a  class="jjournal-white" href="admin_subjects.php"><i class="fa fa-fw fa-edit"></i> Предметы</a>
+                    </li>
+                    <li>
+                        <a  class="jjournal-white" href="admin_groups.php"><i class="fa fa-fw fa-desktop"></i> Группы</a>
+                    </li>
+                    <li>
+                        <a  class="jjournal-white" href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="#">Dropdown Item</a>
+                            </li>
+                            <li>
+                                <a href="#">Dropdown Item</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+                    </li>
+                </ul>
+            </div>
             <!-- /.navbar-collapse -->
         </nav>
 
         <div id="page-wrapper">
 
-            <div class="container">
+            <div class="container-fluid">
 
-                <div class="row">
+                <div class="row" style="margin-left: 0px; margin-right: 0px">
                     <div>
                         <div class="col-lg-6">
 
                                 
-                            <div class="panel panel-default">
+                            <!--<div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Поставить посещаемость</h3>
                                 </div>
@@ -193,7 +234,7 @@ $row = $result->fetch_assoc();
                                     </div>
                                 </div>
 
-                            </div>
+                            </div>-->
                             <div class="jjournal-panel-top">
                                 <p class="jjournal-orange">Предстоящие занятия</p>
                                 <p class="jjournal-orange" style="float: right"><a href="">Посмотреть расписание</a></p>
@@ -223,53 +264,47 @@ $row = $result->fetch_assoc();
                     <div class="col-lg-6">
                         <div class="jjournal-panel-top">
                             <p class="jjournal-green">Предстоящие дни рождения</p>
-                           <?php 
-                                if ($iin_b) {
-                                    $query_t = "iin = ".$iin;
-                                }else{
-                                    $query_t = "telephone = ".$tele;
-                                }
-                                $data = get_query($query_t, "teacher", $connection);
-                                $teacher_d = $data->fetch_assoc();
-                                // end teacher data taking
-                                $fathername_t = $teacher_d['fathername'];
-                                $id_t = $teacher_d['id'];
-                                $query_c = "teacher_id = ".$id_t;
-                                $data_groups = get_query($query_c, "class", $connection);
-                                $students_b = array();
-                                $order = 0;
-                                while ($data_group = $data_groups->fetch_assoc()) {
-                                    $id_g = $data_group['id'];
-                                    $query_ccs = "class_id = ".$id_g;
-                                    $relation_cs = get_query($query_ccs, "relation_cs", $connection);
-                                    while ($relation_cs_s = $relation_cs->fetch_assoc()) {
-                                        $student_id = $relation_cs_s['student_id'];
-                                        $query_s = "id = ".$student_id;
-                                        $student_d = get_query($query_s, "student", $connection);
-                                        $single_student_d = $student_d->fetch_assoc();
-                                        $students_b[$order] = $single_student_d['birthday'];
-                                        $order++;
-                                    }
-                                }   
-                                print_r($students_b);
+                            <?php
+                                include "php/teacher_panel/birthdays.php";
+                                
                             ?>
                         </div>
                         <ul class="jjournal-orders">
-                            
+                                <?php 
+                                    $order_of_id = 0;
+                                    while($order_of_id < sizeof($students_b)){
+                                        $query = "id = ".$all_id[$order_of_id];
+                                        $tt = get_query($query, 'student', $connection);
+                                        if ($tt->num_rows > 0) {
+                                            while ($row_ts = $tt->fetch_assoc()) {
+                                                ?>
+                                                <li><?php echo $row_ts['firstname']." ".$row_ts['lastname']."-".$all[$order_of_id]; ?></li>
+                                                <?php
+                                            }
+                                        }else{
+                                            echo "Ошибка";
+                                        }
+                                        $order_of_id++;
+                                    }
+                                    
+                                
+                                ?>
                         </ul>
                     </div>
-                    <!-- <div class="col-lg-6">
+                     <div class="col-lg-6">
                         <div class="alert alert-info alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <i class="fa fa-info-circle"></i>  <strong>Like SB Admin?</strong> Try out <a href="http://startbootstrap.com/template-overviews/sb-admin-2" class="alert-link">SB Admin 2</a> for additional features!
                         </div>
-                    </div> -->
+                    </div> 
 
                 </div>
 
                 <div class="row">
                     <div class="col-lg-6">
-                        
+                        <a class="btn btn-success">Test database</a>
+                        <a class="btn btn-success">Test a group</a>
+                        <a class="btn btn-success">Create test</a>
                     </div>
                     
                 </div>

@@ -24,13 +24,17 @@ if($result->num_rows > 0){
 		}else if($row['status'] == 'student'){
 			echo 'student';
 		}else if($row['status'] == 'teacher'){
-			// 12
+			
 			if(strlen($user_name) > 11){
-				$to_admin = "Location: ../../teacher_panel.php?iin=".$row['iin'];
+				$to_admin = "Location: ../../teacher_panel.php";
+				//?iin=".$row['iin']
 				$_SESSION['studycenter'] = $export_db_name;
+				$_SESSION['iin'] = $row['iin'];
 			}else{
-				$to_admin = "Location: ../../teacher_panel.php?tele=".$row['tele'];
+				$to_admin = "Location: ../../teacher_panel.php";
+				//?tele=".$row['tele']
 				$_SESSION['studycenter'] = $export_db_name;
+				$_SESSION['tele'] = $row['tele'];
 			}
 			// 87051581895
 			// 998877665544
