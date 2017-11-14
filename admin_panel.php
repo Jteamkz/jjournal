@@ -564,7 +564,7 @@ include 'php/connectOS.php'
                                             </div>
                                              <div class="col-xs-3">
                                                 <!--<form method="POST" action="add/group.php">-->
-                                                    <br><button data-toggle="modal" data-target="#myModal4" class="btn btn-success btn-lg">Добавить группу</button>
+                                                    <br><a href="add/group.php" data-toggle="modal" class="btn btn-success btn-lg">Добавить группу</a>
                                                 <!--</form>-->
 
 <!-- Modal -->
@@ -644,37 +644,37 @@ include 'php/connectOS.php'
 				<h5 class="togglerH5" id="mondayToggler">Понедельник</h5>
 				<div id="mondayDiv">
 					<input type="text" placeholder="Кабинет" name="mondayroom">
-					с <input type="text" placeholder="ч" style="width:23px" name="monday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="monday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="monday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="monday4" maxlength="2">
+					с <input type="text" placeholder="чч" style="width:23px" name="monday1" maxlength="2"><input type="text" placeholder="мм" style="width:23px" name="monday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:23px" name="monday3" maxlength="2"><input type="text" placeholder="мм" style="width:23px" name="monday4" maxlength="2">
 				</div>
 				<h5 class="togglerH5" id="tuesdayToggler">Вторник</h5>
 				<div id="tuesdayDiv">
 					<input type="text" placeholder="Кабинет" name="tuesdayroom">
-					с <input type="text" placeholder="ч" style="width:23px" name="tuesday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="tuesday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="tuesday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="tuesday4" maxlength="2">
+					с <input type="text" placeholder="чч" style="width:23px" name="tuesday1" maxlength="2"><input type="text" placeholder="мм" style="width:23px" name="tuesday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:23px" name="tuesday3" maxlength="2"><input type="text" placeholder="мм" style="width:23px" name="tuesday4" maxlength="2">
 				</div>
 				<h5 class="togglerH5" id="wednesdayToggler">Среда</h5>
 				<div id="wednesdayDiv">
 					<input type="text" placeholder="Кабинет" name="wednesdayroom">
-					с <input type="text" placeholder="ч" style="width:23px" name="wednesday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="wednesday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="wednesday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="wednesday4" maxlength="2">
+					с <input type="text" placeholder="чч" style="width:23px" name="wednesday1" maxlength="2"><input type="text" placeholder="мм" style="width:23px" name="wednesday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:23px" name="wednesday3" maxlength="2"><input type="text" placeholder="мм" style="width:23px" name="wednesday4" maxlength="2">
 				</div>
 				<h5 class="togglerH5" id="thursdayToggler">Четверг</h5>
 				<div id="thursdayDiv">
 					<input type="text" placeholder="Кабинет" name="thursdayroom">
-					с <input type="text" placeholder="ч" style="width:23px" name="thursday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="thursday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="thursday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="thursday4" maxlength="2">
+					с <input type="text" placeholder="чч" style="width:23px" name="thursday1" maxlength="2"><input type="text" placeholder="мм" style="width:23px" name="thursday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:23px" name="thursday3" maxlength="2"><input type="text" placeholder="мм" style="width:23px" name="thursday4" maxlength="2">
 				</div>
 				<h5 class="togglerH5" id="fridayToggler">Пятница</h5>
 				<div id="fridayDiv">
 					<input type="text" placeholder="Кабинет" name="fridayroom">
-					с <input type="text" placeholder="ч" style="width:23px" name="friday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="friday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="friday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="friday4" maxlength="2">
+					с <input type="text" placeholder="чч" style="width:23px" name="friday1" maxlength="2"><input type="text" placeholder="мм" style="width:23px" name="friday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:23px" name="friday3" maxlength="2"><input type="text" placeholder="мм" style="width:23px" name="friday4" maxlength="2">
 				</div>
 				<h5 class="togglerH5" id="saturdayToggler">Суббота</h5>
 				<div id="saturdayDiv">
 					<input type="text" placeholder="Кабинет" name="saturdayroom">
-					с <input type="text" placeholder="ч" style="width:23px" name="saturday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="saturday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="saturday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="saturday4" maxlength="2">
+					с <input type="text" placeholder="чч" style="width:23px" name="saturday1" maxlength="2"><input type="text" placeholder="мм" style="width:23px" name="saturday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:23px" name="saturday3" maxlength="2"><input type="text" placeholder="мм" style="width:23px" name="saturday4" maxlength="2">
 				</div>
 				<h5 class="togglerH5" id="sundayToggler">Воскресенье</h5>
 				<div id="sundayDiv">
 					<input type="text" placeholder="Кабинет" name="sundayroom">
-					с <input type="text" placeholder="ч" style="width:23px" name="sunday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="sunday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="sunday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="sunday4" maxlength="2">
+					с <input type="text" placeholder="чч" style="width:23px" name="sunday1" maxlength="2"><input type="text" placeholder="мм" style="width:23px" name="sunday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:23px" name="sunday3" maxlength="2"><input type="text" placeholder="мм" style="width:23px" name="sunday4" maxlength="2">
 				</div>
     	<button>Добавить</button>
     	</form>

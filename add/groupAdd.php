@@ -35,14 +35,20 @@
 		$_POST["sunday2"] = foo($_POST["sunday2"]);
 		$_POST["sunday3"] = foo($_POST["sunday3"]);
 		$_POST["sunday4"] = foo($_POST["sunday4"]);
-		$monday = $_POST["monday1"]." ".$_POST["monday2"]." ".$_POST["monday3"]." ".$_POST["monday4"]." ".$_POST["mondayroom"];
-		$tuesday = $_POST["tuesday1"]." ".$_POST["tuesday2"]." ".$_POST["tuesday3"]." ".$_POST["tuesday4"]." ".$_POST["tuesdayroom"];
-		$wednesday = $_POST["wednesday1"]." ".$_POST["wednesday2"]." ".$_POST["wednesday3"]." ".$_POST["wednesday4"]." ".$_POST["wednesdayroom"];
-		$thursday = $_POST["thursday1"]." ".$_POST["thursday2"]." ".$_POST["thursday3"]." ".$_POST["thursday4"]." ".$_POST["thursdayroom"];
-		$friday = $_POST["friday1"]." ".$_POST["friday2"]." ".$_POST["friday3"]." ".$_POST["friday4"]." ".$_POST["fridayroom"];
-		$saturday = $_POST["saturday1"]." ".$_POST["saturday2"]." ".$_POST["saturday3"]." ".$_POST["saturday4"]." ".$_POST["saturdayroom"];
-		$sunday = $_POST["sunday1"]." ".$_POST["sunday2"]." ".$_POST["sunday3"]." ".$_POST["sunday4"]." ".$_POST["sundayroom"];
-		
+		$monday = $_POST["monday1"]." ".$_POST["monday2"]." ".$_POST["monday3"]." ".$_POST["monday4"];
+		$tuesday = $_POST["tuesday1"]." ".$_POST["tuesday2"]." ".$_POST["tuesday3"]." ".$_POST["tuesday4"];
+		$wednesday = $_POST["wednesday1"]." ".$_POST["wednesday2"]." ".$_POST["wednesday3"]." ".$_POST["wednesday4"];
+		$thursday = $_POST["thursday1"]." ".$_POST["thursday2"]." ".$_POST["thursday3"]." ".$_POST["thursday4"];
+		$friday = $_POST["friday1"]." ".$_POST["friday2"]." ".$_POST["friday3"]." ".$_POST["friday4"];
+		$saturday = $_POST["saturday1"]." ".$_POST["saturday2"]." ".$_POST["saturday3"]." ".$_POST["saturday4"];
+		$sunday = $_POST["sunday1"]." ".$_POST["sunday2"]." ".$_POST["sunday3"]." ".$_POST["sunday4"];
+		$mr = $_POST['mondayroom'];
+		$tur = $_POST['tuesdayroom'];
+		$wr = $_POST['wednesdayroom'];
+		$thr = $_POST['thursdayroom'];
+		$fr = $_POST['fridayroom'];
+		$sar = $_POST['saturdayroom'];
+		$sur = $_POST['sundayroom'];
 		if($_POST['checkbox']){
 			$students = join(',',$_POST['checkbox']);
 			$sql = "UPDATE student SET bool='false' WHERE id IN(".$students.")";
@@ -53,7 +59,7 @@
 			    echo "Kulager: " . $conn->error;
 			}
 		}
-		$sql = "INSERT INTO schedule (monday, tuesday, wednesday, thursday, friday, saturday, sunday) VALUES ('$monday', '$tuesday', '$wednesday', '$thursday', '$friday', '$saturday', '$sunday')";
+		$sql = "INSERT INTO schedule (monday, tuesday, wednesday, thursday, friday, saturday, sunday, mr, tur, wr, thr, fr, sar, sur) VALUES ('$monday', '$tuesday', '$wednesday', '$thursday', '$friday', '$saturday', '$sunday', '$mr', '$tur', '$wr', '$thr', '$fr', '$sar', '$sur')";
 
 		if ($con->query($sql) === TRUE) {
 			$last_id = $con->insert_id;
@@ -75,6 +81,7 @@
 
 		for($i = 0; $i < $size; $i++){
 			
+			if($students!=",")
 			if($students[$i] == ','){
 				$sql = "INSERT INTO relation_cs (class_id, student_id) VALUES ('$lastik','$idiwka')";
 

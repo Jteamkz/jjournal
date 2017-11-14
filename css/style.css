@@ -3,7 +3,7 @@
 	background-color:red;
 }
 .formGroupAdding{
-	padding:50px;
+	padding-top:10px;
 }
 #toggler{
 	cursor:pointer;
@@ -27,3 +27,46 @@
 .togglerH5:hover{
 	text-decoration: none;
 }
+input[type=checkbox]{
+			cursor:pointer;
+		}
+		input[type=text], select{
+			  width: 170px;
+			  height: 34px;
+			  padding: 3px 3px;
+			  font-size: 14px;
+			  color: #555;
+			  background-color: #fff;
+			  border: 1px solid #ccc;
+			  border-radius: 4px;
+			  margin-bottom:5px;
+			  margin-right:5px;
+		}
+		input[type="text"]:disabled{
+			background:#C0C0C0;
+			cursor: not-allowed;
+		}
+		input[type=text] :focus{
+			border-color: #66afe9;
+  			outline: 0;
+		}
+		select :focus{
+			border-color: #66afe9;
+  			outline: 0;
+		}
+				-webkit-scrollbar-track
+		{
+			border: 1px solid #cccccc;
+			background-color: #cccccc;
+		}
+
+		::-webkit-scrollbar
+		{
+			width: 10px;
+			background-color: white;
+		}
+
+		::-webkit-scrollbar-thumb
+		{
+			background-color: #cccccc;	
+		}

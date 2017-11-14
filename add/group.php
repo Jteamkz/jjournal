@@ -18,81 +18,90 @@
 			    $("#toggler").click(function(){
 			        $("#toggling").toggle(500);
 			    });
-			    $("#mondayDiv").hide();
-			    $("#tuesdayDiv").hide();
-			    $("#wednesdayDiv").hide();
-			    $("#thursdayDiv").hide();
-			    $("#fridayDiv").hide();
-			    $("#saturdayDiv").hide();
-			    $("#sundayDiv").hide();
-			    $("#mondayToggler").click(function(){
-			        $("#mondayDiv").toggle(300);
-			        $('input[name=mondayroom]').val("");
-			        $('input[name=monday1]').val("");
-			        $('input[name=monday2]').val("");
-			        $('input[name=monday3]').val("");
-			        $('input[name=monday4]').val("");
-			    });
-			    $("#tuesdayToggler").click(function(){
-			        $("#tuesdayDiv").toggle(300);
-			        $('input[name=tuesdayroom]').val("");
-			        $('input[name=tuesday1]').val("");
-			        $('input[name=tuesday2]').val("");
-			        $('input[name=tuesday3]').val("");
-			        $('input[name=tuesday4]').val("");
-			    });
-			    $("#wednesdayToggler").click(function(){
-			        $("#wednesdayDiv").toggle(300);
-			        $('input[name=wednesdayroom]').val("");
-			        $('input[name=wednesday1]').val("");
-			        $('input[name=wednesday2]').val("");
-			        $('input[name=wednesday3]').val("");
-			        $('input[name=wednesday4]').val("");
-			    });
-			    $("#thursdayToggler").click(function(){
-			        $("#thursdayDiv").toggle(300);
-			        $('input[name=thursdayroom]').val("");
-			        $('input[name=thursday1]').val("");
-			        $('input[name=thursday2]').val("");
-			        $('input[name=thursday3]').val("");
-			        $('input[name=thursday4]').val("");
-			    });
-			    $("#fridayToggler").click(function(){
-			        $("#fridayDiv").toggle(300);
-			        $('input[name=fridayroom]').val("");
-			        $('input[name=friday1]').val("");
-			        $('input[name=friday2]').val("");
-			        $('input[name=friday3]').val("");
-			        $('input[name=friday4]').val("");
-			    });
-			    $("#saturdayToggler").click(function(){
-			        $("#saturdayDiv").toggle(300);
-			        $('input[name=saturdayroom]').val("");
-			        $('input[name=saturday1]').val("");
-			        $('input[name=saturday2]').val("");
-			        $('input[name=saturday3]').val("");
-			        $('input[name=saturday4]').val("");
-			    });
-			    $("#sundayToggler").click(function(){
-			        $("#sundayDiv").toggle(300);
-			        $('input[name=sundayroom]').val("");
-			        $('input[name=sunday1]').val("");
-			        $('input[name=sunday2]').val("");
-			        $('input[name=sunday3]').val("");
-			        $('input[name=sunday4]').val("");
+			var array = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+			for(var i = 0; i<7; i++){
+				document.getElementById(array[i] + "room").disabled = true;
+				document.getElementById(array[i] + "room").name = array[i] + "room";
+			    document.getElementById(array[i] + "1").disabled = true;
+			    document.getElementById(array[i] + "1").name = array[i] + "1";
+			    document.getElementById(array[i] + "2").disabled = true; 
+			    document.getElementById(array[i] + "2").name = array[i] + "2";
+			    document.getElementById(array[i] + "3").disabled = true; 
+			    document.getElementById(array[i] + "3").name = array[i] + "3";
+			    document.getElementById(array[i] + "4").disabled = true; 
+			    document.getElementById(array[i] + "4").name = array[i] + "4";
+			}
+			    $("input[type=checkbox]").click(function(){
+			    		var id = $(this).val();
+			    		console.log(id);
+			        	if(document.getElementById(id+"room").disabled==true){
+			        		document.getElementById(id + "room").disabled = false; 
+			        		document.getElementById(id + "1").disabled = false; 
+			        		document.getElementById(id + "2").disabled = false; 
+			        		document.getElementById(id + "3").disabled = false; 
+			        		document.getElementById(id + "4").disabled = false; 
+			        	}else{
+			        		document.getElementById(id + "room").disabled = true; 
+			        		document.getElementById(id + "1").disabled = true; 
+			        		document.getElementById(id + "2").disabled = true; 
+			        		document.getElementById(id + "3").disabled = true; 
+			        		document.getElementById(id + "4").disabled = true; 
+			        	}
 			    });
 			});
 </script>
 	</head>
+<style>
+		input[type=checkbox]{
+			cursor:pointer;
+		}
+		input[type=text], select{
+			  width: 190px;
+			  height: 34px;
+			  padding: 3px 3px;
+			  font-size: 14px;
+			  color: #555;
+			  background-color: #fff;
+			  border: 1px solid #ccc;
+			  border-radius: 4px;
+			  margin-bottom:5px;
+			  margin-right:5px;
+		}
+		input[type="text"]:disabled{
+			background:#C0C0C0;
+		}
+		input[type=text] :focus{
+			border-color: #66afe9;
+  			outline: 0;
+		}
+		select :focus{
+			border-color: #66afe9;
+  			outline: 0;
+		}
+				-webkit-scrollbar-track
+		{
+			border: 1px solid #cccccc;
+			background-color: #cccccc;
+		}
 
+		::-webkit-scrollbar
+		{
+			width: 10px;
+			background-color: white;
+		}
+
+		::-webkit-scrollbar-thumb
+		{
+			background-color: #cccccc;	
+		}
+	</style>
 	<body>
-	<div class="headerGroupAdding">
-		<a href="../admin_panel.php">Назад</a>
-	</div>
 	<div class="formGroupAdding">
 	<form method="post" action="groupAdd.php">
+		<div class="row">
+			<div class="col-xs-6">
 		<input type="text" placeholder="Название группы" name="name">
-		<select name="subject" required>
+		<select style="margin-left:15px; margin-right:5px" name="subject" required>
 		<option value="" disabled selected>Выберите предмет</option>
 			<?php
 				$sql = "SELECT * FROM subjects";
@@ -108,7 +117,7 @@
 				}
 			?>
 		</select>
-		<select name="teacher" required>
+		<select style="margin-left:10px" name="teacher" required>
 		<option value="" disabled selected>Выберите учителя</option>
 			<?php
 				$sql = "SELECT * FROM teacher";
@@ -124,8 +133,80 @@
 				}
 			?>
 		</select>
-		<br>
-		Выберите учеников<br>
+	<style>
+		.dender{
+			height:100px;
+		}
+	</style>
+		<div class="row">
+			<div class="col-xs-4">
+				<div class="dender">
+		<h5 class="togglerH5" id="mondayToggler">Понедельник <input id="mondayCheck" value="monday" style="float:right;" type="checkbox"></h5>
+				<div id="mondayDiv">
+					<input type="text" placeholder="Кабинет" id="mondayroom">
+					с <input type="text" placeholder="ч" style="width:23px" id="monday1" maxlength="2" ><input type="text" placeholder="м" style="width:23px" id="monday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" id="monday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" id="monday4" maxlength="2">
+				</div>
+			</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="dender">
+				<h5 class="togglerH5" id="tuesdayToggler">Вторник <input style="float:right;" value="tuesday" type="checkbox"></h5>
+				<div id="tuesdayDiv">
+					<input type="text" placeholder="Кабинет" id="tuesdayroom">
+					с <input type="text" placeholder="ч" style="width:23px" id="tuesday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" id="tuesday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" id="tuesday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" id="tuesday4" maxlength="2">
+				</div>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="dender">
+				<h5 class="togglerH5" id="wednesdayToggler">Среда <input style="float:right;" value="wednesday" type="checkbox"></h5>
+				<div id="wednesdayDiv">
+					<input type="text" placeholder="Кабинет" id="wednesdayroom">
+					с <input type="text" placeholder="ч" style="width:23px" id="wednesday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" id="wednesday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" id="wednesday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" id="wednesday4" maxlength="2">
+				</div>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="dender">
+				<h5 class="togglerH5" id="thursdayToggler">Четверг <input style="float:right;" value="thursday" type="checkbox"></h5>
+				<div id="thursdayDiv">
+					<input type="text" placeholder="Кабинет" id="thursdayroom">
+					с <input type="text" placeholder="ч" style="width:23px" id="thursday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" id="thursday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" id="thursday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" id="thursday4" maxlength="2">
+				</div>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="dender">
+				<h5 class="togglerH5" id="fridayToggler">Пятница <input style="float:right;" value="friday" type="checkbox"></h5>
+				<div id="fridayDiv">
+					<input type="text" placeholder="Кабинет" id="fridayroom">
+					с <input type="text" placeholder="ч" style="width:23px" id="friday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" id="friday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" id="friday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" id="friday4" maxlength="2">
+				</div>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="dender">
+				<h5 class="togglerH5" id="saturdayToggler">Суббота <input style="float:right;" value="saturday" type="checkbox"></h5>
+				<div id="saturdayDiv">
+					<input type="text" placeholder="Кабинет" id="saturdayroom">
+					с <input type="text" placeholder="ч" style="width:23px" id="saturday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" id="saturday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" id="saturday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" id="saturday4" maxlength="2">
+				</div>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="dender">
+				<h5 class="togglerH5" id="sundayToggler">Воскресенье <input style="float:right;" value="sunday" type="checkbox"></h5>
+				<div id="sundayDiv">
+					<input type="text" placeholder="Кабинет" id="sundayroom">
+					с <input type="text" placeholder="ч" style="width:23px" id="sunday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" id="sunday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" id="sunday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" id="sunday4" maxlength="2">
+				</div>
+			</div>
+			</div>
+		</div>
+		</div>
+		<div class="col-xs-6">
+			Выберите учеников<br>
+			<div style="overflow-y:scroll; min-height:500px; max-height:500px; border-top:1px solid #cccccc;">
 		<?php
 				$sql = "SELECT * FROM student WHERE bool='true'";
 				$result = $con->query($sql);
@@ -152,42 +233,10 @@
 				}
 				echo "</div>";
 			?>
-				<h5 class="togglerH5" id="mondayToggler">Понедельник</h5>
-				<div id="mondayDiv">
-					<input type="text" placeholder="Кабинет" name="mondayroom">
-					с <input type="text" placeholder="ч" style="width:23px" name="monday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="monday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="monday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="monday4" maxlength="2">
-				</div>
-				<h5 class="togglerH5" id="tuesdayToggler">Вторник</h5>
-				<div id="tuesdayDiv">
-					<input type="text" placeholder="Кабинет" name="tuesdayroom">
-					с <input type="text" placeholder="ч" style="width:23px" name="tuesday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="tuesday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="tuesday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="tuesday4" maxlength="2">
-				</div>
-				<h5 class="togglerH5" id="wednesdayToggler">Среда</h5>
-				<div id="wednesdayDiv">
-					<input type="text" placeholder="Кабинет" name="wednesdayroom">
-					с <input type="text" placeholder="ч" style="width:23px" name="wednesday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="wednesday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="wednesday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="wednesday4" maxlength="2">
-				</div>
-				<h5 class="togglerH5" id="thursdayToggler">Четверг</h5>
-				<div id="thursdayDiv">
-					<input type="text" placeholder="Кабинет" name="thursdayroom">
-					с <input type="text" placeholder="ч" style="width:23px" name="thursday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="thursday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="thursday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="thursday4" maxlength="2">
-				</div>
-				<h5 class="togglerH5" id="fridayToggler">Пятница</h5>
-				<div id="fridayDiv">
-					<input type="text" placeholder="Кабинет" name="fridayroom">
-					с <input type="text" placeholder="ч" style="width:23px" name="friday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="friday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="friday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="friday4" maxlength="2">
-				</div>
-				<h5 class="togglerH5" id="saturdayToggler">Суббота</h5>
-				<div id="saturdayDiv">
-					<input type="text" placeholder="Кабинет" name="saturdayroom">
-					с <input type="text" placeholder="ч" style="width:23px" name="saturday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="saturday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="saturday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="saturday4" maxlength="2">
-				</div>
-				<h5 class="togglerH5" id="sundayToggler">Воскресенье</h5>
-				<div id="sundayDiv">
-					<input type="text" placeholder="Кабинет" name="sundayroom">
-					с <input type="text" placeholder="ч" style="width:23px" name="sunday1" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="sunday2" maxlength="2"> до <input type="text" placeholder="ч" style="width:23px" name="sunday3" maxlength="2"><input type="text" placeholder="м" style="width:23px" name="sunday4" maxlength="2">
-				</div>
-    	<button>Add a group</button>
+		</div>
+		</div>
+	</div>
+    	<button style="float:right; border-radius: 0px; color:white; margin-top:15px; background-color: #2ecc71" class="btn">Добавить группу</button>
     	</form>
 	</div>
 	</body>
