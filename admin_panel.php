@@ -6,7 +6,8 @@ include 'php/db/connect_db.php';
 include 'php/db/get_all_data.php';
 include 'php/db/get.php';
 include 'php/SQLconnect.php';
-include 'php/connectOS.php'
+include 'php/connectOS.php';
+$connection->set_charset("utf8");
 ?>
 <!DOCTYPE html>
 <html lang="en">
