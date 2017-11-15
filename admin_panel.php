@@ -565,7 +565,7 @@ $connection->set_charset("utf8");
                                             </div>
                                              <div class="col-xs-3">
                                                 <!--<form method="POST" action="add/group.php">-->
-                                                    <br><a href="add/group.php" data-toggle="modal" class="btn btn-success btn-lg">Добавить группу</a>
+                                                    <br><a href="groupPage.php" class="btn btn-success btn-lg">Добавить группу</a>
                                                 <!--</form>-->
 
 <!-- Modal -->

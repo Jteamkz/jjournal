@@ -40,7 +40,7 @@ input[type=checkbox]{
 			  border: 1px solid #ccc;
 			  border-radius: 4px;
 			  margin-bottom:5px;
-			  margin-right:5px;
+			  margin-right:2px;
 		}
 		input[type="text"]:disabled{
 			background:#C0C0C0;
