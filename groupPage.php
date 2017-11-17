@@ -250,9 +250,9 @@ include 'php/connectOS.php'
             <div class="container-fluid">
 
                 <div class="formGroupAdding">
-    <form method="post" action="groupAdd.php">
+    <form method="post" action="add/groupAdd.php">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-8">
         <input type="text" placeholder="Название группы" name="name">
         <select style="" name="subject" required>
         <option value="" disabled selected>Выберите предмет</option>
@@ -296,8 +296,8 @@ include 'php/connectOS.php'
                 <div class="dender">
         <h5 class="togglerH5" id="mondayToggler">Понедельник <input id="mondayCheck" value="monday" style="float:right;" type="checkbox"></h5>
                 <div id="mondayDiv">
-                    <input type="text" placeholder="Кабинет" id="mondayroom">
-                    с <input type="text" placeholder="чч" style="width:23px;" id="monday1" maxlength="2" ><input type="text" placeholder="мм" style="width:27px;" id="monday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:23px;" id="monday3" maxlength="2"><input type="text" placeholder="мм" style="width:27px;" id="monday4" maxlength="2">
+                    <input type="text" placeholder="Кабинет" id="mondayroom"><br>
+                    с <input type="text" placeholder="чч" style="width:30px;" id="monday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="monday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="monday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="monday4" maxlength="2">
                 </div>
             </div>
             </div>
@@ -305,8 +305,8 @@ include 'php/connectOS.php'
                 <div class="dender">
                 <h5 class="togglerH5" id="tuesdayToggler">Вторник <input style="float:right;" value="tuesday" type="checkbox"></h5>
                 <div id="tuesdayDiv">
-                    <input type="text" placeholder="Кабинет" id="tuesdayroom">
-                    с <input type="text" placeholder="чч" style="width:23px;" id="tuesday1" maxlength="2"><input type="text" placeholder="мм" style="width:27px;" id="tuesday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:23px;" id="tuesday3" maxlength="2"><input type="text" placeholder="мм" style="width:27px;" id="tuesday4" maxlength="2">
+                    <input type="text" placeholder="Кабинет" id="tuesdayroom"><br>
+                    с <input type="text" placeholder="чч" style="width:30px;" id="tuesday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="tuesday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="tuesday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="tuesday4" maxlength="2">
                 </div>
                 </div>
             </div>
@@ -314,8 +314,8 @@ include 'php/connectOS.php'
                 <div class="dender">
                 <h5 class="togglerH5" id="wednesdayToggler">Среда <input style="float:right;" value="wednesday" type="checkbox"></h5>
                 <div id="wednesdayDiv">
-                    <input type="text" placeholder="Кабинет" id="wednesdayroom">
-                    с <input type="text" placeholder="чч" style="width:23px;" id="wednesday1" maxlength="2"><input type="text" placeholder="мм" style="width:27px;" id="wednesday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:23px;" id="wednesday3" maxlength="2"><input type="text" placeholder="мм" style="width:27px;" id="wednesday4" maxlength="2">
+                    <input type="text" placeholder="Кабинет" id="wednesdayroom"><br>
+                    с <input type="text" placeholder="чч" style="width:30px;" id="wednesday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="wednesday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="wednesday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="wednesday4" maxlength="2">
                 </div>
                 </div>
             </div>
@@ -323,8 +323,8 @@ include 'php/connectOS.php'
                 <div class="dender">
                 <h5 class="togglerH5" id="thursdayToggler">Четверг <input style="float:right;" value="thursday" type="checkbox"></h5>
                 <div id="thursdayDiv">
-                    <input type="text" placeholder="Кабинет" id="thursdayroom">
-                    с <input type="text" placeholder="чч" style="width:23px;" id="thursday1" maxlength="2"><input type="text" placeholder="мм" style="width:27px;" id="thursday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:23px;" id="thursday3" maxlength="2"><input type="text" placeholder="мм" style="width:27px;" id="thursday4" maxlength="2">
+                    <input type="text" placeholder="Кабинет" id="thursdayroom"><br>
+                    с <input type="text" placeholder="чч" style="width:30px;" id="thursday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="thursday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="thursday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="thursday4" maxlength="2">
                 </div>
                 </div>
             </div>
@@ -332,8 +332,8 @@ include 'php/connectOS.php'
                 <div class="dender">
                 <h5 class="togglerH5" id="fridayToggler">Пятница <input style="float:right;" value="friday" type="checkbox"></h5>
                 <div id="fridayDiv">
-                    <input type="text" placeholder="Кабинет" id="fridayroom">
-                    с <input type="text" placeholder="чч" style="width:23px;" id="friday1" maxlength="2"><input type="text" placeholder="мм" style="width:27px;" id="friday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:23px;" id="friday3" maxlength="2"><input type="text" placeholder="мм" style="width:27px;" id="friday4" maxlength="2">
+                    <input type="text" placeholder="Кабинет" id="fridayroom"><br>
+                    с <input type="text" placeholder="чч" style="width:30px;" id="friday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="friday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="friday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="friday4" maxlength="2">
                 </div>
                 </div>
             </div>
@@ -341,8 +341,8 @@ include 'php/connectOS.php'
                 <div class="dender">
                 <h5 class="togglerH5" id="saturdayToggler">Суббота <input style="float:right;" value="saturday" type="checkbox"></h5>
                 <div id="saturdayDiv">
-                    <input type="text" placeholder="Кабинет" id="saturdayroom">
-                    с <input type="text" placeholder="чч" style="width:23px;" id="saturday1" maxlength="2"><input type="text" placeholder="мм" style="width:27px;" id="saturday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:23px;" id="saturday3" maxlength="2"><input type="text" placeholder="мм" style="width:27px;" id="saturday4" maxlength="2">
+                    <input type="text" placeholder="Кабинет" id="saturdayroom"><br>
+                    с <input type="text" placeholder="чч" style="width:30px;" id="saturday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="saturday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="saturday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="saturday4" maxlength="2">
                 </div>
                 </div>
             </div>
@@ -350,16 +350,16 @@ include 'php/connectOS.php'
                 <div class="dender">
                 <h5 class="togglerH5" id="sundayToggler">Воскресенье <input style="float:right;" value="sunday" type="checkbox"></h5>
                 <div id="sundayDiv">
-                    <input type="text" placeholder="Кабинет" id="sundayroom">
-                    с <input type="text" placeholder="чч" style="width:23px;" id="sunday1" maxlength="2"><input type="text" placeholder="мм" style="width:27px;" id="sunday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:23px;" id="sunday3" maxlength="2"><input type="text" placeholder="мм" style="width:27px;" id="sunday4" maxlength="2">
+                    <input type="text" placeholder="Кабинет" id="sundayroom"><br>
+                    с <input type="text" placeholder="чч" style="width:30px;" id="sunday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="sunday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="sunday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="sunday4" maxlength="2">
                 </div>
             </div>
             </div>
         </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             Выберите учеников<br>
-            <div style="overflow-y:scroll; min-height:500px; max-height:500px; border-top:1px solid #cccccc;">
+            <div style="overflow-y:scroll; min-height:400px; max-height:400px; border-top:1px solid #cccccc;">
         <?php
                 $sql = "SELECT * FROM student WHERE bool='true'";
                 $result = $con->query($sql);
@@ -379,7 +379,7 @@ include 'php/connectOS.php'
                 if ($result->num_rows > 0) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
-                        echo "<input name='checkbox[]' type='checkbox'  value='".$row['id']."'/>".$row['firstname']." ".$row['lastname']." ".$row['father']."<br>";
+                        echo "<div class='checkDiv'>".$row['firstname']." ".$row['lastname']." ".$row['father']."</div>"."<input name='checkbox[]' type='checkbox' style='float:right; margin-right:10px;' value='".$row['id']."'/>"."<br>";
                     }
                 } else {
                     
@@ -387,6 +387,7 @@ include 'php/connectOS.php'
                 echo "</div>";
             ?>
         </div>
+    </div>
         </div>
     </div>
         <button style="float:right; border-radius: 0px; color:white; margin-top:15px; background-color: #2ecc71" class="btn">Добавить группу</button>

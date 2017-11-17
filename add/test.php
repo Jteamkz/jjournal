@@ -3,8 +3,8 @@
 	$db_name = $_SESSION['studycenter'];
 
 	include '../php/SQLconnect.php';
-	include '../php/connectOS.php'
-	?>
+	include '../php/connectOS.php';
+?>
 	<script src="../js/jquery.js"></script>
 	<script src="../js/bootstrap.js"></script>
 	<link href="../css/bootstrap.css" rel="stylesheet">
@@ -61,6 +61,9 @@
 				url: 'testAdd.php?numbervopros='+a,
 				type: 'POST',
 				data: serializedData,
+				success:function(data){
+                    window.location.assign('../admin_panel.php');
+                }
 			})
 		
 	});
