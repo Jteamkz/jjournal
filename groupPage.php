@@ -357,9 +357,9 @@ include 'php/connectOS.php'
             </div>
         </div>
         </div>
-        <div class="col-lg-4">
-            Выберите учеников<br>
-            <div style="overflow-y:scroll; min-height:400px; max-height:400px; border-top:1px solid #cccccc;">
+        Выберите учеников<br>
+        <div class="col-lg-4" style='background-color: white;'>
+            <div style="overflow-y:scroll; min-height:400px; max-height:400px;">
         <?php
                 $sql = "SELECT * FROM student WHERE bool='true'";
                 $result = $con->query($sql);
@@ -379,7 +379,7 @@ include 'php/connectOS.php'
                 if ($result->num_rows > 0) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
-                        echo "<div class='checkDiv'>".$row['firstname']." ".$row['lastname']." ".$row['father']."</div>"."<input name='checkbox[]' type='checkbox' style='float:right; margin-right:10px;' value='".$row['id']."'/>"."<br>";
+                        echo "<div class='checkDiv'>".$row['firstname']." ".$row['lastname']." ".$row['father']."<input name='checkbox[]' type='checkbox' style='float:right; margin-right:10px;' value='".$row['id']."'/>"."</div>"."<br>";
                     }
                 } else {
                     

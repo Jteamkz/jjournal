@@ -23,7 +23,7 @@
 		    echo "Error: " . $sql . "<br>" . $cuni->error;
 		}
 		
-		$sql = "INSERT INTO student (IIN, firstname, lastname, father, birthday, phone, bool, phone_parent, payday) VALUES ('$IIN', '$name', '$surname', '$father', '$birthday', '$phone', 'true', '$phoneparent', '$payday')";
+		$sql = "INSERT INTO student (IIN, firstname, lastname, fathername, birthday, phone, bool, phone_parent, payday) VALUES ('$IIN', '$name', '$surname', '$father', '$birthday', '$phone', 'true', '$phoneparent', '$payday')";
 
 		if ($con->query($sql) === TRUE) {
 		    echo "<script>window.location = '../admin_panel.php'</script>";
