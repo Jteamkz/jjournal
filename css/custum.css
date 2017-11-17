@@ -15,7 +15,6 @@ Modal window
 
 .modal-backdrop.in{
     display: table;
-    position: absolute;
     height: 100%;
     width: 100%;
 }

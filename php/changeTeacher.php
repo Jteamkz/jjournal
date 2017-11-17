@@ -135,6 +135,15 @@ if ($connection->query($update_query) === TRUE) {
 } else {
     echo "Error updating record: " . $connection->error;
 }
+$update_query_inAll = "UPDATE users SET iin = '$iin', tele = '$phone', password = '$password' WHERE iin = '$izno'";
 
+include 'db/get_all_db.php';
+
+if($conn->query($update_query_inAll) === TRUE){
+
+}else{
+    echo "Error updating record in All:".$conn->error;
+}
+$conn->close();
 $connection->close();
 ?>
