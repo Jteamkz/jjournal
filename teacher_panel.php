@@ -51,7 +51,7 @@ $about = $result->fetch_assoc();
 
     <link rel="stylesheet" type="text/css" href="css/teacher.css">
     <link rel="stylesheet" type="text/css" href="css/custum.css">
-
+    <link rel="stylesheet" type="text/css" href="css/spinner.css">
 </head>
 
 <body>
@@ -212,7 +212,7 @@ $about = $result->fetch_assoc();
 
         <div id="page-wrapper">
 
-            <div class="container-fluid">
+            <div class="container-fluid" id="myAppDobro">
 
                 <div class="row" style="margin-left: 0px; margin-right: 0px">
                     <div>
@@ -299,10 +299,11 @@ $about = $result->fetch_assoc();
                     </div> 
 
                 </div>
-
+                
                 <div class="row">
                     <div class="col-lg-6">
-                        <a class="btn btn-success">Test database</a>
+                    
+                        <a data-toggle="modal" data-target="#myModal" class="btn btn-success">Test database</a>
                         <a class="btn btn-success">Test a group</a>
                         <a class="btn btn-success">Create test</a>
                     </div>
@@ -313,7 +314,82 @@ $about = $result->fetch_assoc();
                     
                 </div>
                 <!-- /.row -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Добавьте тест группе</h4>
+      </div>
+      <div class="modal-body">
+	<div class="formGroupAdding">
+	<form method="post" action="php/teacher_panel/set_relation_test_class.php" id="testAddToClassForm">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="sel1">Выберите группу:</label>
+                        <select name="group" class="form-control" id="sel1">
+                            <?php 
+                                $get_own_groups = "teacher_id = ".$personal['id'];
+                                $tests = get_query($get_own_groups, 'class', $connection);
+                                if($tests->num_rows > 0){
+                                    while($test_data = $tests->fetch_assoc()){
+                                        ?>
+                                            <option value="<?php echo $test_data['id']; ?>"><?php echo $test_data['name_group']; ?></option>
+                                        <?php
+                                    }
+                                }else{
+                                    echo "error";
+                                }
+                                
+                            ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="sel2">Выберите тест:</label>
+                        <select name="test" class="form-control" id="sel2">
+                            <?php 
+                                $tests = getAllData('tests', $connection);
+                                if($tests->num_rows > 0){
+                                    while($test_data = $tests->fetch_assoc()){
+                                        ?>
+                                            <option value="<?php echo $test_data['id']; ?>"><?php echo $test_data['name']; ?></option>
+                                        <?php
+                                    }
+                                }else{
+                                    echo "error";
+                                }
+                                
+                            ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+    </form>
+	</div>
+      </div>
+      <div class="modal-footer">
+			<div class="btn-group btn-group-justified" role="group" aria-label="group button">
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+				</div>
+				<div class="btn-group btn-delete hidden" role="group">
+					<button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
+				</div>
+				<div class="btn-group" role="group">
+					<button type="button" id="saveTestToGroup" class="btn btn-default btn-hover-green saveTestToGroup" data-dismiss="modal" role="button">Save</button>
+				</div>
+			</div>
+		</div>
+    </div>
+
+  </div>
+</div>
             </div>
             <!-- /.container-fluid -->
 
@@ -325,7 +401,7 @@ $about = $result->fetch_assoc();
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-
+    <script src="js/teacher_save.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 

@@ -7,7 +7,9 @@ include 'php/db/get.php';
 include 'php/db/get_query.php';
 
     $connection->set_charset("utf8");
-
+$just = getAllData('about', $connection);
+$about = $just->fetch_assoc();
+unset($just);
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,7 +22,7 @@ include 'php/db/get_query.php';
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Thousand - Admin Page</title>
+    <title>Jjournal - Admin Page</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -53,7 +55,7 @@ include 'php/db/get_query.php';
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="admin_panel.php">SB Admin</a>
+                <a class="navbar-brand" href="admin_panel.php"><?php echo $about['name']; ?></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<title>Thousand CRM system</title>
@@ -17,6 +17,7 @@
 	<div style="position: fixed; bottom: 0; right: 0">
 		<?php 
 			include 'php/version.php';
+			echo " ".phpversion();
 		?>
 	</div>
 </body>
