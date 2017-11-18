@@ -14,6 +14,7 @@ include 'php/connectOS.php'
 <head>
 <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
         <link rel="stylesheet" href="css/style.css" type="text/css">
+        <link rel="stylesheet" href="css/teacher.css" type="text/css">
         <script src="../js/jquery.js"></script>
         <script src="../js/bootstrap.js"></script>
         <?php 
@@ -24,7 +25,7 @@ include 'php/connectOS.php'
             $(document).ready(function(){
                 $("#toggling").hide();
                 $("#toggler").click(function(){
-                    $("#toggling").toggle(500);
+                    $("#toggling").slideToggle(800);
                 });
             var array = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
             for(var i = 0; i<7; i++){
@@ -39,21 +40,11 @@ include 'php/connectOS.php'
                 document.getElementById(array[i] + "4").disabled = true; 
                 document.getElementById(array[i] + "4").name = array[i] + "4";
             }
-                $("input[type=checkbox]").click(function(){
+                $(".dender input[type=checkbox]").click(function(){
                         var id = $(this).val();
-                        console.log(id);
-                        if(document.getElementById(id+"room").disabled==true){
-                            document.getElementById(id + "room").disabled = false; 
-                            document.getElementById(id + "1").disabled = false; 
-                            document.getElementById(id + "2").disabled = false; 
-                            document.getElementById(id + "3").disabled = false; 
-                            document.getElementById(id + "4").disabled = false;
-                            document.getElementById(id + "room").value = ""; 
-                            document.getElementById(id + "1").value = ""; 
-                            document.getElementById(id + "2").value = ""; 
-                            document.getElementById(id + "3").value = ""; 
-                            document.getElementById(id + "4").value = ""; 
-                        }else{
+                        
+                        if(document.getElementById(id + "Check").checked==true){
+                            document.getElementById(id + "Check").checked= false;
                             document.getElementById(id + "room").disabled = true; 
                             document.getElementById(id + "1").disabled = true; 
                             document.getElementById(id + "2").disabled = true; 
@@ -64,6 +55,63 @@ include 'php/connectOS.php'
                             document.getElementById(id + "2").value = ""; 
                             document.getElementById(id + "3").value = ""; 
                             document.getElementById(id + "4").value = ""; 
+                        }else{
+                        	document.getElementById(id + "room").disabled = false; 
+                            document.getElementById(id + "1").disabled = false; 
+                            document.getElementById(id + "2").disabled = false; 
+                            document.getElementById(id + "3").disabled = false; 
+                            document.getElementById(id + "4").disabled = false;
+                            document.getElementById(id + "room").value = ""; 
+                            document.getElementById(id + "1").value = ""; 
+                            document.getElementById(id + "2").value = ""; 
+                            document.getElementById(id + "3").value = ""; 
+                            document.getElementById(id + "4").value = ""; 
+                            document.getElementById(id + "Check").checked = true;
+                        }
+                });
+                $(".jjournal-orders input[type=checkbox]").click(function(){
+                        var id = $(this).val();
+                        console.log(id);
+                        if(document.getElementById("checkSt" + id).checked==true){
+                            document.getElementById("checkSt" + id).checked= false;
+                        }else{
+                            document.getElementById("checkSt" + id).checked = true;
+                        }
+                });
+                $("li").click(function(){
+                        var id = $(this).attr('id');
+                        if(document.getElementById("checkSt" + id).checked==true){
+                            document.getElementById("checkSt" + id).checked= false;
+                        }else{
+                            document.getElementById("checkSt" + id).checked = true;
+                        }
+                });
+                $("H5").click(function(){
+                        var id = $(this).attr('shama');
+                        if(document.getElementById(id + "Check").checked==true){
+                            document.getElementById(id + "Check").checked= false;
+                            document.getElementById(id + "room").disabled = true; 
+                            document.getElementById(id + "1").disabled = true; 
+                            document.getElementById(id + "2").disabled = true; 
+                            document.getElementById(id + "3").disabled = true; 
+                            document.getElementById(id + "4").disabled = true; 
+                            document.getElementById(id + "room").value = ""; 
+                            document.getElementById(id + "1").value = ""; 
+                            document.getElementById(id + "2").value = ""; 
+                            document.getElementById(id + "3").value = ""; 
+                            document.getElementById(id + "4").value = ""; 
+                        }else{
+                        	document.getElementById(id + "room").disabled = false; 
+                            document.getElementById(id + "1").disabled = false; 
+                            document.getElementById(id + "2").disabled = false; 
+                            document.getElementById(id + "3").disabled = false; 
+                            document.getElementById(id + "4").disabled = false;
+                            document.getElementById(id + "room").value = ""; 
+                            document.getElementById(id + "1").value = ""; 
+                            document.getElementById(id + "2").value = ""; 
+                            document.getElementById(id + "3").value = ""; 
+                            document.getElementById(id + "4").value = ""; 
+                            document.getElementById(id + "Check").checked = true;
                         }
                 });
             });
@@ -294,7 +342,7 @@ include 'php/connectOS.php'
         <div class="row">
             <div class="col-lg-4">
                 <div class="dender">
-        <h5 class="togglerH5" id="mondayToggler">Понедельник <input id="mondayCheck" value="monday" style="float:right;" type="checkbox"></h5>
+        <h5 shama='monday' class="togglerH5" id="mondayToggler">Понедельник <input id="mondayCheck" value="monday" style="float:right;" type="checkbox"></h5>
                 <div id="mondayDiv">
                     <input type="text" placeholder="Кабинет" id="mondayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="monday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="monday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="monday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="monday4" maxlength="2">
@@ -303,7 +351,7 @@ include 'php/connectOS.php'
             </div>
             <div class="col-xs-4">
                 <div class="dender">
-                <h5 class="togglerH5" id="tuesdayToggler">Вторник <input style="float:right;" value="tuesday" type="checkbox"></h5>
+                <h5 shama='tuesday' class="togglerH5" id="tuesdayToggler">Вторник <input id="tuesdayCheck" style="float:right;" value="tuesday" type="checkbox"></h5>
                 <div id="tuesdayDiv">
                     <input type="text" placeholder="Кабинет" id="tuesdayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="tuesday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="tuesday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="tuesday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="tuesday4" maxlength="2">
@@ -312,7 +360,7 @@ include 'php/connectOS.php'
             </div>
             <div class="col-xs-4">
                 <div class="dender">
-                <h5 class="togglerH5" id="wednesdayToggler">Среда <input style="float:right;" value="wednesday" type="checkbox"></h5>
+                <h5 shama='wednesday' class="togglerH5" id="wednesdayToggler">Среда <input id="wednesdayCheck" style="float:right;" value="wednesday" type="checkbox"></h5>
                 <div id="wednesdayDiv">
                     <input type="text" placeholder="Кабинет" id="wednesdayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="wednesday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="wednesday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="wednesday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="wednesday4" maxlength="2">
@@ -321,7 +369,7 @@ include 'php/connectOS.php'
             </div>
             <div class="col-xs-4">
                 <div class="dender">
-                <h5 class="togglerH5" id="thursdayToggler">Четверг <input style="float:right;" value="thursday" type="checkbox"></h5>
+                <h5 shama='thursday' class="togglerH5" id="thursdayToggler">Четверг <input id="thursdayCheck" style="float:right;" value="thursday" type="checkbox"></h5>
                 <div id="thursdayDiv">
                     <input type="text" placeholder="Кабинет" id="thursdayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="thursday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="thursday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="thursday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="thursday4" maxlength="2">
@@ -330,7 +378,7 @@ include 'php/connectOS.php'
             </div>
             <div class="col-xs-4">
                 <div class="dender">
-                <h5 class="togglerH5" id="fridayToggler">Пятница <input style="float:right;" value="friday" type="checkbox"></h5>
+                <h5 shama='friday' class="togglerH5" id="fridayToggler">Пятница <input id="fridayCheck" style="float:right;" value="friday" type="checkbox"></h5>
                 <div id="fridayDiv">
                     <input type="text" placeholder="Кабинет" id="fridayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="friday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="friday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="friday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="friday4" maxlength="2">
@@ -339,7 +387,7 @@ include 'php/connectOS.php'
             </div>
             <div class="col-xs-4">
                 <div class="dender">
-                <h5 class="togglerH5" id="saturdayToggler">Суббота <input style="float:right;" value="saturday" type="checkbox"></h5>
+                <h5 shama='saturday' class="togglerH5" id="saturdayToggler">Суббота <input id="saturdayCheck" style="float:right;" value="saturday" type="checkbox"></h5>
                 <div id="saturdayDiv">
                     <input type="text" placeholder="Кабинет" id="saturdayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="saturday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="saturday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="saturday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="saturday4" maxlength="2">
@@ -348,7 +396,7 @@ include 'php/connectOS.php'
             </div>
             <div class="col-xs-4">
                 <div class="dender">
-                <h5 class="togglerH5" id="sundayToggler">Воскресенье <input style="float:right;" value="sunday" type="checkbox"></h5>
+                <h5 shama='sunday' class="togglerH5" id="sundayToggler">Воскресенье <input id="sundayCheck" style="float:right;" value="sunday" type="checkbox"></h5>
                 <div id="sundayDiv">
                     <input type="text" placeholder="Кабинет" id="sundayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="sunday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="sunday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="sunday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="sunday4" maxlength="2">
@@ -358,32 +406,35 @@ include 'php/connectOS.php'
         </div>
         </div>
         Выберите учеников<br>
-        <div class="col-lg-4" style='background-color: white;'>
+        <div class="col-lg-4" style='background-color: white;padding:0px;'>
             <div style="overflow-y:scroll; min-height:400px; max-height:400px;">
         <?php
                 $sql = "SELECT * FROM student WHERE bool='true'";
                 $result = $con->query($sql);
-
+                echo "<ul class='jjournal-orders'>";
                 if ($result->num_rows > 0) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
-                        echo "<input name='checkbox[]' type='checkbox'  id='".$row['id']."'  value='".$row['id']."'/>".$row['firstname']." ".$row['lastname']." ".$row['father']."<br>";
+                        echo "<li id='".$row['id']."'>".$row['firstname']." ".$row['lastname']." ".$row['father']."<input name='checkbox[]' id='checkSt".$row['id']."' type='checkbox' style='float:right; margin-right:10px;' value='".$row['id']."'/>"."</li>"."";
                     }
                 } else {
                     
                 }
+                echo "</ul>";
                 echo "<a id='toggler'>Показать все</a><br>";
                 $sql = "SELECT * FROM student WHERE bool='false'";
                 $result = $con->query($sql);
                     echo "<div id='toggling'>";
+                    echo "<ul class='jjournal-orders'>";
                 if ($result->num_rows > 0) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
-                        echo "<div class='checkDiv'>".$row['firstname']." ".$row['lastname']." ".$row['father']."<input name='checkbox[]' type='checkbox' style='float:right; margin-right:10px;' value='".$row['id']."'/>"."</div>"."<br>";
+                        echo "<li id='".$row['id']."'>".$row['firstname']." ".$row['lastname']." ".$row['father']."<input name='checkbox[]' id='checkSt".$row['id']."' type='checkbox' style='float:right; margin-right:10px;' value='".$row['id']."'/>"."</li>"."";
                     }
                 } else {
                     
                 }
+                echo "</ul>";
                 echo "</div>";
             ?>
         </div>

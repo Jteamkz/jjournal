@@ -70,8 +70,6 @@ input[type=checkbox]{
 		{
 			background-color: #cccccc;	
 		}
-.checkDiv{
-	border-bottom:1px solid gray;
-	padding-top:10px;
-	padding-bottom:5px;
+.jjournal-orders{
+	cursor:pointer;
 }

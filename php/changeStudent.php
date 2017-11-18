@@ -15,6 +15,7 @@ $iin = $_POST['iin'];
 $phone_parent = $_POST['tele_rod'];
 $payday = $_POST['payday'];
 $birthday = $_POST['birthday'];
+
 if (isset($_POST['checkboxname'])) {
 	$groups = $_POST['checkboxname'];
 }else{
