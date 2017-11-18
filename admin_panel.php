@@ -333,7 +333,7 @@ unset($just);
         <h4 class="modal-title">Добавьте уроки</h4>
       </div>
       <div class="modal-body">
-	<br><button id="eweSubject" class="btn">Еще</button><button id="eweSubjectdelete" class="btn">Удалить</button>
+	<br><button id="eweSubject" class="btn">Еще</button> <button id="eweSubjectdelete" class="btn">Удалить</button>
 	<form id="subjectForm" method='post'>
 		<div style="max-height:250px; height:250px; overflow-y: scroll; padding:10px; overflow-x:hidden;">
 		<div class="row">
@@ -522,7 +522,9 @@ unset($just);
 				    echo "0 results";
 				}
 				echo "</select>";
-			?></div></div><br>
+			?>         
+            </div>
+        </div><br>
 		<p id="teacherP"></p>
 		</div>
 	<br></form>
@@ -768,7 +770,7 @@ unset($just);
 				type: 'POST',
 				data: serializedData,
 				success: function(data){
-					 alert("Добавлено!!!");
+					 location.reload();
 				}
 			})
 		
@@ -805,7 +807,7 @@ unset($just);
 				type: 'POST',
 				data: serializedData,
 				success: function(data){
-					 alert("Добавлено!!!");
+					 location.reload();
 				}
 			})
 		
@@ -847,7 +849,7 @@ unset($just);
 				type: 'POST',
 				data: serializedData,
 				success: function(data){
-					 alert("Добавлено!!!");
+					 location.reload();
 				}
 			})
 		

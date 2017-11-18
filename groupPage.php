@@ -6,7 +6,11 @@ include 'php/db/connect_db.php';
 include 'php/db/get_all_data.php';
 include 'php/db/get.php';
 include 'php/SQLconnect.php';
-include 'php/connectOS.php'
+include 'php/connectOS.php';
+$connection->set_charset("utf8");
+$just = getAllData('about', $connection);
+$about = $just->fetch_assoc();
+unset($just);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,17 +30,17 @@ include 'php/connectOS.php'
                 $("#toggling").hide();
                 $("#toggler").click(function(){
                     $("#toggling").slideToggle(800);
-                    if($("#toggler").html() == "Показать все")
+                    if($("#toggler").html() == "Показать студентов привязанных к группам")
                     	setTimeout(
 						  function() 
 						  {
-						    $("#toggler").html("Скрыть все");
+						    $("#toggler").html("Скрыть лишнийх студентов");
 						  }, 400);
                     else
                     	setTimeout(
 						  function() 
 						  {
-						    $("#toggler").html("Показать все");
+						    $("#toggler").html("Показать студентов привязанных к группам");
 						  }, 400);
                 });
             var array = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
@@ -162,7 +166,7 @@ include 'php/connectOS.php'
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="admin_panel.php">SB Admin</a>
+                <a class="navbar-brand" href="admin_panel.php"><?php echo $about['name'] ?></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -441,7 +445,7 @@ include 'php/connectOS.php'
                     
                 }
                 echo "</ul>";
-                echo "<a id='toggler'>Показать все</a><br>";
+                echo "<a id='toggler'>Показать студентов привязанных к группам</a><br>";
                 $sql = "SELECT * FROM student WHERE bool='false'";
                 $result = $con->query($sql);
                     echo "<div id='toggling'>";
