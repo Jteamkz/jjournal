@@ -36,7 +36,11 @@ unset($just);
     <link rel="stylesheet" type="text/css" href="css/custum.css">
 
 </head>
-
+<style>
+    .modal-body input[type=text]{
+        margin-bottom:5px;
+    }
+</style>
 <body>
 
     <div id="wrapper">
@@ -816,10 +820,9 @@ unset($just);
 	})
 	</script>
 		<script>
-		var c = "0";
+		var c = 0;
 		$("#eweTeacher").click(function(){
 			 c++;
-   			 $("#teacherP").append("<div class='row' id='teacherrow"+c+"'><div class='col-lg-3'><input class='form-control' type='text' name='IIN"+c+"' placeholder='ИИН'></div><div class='col-lg-3'><input class='form-control' type='text' name='password"+c+"' placeholder='Пароль'></div><div class='col-lg-3'><input class='form-control' type='text' name='name"+c+"' placeholder='Имя'></div><div class='col-lg-3'><input class='form-control' type='text' name='surname"+c+"' placeholder='Фамилия'></div><div class='col-lg-3'><input class='form-control' type='text' name='father"+c+"'' placeholder='Отчество'></div><div class='col-lg-3'><input class='form-control' type='text' name='birthday"+c+"' placeholder='День рождения'></div><div class='col-lg-3'><input class='form-control' type='text' name='phone"+c+"' placeholder='Телефон'></div>");
    			 $.ajax({
 		       url: 'add/teacherSelect.php?numberTeacher='+c,
 		       success: function(html) {

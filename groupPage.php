@@ -26,6 +26,18 @@ include 'php/connectOS.php'
                 $("#toggling").hide();
                 $("#toggler").click(function(){
                     $("#toggling").slideToggle(800);
+                    if($("#toggler").html() == "Показать все")
+                    	setTimeout(
+						  function() 
+						  {
+						    $("#toggler").html("Скрыть все");
+						  }, 400);
+                    else
+                    	setTimeout(
+						  function() 
+						  {
+						    $("#toggler").html("Показать все");
+						  }, 400);
                 });
             var array = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
             for(var i = 0; i<7; i++){
@@ -301,7 +313,11 @@ include 'php/connectOS.php'
     <form method="post" action="add/groupAdd.php">
         <div class="row">
             <div class="col-lg-8">
+            	<div class="row">
+            		<div class="col-lg-4">
         <input type="text" placeholder="Название группы" name="name">
+        			</div>
+        			<div class="col-lg-4">
         <select style="" name="subject" required>
         <option value="" disabled selected>Выберите предмет</option>
             <?php
@@ -318,6 +334,8 @@ include 'php/connectOS.php'
                 }
             ?>
         </select>
+        		</div>
+        		<div class="col-lg-4">
         <select name="teacher" required>
         <option value="" disabled selected>Выберите учителя</option>
             <?php
@@ -334,6 +352,8 @@ include 'php/connectOS.php'
                 }
             ?>
         </select>
+    		</div>
+    	</div>
     <style>
         .dender{
             height:100px;
@@ -342,61 +362,61 @@ include 'php/connectOS.php'
         <div class="row">
             <div class="col-lg-4">
                 <div class="dender">
-        <h5 shama='monday' class="togglerH5" id="mondayToggler">Понедельник <input id="mondayCheck" value="monday" style="float:right;" type="checkbox"></h5>
+        <h5 shama='monday' class="togglerH5" id="mondayToggler">Понедельник <input id="mondayCheck" value="monday" type="checkbox"></h5>
                 <div id="mondayDiv">
                     <input type="text" placeholder="Кабинет" id="mondayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="monday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="monday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="monday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="monday4" maxlength="2">
                 </div>
             </div>
             </div>
-            <div class="col-xs-4">
+            <div class="col-lg-4">
                 <div class="dender">
-                <h5 shama='tuesday' class="togglerH5" id="tuesdayToggler">Вторник <input id="tuesdayCheck" style="float:right;" value="tuesday" type="checkbox"></h5>
+                <h5 shama='tuesday' class="togglerH5" id="tuesdayToggler">Вторник <input id="tuesdayCheck" value="tuesday" type="checkbox"></h5>
                 <div id="tuesdayDiv">
                     <input type="text" placeholder="Кабинет" id="tuesdayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="tuesday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="tuesday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="tuesday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="tuesday4" maxlength="2">
                 </div>
                 </div>
             </div>
-            <div class="col-xs-4">
+            <div class="col-lg-4">
                 <div class="dender">
-                <h5 shama='wednesday' class="togglerH5" id="wednesdayToggler">Среда <input id="wednesdayCheck" style="float:right;" value="wednesday" type="checkbox"></h5>
+                <h5 shama='wednesday' class="togglerH5" id="wednesdayToggler">Среда <input id="wednesdayCheck" value="wednesday" type="checkbox"></h5>
                 <div id="wednesdayDiv">
                     <input type="text" placeholder="Кабинет" id="wednesdayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="wednesday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="wednesday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="wednesday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="wednesday4" maxlength="2">
                 </div>
                 </div>
             </div>
-            <div class="col-xs-4">
+            <div class="col-lg-4">
                 <div class="dender">
-                <h5 shama='thursday' class="togglerH5" id="thursdayToggler">Четверг <input id="thursdayCheck" style="float:right;" value="thursday" type="checkbox"></h5>
+                <h5 shama='thursday' class="togglerH5" id="thursdayToggler">Четверг <input id="thursdayCheck" value="thursday" type="checkbox"></h5>
                 <div id="thursdayDiv">
                     <input type="text" placeholder="Кабинет" id="thursdayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="thursday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="thursday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="thursday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="thursday4" maxlength="2">
                 </div>
                 </div>
             </div>
-            <div class="col-xs-4">
+            <div class="col-lg-4">
                 <div class="dender">
-                <h5 shama='friday' class="togglerH5" id="fridayToggler">Пятница <input id="fridayCheck" style="float:right;" value="friday" type="checkbox"></h5>
+                <h5 shama='friday' class="togglerH5" id="fridayToggler">Пятница <input id="fridayCheck" value="friday" type="checkbox"></h5>
                 <div id="fridayDiv">
                     <input type="text" placeholder="Кабинет" id="fridayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="friday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="friday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="friday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="friday4" maxlength="2">
                 </div>
                 </div>
             </div>
-            <div class="col-xs-4">
+            <div class="col-lg-4">
                 <div class="dender">
-                <h5 shama='saturday' class="togglerH5" id="saturdayToggler">Суббота <input id="saturdayCheck" style="float:right;" value="saturday" type="checkbox"></h5>
+                <h5 shama='saturday' class="togglerH5" id="saturdayToggler">Суббота <input id="saturdayCheck" value="saturday" type="checkbox"></h5>
                 <div id="saturdayDiv">
                     <input type="text" placeholder="Кабинет" id="saturdayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="saturday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="saturday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="saturday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="saturday4" maxlength="2">
                 </div>
                 </div>
             </div>
-            <div class="col-xs-4">
+            <div class="col-lg-4">
                 <div class="dender">
-                <h5 shama='sunday' class="togglerH5" id="sundayToggler">Воскресенье <input id="sundayCheck" style="float:right;" value="sunday" type="checkbox"></h5>
+                <h5 shama='sunday' class="togglerH5" id="sundayToggler">Воскресенье <input id="sundayCheck" value="sunday" type="checkbox"></h5>
                 <div id="sundayDiv">
                     <input type="text" placeholder="Кабинет" id="sundayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="sunday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="sunday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="sunday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="sunday4" maxlength="2">
