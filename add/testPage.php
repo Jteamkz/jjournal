@@ -1,28 +1,67 @@
 <?php
-	$array = $_GET['array'].",";
-	$numberquests = $_GET['numberquests'];
-	$numberAns = "";
-	$i = 0;
-	echo "Название теста: ".$_POST['name']."<br>";
-	echo "Описание: ".$_POST['description']."<br>";
-	echo "<form method='post' action='submitTest.php?array=".$_GET['array']."&numberquests=".$numberquests."'>";
-	echo "<input type='hidden' name='name' value='".$_POST['name']."'>";
-	echo "<input type='hidden' name='description' value='".$_POST['description']."'>";
-		for($j = 0; $j < strlen($array); $j++){
-			if($array[$j] == ','){
-				echo ($i+1).") ".$_POST['vopros'.$i]."<br>";
-				echo "<input type='hidden' name='vopros".$i."' value='".$_POST['vopros'.$i]."'>";
-				for($k = 0; $k < $numberAns; $k++){
-					$variant = $_POST['answer'.$i.$k];
-					echo "<input type='checkbox' name='"."answer".$i.$k."' value='".$variant."'>".$variant."<br>";
-					echo "<input type='hidden' name='"."answerZamena".$i.$k."' value='".$variant."'>";
-				}
-				$numberAns = "";
-				$i++;
-			}else{
-				$numberAns = $numberAns + $array[$j];
-			}
+	session_start();
+	$db_name = $_SESSION['studycenter'];
+	include "../php/SQLconnect.php";
+	include "../php/connectOS.php";
+	$idTest = 14;
+
+	class variant {
+		public $id;
+		public $content;
+		public $ids;
+		function __construct($id, $content, $ids){
+			$this->id = $id;
+			$this->content = $content;
+			$this->ids = $ids;
 		}
-		echo "<button>Сохранить</button>";
-	echo "</form>";
-?>
+	}
+	$sql = "SELECT * FROM tests WHERE id='$idTest'";
+	$result = $con->query($sql);
+
+	if ($result->num_rows > 0) {
+	    
+	    while($row = $result->fetch_assoc()) {
+			$sql1 = "SELECT * FROM questions WHERE ids='$idTest' order by rand()";
+			$result1 = $con->query($sql1);
+
+			if ($result1->num_rows > 0) {
+			    
+			    while($row1 = $result1->fetch_assoc()) {
+			    	$idQues = $row1['id'];
+			        echo $row1['question']."<br>";
+			        $variants = array();
+			        $sql2 = "SELECT * FROM rights WHERE ids='$idQues'";
+					$result2 = $con->query($sql2);
+
+					if ($result2->num_rows > 0) {
+					    // output data of each row
+					    while($row2 = $result2->fetch_assoc()) {
+					    	$variant = new variant($row2['id'], $row2['rightanswer'], $row2['ids']);
+					        array_push($variants, $variant);
+					    }
+					}
+					$sql3 = "SELECT * FROM wrongs WHERE ids='$idQues'";
+					$result3 = $con->query($sql3);
+
+					if ($result3->num_rows > 0) {
+					    // output data of each row
+					    while($row3 = $result3->fetch_assoc()) {
+					    	$variant = new variant($row3['id'], $row3['wrong'], $row3['ids']);
+					        array_push($variants, $variant);
+					    }
+					}
+					shuffle($variants);
+					foreach ($variants as $variantko) {
+					    echo "<input type='checkbox'>".$variantko->content;
+					    echo "<br>";
+					}
+			    }
+			} else {
+			    echo "";
+			}
+	    }
+	} else {
+	    echo "";
+	}
+	
+	?>
