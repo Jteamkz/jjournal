@@ -28,6 +28,7 @@
                                 //echo "<br>";  
                                 //print_r($students_b);
                                 $currentDay = date("d");
+                                $currentMonth = date("m");
                                 //echo "<br>";
 
                                 for ($i=0; $i < sizeof($students_b); $i++) {
@@ -36,7 +37,10 @@
                                         
                                         $dayFirst = substr($students_b[$i], 0, 2);
                                         $daySecond = substr($students_b[$j], 0, 2);
-                                        if($dayFirst < $daySecond){
+
+                                        $monthFirst = substr($students_b[$i], 3, 5);
+                                        $monthSecond = substr($students_b[$j], 3, 5);
+                                        if($monthFirst < $monthSecond){
                                             $temp_id = $students_i[$i];
                                             $students_i[$i] = $students_i[$j];
                                             $students_i[$j] = $temp_id;
@@ -44,21 +48,40 @@
                                             $temp = $students_b[$i];
                                             $students_b[$i] = $students_b[$j];
                                             $students_b[$j] = $temp;
+                                            
+                                        }else if($monthFirst == $monthSecond){
+                                            if($dayFirst < $daySecond){
+                                            
+                                                $temp_id = $students_i[$i];
+                                                $students_i[$i] = $students_i[$j];
+                                                $students_i[$j] = $temp_id;
+
+                                                $temp = $students_b[$i];
+                                                $students_b[$i] = $students_b[$j];
+                                                $students_b[$j] = $temp;
+                                            }
                                         }
+                                        
                                     }
                                 }
-
+                                //print_r($students_b);
                                 $breakPoint = 0;
-                                //echo $currentDay."\n";
                                 for ($i=0; $i < sizeof($students_b); $i++) { 
                                     $dayFirst = substr($students_b[$i], 0, 2);
-                                    if($dayFirst >= $currentDay){
+                                    $monthFirst = substr($students_b[$i], 3, -3);
+                                    if($monthFirst > $currentMonth){
                                         break;
+                                    }else if($monthFirst == $currentMonth){
+                                        if($dayFirst >= $currentDay){
+                                            break;
+                                        }else{
+                                            $breakPoint++;
+                                        }
                                     }else{
                                         $breakPoint++;
                                     }
                                 }
-
+                                //echo($breakPoint);
                                 $firstPart = array();
                                 $firstPart_id = array();
                                 $secondPart = array();
