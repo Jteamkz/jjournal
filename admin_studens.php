@@ -291,7 +291,7 @@ unset($just);
                                             <td><?php echo $row['birthday']; ?></td>
                                             <td>
                                                     <button style="width: 25px; height: 25px" data-toggle="modal" data-target="#squarespaceModal<?php echo $shady; ?>" type="button" class="btn btn-success btn-xs btn-update"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
-                                                    <button style="width: 25px; height: 25px" type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                                                    <button shady="<?php echo $shady; ?>" student = "<?php echo $row['id']; ?>" style="width: 25px; height: 25px" type="button" class="btn btn-danger btn-xs delete_student"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
                                                 
                                             </td>
                                             <div class="modal fade" id="squarespaceModal<?php echo $shady; ?>" shady="<?php echo $shady; ?>" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
@@ -458,6 +458,6 @@ unset($just);
     <script type="text/javascript" src="js/finder.js"></script>
     <script type="text/javascript" src="js/rwd-table.js"></script>
     <script type="text/javascript" src="js/update.js"></script>
-    
+    <script type="text/javascript" src="js/delete.js"></script>
 </body>
 </html>
