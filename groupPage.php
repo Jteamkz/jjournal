@@ -130,6 +130,34 @@ unset($just);
                             document.getElementById(id + "Check").checked = true;
                         }
                 });
+				$("label").click(function(){
+                        var id = $(this).attr('shama');
+                        if(document.getElementById(id + "Check").checked==true){
+                            document.getElementById(id + "Check").checked= false;
+                            document.getElementById(id + "room").disabled = true; 
+                            document.getElementById(id + "1").disabled = true; 
+                            document.getElementById(id + "2").disabled = true; 
+                            document.getElementById(id + "3").disabled = true; 
+                            document.getElementById(id + "4").disabled = true; 
+                            document.getElementById(id + "room").value = ""; 
+                            document.getElementById(id + "1").value = ""; 
+                            document.getElementById(id + "2").value = ""; 
+                            document.getElementById(id + "3").value = ""; 
+                            document.getElementById(id + "4").value = ""; 
+                        }else{
+                        	document.getElementById(id + "room").disabled = false; 
+                            document.getElementById(id + "1").disabled = false; 
+                            document.getElementById(id + "2").disabled = false; 
+                            document.getElementById(id + "3").disabled = false; 
+                            document.getElementById(id + "4").disabled = false;
+                            document.getElementById(id + "room").value = ""; 
+                            document.getElementById(id + "1").value = ""; 
+                            document.getElementById(id + "2").value = ""; 
+                            document.getElementById(id + "3").value = ""; 
+                            document.getElementById(id + "4").value = ""; 
+                            document.getElementById(id + "Check").checked = true;
+                        }
+                });
             });
 </script>
     <meta charset="utf-8">
@@ -366,7 +394,12 @@ unset($just);
         <div class="row">
             <div class="col-lg-4">
                 <div class="dender">
-        <h5 shama='monday' class="togglerH5" id="mondayToggler">Понедельник <input id="mondayCheck" value="monday" type="checkbox"></h5>
+        <h5 shama='monday' class="togglerH5" id="mondayToggler">Понедельник 
+		<div class="checkboxGroup checkboxGroup-info">
+                        <input id="mondayCheck" value="monday" type="checkbox">
+                        <label shama='monday' for="mondayCheck">
+                        </label>
+                    </div></h5>
                 <div id="mondayDiv">
                     <input type="text" placeholder="Кабинет" id="mondayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="monday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="monday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="monday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="monday4" maxlength="2">
@@ -375,7 +408,12 @@ unset($just);
             </div>
             <div class="col-lg-4">
                 <div class="dender">
-                <h5 shama='tuesday' class="togglerH5" id="tuesdayToggler">Вторник <input id="tuesdayCheck" value="tuesday" type="checkbox"></h5>
+                <h5 shama='tuesday' class="togglerH5" id="tuesdayToggler">Вторник 
+				<div class="checkboxGroup checkboxGroup-info">
+                        <input id="tuesdayCheck" value="tuesday" type="checkbox">
+                        <label shama='tuesday' for="tuesdayCheck">
+                        </label>
+                    </div></h5>
                 <div id="tuesdayDiv">
                     <input type="text" placeholder="Кабинет" id="tuesdayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="tuesday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="tuesday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="tuesday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="tuesday4" maxlength="2">
@@ -384,7 +422,12 @@ unset($just);
             </div>
             <div class="col-lg-4">
                 <div class="dender">
-                <h5 shama='wednesday' class="togglerH5" id="wednesdayToggler">Среда <input id="wednesdayCheck" value="wednesday" type="checkbox"></h5>
+                <h5 shama='wednesday' class="togglerH5" id="wednesdayToggler">Среда 
+				<div class="checkboxGroup checkboxGroup-info">
+                        <input id="wednesdayCheck" value="wednesday" type="checkbox">
+                        <label shama='wednesday' for="wednesdayCheck">
+                        </label>
+                    </div></h5>
                 <div id="wednesdayDiv">
                     <input type="text" placeholder="Кабинет" id="wednesdayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="wednesday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="wednesday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="wednesday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="wednesday4" maxlength="2">
@@ -393,7 +436,12 @@ unset($just);
             </div>
             <div class="col-lg-4">
                 <div class="dender">
-                <h5 shama='thursday' class="togglerH5" id="thursdayToggler">Четверг <input id="thursdayCheck" value="thursday" type="checkbox"></h5>
+                <h5 shama='thursday' class="togglerH5" id="thursdayToggler">Четверг 
+				<div class="checkboxGroup checkboxGroup-info">
+                        <input id="thursdayCheck" value="thursday" type="checkbox">
+                        <label shama='thursday' for="thursdayCheck">
+                        </label>
+                    </div></h5>
                 <div id="thursdayDiv">
                     <input type="text" placeholder="Кабинет" id="thursdayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="thursday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="thursday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="thursday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="thursday4" maxlength="2">
@@ -402,7 +450,12 @@ unset($just);
             </div>
             <div class="col-lg-4">
                 <div class="dender">
-                <h5 shama='friday' class="togglerH5" id="fridayToggler">Пятница <input id="fridayCheck" value="friday" type="checkbox"></h5>
+                <h5 shama='friday' class="togglerH5" id="fridayToggler">Пятница 
+				<div class="checkboxGroup checkboxGroup-info">
+                        <input id="fridayCheck" value="friday" type="checkbox">
+                        <label shama='friday' for="fridayCheck">
+                        </label>
+                    </div></h5>
                 <div id="fridayDiv">
                     <input type="text" placeholder="Кабинет" id="fridayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="friday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="friday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="friday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="friday4" maxlength="2">
@@ -411,7 +464,12 @@ unset($just);
             </div>
             <div class="col-lg-4">
                 <div class="dender">
-                <h5 shama='saturday' class="togglerH5" id="saturdayToggler">Суббота <input id="saturdayCheck" value="saturday" type="checkbox"></h5>
+                <h5 shama='saturday' class="togglerH5" id="saturdayToggler">Суббота 
+				<div class="checkboxGroup checkboxGroup-info">
+                        <input id="saturdayCheck" value="saturday" type="checkbox">
+                        <label shama='saturday' for="saturdayCheck">
+                        </label>
+                    </div></h5>
                 <div id="saturdayDiv">
                     <input type="text" placeholder="Кабинет" id="saturdayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="saturday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="saturday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="saturday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="saturday4" maxlength="2">
@@ -420,7 +478,12 @@ unset($just);
             </div>
             <div class="col-lg-4">
                 <div class="dender">
-                <h5 shama='sunday' class="togglerH5" id="sundayToggler">Воскресенье <input id="sundayCheck" value="sunday" type="checkbox"></h5>
+                <h5 shama='sunday' class="togglerH5" id="sundayToggler">Воскресенье 
+				<div class="checkboxGroup checkboxGroup-info">
+                        <input id="sundayCheck" value="sunday" type="checkbox">
+                        <label shama='sunday' for="sundayCheck">
+                        </label>
+                    </div></h5>
                 <div id="sundayDiv">
                     <input type="text" placeholder="Кабинет" id="sundayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="sunday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="sunday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="sunday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="sunday4" maxlength="2">
@@ -439,7 +502,7 @@ unset($just);
                 if ($result->num_rows > 0) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
-                        echo "<li id='".$row['id']."'>".$row['firstname']." ".$row['lastname']." ".$row['father']."<input name='checkbox[]' id='checkSt".$row['id']."' type='checkbox' style='float:right; margin-right:10px;' value='".$row['id']."'/>"."</li>"."";
+                        echo "<li id='".$row['id']."'>".$row['firstname']." ".$row['lastname']." ".$row['father']."<div class='checkboxGroup checkboxGroup-info'> <input name='checkbox[]' id='checkSt".$row['id']."' type='checkbox' style='float:right; margin-right:10px;' value='".$row['id']."'/> <label shama='tuesday' for='tuesdayCheck'> </label> </div></li>";
                     }
                 } else {
                     
@@ -453,7 +516,7 @@ unset($just);
                 if ($result->num_rows > 0) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
-                        echo "<li id='".$row['id']."'>".$row['firstname']." ".$row['lastname']." ".$row['father']."<input name='checkbox[]' id='checkSt".$row['id']."' type='checkbox' style='float:right; margin-right:10px;' value='".$row['id']."'/>"."</li>"."";
+                        echo "<li id='".$row['id']."'>".$row['firstname']." ".$row['lastname']." ".$row['father']."<div class='checkboxGroup checkboxGroup-info'> <input name='checkbox[]' id='checkSt".$row['id']."' type='checkbox' style='float:right; margin-right:10px;' value='".$row['id']."'/> <label shama='tuesday' for='tuesdayCheck'> </label> </div></li>";
                     }
                 } else {
                     
