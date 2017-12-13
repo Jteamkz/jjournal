@@ -2,9 +2,6 @@
 session_start();
 
 $db_name = $_SESSION['studycenter'];
-// if(isset($_SESSION['id'])){
-    
-// }
 if (isset($_SESSION['tele'])) {
     $iin_b = FALSE;
     $tele = $_SESSION['tele'];
@@ -266,7 +263,6 @@ $about = $result->fetch_assoc();
                             <p class="jjournal-green">Предстоящие дни рождения</p>
                             <?php
                                 include "php/teacher_panel/birthdays.php";
-                                
                             ?>
                         </div>
                         <ul class="jjournal-orders">
