@@ -366,7 +366,11 @@ unset($just);
         <div class="row">
             <div class="col-lg-4">
                 <div class="dender">
-        <h5 shama='monday' class="togglerH5" id="mondayToggler">Понедельник <input id="mondayCheck" value="monday" type="checkbox"></h5>
+        <h5 shama='monday' class="togglerH5" id="mondayToggler">Понедельник <div class="checkbox checkbox-primary">
+                        <input id="checkbox2" type="checkbox" checked="">
+                        <label for="checkbox2">
+                        </label>
+                    </div></h5>
                 <div id="mondayDiv">
                     <input type="text" placeholder="Кабинет" id="mondayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="monday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="monday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="monday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="monday4" maxlength="2">

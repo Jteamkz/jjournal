@@ -7,7 +7,7 @@
 	?>
 	<?php
 		$n = $_GET['numberTeacher'];
-			echo "<div class='row' id='teacherrow".$n."'><div class='col-lg-3'><input class='form-control' type='text' name='IIN".$n."' placeholder='ИИН'></div><div class='col-lg-3'><input class='form-control' type='text' name='password".$n."' placeholder='Пароль'></div><div class='col-lg-3'><input class='form-control' type='text' name='name".$n."' placeholder='Имя'></div><div class='col-lg-3'><input class='form-control' type='text' name='surname".$n."' placeholder='Фамилия'></div><div class='col-lg-3'><input class='form-control' type='text' name='father".$n."'' placeholder='Отчество'></div><div class='col-lg-3'><input class='form-control' type='text' name='birthday".$n."' placeholder='День рождения'></div><div class='col-lg-3'><input class='form-control' type='text' name='phone".$n."' placeholder='Телефон'></div><div class='col-lg-3'>";
+			echo "<hr id='hrteacher".$n."'><div class='row' id='teacherrow".$n."'><div class='col-lg-3'><input class='form-control' type='text' name='IIN".$n."' placeholder='ИИН'></div><div class='col-lg-3'><input class='form-control' type='text' name='password".$n."' placeholder='Пароль'></div><div class='col-lg-3'><input class='form-control' type='text' name='name".$n."' placeholder='Имя'></div><div class='col-lg-3'><input class='form-control' type='text' name='surname".$n."' placeholder='Фамилия'></div><div class='col-lg-3'><input class='form-control' type='text' name='father".$n."'' placeholder='Отчество'></div><div class='col-lg-3'><input class='form-control' type='text' name='birthday".$n."' placeholder='День рождения'></div><div class='col-lg-3'><input class='form-control' type='text' name='phone".$n."' placeholder='Телефон'></div><div class='col-lg-3'>";
 			echo "<select class='form-control' id='subjectTeacher".$n."' name='subject".$n."'>";
 			$sql = "SELECT * FROM subjects";
 				$result = $con->query($sql);
@@ -20,6 +20,6 @@
 				} else {
 				    echo "0 results";
 				}
-				echo "</select><br id='brteacher".$n."'></div></div>";
+				echo "</select></div></div>";
 		
 	?>

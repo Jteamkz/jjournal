@@ -34,13 +34,32 @@ unset($just);
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" type="text/css" href="css/custum.css">
+    <style>
+            -webkit-scrollbar-track
+        {
+            border: 1px solid #cccccc;
+            background-color: #cccccc;
+        }
 
-</head>
-<style>
-    .modal-body input[type=text]{
+        ::-webkit-scrollbar
+        {
+            width: 10px;
+            background-color: white;
+        }
+
+        ::-webkit-scrollbar-thumb
+        {
+            background-color: #cccccc;  
+        }
+        .modal-body input[type=text]{
         margin-bottom:5px;
-    }
-</style>
+        }
+        .ladygaga hr{
+            margin-top : 5px;
+            margin-bottom: 0px;
+        }
+    </style>
+</head>
 <body>
 
     <div id="wrapper">
@@ -333,9 +352,13 @@ unset($just);
         <h4 class="modal-title">Добавьте уроки</h4>
       </div>
       <div class="modal-body">
-	<br><button id="eweSubject" class="btn">Еще</button> <button id="eweSubjectdelete" class="btn">Удалить</button>
+    <div class="ladygaga">
+        <button id="eweSubject" class="btn btn-success">Еще</button>
+        <button id="eweSubjectdelete" class="btn btn-danger">Удалить</button>
+        <hr>
+    </div>
 	<form id="subjectForm" method='post'>
-		<div style="max-height:250px; height:250px; overflow-y: scroll; padding:10px; overflow-x:hidden;">
+		<div style="max-height:250px; height:250px; padding:10px 10px 10px 0px; overflow-y: scroll; overflow-x:hidden;">
 		<div class="row">
 		<div class="col-lg-6">
 		<input type='text' id='namesubject' name='name0' class="form-control" placeholder='Название'>
@@ -344,10 +367,9 @@ unset($just);
 		<input type='text' class="form-control" placeholder='Описание' name='defenition0' required>
 		</div>
 		</div>
-		<br>
 		<p id="subjectP"></p>
 		</div>
-	<br></form>
+    </form>
       </div>
       <div class="modal-footer">
 			<div class="btn-group btn-group-justified" role="group" aria-label="group button">
@@ -410,8 +432,11 @@ unset($just);
         <h4 class="modal-title">Добавьте учеников</h4>
       </div>
       <div class="modal-body">
-        <button class='btn' id="eweStudent">Еще</button>
-        <button class='btn' id="eweStudentdelete">Удалить</button>
+        <div class="ladygaga" style="margin-left:1.2%; margin-right:">
+            <button class='btn btn-success' id="eweStudent">Еще</button>
+            <button class='btn btn-danger' id="eweStudentdelete">Удалить</button>
+            <hr>
+        </div>
 	<form method='post' id="studentForm">
 		<div style="max-height:350px; height:350px; overflow-y: scroll; padding:10px; overflow-x:hidden;">
 		<div class="row">
@@ -429,12 +454,11 @@ unset($just);
 		<input class="form-control" type='text' name='phone0' placeholder='Телефон'></div><div class="col-lg-4"><input class="form-control" type='text' name='phoneparent0' placeholder='Телефон Мамки'>
 		</div>
 		<div class="col-lg-4">
-		<input class="form-control" type='text' name='payday0' placeholder='День Оплаты'><br>
+		<input class="form-control" type='text' name='payday0' placeholder='День Оплаты'>
 		</div>
 		</div>
 		<p id="studentP"></p>
-		</div>
-	<br></form>
+		</div></form>
       </div>
       <div class="modal-footer">
 			<div class="btn-group btn-group-justified" role="group" aria-label="group button">
@@ -495,8 +519,11 @@ unset($just);
         <h4 class="modal-title">Добавьте учителей</h4>
       </div>
       <div class="modal-body">
-        <button id="eweTeacher" class="btn">Еще</button>
-        <button id="eweTeacherdelete" class="btn">Удалить</button>
+        <div class="ladygaga" style="margin-left:1.2%; margin-right:">
+            <button id="eweTeacher" class="btn btn-success">Еще</button>
+            <button id="eweTeacherdelete" class="btn btn-danger">Удалить</button>
+            <hr>
+        </div>
 	<form method='post' id="teacherForm">
 		<div style="max-height:350px; height:350px; overflow-y: scroll; padding:10px; overflow-x:hidden;">
 		<div class="row">
@@ -524,7 +551,7 @@ unset($just);
 				echo "</select>";
 			?>         
             </div>
-        </div><br>
+        </div>
 		<p id="teacherP"></p>
 		</div>
 	<br></form>
@@ -751,7 +778,7 @@ unset($just);
 		var a = "0";
 		$("#eweSubject").click(function(){
 			 a++;
-   			 $("#subjectP").append("<div class='row' id='subjectrow"+a+"'><div class='col-lg-6'><input type='text' class='form-control' id='subjectName"+a+"' name='name"+a+"' placeholder='Название'></div><div class='col-lg-6'><input class='form-control' type='text' placeholder='Описание' id='subjectDefenition"+a+"' name='defenition"+a+"' required></div></div><br id='brsubject"+a+"'>");
+   			 $("#subjectP").append("<hr id='hrsubject"+a+"'><div class='row' id='subjectrow"+a+"'><div class='col-lg-6'><input type='text' class='form-control' id='subjectName"+a+"' name='name"+a+"' placeholder='Название'></div><div class='col-lg-6'><input class='form-control' type='text' placeholder='Описание' id='subjectDefenition"+a+"' name='defenition"+a+"' required></div></div>");
 		});
 	
 			
@@ -778,7 +805,7 @@ unset($just);
 	$("#eweSubjectdelete").click(function(){
 		if(a>0){
 			$("#subjectrow"+a).remove();
-			$("#brsubject"+a).remove();
+            $("#hrsubject"+a).remove();
 			a = a - 1;
 		}
 	});
@@ -788,7 +815,7 @@ unset($just);
 		var b = "0";
 		$("#eweStudent").click(function(){
 			 b++;
-   			 $("#studentP").append("<div class='row' id='studentrow"+b+"'><div class='col-lg-4'><input class='form-control' type='text' name='IIN"+b+"' placeholder='ИИН'></div><div class='col-lg-4'><input class='form-control' type='text' name='password"+b+"' placeholder='Пароль'></div><div class='col-lg-4'><input class='form-control' type='text' name='name"+b+"' placeholder='Имя'></div><div class='col-lg-4'><input class='form-control' type='text' name='surname"+b+"' placeholder='Фамилия'></div><div class='col-lg-4'><input class='form-control' type='text' name='father"+b+"'' placeholder='Отчество'></div><div class='col-lg-4'><input class='form-control' type='text' name='birthday"+b+"' placeholder='День рождения'></div><div class='col-lg-4'><input class='form-control' type='text' name='phone"+b+"' placeholder='Телефон'></div><div class='col-lg-4'><input class='form-control' type='text' name='phoneparent"+b+"' placeholder='Телефон Мамки'></div><div class='col-lg-4'><input class='form-control' type='text' name='payday"+b+"' placeholder='День Оплаты'></div></div><br id='brstudent"+b+"'>");
+   			 $("#studentP").append("<hr id='hrstudent"+b+"'><div class='row' id='studentrow"+b+"'><div class='col-lg-4'><input class='form-control' type='text' name='IIN"+b+"' placeholder='ИИН'></div><div class='col-lg-4'><input class='form-control' type='text' name='password"+b+"' placeholder='Пароль'></div><div class='col-lg-4'><input class='form-control' type='text' name='name"+b+"' placeholder='Имя'></div><div class='col-lg-4'><input class='form-control' type='text' name='surname"+b+"' placeholder='Фамилия'></div><div class='col-lg-4'><input class='form-control' type='text' name='father"+b+"'' placeholder='Отчество'></div><div class='col-lg-4'><input class='form-control' type='text' name='birthday"+b+"' placeholder='День рождения'></div><div class='col-lg-4'><input class='form-control' type='text' name='phone"+b+"' placeholder='Телефон'></div><div class='col-lg-4'><input class='form-control' type='text' name='phoneparent"+b+"' placeholder='Телефон Мамки'></div><div class='col-lg-4'><input class='form-control' type='text' name='payday"+b+"' placeholder='День Оплаты'></div></div>");
 		});
 	
 			
@@ -815,7 +842,7 @@ unset($just);
 	$("#eweStudentdelete").click(function(){
 		if(b > 0){
 			$("#studentrow"+b).remove();
-			$(" #brstudent"+b ).remove();
+			$(" #hrstudent"+b ).remove();
 			b = b - 1;
 		}
 	});
@@ -857,7 +884,7 @@ unset($just);
 	$("#eweTeacherdelete").click(function(){
 		if(c>0){
 			$("#teacherrow"+c).remove();
-			$(" #brteacher"+c ).remove();
+			$(" #hrteacher"+c ).remove();
             $("#subjectTeacher"+c).remove();
 			c = c - 1;
 		}
