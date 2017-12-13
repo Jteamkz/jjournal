@@ -448,10 +448,10 @@ unset($just);
 		<input class="form-control" type='text' name='name0' placeholder='Имя'></div><div class="col-lg-4"><input class="form-control" type='text' name='surname0' placeholder='Фамилия'>
 		</div>
 		<div class="col-lg-4">
-		<input class="form-control" type='text' name='father0' placeholder='Отчество'></div><div class="col-lg-4"><input class="form-control" type='text' name='birthday0' placeholder='День рождения'>
+		<input class="form-control" type='text' name='father0' placeholder='Отчество'></div><div class="col-lg-4"><input class="form-control" type='text' name='birthday0' id='dateStudent' placeholder='День рождения'>
 		</div>
 		<div class="col-lg-4">
-		<input class="form-control" type='text' name='phone0' placeholder='Телефон'></div><div class="col-lg-4"><input class="form-control" type='text' name='phoneparent0' placeholder='Телефон Мамки'>
+		<input class="form-control" type='text' name='phone0' id='telephone' placeholder='Телефон'></div><div class="col-lg-4"><input class="form-control" type='text' name='phoneparent0' placeholder='Телефон Мамки'>
 		</div>
 		<div class="col-lg-4">
 		<input class="form-control" type='text' name='payday0' placeholder='День Оплаты'>
@@ -531,7 +531,7 @@ unset($just);
 		<input class="form-control" type='text' name='IIN0' placeholder='ИИН'></div><div class="col-lg-3"><input class="form-control" type='text' name='password0' placeholder='Пароль'></div>
 			<div class="col-lg-3"><input class="form-control" type='text' name='name0' placeholder='Имя'></div><div class="col-lg-3"><input class="form-control" type='text' name='surname0' placeholder='Фамилия'></div>
 			<div class="col-lg-3"><input class="form-control" type='text' name='father0' placeholder='Отчество'></div>
-			<div class="col-lg-3"><input class="form-control" type='text' name='birthday0' placeholder='День рождения'></div>
+			<div class="col-lg-3"><input class="form-control" type='text' id='dateTeacher' name='birthday0' placeholder='День рождения'></div>
 			<div class="col-lg-3"><input class="form-control" type='text' name='phone0' placeholder='Телефон'>
 			</div>
 			<div class="col-lg-3">
@@ -764,7 +764,8 @@ unset($just);
     <script src="js/jquery.js"></script>
 
     <script src="js/actions.js"></script>
-
+	<script src="js/dist/cleave.js"></script>
+	<script src="js/dist/addons/cleave-phone.kz.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
@@ -774,6 +775,18 @@ unset($just);
     <script src="js/plugins/morris/raphael.min.js"></script>
     <script src="js/plugins/morris/morris.min.js"></script>
     <script src="js/plugins/morris/morris-data.js"></script>
+		<script>	
+			var cleave = new Cleave('#dateStudent', {
+				date: true,
+				delimiter : ".",
+				datePattern: ['d', 'm', 'Y']
+			});
+			var cleave = new Cleave('#dateTeacher', {
+				date: true,
+				delimiter : ".",
+				datePattern: ['d', 'm', 'Y']
+			});
+		</script>
     <script>
 		var a = "0";
 		$("#eweSubject").click(function(){
