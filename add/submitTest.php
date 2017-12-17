@@ -10,7 +10,7 @@
 		$name = $_POST["name"];
 		$description = $_POST["description"];
 		
-		$sql = "INSERT INTO tests (name, description) VALUES ('$name', '$description')";
+		$sql = "INSERT INTO tests (name, description, array, numberquests) VALUES ('$name', '$description', '$array', '$numberquests')";
 
 		if ($con->query($sql) === TRUE) {
 		    $kongo = $con->insert_id;
@@ -32,7 +32,7 @@
 				for($k = 0; $k < $numberAns; $k++){
 					if(isset($_POST['answer'.$i.$k])){
 						$variant = $_POST['answer'.$i.$k];
-						$sql = "INSERT INTO rights (rightanswer, ids) VALUES ('$variant', '$kongo2')";
+						$sql = "INSERT INTO variant (content, ids, bool) VALUES ('$variant', '$kongo2', 1)";
 
 						if ($con->query($sql) === TRUE) {
 						    
@@ -41,7 +41,7 @@
 						}
 					}else{
 						$variant = $_POST['answerZamena'.$i.$k];
-						$sql = "INSERT INTO wrongs (wrong, ids) VALUES ('$variant', '$kongo2')";
+						$sql = "INSERT INTO variant (content, ids, bool) VALUES ('$variant', '$kongo2', 0)";
 
 						if ($con->query($sql) === TRUE) {
 						    

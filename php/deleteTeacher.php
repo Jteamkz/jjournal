@@ -10,7 +10,7 @@
     }
     $str = "DELETE FROM teacher WHERE id = ".$id;
     $str2 = "DELETE FROM relation_ts WHERE id_t = ".$id;
-    $str3 = "SET "
+    $str3 = "SET ";
 if ($connection->query($str) === TRUE) {
     if($connection->query($str2) === TRUE){
 

@@ -19,8 +19,8 @@ unset($just);
 <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
         <link rel="stylesheet" href="css/style.css" type="text/css">
         <link rel="stylesheet" href="css/teacher.css" type="text/css">
-        <script src="../js/jquery.js"></script>
-        <script src="../js/bootstrap.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.js"></script>
         <?php 
             include 'php/SQLconnect.php';
             include 'php/connectOS.php';

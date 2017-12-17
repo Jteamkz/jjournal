@@ -22,7 +22,9 @@ if($result->num_rows > 0){
 			$_SESSION['studycenter'] = $export_db_name;
 			header($to_admin);
 		}else if($row['status'] == 'student'){
-			echo 'student';
+			$_SESSION['studycenter'] = $export_db_name;
+			$_SESSION['iin'] = $row['iin'];
+			header("Location: ../../student_panel.php");
 		}else if($row['status'] == 'teacher'){
 			
 			if(strlen($user_name) > 11){
