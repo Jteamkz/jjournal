@@ -49,16 +49,11 @@
 			}
 		}
 		$idStudent = $_SESSION['iin'];
-		$sql = "SELECT * FROM relation_st WHERE id_student = '$idStudent' AND id_test = '$idTest'";
-		$result = $con->query($sql);
+		$sql1 = "SELECT * FROM relation_st WHERE id_student = '$idStudent' AND id_test = '$idTest'";
+		$result1 = $con->query($sql1);
 		$isExamined = false;
-		if ($result->num_rows > 0) {
-			// output data of each row
-			while($row = $result->fetch_assoc()) {
-				if($points!=null){
-					$isExamined = true;
-				}
-			}
+		if ($result1->num_rows > 0) {
+			$isExamined = true;
 		}
 		if($isExamined == false){
 			$sql = "INSERT INTO relation_st (id_student, id_test, points) VALUES ('$idStudent', '$idTest', '$rights')";
