@@ -16,7 +16,7 @@ body {
 
 #page-wrapper {
     width: 100%;
-    padding: 0;
+    padding-top: 20px;
     background-color: #ecf0f1;
 }
 
@@ -107,6 +107,7 @@ ul.alert-dropdown {
 /* Side Navigation */
 
 @media(min-width:768px) {
+    
     .side-nav {
         position: fixed;
         top: 51px;

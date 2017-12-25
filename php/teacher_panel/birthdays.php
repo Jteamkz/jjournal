@@ -38,8 +38,8 @@
                                         $dayFirst = substr($students_b[$i], 0, 2);
                                         $daySecond = substr($students_b[$j], 0, 2);
 
-                                        $monthFirst = substr($students_b[$i], 3, 5);
-                                        $monthSecond = substr($students_b[$j], 3, 5);
+                                        $monthFirst = substr($students_b[$i], 3, 2);
+                                        $monthSecond = substr($students_b[$j], 3, 2);
                                         if($monthFirst < $monthSecond){
                                             $temp_id = $students_i[$i];
                                             $students_i[$i] = $students_i[$j];
@@ -68,7 +68,7 @@
                                 $breakPoint = 0;
                                 for ($i=0; $i < sizeof($students_b); $i++) { 
                                     $dayFirst = substr($students_b[$i], 0, 2);
-                                    $monthFirst = substr($students_b[$i], 3, -3);
+                                    $monthFirst = substr($students_b[$i], 3, 2);
                                     if($monthFirst > $currentMonth){
                                         break;
                                     }else if($monthFirst == $currentMonth){

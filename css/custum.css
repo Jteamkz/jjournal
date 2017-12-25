@@ -1,6 +1,15 @@
 #wrapper{
 	min-height: 100%;
 }
+.jjournal-orders{
+	margin-bottom: 0px;
+}
+p, h1, h2, h3{
+	font-family: 'Open Sans';
+}
+body{
+	font-family: 'Open Sans';
+}
 /*.btn-primary{
 	background-color: #2ecc71;
     border-color: #30c06d;
@@ -74,6 +83,10 @@ Modal window
 	color: #2ecc71;
 }
 
+.jjournal-primary{
+	border-color: #34495e;
+}
+
 .panel-primary{
 	border-color: #34495e;
 	border-radius: 0;
@@ -125,15 +138,91 @@ Modal window
 .jjournal-panel-top{
 	background-color: #fff;
 	border: 1px solid #e7e7e7;
-	border-bottom: 0px;
 }
 .jjournal-panel-top p{
 	font-size: 16px;
 	display: inline-block;
 	margin: 5px; 
 }
+.chunks-s:hover{
+	background-color: #f6f8fc;
+	
+}
+.chunks-s{
+	border-bottom: 1px solid #e7e7e7;
+	padding: 10px 15px;
+	position: relative;
+}
+.room-s{
+	font-family: 'Open Sans';
+	position: absolute;
+	width: 100%;
+	text-align: center;
+    background-color: #929292;
+	left: 0;
+	top: 0;		
+	color: #fff;
+	
+	font-size: 10px;
+}
+.room{
+	position: absolute;
+    background-color: #34495e;
+    padding: 15px 20px 5px 20px;
+    right: -5px;
+    bottom: 0;
+	color: #fff;
+	font-size: 18px;
+}
 
+@media (max-width: 1199px){
+	.box-s{
+		border: 1px solid #e7e7e7;
+		margin-bottom: 15px;
+		background-color: #fff;
+		
+	}
+}
+.shadow{
+	-webkit-transition: box-shadow 0.2s; /* Safari */
+    transition: box-shadow 0.2s;
+}
+.shadow:hover{
+-webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.25);
+-moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.25);
+box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.25);
+}
 @media (min-width: 1200px){
+
+	.schedule h2, .schedule h3{
+		margin: 0px;
+	}
+	.box-s{
+		border: 1px solid #e7e7e7;
+		margin-bottom: 15px;
+		background-color: #fff;
+	}
+	.scroll-j{
+		max-height: 350px;
+		overflow-y: auto;
+		background-color: #fff;
+	}
+			-webkit-scrollbar-track
+		{
+			border: 1px solid #cccccc;
+			background-color: #cccccc;
+		}
+
+		::-webkit-scrollbar
+		{
+			width: 10px;
+			background-color: white;
+		}
+
+		::-webkit-scrollbar-thumb
+		{
+			background-color: #cccccc;	
+		}
 	.navbar-fixed-top{
 		border-width: 0 0 1px;
 	}
