@@ -92,7 +92,8 @@ label{
 	float:right;
 	width:0px;
 	height:0px;
-	margin-top:-5px;
+	margin-top:-9px;
+	margin-right:5px;
 	}
   .checkboxGroup label {
     display: inline-block;

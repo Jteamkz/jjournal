@@ -386,111 +386,159 @@ unset($just);
         </select>
     		</div>
     	</div>
-    <style>
-        .dender{
-            height:100px;
-        }
-    </style>
-        <div class="row">
+        <div class="row" style="margin-top:10px;">
             <div class="col-lg-4">
                 <div class="dender">
-        <h5 shama='monday' class="togglerH5" id="mondayToggler">Понедельник 
+				<div class="shadow">
+                            <div class="jjournal-panel-top" style="padding-left:10px;">
+                                <h5 shama='monday' class="togglerH5" id="mondayToggler">Понедельник 
 		<div class="checkboxGroup checkboxGroup-info">
                         <input id="mondayCheck" value="monday" type="checkbox">
                         <label shama='monday' for="mondayCheck">
                         </label>
                     </div></h5>
-                <div id="mondayDiv">
+                            </div>
+                            <div class="box-s"><div class="chunks-s">
+                                            <div id="mondayDiv">
                     <input type="text" placeholder="Кабинет" id="mondayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="monday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="monday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="monday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="monday4" maxlength="2">
                 </div>
+                                        </div>
+                            </div>
+                        </div>
             </div>
             </div>
-            <div class="col-lg-4">
+			<div class="col-lg-4">
                 <div class="dender">
-                <h5 shama='tuesday' class="togglerH5" id="tuesdayToggler">Вторник 
-				<div class="checkboxGroup checkboxGroup-info">
+				<div class="shadow">
+                            <div class="jjournal-panel-top" style="padding-left:10px;">
+                                <h5 shama='tuesday' class="togglerH5" id="tuesdayToggler">Вторник 
+		<div class="checkboxGroup checkboxGroup-info">
                         <input id="tuesdayCheck" value="tuesday" type="checkbox">
                         <label shama='tuesday' for="tuesdayCheck">
                         </label>
                     </div></h5>
-                <div id="tuesdayDiv">
+                            </div>
+                            <div class="box-s"><div class="chunks-s">
+                                            <div id="tuesdayDiv">
                     <input type="text" placeholder="Кабинет" id="tuesdayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="tuesday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="tuesday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="tuesday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="tuesday4" maxlength="2">
                 </div>
-                </div>
+                                        </div>
+                            </div>
+                        </div>
             </div>
-            <div class="col-lg-4">
+            </div>
+			<div class="col-lg-4">
                 <div class="dender">
-                <h5 shama='wednesday' class="togglerH5" id="wednesdayToggler">Среда 
-				<div class="checkboxGroup checkboxGroup-info">
+				<div class="shadow">
+                            <div class="jjournal-panel-top" style="padding-left:10px;">
+                                <h5 shama='wednesday' class="togglerH5" id="wednesdayToggler">Среда 
+		<div class="checkboxGroup checkboxGroup-info">
                         <input id="wednesdayCheck" value="wednesday" type="checkbox">
                         <label shama='wednesday' for="wednesdayCheck">
                         </label>
                     </div></h5>
-                <div id="wednesdayDiv">
+                            </div>
+                            <div class="box-s"><div class="chunks-s">
+                                            <div id="wednesdayDiv">
                     <input type="text" placeholder="Кабинет" id="wednesdayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="wednesday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="wednesday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="wednesday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="wednesday4" maxlength="2">
                 </div>
-                </div>
+                                        </div>
+                            </div>
+                        </div>
             </div>
+            </div>
+        </div>
+		<div class="row">
             <div class="col-lg-4">
                 <div class="dender">
-                <h5 shama='thursday' class="togglerH5" id="thursdayToggler">Четверг 
-				<div class="checkboxGroup checkboxGroup-info">
+				<div class="shadow">
+                            <div class="jjournal-panel-top" style="padding-left:10px;">
+                                <h5 shama='thursday' class="togglerH5" id="thursdayToggler">Четверг 
+		<div class="checkboxGroup checkboxGroup-info">
                         <input id="thursdayCheck" value="thursday" type="checkbox">
                         <label shama='thursday' for="thursdayCheck">
                         </label>
                     </div></h5>
-                <div id="thursdayDiv">
+                            </div>
+                            <div class="box-s"><div class="chunks-s">
+                                            <div id="thursdayDiv">
                     <input type="text" placeholder="Кабинет" id="thursdayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="thursday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="thursday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="thursday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="thursday4" maxlength="2">
                 </div>
-                </div>
+                                        </div>
+                            </div>
+                        </div>
             </div>
-            <div class="col-lg-4">
+            </div>
+			<div class="col-lg-4">
                 <div class="dender">
-                <h5 shama='friday' class="togglerH5" id="fridayToggler">Пятница 
-				<div class="checkboxGroup checkboxGroup-info">
+				<div class="shadow">
+                            <div class="jjournal-panel-top" style="padding-left:10px;">
+                                <h5 shama='friday' class="togglerH5" id="fridayToggler">Пятница 
+		<div class="checkboxGroup checkboxGroup-info">
                         <input id="fridayCheck" value="friday" type="checkbox">
                         <label shama='friday' for="fridayCheck">
                         </label>
                     </div></h5>
-                <div id="fridayDiv">
+                            </div>
+                            <div class="box-s"><div class="chunks-s">
+                                            <div id="fridayDiv">
                     <input type="text" placeholder="Кабинет" id="fridayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="friday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="friday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="friday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="friday4" maxlength="2">
                 </div>
-                </div>
+                                        </div>
+                            </div>
+                        </div>
             </div>
-            <div class="col-lg-4">
+            </div>
+			<div class="col-lg-4">
                 <div class="dender">
-                <h5 shama='saturday' class="togglerH5" id="saturdayToggler">Суббота 
-				<div class="checkboxGroup checkboxGroup-info">
+				<div class="shadow">
+                            <div class="jjournal-panel-top" style="padding-left:10px;">
+                                <h5 shama='saturday' class="togglerH5" id="saturdayToggler">Суббота 
+		<div class="checkboxGroup checkboxGroup-info">
                         <input id="saturdayCheck" value="saturday" type="checkbox">
                         <label shama='saturday' for="saturdayCheck">
                         </label>
                     </div></h5>
-                <div id="saturdayDiv">
+                            </div>
+                            <div class="box-s"><div class="chunks-s">
+                                            <div id="saturdayDiv">
                     <input type="text" placeholder="Кабинет" id="saturdayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="saturday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="saturday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="saturday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="saturday4" maxlength="2">
                 </div>
-                </div>
+                                        </div>
+                            </div>
+                        </div>
             </div>
+            </div>
+        </div>
+		<div class="row">
             <div class="col-lg-4">
                 <div class="dender">
-                <h5 shama='sunday' class="togglerH5" id="sundayToggler">Воскресенье 
-				<div class="checkboxGroup checkboxGroup-info">
+				<div class="shadow">
+                            <div class="jjournal-panel-top" style="padding-left:10px;">
+                                <h5 shama='sunday' class="togglerH5" id="sundayToggler">Воскресенье 
+		<div class="checkboxGroup checkboxGroup-info">
                         <input id="sundayCheck" value="sunday" type="checkbox">
                         <label shama='sunday' for="sundayCheck">
                         </label>
                     </div></h5>
-                <div id="sundayDiv">
+                            </div>
+                            <div class="box-s"><div class="chunks-s">
+                                            <div id="sundayDiv">
                     <input type="text" placeholder="Кабинет" id="sundayroom"><br>
                     с <input type="text" placeholder="чч" style="width:30px;" id="sunday1" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="sunday2" maxlength="2"> до <input type="text" placeholder="чч" style="width:30px;" id="sunday3" maxlength="2"> : <input type="text" placeholder="мм" style="width:30px;" id="sunday4" maxlength="2">
                 </div>
+                                        </div>
+                            </div>
+                        </div>
             </div>
             </div>
-        </div>
+			</div>
         </div>
         Выберите учеников<br>
         <div class="col-lg-4" style='background-color: white;padding:0px;'>
