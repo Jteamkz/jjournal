@@ -25,7 +25,7 @@
 	    while($row = $result->fetch_assoc()) {
 			echo "<form method='post' action='testCheck.php?array=".$row['array']."&numberquests=".$row['numberquests']."'>";
 			echo "<input type='hidden' name='testId' value='".$idTest."'>";
-			$sql1 = "SELECT * FROM questions WHERE ids='$idTest' order by rand()";
+			$sql1 = "SELECT * FROM questions WHERE ids='$idTest'";
 			$result1 = $con->query($sql1);
 			
 			if ($result1->num_rows > 0) {

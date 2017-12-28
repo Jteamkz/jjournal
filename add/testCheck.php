@@ -30,6 +30,7 @@
 					
 				for($k = 0; $k < $numberAns; $k++){
 					$variant = $_POST['answer'.$i.$k];
+					echo $variant." ";
 					if($variant!=null)
 						array_push($answersGiven, $variant);
 				}
@@ -40,6 +41,14 @@
 				if ($answers!=$answersGiven){
 					$RightOrWrong = false;
 				}
+				/*foreach($answers as $result) {
+					echo $result.",";
+				}
+				echo "   ";
+				foreach($answersGiven as $result) {
+					echo $result.",";
+				}*/
+				echo "<br>";
 				if($RightOrWrong == true)
 						$rights++;
 				$numberAns = "";
@@ -49,6 +58,7 @@
 			}
 		}
 		$idStudent = $_SESSION['iin'];
+		
 		$sql1 = "SELECT * FROM relation_st WHERE id_student = '$idStudent' AND id_test = '$idTest'";
 		$result1 = $con->query($sql1);
 		$isExamined = false;
@@ -59,11 +69,12 @@
 			$sql = "INSERT INTO relation_st (id_student, id_test, points) VALUES ('$idStudent', '$idTest', '$rights')";
 			
 			if ($con->query($sql) === TRUE) {
-				echo $rights;
+				echo "Ты набрал: ".$rights." <a href='../student_panel.php'>Назад</a>";
 			} else {
 				echo "Error: " . $sql . "<br>" . $con->error;
 			}
+			
 		}else{
-			echo "eee kotakbas";
+			echo "eee onbagan";
 		}
 ?>

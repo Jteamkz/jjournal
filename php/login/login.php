@@ -24,6 +24,7 @@ if($result->num_rows > 0){
 		}else if($row['status'] == 'student'){
 			$_SESSION['studycenter'] = $export_db_name;
 			$_SESSION['iin'] = $row['iin'];
+			$_SESSION['tele'] = $row['tele'];
 			header("Location: ../../student_panel.php");
 		}else if($row['status'] == 'teacher'){
 			

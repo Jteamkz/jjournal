@@ -316,7 +316,7 @@ unset($just);
                         <a  class="jjournal-white" href="admin_groups.php"><i class="fa fa-fw fa-desktop"></i> Группы</a>
                     </li>
                     <li>
-                        <a  class="jjournal-white" href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                        <a  class="jjournal-white" href="admin_tests.php"><i class="fa fa-fw fa-wrench"></i> Тесты</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
@@ -350,7 +350,7 @@ unset($just);
         <input type="text" placeholder="Название группы" name="name">
         			</div>
         			<div class="col-lg-4">
-        <select style="" name="subject" required>
+        <select style="" name="subject" id='subjectTeacher' required>
         <option value="" disabled selected>Выберите предмет</option>
             <?php
                 $sql = "SELECT * FROM subjects";
@@ -368,21 +368,8 @@ unset($just);
         </select>
         		</div>
         		<div class="col-lg-4">
-        <select name="teacher" required>
+        <select name="teacher" id='teacherSubject' required>
         <option value="" disabled selected>Выберите учителя</option>
-            <?php
-                $sql = "SELECT * FROM teacher";
-                $result = $con->query($sql);
-
-                if ($result->num_rows > 0) {
-                    // output data of each row
-                    while($row = $result->fetch_assoc()) {
-                        echo "<option value='".$row['id']."'' title='teacher''>".$row['firstname']." ".$row['lastname']." ".$row['fathername']."</option>";
-                    }
-                } else {
-                    
-                }
-            ?>
         </select>
     		</div>
     	</div>
@@ -604,6 +591,22 @@ unset($just);
     <script src="js/plugins/morris/raphael.min.js"></script>
     <script src="js/plugins/morris/morris.min.js"></script>
     <script src="js/plugins/morris/morris-data.js"></script>
+	<script>
+            $("#subjectTeacher").on("change paste keyup", function() {
+                var c = $("#subjectTeacher").val();
+                $("#teacherSubject").empty();
+                if(!$("#subjectTeacher").val()){
+                    $("#teacherSubject").empty();
+                }else{
+                $.ajax({
+		       url: 'add/teacherZhen.php?id_s='+c,
+		       success: function(html) {
+          	$("#teacherSubject").append(html);
+                    }
+                });
+            }
+            });
+        </script>
 </body>
 
 </html>

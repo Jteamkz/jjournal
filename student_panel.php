@@ -2,23 +2,22 @@
 session_start();
 
 $db_name = $_SESSION['studycenter'];
-if (isset($_SESSION['tele'])) {
+/*if (isset($_SESSION['tele'])) {
     $iin_b = FALSE;
     $tele = $_SESSION['tele'];
 }
 else if(isset($_SESSION['iin'])){
     $iin_b = TRUE;
     $iin = $_SESSION['iin'];
-}
-
+}*/
 include 'php/db/connect_db.php';
 include 'php/db/get_all_data.php';
 include 'php/db/get.php';
 include 'php/db/get_query.php';
 include 'php/db/get_personal.php';
 
-$_SESSION['id'] = $personal['id'];
-$_SESSION['iin'] = $personal['iin'];
+/*$_SESSION['id'] = $personal['id'];
+$_SESSION['iin'] = $personal['iin'];*/
 $connection->set_charset("utf8");
 
 $result = getAllData('about', $connection);
@@ -54,7 +53,6 @@ $about = $result->fetch_assoc();
 <body>
 
     <div id="wrapper">
-
         <nav class="navbar navbar-default navbar-jjournal navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -186,7 +184,7 @@ $about = $result->fetch_assoc();
                         <a  class="jjournal-white" href="admin_groups.php"><i class="fa fa-fw fa-desktop"></i> Группы</a>
                     </li>
                     <li>
-                        <a  class="jjournal-white" href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                        <a  class="jjournal-white" href="#"><i class="fa fa-fw fa-wrench"></i> Тесты</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
@@ -208,195 +206,34 @@ $about = $result->fetch_assoc();
         </nav>
 
         <div id="page-wrapper">
+			<div style="padding-left:10px;" class="jjournal-panel-top">
+				<?php
+					include 'php/SQLconnect.php';
+					include 'php/connectOS.php';
+					$tests = array();
+					$iin = $_SESSION['iin'];
+					$tele = $_SESSION['tele'];
+					$sql = "SELECT * FROM relation_st WHERE id_student = $iin OR id_student = $tele";
+					$result1 = $con->query($sql);
+					if ($result1->num_rows > 0) {
+						while($row = $result1->fetch_assoc()) {
+							array_push($tests, $row['id_test']);
+						}
+					}
+					$idTest = $row['id_test'];
+							
+							$sql2 = "SELECT * FROM tests";
+							$result2 = $con->query($sql2);
 
-            <div class="container-fluid" id="myAppDobro">
-
-                <div class="row" style="margin-left: 0px; margin-right: 0px">
-                    <div>
-                        <div class="col-lg-6">
-
-                                
-                            <!--<div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Поставить посещаемость</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-lg-12">
-                                            <h2>Группа: I 1603</h2>
-                                        </div>
-                                        <div class="col-lg-6 col-lg-12 left-grey">
-                                             <h2>Понедельник в 15:00</h2>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>-->
-                            <div class="jjournal-panel-top">
-                                <p class="jjournal-orange">Предстоящие занятия</p>
-                                <p class="jjournal-orange" style="float: right"><a href="schedule.php">Посмотреть расписание</a></p>
-                            </div>
-                            <div class="scroll-j">
-                                <ul class="jjournal-orders">
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                Группа: I 1603                                         
-                                            </div>
-                                            <div class="col-lg-6">
-                                                в Понедельник 16:30
-                                            </div>
-                                        </div>  
-                                    </li>
-                                    <li>
-                                    rewq  
-                                    </li>
-                                    <li>
-                                    asdf 
-                                    </li>
-                                    <li>
-                                        fdsa
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="jjournal-panel-top">
-                            <p class="jjournal-green">Предстоящие дни рождения</p>
-                            <?php
-                                include "php/teacher_panel/birthdays.php";
-                            ?>
-                        </div>
-                        <div class="scroll-j">
-                        
-                        <ul class="jjournal-orders">
-                                <?php 
-                                    $order_of_id = 0;
-                                    while($order_of_id < sizeof($students_b)){
-                                        $query = "id = ".$all_id[$order_of_id];
-                                        $tt = get_query($query, 'student', $connection);
-                                        if ($tt->num_rows > 0) {
-                                            while ($row_ts = $tt->fetch_assoc()) {
-                                                ?>
-                                                <li><?php echo $row_ts['firstname']." ".$row_ts['lastname']."-".$all[$order_of_id]; ?></li>
-                                                <?php
-                                            }
-                                        }else{
-                                            echo "Ошибка";
-                                        }
-                                        $order_of_id++;
-                                    }
-                                    
-                                
-                                ?>
-                        </ul>
-                        </div>
-                        
-                    </div>
-                     <div class="col-lg-6">
-                        <div class="alert alert-info alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i>  <strong>Like SB Admin?</strong> Try out <a href="http://startbootstrap.com/template-overviews/sb-admin-2" class="alert-link">SB Admin 2</a> for additional features!
-                        </div>
-                    </div> 
-
-                </div>
-                
-                <div class="row">
-                    <div class="col-lg-12">
-                    
-                        <a data-toggle="modal" data-target="#myModal" class="btn btn-success">Test database</a>
-                        <a class="btn btn-success">Test a group</a>
-                        <a class="btn btn-success">Create test</a>
-                    </div>
-                    
-                </div>
-                
-                <div>
-                    
-                </div>
-                <!-- /.row -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Добавьте тест группе</h4>
-      </div>
-      <div class="modal-body">
-	<div class="formGroupAdding">
-	<form method="post" action="php/teacher_panel/set_relation_test_class.php" id="testAddToClassForm">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label for="sel1">Выберите группу:</label>
-                        <select name="group" class="form-control" id="sel1">
-                            <?php 
-                                $get_own_groups = "teacher_id = ".$personal['id'];
-                                $tests = get_query($get_own_groups, 'class', $connection);
-                                if($tests->num_rows > 0){
-                                    while($test_data = $tests->fetch_assoc()){
-                                        ?>
-                                            <option value="<?php echo $test_data['id']; ?>"><?php echo $test_data['name_group']; ?></option>
-                                        <?php
-                                    }
-                                }else{
-                                    echo "error";
-                                }
-                                
-                            ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label for="sel2">Выберите тест:</label>
-                        <select name="test" class="form-control" id="sel2">
-                            <?php 
-                                $tests = getAllData('tests', $connection);
-                                if($tests->num_rows > 0){
-                                    while($test_data = $tests->fetch_assoc()){
-                                        ?>
-                                            <option value="<?php echo $test_data['id']; ?>"><?php echo $test_data['name']; ?></option>
-                                        <?php
-                                    }
-                                }else{
-                                    echo "error";
-                                }
-                                
-                            ?>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            
-    </form>
-	</div>
-      </div>
-      <div class="modal-footer">
-			<div class="btn-group btn-group-justified" role="group" aria-label="group button">
-				<div class="btn-group" role="group">
-					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
-				</div>
-				<div class="btn-group btn-delete hidden" role="group">
-					<button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
-				</div>
-				<div class="btn-group" role="group">
-					<button type="button" id="saveTestToGroup" class="btn btn-default btn-hover-green saveTestToGroup" data-dismiss="modal" role="button">Save</button>
-				</div>
+							if ($result2->num_rows > 0) {
+								// output data of each row
+								while($row2 = $result2->fetch_assoc()) {
+									if(!in_array($row2['id'], $tests))
+										echo "<a style='margin-top:5px; width:100px;' class='btn btn-success' href='add/testPage.php?id=".$row2['id']."'>".$row2['name']."</a><br>";   	
+								}
+							}
+				?>
 			</div>
-		</div>
-    </div>
-
-  </div>
-</div>
-            </div>
-            <!-- /.container-fluid -->
-
-        </div>
         <!-- /#page-wrapper -->
 
     </div>
@@ -416,20 +253,3 @@ $about = $result->fetch_assoc();
 </body>
 
 </html>
-
-<?php
-	session_start();
-	$db_name = $_SESSION['studycenter'];
-	include "php/SQLconnect.php";
-	include "php/connectOS.php";
-	
-	$sql = "SELECT * FROM tests";
-	$result = $con->query($sql);
-	if ($result->num_rows > 0) {
-	    while($row = $result->fetch_assoc()) {
-			echo "<a href='add/testPage.php?id=".$row['id']."'>".$row['name']."</a><br>";   	
-	    }
-	}else{
-		echo "sad";
-	}
-	?>

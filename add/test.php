@@ -20,7 +20,7 @@
 			border:1px solid #DC143C;
 			outline: 0;
 		}
-		input[type=text]{
+		input[type=text], select{
 			  width: 200px;
 			  height: 34px;
 			  padding: 6px 12px;
@@ -103,6 +103,7 @@
 			}
 			a--;
 			$(this).remove();
+			answers.splice(id, 1);
 			$("#voprosForm").attr('action','selectAns.php?array='+answers+'&numberquests='+a);
 	});
 	$(document).on('click', '.addAnswer', function(){ 

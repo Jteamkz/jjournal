@@ -17,6 +17,25 @@ $(document).on('click',  '.delete_student', function(e){
 		})
 });
 
+$(document).on('click',  '.delete_test', function(e){
+        $shady = $(this).attr('shady');
+        //alert("eminem");
+		$test = $(this).attr('test');
+		e.preventDefault();
+		$url = 'php/deleteTest.php?id='+$test;
+		$tr = "#tr" + $shady;
+
+		$.ajax({
+			type: 'POST',
+			url: $url,
+			success: function(data){
+				//location.reload();
+				$($tr).html(data);
+				// console.log(this.load("php/teacher_part.php"));
+			}
+		})
+});
+
 $(document).on('click',  '.delete_teacher', function(e){
         $shady = $(this).attr('shady');
 		$teacher = $(this).attr('teacher');
