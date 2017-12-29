@@ -1,3 +1,28 @@
+$(document).on('click',  '.saver_test', function(e){
+		var idTest = $(this).attr('idTest');
+		//$spaceModalShady = '#squarespaceModal' + $shady;
+
+		//$izno = $($spaceModalShady).find("#IIIN").val();
+
+		//$formId = '#changeForm'+$shady;
+		var form = $('changeForm'+idTest);
+		var changes = form.serialize();
+		e.preventDefault();
+		$url = 'add/changeTest.php?test_id='+idTest;
+		
+		//$tr = "#tr" + $shady;
+
+		$.ajax({
+			type: 'POST',
+			url: $url,
+			data: changes,
+			success: function(data){
+				location.reload();
+				// $($tr).html(data);
+				// console.log(this.load("php/teacher_part.php"));
+			}
+		})
+});
 $(document).on('click',  '.saver_teacher', function(e){
 		$shady = $(this).attr('shady');
 		$spaceModalShady = '#squarespaceModal' + $shady;

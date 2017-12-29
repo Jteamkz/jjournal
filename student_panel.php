@@ -210,26 +210,61 @@ $about = $result->fetch_assoc();
 				<?php
 					include 'php/SQLconnect.php';
 					include 'php/connectOS.php';
-					$tests = array();
 					$iin = $_SESSION['iin'];
 					$tele = $_SESSION['tele'];
-					$sql = "SELECT * FROM relation_st WHERE id_student = $iin OR id_student = $tele";
-					$result1 = $con->query($sql);
-					if ($result1->num_rows > 0) {
-						while($row = $result1->fetch_assoc()) {
-							array_push($tests, $row['id_test']);
+					$sql = "SELECT * FROM student WHERE iin = '$iin' OR phone = '$tele'";
+					$result = $con->query($sql);
+					$tests = array();
+					if ($result->num_rows > 0) {
+						while($row = $result->fetch_assoc()) {
+							$student_id_list = $row['id'];
+							$sql1 = "SELECT * FROM relation_cs WHERE student_id = $student_id_list";
+							$result1 = $con->query($sql1);
+							
+							if ($result1->num_rows > 0) {
+								// output data of each row
+								while($row1 = $result1->fetch_assoc()) {
+									$group_id_list = $row1['class_id'];
+									$sql2 = "SELECT * FROM relation_gt WHERE group_id = $group_id_list";
+									$result2 = $con->query($sql2);
+
+									if ($result2->num_rows > 0) {
+										// output data of each row
+										while($row2 = $result2->fetch_assoc()) {
+											$test_id_list = $row2['test_id'];
+											$sql3 = "SELECT * FROM relation_st WHERE (id_student = $iin OR id_student = $tele) AND id_test = $test_id_list";
+											$result3 = $con->query($sql3);
+
+											if ($result3->num_rows > 0) {
+												// output data of each row
+												while($row3 = $result3->fetch_assoc()) {
+													array_push($tests, $row3['id_test']);
+												}
+											}
+										}
+									}
+								}
+							}
 						}
 					}
-					$idTest = $row['id_test'];
-							
-							$sql2 = "SELECT * FROM tests";
-							$result2 = $con->query($sql2);
+							$sql4 = "SELECT * FROM relation_gt WHERE group_id = $group_id_list";
+							$result4 = $con->query($sql4);
 
-							if ($result2->num_rows > 0) {
+							if ($result4->num_rows > 0) {
 								// output data of each row
-								while($row2 = $result2->fetch_assoc()) {
-									if(!in_array($row2['id'], $tests))
-										echo "<a style='margin-top:5px; width:100px;' class='btn btn-success' href='add/testPage.php?id=".$row2['id']."'>".$row2['name']."</a><br>";   	
+								while($row4 = $result4->fetch_assoc()) {
+									if(!in_array($row4['test_id'], $tests)){
+										$idId = $row4['test_id'];
+										$sql5 = "SELECT * FROM tests WHERE id=$idId";
+										$result5 = $con->query($sql5);
+
+										if ($result5->num_rows > 0) {
+											// output data of each row
+											while($row5 = $result5->fetch_assoc()) {
+												echo "<a style='margin-top:5px; width:100px;' class='btn btn-success' href='add/testPage.php?id=".$row5['id']."'>".$row5['name']."</a><br>";
+											}
+										}
+									}
 								}
 							}
 				?>
