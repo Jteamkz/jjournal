@@ -232,7 +232,7 @@ $about = $result->fetch_assoc();
 										// output data of each row
 										while($row2 = $result2->fetch_assoc()) {
 											$test_id_list = $row2['test_id'];
-											$sql3 = "SELECT * FROM relation_st WHERE (id_student = $iin OR id_student = $tele) AND id_test = $test_id_list";
+											$sql3 = "SELECT * FROM relation_st WHERE id_student = $student_id_list AND id_test = $test_id_list";
 											$result3 = $con->query($sql3);
 
 											if ($result3->num_rows > 0) {

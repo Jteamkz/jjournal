@@ -4,7 +4,11 @@
 	include "../php/SQLconnect.php";
 	include "../php/connectOS.php";
 	$idTest = $_GET['id'];
-
+	echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
+	echo "<style>body{overflow-x:hidden; padding-left:30px; padding-top:20px;}</style>";
+	echo "<link href='../font-awesome/css/font-awesome.min.css' rel='stylesheet' type='text/css'>";
+	echo "<link rel='stylesheet' type='text/css' href='../css/bootstrap.css'>";
+	echo "<link rel='stylesheet' type='text/css' href='../css/testPage.css'>";
 	class variant {
 		public $id;
 		public $content;
@@ -48,7 +52,7 @@
 					shuffle($variants);
 					$answerNum = 0;
 					foreach ($variants as $variantko) {
-						echo "<input type='checkbox' name='"."answer".$questNum.$answerNum."' value='".$variantko->id."'>".$variantko->content."<br>";
+						echo "<div class='checkbox checkbox-success'><input type='checkbox' id='".$variantko->id."' name='"."answer".$questNum.$answerNum."' value='".$variantko->id."'><label for='".$variantko->id."'>".$variantko->content."</label></div>";
 						$answerNum++;
 					}
 					
@@ -61,6 +65,6 @@
 	} else {
 	    echo "";
 	}
-	echo "<button>Закончить тест</button>";
+	echo "<button class='btn btn-success'>Закончить тест</button>";
 	echo "</form>";
-	?>
+?>
