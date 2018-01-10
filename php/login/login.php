@@ -22,7 +22,6 @@ if($result->num_rows > 0){
 			$_SESSION['studycenter'] = $export_db_name;
 			header($to_admin);
 		}else if($row['status'] == 'student'){
-<<<<<<< HEAD
 			if(strlen($user_name) > 11){
 				$to_admin = "Location: ../../student_panel.php";
 				//?iin=".$row['iin']
@@ -38,12 +37,6 @@ if($result->num_rows > 0){
 			$_SESSION['isStudent'] = true;
 
 			header($to_admin);
-=======
-			$_SESSION['studycenter'] = $export_db_name;
-			$_SESSION['iin'] = $row['iin'];
-			$_SESSION['tele'] = $row['tele'];
-			header("Location: ../../student_panel.php");
->>>>>>> origin/master
 		}else if($row['status'] == 'teacher'){
 			$_SESSION['isStudent'] = false;
 			if(strlen($user_name) > 11){

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 	session_start();
 	$db_name = $_SESSION['studycenter'];
@@ -24,36 +23,7 @@ $about = $result->fetch_assoc();
 	
 	
 	?>
-	<!DOCTYPE html>
-=======
-<?php 
-session_start();
-
-$db_name = $_SESSION['studycenter'];
-/*if (isset($_SESSION['tele'])) {
-    $iin_b = FALSE;
-    $tele = $_SESSION['tele'];
-}
-else if(isset($_SESSION['iin'])){
-    $iin_b = TRUE;
-    $iin = $_SESSION['iin'];
-}*/
-include 'php/db/connect_db.php';
-include 'php/db/get_all_data.php';
-include 'php/db/get.php';
-include 'php/db/get_query.php';
-include 'php/db/get_personal.php';
-
-/*$_SESSION['id'] = $personal['id'];
-$_SESSION['iin'] = $personal['iin'];*/
-$connection->set_charset("utf8");
-
-$result = getAllData('about', $connection);
-$about = $result->fetch_assoc();
-
-?>
 <!DOCTYPE html>
->>>>>>> origin/master
 <html lang="en">
 
 <head>
@@ -64,7 +34,7 @@ $about = $result->fetch_assoc();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Jjournal <?php echo $personal['id']; ?></title>
+    <title>Jjournal </title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -82,10 +52,6 @@ $about = $result->fetch_assoc();
 <body>
 
     <div id="wrapper">
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
         <nav class="navbar navbar-default navbar-jjournal navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -217,11 +183,8 @@ $about = $result->fetch_assoc();
                         <a  class="jjournal-white" href="admin_groups.php"><i class="fa fa-fw fa-desktop"></i> Группы</a>
                     </li>
                     <li>
-<<<<<<< HEAD
-                        <a  class="jjournal-white" href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-=======
                         <a  class="jjournal-white" href="#"><i class="fa fa-fw fa-wrench"></i> Тесты</a>
->>>>>>> origin/master
+
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
@@ -243,7 +206,6 @@ $about = $result->fetch_assoc();
         </nav>
 
         <div id="page-wrapper">
-<<<<<<< HEAD
 
             <div class="container-fluid" id="myAppDobro">
 
@@ -321,7 +283,6 @@ $about = $result->fetch_assoc();
         </div>
     </div>
 		
-=======
 			<div style="padding-left:10px;" class="jjournal-panel-top">
 				<?php
 					include 'php/SQLconnect.php';
@@ -391,7 +352,6 @@ $about = $result->fetch_assoc();
     <!-- /#wrapper -->
 
     <!-- jQuery -->
->>>>>>> origin/master
     <script src="js/jquery.js"></script>
     <script src="js/teacher_save.js"></script>
     <!-- Bootstrap Core JavaScript -->
