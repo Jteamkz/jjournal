@@ -11,15 +11,13 @@ $(document).on('click',  '.saver_teacher', function(e){
 		$url = 'php/changeTeacher.php?izno='+$izno+'&shady='+$shady;
 		
 		$tr = "#tr" + $shady;
-
+		alert($izno);
 		$.ajax({
 			type: 'POST',
 			url: $url,
 			data: $changes,
 			success: function(data){
 				location.reload();
-				// $($tr).html(data);
-				// console.log(this.load("php/teacher_part.php"));
 			}
 		})
 });
@@ -57,6 +55,7 @@ $(document).on('click',  '.saver', function(e){
 		e.preventDefault();
 		$url = 'php/changeStudent.php?izno='+$izno+'&shady='+$shady;
 		$tr = "#tr" + $shady;
+		alert($izno);
 		$.ajax({
 			type: 'POST',
 			url: $url,

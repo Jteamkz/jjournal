@@ -1,29 +1,31 @@
-<?php
-	session_start();
-	$db_name = $_SESSION['studycenter'];
-	if (isset($_SESSION['tele'])) {
+<?php 
+session_start();
+
+$db_name = $_SESSION['studycenter'];
+if (isset($_SESSION['tele'])) {
     $iin_b = FALSE;
     $tele = $_SESSION['tele'];
-	}
-	else if(isset($_SESSION['iin'])){
-			$iin_b = TRUE;
-			$iin = $_SESSION['iin'];
-	}
-	include 'php/db/connect_db.php';
-	include 'php/db/get_all_data.php';
-	include 'php/db/get.php';
-	include 'php/db/get_query.php';
-	include 'php/db/get_personal.php';
+}
+else if(isset($_SESSION['iin'])){
+    $iin_b = TRUE;
+    $iin = $_SESSION['iin'];
+}
+
+include 'php/db/connect_db.php';
+include 'php/db/get_all_data.php';
+include 'php/db/get.php';
+include 'php/db/get_query.php';
+include 'php/db/get_personal.php';
 
 $_SESSION['id'] = $personal['id'];
 $_SESSION['iin'] = $personal['iin'];
 $connection->set_charset("utf8");
+
 $result = getAllData('about', $connection);
 $about = $result->fetch_assoc();
-	
-	
-	?>
-	<!DOCTYPE html>
+
+?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -207,82 +209,18 @@ $about = $result->fetch_assoc();
 
         <div id="page-wrapper">
 
-            <div class="container-fluid" id="myAppDobro">
-
-                <div class="row" style="margin-left: 0px; margin-right: 0px">
-                    <div>
-                        <div class="col-lg-6">
-                            <div class="jjournal-panel-top">
-                                <p class="jjournal-orange">Предстоящие занятия</p>
-                                <p class="jjournal-orange" style="float: right"><a href="schedule_student.php">Посмотреть расписание</a></p>
-                            </div>
-                            <div class="scroll-j">
-                                <ul class="jjournal-orders">
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                Группа: I 1603                                         
-                                            </div>
-                                            <div class="col-lg-6">
-                                                в Понедельник 16:30
-                                            </div>
-                                        </div>  
-                                    </li>
-                                    <li>
-                                    rewq  
-                                    </li>
-                                    <li>
-                                    asdf 
-                                    </li>
-                                    <li>
-                                        fdsa
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="jjournal-panel-top">
-                            <p class="jjournal-green">Предстоящие дни рождения</p>
-                            <?php
-                                //include "php/teacher_panel/birthdays.php";
-                            ?>
-                        </div>
-                        <div class="scroll-j">
-                        
-                        <ul class="jjournal-orders">
-                                
-                        </ul>
-                        </div>
-                        
-                    </div>
-                     <div class="col-lg-6">
-                        <div class="alert alert-info alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i>  <strong>Like SB Admin?</strong> Try out <a href="http://startbootstrap.com/template-overviews/sb-admin-2" class="alert-link">SB Admin 2</a> for additional features!
-                        </div>
-                    </div> 
-
-                </div>
-                
-                <div class="row">
-                    <div class="col-lg-12">
-                    
-                        <a data-toggle="modal" data-target="#myModal" class="btn btn-success">Test database</a>
-                        <a class="btn btn-success">Test a group</a>
-                        <a class="btn btn-success">Create test</a>
-                    </div>
-                    
-                </div>
-                
-                <div>
-                    
-                </div>
-
+            <div class="container-fluid schedule" id="myAppDobro">
+                <?php include "php/student_panel/schedule_show_student.php" ?>
             </div>
+            <!-- /.container-fluid -->
+
         </div>
+        <!-- /#page-wrapper -->
+
     </div>
-		
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
     <script src="js/jquery.js"></script>
     <script src="js/teacher_save.js"></script>
     <!-- Bootstrap Core JavaScript -->

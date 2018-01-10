@@ -22,11 +22,23 @@ if($result->num_rows > 0){
 			$_SESSION['studycenter'] = $export_db_name;
 			header($to_admin);
 		}else if($row['status'] == 'student'){
-			$_SESSION['studycenter'] = $export_db_name;
-			$_SESSION['iin'] = $row['iin'];
-			header("Location: ../../student_panel.php");
+			if(strlen($user_name) > 11){
+				$to_admin = "Location: ../../student_panel.php";
+				//?iin=".$row['iin']
+				$_SESSION['studycenter'] = $export_db_name;
+				$_SESSION['iin'] = $row['iin'];
+			}else{
+				$to_admin = "Location: ../../student_panel.php";
+				//?tele=".$row['tele']
+				$_SESSION['studycenter'] = $export_db_name;
+				$_SESSION['tele'] = $row['tele'];
+			}
+
+			$_SESSION['isStudent'] = true;
+
+			header($to_admin);
 		}else if($row['status'] == 'teacher'){
-			
+			$_SESSION['isStudent'] = false;
 			if(strlen($user_name) > 11){
 				$to_admin = "Location: ../../teacher_panel.php";
 				//?iin=".$row['iin']

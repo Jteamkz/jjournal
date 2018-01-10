@@ -177,16 +177,13 @@ $about = $result->fetch_assoc();
                         <a  class="jjournal-white" href="teacher_students.php"><i class="fa fa-fw fa-bar-chart-o"></i> Студенты</a>
                     </li>
                     <li>
-                        <a  class="jjournal-white" href="admin_teachers.php"><i class="fa fa-fw fa-table"></i> Учители</a>
+                        <a  class="jjournal-white" href="teacher_subjects.php"><i class="fa fa-fw fa-edit"></i> Предметы</a>
                     </li>
                     <li>
-                        <a  class="jjournal-white" href="admin_subjects.php"><i class="fa fa-fw fa-edit"></i> Предметы</a>
+                        <a  class="jjournal-white" href="teacher_groups.php"><i class="fa fa-fw fa-desktop"></i> Группы</a>
                     </li>
                     <li>
-                        <a  class="jjournal-white" href="admin_groups.php"><i class="fa fa-fw fa-desktop"></i> Группы</a>
-                    </li>
-                    <li>
-                        <a  class="jjournal-white" href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                        <a  class="jjournal-white" href="#"><i class="fa fa-fw fa-wrench"></i>Расписание</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>

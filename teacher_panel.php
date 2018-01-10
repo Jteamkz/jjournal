@@ -19,6 +19,7 @@ include 'php/db/get_personal.php';
 
 $_SESSION['id'] = $personal['id'];
 $_SESSION['iin'] = $personal['iin'];
+
 $connection->set_charset("utf8");
 
 $result = getAllData('about', $connection);
@@ -273,8 +274,8 @@ $about = $result->fetch_assoc();
                         <ul class="jjournal-orders">
                                 <?php 
                                     $order_of_id = 0;
-                                    while($order_of_id < sizeof($students_b)){
-                                        $query = "id = ".$all_id[$order_of_id];
+                                    while($order_of_id < sizeof($all_id_temp)){
+                                        $query = "id = ".$all_id_temp[$order_of_id];
                                         $tt = get_query($query, 'student', $connection);
                                         if ($tt->num_rows > 0) {
                                             while ($row_ts = $tt->fetch_assoc()) {

@@ -342,8 +342,9 @@ unset($just);
                                                                     <div class="col-lg-6">
                                                                         <div class="form-group">
                                                                             <label for="IIIN">ИИН</label>
-                                                                            <input name="iin" type="text" class="form-control" id="IIIN" placeholder="ИИН" value="<?php echo $row['iin']; ?>">
+                                                                            <input name="iin" type="text" class="form-control" placeholder="ИИН" value="<?php echo $row['iin']; ?>">
                                                                             <input name="id" type="text" style="display: none" value="<?php echo $row['id']; ?>">
+                                                                            <input name="iznoo" type="text" style="display: none" id="IIIN"  value="<?php echo $row['iin']; ?>">
                                                                         </div>
                                                                     </div>
                                                                 </div>

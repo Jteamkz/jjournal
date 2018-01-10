@@ -6,7 +6,7 @@
                                 $fathername_t = $teacher_d['fathername'];
                                 $id_t = $teacher_d['id'];
                                 $query_c = "teacher_id = ".$id_t;
-                                //echo $query_c;
+
                                 $data_groups = get_query($query_c, "class", $connection);
                                 $students_b = array();
                                 $order = 0;
@@ -95,10 +95,28 @@
                                     $secondPart[$i] = $students_b[$i];
                                     $secondPart_id[$i] = $students_i[$i];
                                 }
-                                //echo "<br>-";
+                                //echo sizeof($all_id);
                                 $all = array_merge($secondPart, $firstPart);
                                 $all_id = array_merge($firstPart_id, $secondPart_id);
-                                //print_r($all);
-                                //echo "<br>";
-                                //print_r($all_id);
+                                $all_id_temp = array();
+                                $all_temp = array();
+                                
+                                for ($i=0; $i < sizeof($all_id)-1; $i++) { 
+                                    for ($j=$i+1; $j < sizeof($all_id); $j++) { 
+                                        if($all_id[$i] == $all_id[$j]){
+                                            $all_id[$j] = "cheburshka";
+                                            $all[$j] = "cheburshka";
+                                        }
+                                    }
+                                }
+                                $ho = 0;
+                                for ($i=0; $i < sizeof($all_id); $i++) { 
+                                    if($all_id[$i] != "cheburshka"){
+                                        $all_id_temp[$ho] = $all_id[$i];
+                                        $all_temp[$ho] = $all[$i];
+                                        $ho++;
+                                    } 
+                                }
+
+                                //print_r($all_id_temp);
                             ?>
