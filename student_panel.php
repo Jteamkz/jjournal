@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 	session_start();
 	$db_name = $_SESSION['studycenter'];
@@ -24,6 +25,35 @@ $about = $result->fetch_assoc();
 	
 	?>
 	<!DOCTYPE html>
+=======
+<?php 
+session_start();
+
+$db_name = $_SESSION['studycenter'];
+/*if (isset($_SESSION['tele'])) {
+    $iin_b = FALSE;
+    $tele = $_SESSION['tele'];
+}
+else if(isset($_SESSION['iin'])){
+    $iin_b = TRUE;
+    $iin = $_SESSION['iin'];
+}*/
+include 'php/db/connect_db.php';
+include 'php/db/get_all_data.php';
+include 'php/db/get.php';
+include 'php/db/get_query.php';
+include 'php/db/get_personal.php';
+
+/*$_SESSION['id'] = $personal['id'];
+$_SESSION['iin'] = $personal['iin'];*/
+$connection->set_charset("utf8");
+
+$result = getAllData('about', $connection);
+$about = $result->fetch_assoc();
+
+?>
+<!DOCTYPE html>
+>>>>>>> origin/master
 <html lang="en">
 
 <head>
@@ -52,7 +82,10 @@ $about = $result->fetch_assoc();
 <body>
 
     <div id="wrapper">
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
         <nav class="navbar navbar-default navbar-jjournal navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -184,7 +217,11 @@ $about = $result->fetch_assoc();
                         <a  class="jjournal-white" href="admin_groups.php"><i class="fa fa-fw fa-desktop"></i> Группы</a>
                     </li>
                     <li>
+<<<<<<< HEAD
                         <a  class="jjournal-white" href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+=======
+                        <a  class="jjournal-white" href="#"><i class="fa fa-fw fa-wrench"></i> Тесты</a>
+>>>>>>> origin/master
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
@@ -206,6 +243,7 @@ $about = $result->fetch_assoc();
         </nav>
 
         <div id="page-wrapper">
+<<<<<<< HEAD
 
             <div class="container-fluid" id="myAppDobro">
 
@@ -283,6 +321,77 @@ $about = $result->fetch_assoc();
         </div>
     </div>
 		
+=======
+			<div style="padding-left:10px;" class="jjournal-panel-top">
+				<?php
+					include 'php/SQLconnect.php';
+					include 'php/connectOS.php';
+					$iin = $_SESSION['iin'];
+					$tele = $_SESSION['tele'];
+					$sql = "SELECT * FROM student WHERE iin = '$iin' OR phone = '$tele'";
+					$result = $con->query($sql);
+					$tests = array();
+					if ($result->num_rows > 0) {
+						while($row = $result->fetch_assoc()) {
+							$student_id_list = $row['id'];
+							$sql1 = "SELECT * FROM relation_cs WHERE student_id = $student_id_list";
+							$result1 = $con->query($sql1);
+							
+							if ($result1->num_rows > 0) {
+								// output data of each row
+								while($row1 = $result1->fetch_assoc()) {
+									$group_id_list = $row1['class_id'];
+									$sql2 = "SELECT * FROM relation_gt WHERE group_id = $group_id_list";
+									$result2 = $con->query($sql2);
+
+									if ($result2->num_rows > 0) {
+										// output data of each row
+										while($row2 = $result2->fetch_assoc()) {
+											$test_id_list = $row2['test_id'];
+											$sql3 = "SELECT * FROM relation_st WHERE id_student = $student_id_list AND id_test = $test_id_list";
+											$result3 = $con->query($sql3);
+
+											if ($result3->num_rows > 0) {
+												// output data of each row
+												while($row3 = $result3->fetch_assoc()) {
+													array_push($tests, $row3['id_test']);
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+							$sql4 = "SELECT * FROM relation_gt WHERE group_id = $group_id_list";
+							$result4 = $con->query($sql4);
+
+							if ($result4->num_rows > 0) {
+								// output data of each row
+								while($row4 = $result4->fetch_assoc()) {
+									if(!in_array($row4['test_id'], $tests)){
+										$idId = $row4['test_id'];
+										$sql5 = "SELECT * FROM tests WHERE id=$idId";
+										$result5 = $con->query($sql5);
+
+										if ($result5->num_rows > 0) {
+											// output data of each row
+											while($row5 = $result5->fetch_assoc()) {
+												echo "<a style='margin-top:5px; width:100px;' class='btn btn-success' href='add/testPage.php?id=".$row5['id']."'>".$row5['name']."</a><br>";
+											}
+										}
+									}
+								}
+							}
+				?>
+			</div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+>>>>>>> origin/master
     <script src="js/jquery.js"></script>
     <script src="js/teacher_save.js"></script>
     <!-- Bootstrap Core JavaScript -->

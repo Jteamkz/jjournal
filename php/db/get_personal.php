@@ -1,4 +1,4 @@
-<?php 
+<?php
 if(isset($iin_b) && $iin_b){
     $query = "iin=".$iin_b;
 }else if(isset($iin_b) && !$iin_b ){
@@ -19,7 +19,7 @@ if(!$_SESSION['isStudent']){
 //echo $query;
 
 if (!$base_response) {
-    trigger_error('Invalid query: ' . $connection->error);
+    //trigger_error("Invalid query: " . $connection->error);
 }else{
     $personal = $base_response->fetch_assoc();
 }

@@ -162,13 +162,13 @@ unset($just);
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav side-jjournal">
                     <li class="">
-                        <a class="jjournal-white" href="admin_panel.php"><i class="fa fa-fw fa-dashboard"></i> Панель управления</a>
+                        <a class="jjournal-white" href="teacher_panel.php"><i class="fa fa-fw fa-dashboard"></i> Панель управления</a>
                     </li>
                     <li >
-                        <a  class="jjournal-white" href="admin_studens.php"><i class="fa fa-fw fa-bar-chart-o"></i> Студенты</a>
+                        <a  class="jjournal-white" href="teacher_students.php"><i class="fa fa-fw fa-bar-chart-o"></i> Студенты</a>
                     </li>
-                    <li class="active">
-                        <a  class="jjournal-white" href="#"><i class="fa fa-fw fa-table"></i> Учители</a>
+                    <li>
+                        <a  class="jjournal-white" href="admin_teachers.php"><i class="fa fa-fw fa-table"></i> Учители</a>
                     </li>
                     <li>
                         <a  class="jjournal-white" href="admin_subjects.php"><i class="fa fa-fw fa-edit"></i> Предметы</a>
@@ -176,8 +176,8 @@ unset($just);
                     <li>
                         <a  class="jjournal-white" href="admin_groups.php"><i class="fa fa-fw fa-desktop"></i> Группы</a>
                     </li>
-                    <li>
-                        <a  class="jjournal-white" href="admin_tests.php"><i class="fa fa-fw fa-wrench"></i> Тесты</a>
+                    <li class="active">
+                        <a  class="jjournal-white" href="#"><i class="fa fa-fw fa-wrench"></i> Тесты</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
@@ -203,7 +203,7 @@ unset($just);
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-header">
-                        <h2>Список учителей</h2>
+                        <h2>Список тестов</h2>
                     </div>
                     <div>
                         <p>Искать</p>
@@ -221,14 +221,10 @@ unset($just);
                     <table cellspacing="0" class="table table-small-font table-bordered table-striped results">
                         <thead>
                             <tr>
-                                <th>Ф.И.О</th>
-                                <th data-priority="1">Номер телефона</th>
-                                <th data-priority="1">Дата рождения</th>
-                                <th data-priority="1">Уроки</th>
+                                <th>Название</th>
+                                <th data-priority="1">Описание</th>
+                                <th data-priority="1">Количество вопросов</th>
                                 <th data-priority="1">Группы</th>
-                                <th data-priority="1">Зарплата</th>
-                                <th data-priority="1">ИИН</th>
-                                <th data-priority="1">Пароль</th>
                                 <th></th>
                             </tr>
                             <tr class="warning no-result">
@@ -237,7 +233,7 @@ unset($just);
                         </thead>
                         <tbody id="ok">
                             <?php 
-                                $result = getAllData('teacher', $connection);
+                                $result = getAllData('tests', $connection);
 
                                 if ($result->num_rows > 0) {
                                     $shady = 0;
@@ -245,61 +241,38 @@ unset($just);
                                         $shady++;
                                     ?>                                    
                                         <tr class="middlel" id="tr<?php echo $shady; ?>">
-                                            <th><?php echo $row['lastname']." ".$row['firstname']; ?></th>
-                                            <td><?php echo $row['telephone']; ?></td>
-                                            <td><?php echo $row['birthday']; ?></td>
+                                            <th><?php echo $row['name']; ?></th>
+                                            <td><?php echo $row['description']; ?></td>
+                                            <td><?php echo $row['numberquests']; ?></td>
                                             <td><?php 
-                                                $data_subjects = array();
-                                                $query = "id_t = ".$row['id'];
-                                                $result_ts = get_query($query, 'relation_ts', $connection);
-                                                if ($result_ts->num_rows > 0) {
+                                                $data_groups = array();
+                                                $query = "test_id = ".$row['id'];
+                                                $result_gt = get_query($query, 'relation_gt', $connection);
+                                                if ($result_gt->num_rows > 0) {
                                                     $temp = 0;
-                                                    while ($row_ts = $result_ts->fetch_assoc()) {
+                                                    while ($row_gt = $result_gt->fetch_assoc()) {
                                                         $temp++;
-                                                        $query_s = "id = ".$row_ts['id_s'];
-                                                        $result_sb = get_query($query_s, 'subjects', $connection);
+                                                        $query_s = "id = ".$row_gt['group_id'];
+                                                        $result_sb = get_query($query_s, 'class', $connection);
                                                         while ($row_sb = $result_sb->fetch_assoc()) {
                                                             if ($temp < $result_ts->num_rows) {
-                                                                echo "<a href='admin_subjects.php?name=".$row_sb['name']."'>".$row_sb['name']."</a>, ";
+                                                                echo "<a href='result_test.php?id_group=".$idGroup."&id_test=".$idTest."'>".$row_sb['name_group']."</a><br>";
                                                             }else{
-                                                                echo "<a href='admin_subjects.php?name=".$row_sb['name']."'>".$row_sb['name']."</a>";
+                                                                echo "<a href='result_test.php?id_group=".$idGroup."&id_test=".$idTest."'>".$row_sb['name_group']."</a><br>";
                                                             }
                                                             $data_subjects[$temp - 1] = $row_sb['name'];
                                                         }
                                                     }
                                                 }else{
-                                                    echo "Предмет не выбран";
+                                                    echo "Тест не привязан";
                                                 }
                                                 // print_r($data_subjects);
                                             ?>
                                             </td>
-                                            <td>
-                                            <?php 
-                                                $data = array();
-                                                $query_for_class = "teacher_id = ".$row['id'];
-                                                $result_cl = get_query($query_for_class, 'class', $connection);
-                                                if($result_cl->num_rows > 0){
-                                                    $tempp = 0;
-                                                    while ($row_cl = $result_cl->fetch_assoc()) {
-                                                        $tempp++;
-                                                        if ($tempp < $result_cl->num_rows) {
-                                                            echo "<a href='admin_subjects.php?name=".$row_cl['name_group']."'>".$row_cl['name_group']."</a>, ";
-                                                        }else{
-                                                            echo "<a href='admin_subjects.php?name=".$row_cl['name_group']."'>".$row_cl['name_group']."</a>";
-                                                        }
-                                                        $data[$tempp - 1] = $row_cl['name_group'];
-                                                    }
-                                                }else{
-                                                    echo "Группа не привязана";
-                                                }
-                                            ?>
-                                            </td>
-                                            <td>Enter to database</td>
-                                            <td><?php echo $row['iin']; ?></td>
-                                            <td><?php echo $row['password']; ?></td>
+                                            
                                             <td>
                                                 <button style="width: 25px; height: 25px" data-toggle="modal" data-target="#squarespaceModal<?php echo $shady; ?>" type="button" class="btn btn-success btn-xs btn-update"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
-                                                <button shady="<?php echo $shady; ?>" teacher = "<?php echo $row['id']; ?>" style="width: 25px; height: 25px" type="button" class="btn btn-danger btn-xs delete_teacher"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                                                <button shady="<?php echo $shady; ?>" test = "<?php echo $row['id']; ?>" style="width: 25px; height: 25px" type="button" class="btn btn-danger btn-xs delete_test"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
                                             </td>
                                             <div class="modal fade" id="squarespaceModal<?php echo $shady; ?>" shady="<?php echo $shady; ?>" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
                                                   <div class="modal-dialog">
@@ -342,9 +315,8 @@ unset($just);
                                                                     <div class="col-lg-6">
                                                                         <div class="form-group">
                                                                             <label for="IIIN">ИИН</label>
-                                                                            <input name="iin" type="text" class="form-control" placeholder="ИИН" value="<?php echo $row['iin']; ?>">
+                                                                            <input name="iin" type="text" class="form-control" id="IIIN" placeholder="ИИН" value="<?php echo $row['iin']; ?>">
                                                                             <input name="id" type="text" style="display: none" value="<?php echo $row['id']; ?>">
-                                                                            <input name="iznoo" type="text" style="display: none" id="IIIN"  value="<?php echo $row['iin']; ?>">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -370,7 +342,7 @@ unset($just);
                                                                             <label>Группы</label>
                                                                             <div style="max-height: 105px; overflow-y:scroll">
                                 <?php 
-                                    $result_all_group = getAllData('class', $connection);
+                                    $result_all_group = getAllData('relation_gt', $connection);
                                     if ($result_all_group->num_rows > 0) {
                                         while ($ross = $result_all_group->fetch_assoc()) {
                                             $t = false;
@@ -397,41 +369,6 @@ unset($just);
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-lg-6">
-                                                                        <div class="form-group">
-                                                                            <label>Предметы</label>
-                                                                            <div style="max-height: 105px; overflow-y:scroll">
-                                <?php 
-                                    $result_all_group = getAllData('subjects', $connection);
-                                    if ($result_all_group->num_rows > 0) {
-                                        while ($ross = $result_all_group->fetch_assoc()) {
-                                            $t = false;
-                                            if (sizeof($data_subjects) > 0) {
-                                                for($y=0; $y < sizeof($data_subjects); $y++){
-                                                    if ($ross['name'] == $data_subjects[$y]) {
-                                                        echo "<label>\n";
-                                                        echo "<input type='checkbox' atta='".$ross['id']."' name='checkboxnames[]' value='".$ross['name']."' checked> ".$ross['name']."\n";
-                                                        echo "</label><br>";
-                                                        $t = true;
-                                                    }
-                                                }   
-                                            }
-                                            if ($t != true) {
-                                                echo "<label>\n";
-                                                echo "<input type='checkbox' atta='".$ross['id']."' value='".$ross['name']."' name='checkboxnames[]'> ".$ross['name']."\n";
-                                                echo "</label><br>";
-                                            }
-                                        }
-                                    }else{
-                                        echo "Группы не добавлены";
-                                    }
-                                ?>                                                                   
-
-
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
                                                                 </div>
 
                                                             </div>
@@ -453,7 +390,7 @@ unset($just);
 
                             <?php   }
                                 }else{
-                                    exit('No teachers in database');
+                                    exit('No tests in database');
                                 }
                             ?>
                             

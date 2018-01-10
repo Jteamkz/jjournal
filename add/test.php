@@ -20,7 +20,7 @@
 			border:1px solid #DC143C;
 			outline: 0;
 		}
-		input[type=text]{
+		input[type=text], select{
 			  width: 200px;
 			  height: 34px;
 			  padding: 6px 12px;
@@ -47,7 +47,7 @@
 		$("#ewevopros").click(function(){
 			 a++;
 			 answers.push(2);
-   			 $("#voprosP").append("<h5 id='slovo"+a+"''>Вопрос "+(a+1)+"</h5><input type='text' name='vopros"+a+"' style='width:59.64%;' placeholder='Вопрос'> <button type='button' value='"+a+"' class='addAnswer btn' id='addAnswer"+a+"'>+</button> <button type='button' id='removeAnswer"+a+"' value='"+a+"' class='removeAnswer btn'>-</button><img src='../img/delete.png' style='width:30px; height:30px;' id='"+a+"' class='deleteAns'><br id='br"+a+"'><div style='margin-top:5px;'><div id='"+a+"Div' style='margin-top:5px; width:62.64%;'><input type='text' id='answer"+a+"0' name='answer"+a+"0' placeholder='Вариант' class=''> <input type='text' id='answer"+a+"1' name='answer"+a+"1' placeholder='Вариант' class=''></div></div>");
+   			 $("#voprosP").append("<h5 id='slovo"+a+"''>Вопрос "+(a+1)+"</h5><input type='text' name='vopros"+a+"' style='width:59.64%;' placeholder='Вопрос'> <button type='button' value='"+a+"' class='addAnswer btn btn-success' id='addAnswer"+a+"'>+</button> <button type='button' id='removeAnswer"+a+"' value='"+a+"' class='removeAnswer btn btn-danger'>-</button><img src='../img/delete.png' style='width:30px; height:30px;' id='"+a+"' class='deleteAns'><br id='br"+a+"'><div style='margin-top:5px;'><div id='"+a+"Div' style='margin-top:5px; width:62.64%;'><input type='text' id='answer"+a+"0' name='answer"+a+"0' placeholder='Вариант' class=''> <input type='text' id='answer"+a+"1' name='answer"+a+"1' placeholder='Вариант' class=''></div></div>");
    			 $("#voprosForm").attr('action','selectAns.php?array='+answers+'&numberquests='+a);
 		});
 	});
@@ -103,6 +103,7 @@
 			}
 			a--;
 			$(this).remove();
+			answers.splice(id, 1);
 			$("#voprosForm").attr('action','selectAns.php?array='+answers+'&numberquests='+a);
 	});
 	$(document).on('click', '.addAnswer', function(){ 
@@ -122,19 +123,19 @@
 });
 	</script>
 	<body style="padding-left:5px;">
-	<br><button type="button" id="ewevopros" class="btn">Еще</button>
+	<br><button type="button" id="ewevopros" class="btn btn-success">Еще</button>
 	<form method='post' id="voprosForm" action="selectAns.php">
 		<div style="margin-top:5px;">
 	<input type='text' name='name' placeholder='Название'>
 	<input type='text' name='description' placeholder='Описание'>
 		</div>
 		<h5 id="slovo0">Вопрос 1</h5>
-		<input type='text' name='vopros0' placeholder='Вопрос' style="width:59.64%;"> <button type="button" value="0" class="addAnswer btn">+</button> <button type="button" value="0" class="removeAnswer btn">-</button>
+		<input type='text' name='vopros0' placeholder='Вопрос' style="width:59.64%;"> <button type="button" value="0" class="addAnswer btn btn-success">+</button> <button type="button" value="0" class="removeAnswer btn btn-danger">-</button>
 		<br id="br0">
 		<div id="0Div" style="margin-top:5px; width:62.64%;">
 			<input type='text' id='answer00' name='answer00' placeholder='Вариант' class="">
 			<input type='text' id='answer01' name='answer01' placeholder='Вариант' class="">
 		</div>
 		<p id="voprosP"></p>
-	<br><button id="addvopros" class="btn">Добавить тест</button></form>
+	<br><button id="addvopros" class="btn btn-success">Добавить тест</button></form>
 </body>
