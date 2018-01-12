@@ -67,7 +67,7 @@ $about = $result->fetch_assoc();
                 </button>
                 <a class="navbar-brand" href="te.php"><?php echo $about['name']; ?></a>
             </div>
-            <!-- Top Menu Items -->
+
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
@@ -215,48 +215,62 @@ $about = $result->fetch_assoc();
                 <div class="row" style="margin-left: 0px; margin-right: 0px">
                     <div>
                         <div class="col-lg-6">
-
-                                
-                            <!--<div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Поставить посещаемость</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-lg-12">
-                                            <h2>Группа: I 1603</h2>
-                                        </div>
-                                        <div class="col-lg-6 col-lg-12 left-grey">
-                                             <h2>Понедельник в 15:00</h2>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>-->
                             <div class="jjournal-panel-top">
                                 <p class="jjournal-orange">Предстоящие занятия</p>
                                 <p class="jjournal-orange" style="float: right"><a href="schedule.php">Посмотреть расписание</a></p>
                             </div>
                             <div class="scroll-j">
+                                <?php 
+                                    include "php/teacher_panel/coming_schedule.php";
+                                ?>
                                 <ul class="jjournal-orders">
                                     <li>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                Группа: I 1603                                         
-                                            </div>
-                                            <div class="col-lg-6">
-                                                в Понедельник 16:30
-                                            </div>
-                                        </div>  
-                                    </li>
-                                    <li>
-                                    rewq  
-                                    </li>
-                                    <li>
-                                    asdf 
-                                    </li>
-                                    <li>
-                                        fdsa
+                                        <?php 
+
+                                            if (sizeof($data_schedule) > 0) {
+                                                foreach ($data_schedule as $temp_single) {
+                                        ?>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+
+                                                    Группа: <?php echo $temp_single->get_group_name(); 
+
+                                                    ?>                                       
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <?php 
+
+                                                    switch ($currentDay) {
+                                                        case "Mon":
+                                                            echo "с ".substr($temp_single->get_monday(), 0, 2).":". substr($temp_single->get_monday(), 3, 2) ." до ". substr($temp_single->get_monday(), 6, 2) .":". substr($temp_single->get_monday(), 9);
+                                                            break;
+                                                        case "Tue":
+                                                            echo "с ".substr($temp_single->get_tuesday(), 0, 2).":". substr($temp_single->get_tuesday(), 3, 2) ." до ". substr($temp_single->get_tuesday(), 6, 2) .":". substr($temp_single->get_tuesday(), 9);
+                                                            break;
+                                                        case "Wed":
+                                                             echo "с ".substr($temp_single->get_wednesday(), 0, 2).":". substr($temp_single->get_wednesday(), 3, 2) ." до ". substr($temp_single->get_wednesday(), 6, 2) .":". substr($temp_single->get_wednesday(), 9); 
+                                                            break;
+                                                        case "Thu":
+                                                            echo "с ".substr($temp_single->get_thursday(), 0, 2).":". substr($temp_single->get_thursday(), 3, 2) ." до ". substr($temp_single->get_thursday(), 6, 2) .":". substr($temp_single->get_thursday(), 9);
+                                                            break;
+                                                        case "Fri":
+                                                            echo "с ".substr($temp_single->get_friday(), 0, 2).":". substr($temp_single->get_friday(), 3, 2) ." до ". substr($temp_single->get_friday(), 6, 2) .":". substr($temp_single->get_friday(), 9);
+                                                            break;
+                                                        case "Sat":
+                                                            echo "с ".substr($temp_single->get_saturday(), 0, 2).":". substr($temp_single->get_saturday(), 3, 2) ." до ". substr($temp_single->get_saturday(), 6, 2) .":". substr($temp_single->get_saturday(), 9);
+                                                            break;
+                                                        case "Sun":
+                                                            echo "с ".substr($temp_single->get_sunday(), 0, 2).":". substr($temp_single->get_sunday(), 3, 2) ." до ". substr($temp_single->get_sunday(), 6, 2) .":". substr($temp_single->get_sunday(), 9);
+                                                            break;
+                                                    }
+
+                                                    ?>
+                                                </div>
+                                            </div> 
+                                        <?php  
+                                                }
+                                            }
+                                        ?>
                                     </li>
                                 </ul>
                             </div>
@@ -280,7 +294,7 @@ $about = $result->fetch_assoc();
                                         if ($tt->num_rows > 0) {
                                             while ($row_ts = $tt->fetch_assoc()) {
                                                 ?>
-                                                <li><?php echo $row_ts['firstname']." ".$row_ts['lastname']."-".$all[$order_of_id]; ?></li>
+                                                <li><?php echo $row_ts['firstname']." ".$row_ts['lastname']."-".$all_temp[$order_of_id]; ?></li>
                                                 <?php
                                             }
                                         }else{

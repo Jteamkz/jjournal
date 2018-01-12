@@ -244,6 +244,8 @@ $about = $result->fetch_assoc();
                             <tbody>
 
                                 <?php 
+                                    $rap = 0;
+                                    $all_sarys = array();
                                     $query_for_groups_with_current_teacher = "teacher_id=".$personal['id'];
                                     $groups_with_current_teacher = get_query($query_for_groups_with_current_teacher, 'class', $connection);
                                     if($groups_with_current_teacher->num_rows > 0){
@@ -255,7 +257,22 @@ $about = $result->fetch_assoc();
                                             if($student_with_id->num_rows > 0){
                                                 while($row_relation_cs = $student_with_id->fetch_assoc()){
                                                     $student_selected_id = "id=".$row_relation_cs['student_id'];
-                                                    $result = get_query($student_selected_id, 'student', $connection);
+                                                    $bar_dve = "false";
+                                                    foreach ($all_sarys as $all_sary) {
+                                                        if($all_sary == $row_relation_cs['student_id']){
+                                                            $bar_dve = "true";
+                                                        }
+                                                    }
+                                                    if($bar_dve == "false"){
+                                                        $all_sarys[$rap] = $row_relation_cs['student_id'];
+                                                    }
+                                                    $rap++;
+                                                }
+                                            }
+                                        }
+                                    foreach ($all_sarys as $student_selected_id) {
+                                    
+                                    $result = get_query("id=".$student_selected_id, 'student', $connection);
                                                     
                                     if ($result->num_rows > 0) {
                                         $shady = 0;
@@ -281,6 +298,7 @@ $about = $result->fetch_assoc();
                                                     while ($row_cs = $result_groups->fetch_assoc()) {
                                                         $qo = "id = ".$row_cs['class_id'];
                                                         $result_group = get_query($qo, 'class', $connection);
+
                                                         while ($row_group = $result_group->fetch_assoc()) {
                                                             $data[$order] = $row_group['name_group'];
                                                         }
@@ -424,10 +442,6 @@ $about = $result->fetch_assoc();
                                                                     <div class="btn-group" role="group">
                                                                         <button type="button" id="closeNew" class="btn btn-default closer" data-dismiss="modal"  role="button">Close</button>
                                                                     </div>
-                                                                    <!--
-                                                                    <div class="btn-group btn-delete" role="group">
-                                                                        <button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
-                                                                    </div>-->
                                                                     <div class="btn-group" role="group">
                                                                         <button type="button" id="saveNew<?php echo $shady; ?>" shady="<?php echo $shady; ?>" data-dismiss="modal" class="btn btn-default btn-hover-green saver" data-action="save" role="button">Save</button>
                                                                     </div>
@@ -450,8 +464,6 @@ $about = $result->fetch_assoc();
                                                     exit('No teachers in database');
                                                 }
                                             }
-                                        }
-                                    }
                                 }
                                 ?>
                             </tbody>

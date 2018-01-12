@@ -217,6 +217,5 @@ echo "</td>
 }else{
     exit("ERROR");
 }
-
 $connection->close();
 ?>
