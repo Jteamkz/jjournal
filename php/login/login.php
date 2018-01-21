@@ -35,7 +35,7 @@ if($result->num_rows > 0){
 			}
 
 			$_SESSION['isStudent'] = true;
-
+			
 			header($to_admin);
 		}else if($row['status'] == 'teacher'){
 			$_SESSION['isStudent'] = false;

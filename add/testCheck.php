@@ -30,7 +30,6 @@
 					
 				for($k = 0; $k < $numberAns; $k++){
 					$variant = $_POST['answer'.$i.$k];
-					echo $variant." ";
 					if($variant!=null)
 						array_push($answersGiven, $variant);
 				}
@@ -48,7 +47,6 @@
 				foreach($answersGiven as $result) {
 					echo $result.",";
 				}*/
-				echo "<br>";
 				if($RightOrWrong == true)
 						$rights++;
 				$numberAns = "";

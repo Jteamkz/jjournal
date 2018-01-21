@@ -448,7 +448,7 @@ unset($just);
 		<input class="form-control" type='text' name='name0' placeholder='Имя'></div><div class="col-lg-4"><input class="form-control" type='text' name='surname0' placeholder='Фамилия'>
 		</div>
 		<div class="col-lg-4">
-		<input class="form-control" type='text' name='father0' placeholder='Отчество'></div><div class="col-lg-4"><input class="form-control" type='text' name='birthday0' id='dateStudent' placeholder='День рождения'>
+		<input class="form-control" type='text' name='father0' placeholder='Отчество'></div><div class="col-lg-4"><input class="form-control dateStudent" type='text' name='birthday0' placeholder='День рождения'>
 		</div>
 		<div class="col-lg-4">
 		<input class="form-control" type='text' name='phone0' id='telephone' placeholder='Телефон'></div><div class="col-lg-4"><input class="form-control" type='text' name='phoneparent0' placeholder='Телефон Мамки'>
@@ -531,7 +531,7 @@ unset($just);
 		<input class="form-control" type='text' name='IIN0' placeholder='ИИН'></div><div class="col-lg-3"><input class="form-control" type='text' name='password0' placeholder='Пароль'></div>
 			<div class="col-lg-3"><input class="form-control" type='text' name='name0' placeholder='Имя'></div><div class="col-lg-3"><input class="form-control" type='text' name='surname0' placeholder='Фамилия'></div>
 			<div class="col-lg-3"><input class="form-control" type='text' name='father0' placeholder='Отчество'></div>
-			<div class="col-lg-3"><input class="form-control" type='text' id='dateTeacher' name='birthday0' placeholder='День рождения'></div>
+			<div class="col-lg-3"><input class="form-control dateTeacher" type='text' name='birthday0' placeholder='День рождения'></div>
 			<div class="col-lg-3"><input class="form-control" type='text' name='phone0' placeholder='Телефон'>
 			</div>
 			<div class="col-lg-3">
@@ -775,17 +775,21 @@ unset($just);
     <script src="js/plugins/morris/raphael.min.js"></script>
     <script src="js/plugins/morris/morris.min.js"></script>
     <script src="js/plugins/morris/morris-data.js"></script>
-		<script>	
-			var cleave = new Cleave('#dateStudent', {
+		<script>
+			for(let field of $('.dateStudent').toArray()){
+			  new Cleave(field, {
 				date: true,
 				delimiter : ".",
 				datePattern: ['d', 'm', 'Y']
-			});
-			var cleave = new Cleave('#dateTeacher', {
+			  });
+			}
+			for(let field of $('.dateTeacher').toArray()){
+			  new Cleave(field, {
 				date: true,
 				delimiter : ".",
 				datePattern: ['d', 'm', 'Y']
-			});
+			  });
+			}
 		</script>
     <script>
 		var a = "0";
@@ -828,7 +832,14 @@ unset($just);
 		var b = "0";
 		$("#eweStudent").click(function(){
 			 b++;
-   			 $("#studentP").append("<hr id='hrstudent"+b+"'><div class='row' id='studentrow"+b+"'><div class='col-lg-4'><input class='form-control' type='text' name='IIN"+b+"' placeholder='ИИН'></div><div class='col-lg-4'><input class='form-control' type='text' name='password"+b+"' placeholder='Пароль'></div><div class='col-lg-4'><input class='form-control' type='text' name='name"+b+"' placeholder='Имя'></div><div class='col-lg-4'><input class='form-control' type='text' name='surname"+b+"' placeholder='Фамилия'></div><div class='col-lg-4'><input class='form-control' type='text' name='father"+b+"'' placeholder='Отчество'></div><div class='col-lg-4'><input class='form-control' type='text' name='birthday"+b+"' placeholder='День рождения'></div><div class='col-lg-4'><input class='form-control' type='text' name='phone"+b+"' placeholder='Телефон'></div><div class='col-lg-4'><input class='form-control' type='text' name='phoneparent"+b+"' placeholder='Телефон Мамки'></div><div class='col-lg-4'><input class='form-control' type='text' name='payday"+b+"' placeholder='День Оплаты'></div></div>");
+   			 $("#studentP").append("<hr id='hrstudent"+b+"'><div class='row' id='studentrow"+b+"'><div class='col-lg-4'><input class='form-control' type='text' name='IIN"+b+"' placeholder='ИИН'></div><div class='col-lg-4'><input class='form-control' type='text' name='password"+b+"' placeholder='Пароль'></div><div class='col-lg-4'><input class='form-control' type='text' name='name"+b+"' placeholder='Имя'></div><div class='col-lg-4'><input class='form-control' type='text' name='surname"+b+"' placeholder='Фамилия'></div><div class='col-lg-4'><input class='form-control' type='text' name='father"+b+"'' placeholder='Отчество'></div><div class='col-lg-4'><input class='form-control dateStudent' type='text' name='birthday"+b+"' placeholder='День рождения'></div><div class='col-lg-4'><input class='form-control' type='text' name='phone"+b+"' placeholder='Телефон'></div><div class='col-lg-4'><input class='form-control' type='text' name='phoneparent"+b+"' placeholder='Телефон Мамки'></div><div class='col-lg-4'><input class='form-control' type='text' name='payday"+b+"' placeholder='День Оплаты'></div></div>");
+			 for(let field of $('.dateStudent').toArray()){
+			  new Cleave(field, {
+				date: true,
+				delimiter : ".",
+				datePattern: ['d', 'm', 'Y']
+			  });
+			}
 		});
 	
 			
@@ -869,6 +880,13 @@ unset($just);
 		       url: 'add/teacherSelect.php?numberTeacher='+c,
 		       success: function(html) {
           	$("#teacherP").append(html);
+			for(let field of $('.dateTeacher').toArray()){
+			  new Cleave(field, {
+				date: true,
+				delimiter : ".",
+				datePattern: ['d', 'm', 'Y']
+			  });
+			}
        }
     });
 		});

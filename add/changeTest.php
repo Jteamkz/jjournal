@@ -6,15 +6,19 @@
 	
 	$idTest = $_GET['test_id'];
 	
+	if($_POST['checkboxname']){
+			$checkboxes = join(',',$_POST['checkboxname']);
+	}
 	if(!empty($_POST['checkboxname'])) {
 		foreach($_POST['checkboxname'] as $check) {
-			$sql = "INSERT INTO relation_gt VALUES ('', $idTest, $check)";
-
-			if ($conn->query($sql) === TRUE) {
-				echo "New record created successfully";
+			$sql = "INSERT INTO relation_gt (test_id, group_id) VALUES ($idTest, $check)";
+			
+			if ($con->query($sql) === TRUE) {
+				//echo "New record created successfully";
 			} else {
-				echo "Error: " . $sql . "<br>" . $conn->error;
+				//echo "Error: " . $sql . "<br>" . $conn->error;
 			}
 		}
 	}
+	
 ?>

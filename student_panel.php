@@ -16,11 +16,10 @@
 	include 'php/db/get_personal.php';
 
 $_SESSION['id'] = $personal['id'];
-$_SESSION['iin'] = $personal['iin'];
+//$_SESSION['iin'] = $personal['iin'];
 $connection->set_charset("utf8");
 $result = getAllData('about', $connection);
 $about = $result->fetch_assoc();
-	
 	
 	?>
 <!DOCTYPE html>
@@ -326,7 +325,7 @@ $about = $result->fetch_assoc();
 					}
 							$sql4 = "SELECT * FROM relation_gt WHERE group_id = $group_id_list";
 							$result4 = $con->query($sql4);
-
+							
 							if ($result4->num_rows > 0) {
 								// output data of each row
 								while($row4 = $result4->fetch_assoc()) {

@@ -245,7 +245,7 @@ unset($just);
                                         <tr class="middlel" id="tr<?php echo $shady; ?>">
                                             <th><?php echo $row['name']; ?></th>
                                             <td><?php echo $row['description']; ?></td>
-                                            <td><?php echo $row['numberquests']; ?></td>
+                                            <td><?php echo $row['numberquests'] + 1; ?></td>
                                             <td><?php 
                                                 $data_groups = array();
                                                 $query = "test_id = ".$row['id'];
@@ -277,9 +277,54 @@ unset($just);
                                                 <button style="width: 25px; height: 25px" data-toggle="modal" data-target="#squarespaceModal<?php echo $shady; ?>" type="button" class="btn btn-success btn-xs btn-update"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
                                                 <button shady="<?php echo $shady; ?>" test = "<?php echo $row['id']; ?>" style="width: 25px; height: 25px" type="button" class="btn btn-danger btn-xs delete_test"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
                                             </td>
+                                        </tr>
+
+                            <?php   }
+                                }else{
+                                    exit('No tests in database');
+                                }
+                            ?>
+                            
+                            <!-- Repeat -->
+                            
+                        </tbody>
+                    </table>
+                            <?php 
+                                $result = getAllData('tests', $connection);
+
+                                if ($result->num_rows > 0) {
+                                    $shady = 0;
+                                    while ($row = $result->fetch_assoc()) {
+										$idTest = $row['id'];
+                                        $shady++;
+                                    ?>
+                                            <?php 
+                                                $data_groups = array();
+                                                $query = "test_id = ".$row['id'];
+                                                $result_gt = get_query($query, 'relation_gt', $connection);
+                                                if ($result_gt->num_rows > 0) {
+                                                    $temp = 0;
+                                                    while ($row_gt = $result_gt->fetch_assoc()) {
+                                                        $temp++;
+                                                        $query_s = "id = ".$row_gt['group_id'];
+														$idGroup = $row_gt['group_id'];
+                                                        $result_sb = get_query($query_s, 'class', $connection);
+                                                        while ($row_sb = $result_sb->fetch_assoc()) {
+                                                            if ($temp < $result_ts->num_rows) {
+                                                                //echo "<a href='result_test.php?id_group=".$idGroup."&id_test=".$idTest."'>".$row_sb['name_group']."</a><br>";
+                                                            }else{
+                                                                //echo "<a href='result_test.php?id_group=".$idGroup."&id_test=".$idTest."'>".$row_sb['name_group']."</a><br>";
+                                                            }
+                                                            $data_subjects[$temp - 1] = $row_sb['name'];
+                                                        }
+                                                    }
+                                                }else{
+                                                    //echo "Тест не привязан";
+                                                }
+                                                // print_r($data_subjects);
+                                            ?>
                                             <div class="modal fade" id="squarespaceModal<?php echo $shady; ?>" shady="<?php echo $shady; ?>" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
                                                   <div class="modal-dialog">
-												  <form id="changeForm<?php echo $idTest; ?>" method="post">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
@@ -290,7 +335,8 @@ unset($just);
                                                                     <div class="col-lg-6">
                                                                         <div class="form-group">
                                                                             <label>Группы</label>
-                                                                            <div style="max-height: 105px; overflow-y:scroll">
+                                                                            <div style="max-height: 155px; overflow-y:scroll">
+																			<form id="changeForm<?php echo $idTest; ?>" method="post">
                                 <?php
                                     $sql = "SELECT * FROM relation_gt WHERE test_id = $idTest";
 									$result2 = $con->query($sql);
@@ -307,9 +353,10 @@ unset($just);
 											// output data of each row
 											while($row1 = $result1->fetch_assoc()) {
 												if(!in_array($row1['id'], $groups)){
-													echo "<label>\n";
+													//echo "<label>\n";
 													echo "<input type='checkbox' atta='".$row1['id']."' value='".$row1['id']."' name='checkboxname[]'> ".$row1['name_group']."\n";
-													echo "</label><br>";
+													//echo "</label><br>";
+													echo "<br>";
 												}
 											}
 										}
@@ -321,18 +368,19 @@ unset($just);
 										if ($result1->num_rows > 0) {
 											// output data of each row
 											while($row1 = $result1->fetch_assoc()) {
-												echo "<label>\n";
-												echo "<input type='checkbox' atta='".$row1['id']."' value='".$row1['name_group']."' name='checkboxname[]'> ".$row1['name_group']."\n";
-												echo "</label><br>";
+												//echo "<label>\n";
+												echo "<input type='checkbox' atta='".$row1['id']."' value='".$row1['id']."' name='checkboxname[]'> ".$row1['name_group']."\n";
+												//echo "</label><br>";
+												echo "<br>";
 											}
 										}
 									}
                                 ?>
+								</form>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-																</form>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <div class="btn-group btn-group-justified" role="group" aria-label="group button">
@@ -352,14 +400,9 @@ unset($just);
 
                             <?php   }
                                 }else{
-                                    exit('No tests in database');
+                                    exit('');
                                 }
                             ?>
-                            
-                            <!-- Repeat -->
-                            
-                        </tbody>
-                    </table>
                 </div>
                 </div>
             </div>

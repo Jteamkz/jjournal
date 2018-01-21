@@ -5,7 +5,7 @@ $(document).on('click',  '.saver_test', function(e){
 		//$izno = $($spaceModalShady).find("#IIIN").val();
 
 		//$formId = '#changeForm'+$shady;
-		var form = $('changeForm'+idTest);
+		var form = $('#changeForm'+idTest);
 		var changes = form.serialize();
 		e.preventDefault();
 		$url = 'add/changeTest.php?test_id='+idTest;
@@ -19,7 +19,7 @@ $(document).on('click',  '.saver_test', function(e){
 			success: function(data){
 				location.reload();
 				// $($tr).html(data);
-				// console.log(this.load("php/teacher_part.php"));
+				//console.log(this.load("php/teacher_part.php"));
 			}
 		})
 });
