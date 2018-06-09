@@ -3,6 +3,7 @@ session_start();
 $db_name = $_SESSION['studycenter'];
 include 'db/connect_db.php';
 include 'db/get_all_data.php';
+include 'connectOS.php';
 $connection->set_charset("utf8");
 $shady = $_GET['shady'];
 $izno = $_GET['izno'];
@@ -48,18 +49,18 @@ if ($connection->query($update_query_groups) === TRUE) {
 }
 
 
-$update_query = "UPDATE student SET password = '$password', firstname = '$firstname', lastname = '$lastname', fathername = '$fathername', phone = '$phone', iin = '$iin', phone_parent = '$phone_parent', payday = '$payday', birthday = '$birthday' WHERE iin = '$izno'";
+$update_query = "UPDATE student SET firstname = '$firstname', lastname = '$lastname', fathername = '$fathername', phone = '$phone', iin = '$iin', phone_parent = '$phone_parent', birthday = '$birthday' WHERE iin = '$izno'";
 
 
 $connection2 = new mysqli("localhost", "root", "", "databases");
     if ($connection2->connect_error) {
         die("Connection2 is failed:". $connection2->connect_error);
     }
-$update_query2 = "UPDATE users SET iin = '$iin', tele = '$phone', password = '$password' WHERE iin = '$izno'";
+$update_query2 = "UPDATE users SET iin = '$iin', tele = '$phone' WHERE iin = '$izno'";
 
 
 
-if ($connection->query($update_query) === TRUE && $connection2->query($update_query2) === TRUE) {
+if ($connection->query($update_query) === TRUE && $cuni->query($update_query2) === TRUE) {
     
 echo " <th>".$lastname." ".$firstname." ".$fathername."</th>
     <td>".$phone."</td>
@@ -214,8 +215,6 @@ echo "</td>
                                 </div>
                             </div>
                                             </div>";
-}else{
-    exit("ERROR");
 }
 $connection->close();
 ?>

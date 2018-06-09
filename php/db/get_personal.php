@@ -1,14 +1,14 @@
 <?php
 if(isset($iin_b) && $iin_b){
-    $query = "iin=".$iin_b;
+    $query = "iin='".$iin."'";
 }else if(isset($iin_b) && !$iin_b ){
     if(!$_SESSION['isStudent']){
-        $query = "telephone=".$tele;
+        $query = "telephone='".$tele."'";
     }else{
-        $query = "phone=".$tele;
+        $query = "phone='".$tele."'";
     }
 }else if(isset($_SESSION['iin'])){
-    $query = "iin=".$iin;
+    $query = "iin='".$iin."'";
 }
 
 if(!$_SESSION['isStudent']){

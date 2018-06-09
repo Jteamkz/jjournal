@@ -16,9 +16,7 @@
 	include 'php/db/get_personal.php';
 	include 'php/SQLconnect.php';
 
-$_SESSION['id'] = $personal['id'];
-$id_mugalim = $_SESSION['id'];
-
+	$id_okushy = $_SESSION['id'];
 //$_SESSION['iin'] = $personal['iin'];
 $connection->set_charset("utf8");
 $result = getAllData('about', $connection);
@@ -54,37 +52,41 @@ $about = $result->fetch_assoc();
 <body>
 
     <div id="wrapper">
-      <?php include "php/headers/teacher.php"; ?>
-
+        <?php include "php/headers/student.php"; ?>
         <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-header">
-                        <h2>Мои группы</h2>
+                        <h2>Мои тесты</h2>
                     </div>
                     <hr>
                     <div class="table-responsive" data-pattern="priority-columns">
                     <table cellspacing="0" class="table table-small-font table-bordered table-striped results">
                         <thead>
                             <tr>
-                                <th>Группа</th>
-                                <th data-priority="1">Расписание</th>
+                                <th>Тест</th>
+                                <th data-priority="1">Баллы</th>
                             </tr>
                         </thead>
                         <tbody id="ok">
                             <?php
-								$sql = "SELECT * FROM class WHERE teacher_id = $id_mugalim";
+								$sql = "SELECT * FROM relation_st WHERE id_student = $id_okushy";
 								$result = $con->query($sql);
 								if ($result->num_rows > 0) {
 									// output data of each row
 									$i = 0;
 									while($row = $result->fetch_assoc()) {
-										$group_id = $row['class_id'];
+										$test_id = $row['id_test'];
+										$sql1 = "SELECT * FROM tests WHERE id = $test_id";
+										$result1 = $con->query($sql1);
+										$row1 = $result1->fetch_assoc();
+										$test_name = $row1['name'];
+										$test_quests = $row1['numberquests'] + 1;
 							?>
 								<tr>
-                                            <td><?php echo $row['name_group']; ?></td>
-                                            <td><a href="schedule_teacher.php?id=<?php echo $row['schedule']; ?>">Посмотреть</a></td>
+                                            <td><?php echo $test_name; ?></td>
+                                            <td><?php echo $row['points']." / ".$test_quests; ?></td>
 								</tr>
 							<?php
 									}
@@ -96,10 +98,14 @@ $about = $result->fetch_assoc();
                 </div>
                 </div>
             </div>
+                
+                <br>
+                <br>
 
 
             </div> <!-- end container -->
     </div>
+</div>
         <!-- /#page-wrapper -->
 
     </div>

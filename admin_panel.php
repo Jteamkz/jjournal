@@ -60,163 +60,10 @@ unset($just);
         }
     </style>
 </head>
-<body>
+<body id="bodyman">
 
     <div id="wrapper">
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-jjournal navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="admin_panel.php"><?php echo $about['name'] ?></a>
-            </div>
-            <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu message-dropdown">
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo $db_name; ?> <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav side-jjournal">
-                    <li class="active">
-                        <a class="jjournal-white" href="admin_panel.php"><i class="fa fa-fw fa-dashboard"></i> Панель управления</a>
-                    </li>
-                    <li>
-                        <a  class="jjournal-white" href="admin_studens.php"><i class="fa fa-fw fa-bar-chart-o"></i> Студенты</a>
-                    </li>
-                    <li>
-                        <a  class="jjournal-white" href="admin_teachers.php"><i class="fa fa-fw fa-table"></i> Учители</a>
-                    </li>
-                    <li>
-                        <a  class="jjournal-white" href="admin_subjects.php"><i class="fa fa-fw fa-edit"></i> Предметы</a>
-                    </li>
-                    <li>
-                        <a  class="jjournal-white" href="admin_groups.php"><i class="fa fa-fw fa-desktop"></i> Группы</a>
-                    </li>
-                    <li>
-                        <a  class="jjournal-white" href="admin_tests.php"><i class="fa fa-fw fa-wrench"></i> Тесты</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="#">Dropdown Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Dropdown Item</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </nav>
-
+	<?php include "php/headers/admin.php"; ?>
         <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -225,7 +72,7 @@ unset($just);
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Dashboard <small>Statistics Overview</small>
+                            Админ-панель <small>Просмотр таблиц</small>
                         </h1>
                         <!--<ol class="breadcrumb">
                             <li class="active">
@@ -297,8 +144,8 @@ unset($just);
                         <div class="panel with-nav-tabs panel-default">
                             <div class="panel-heading">
                                     <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#tab1default" data-toggle="tab">Уроки</a></li>
-                                        <li><a href="#tab2default" data-toggle="tab">Ученики</a></li>
+                                        <li class="active"><a href="#tab1default" data-toggle="tab">Предметы</a></li>
+                                        <li><a href="#tab2default" data-toggle="tab">Студенты</a></li>
                                         <li><a href="#tab3default" data-toggle="tab">Учителя</a></li>
                                         <li><a href="#tab4default" data-toggle="tab">Группу</a></li>
                                         <!-- <li class="dropdown">
@@ -322,7 +169,7 @@ unset($just);
                                                                 <i class="fa fa-comments fa-5x"></i>
                                                             </div>
                                                             <div class="col-xs-9 text-right">
-                                                                <div class="huge"><?php echo $num_of_subjects; ?></div>
+                                                                <div class="huge" id="subjectHuge"><?php echo $num_of_subjects; ?></div>
                                                                 <div>Предметы</div>
                                                             </div>
                                                         </div>
@@ -338,7 +185,7 @@ unset($just);
                                             </div>
                                             <div class="col-lg-6">
                                                 <br>
-                                                    <button data-toggle="modal" data-target="#myModal" class="btn btn-success btn-lg">Добавить уроки</button>
+                                                    <button data-toggle="modal" data-target="#myModal" class="btn btn-success btn-lg">Добавить предметы</button>
                                             </div>
 
 <!-- Modal -->
@@ -349,9 +196,9 @@ unset($just);
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Добавьте уроки</h4>
+        <h4 class="modal-title">Добавьте предметы</h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="subjectBody">
     <div class="ladygaga">
         <button id="eweSubject" class="btn btn-success">Еще</button>
         <button id="eweSubjectdelete" class="btn btn-danger">Удалить</button>
@@ -374,13 +221,13 @@ unset($just);
       <div class="modal-footer">
 			<div class="btn-group btn-group-justified" role="group" aria-label="group button">
 				<div class="btn-group" role="group">
-					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Закрыть</button>
 				</div>
 				<div class="btn-group btn-delete hidden" role="group">
-					<button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
+					<button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Удалить</button>
 				</div>
 				<div class="btn-group" role="group">
-					<button type="button" id="addSubject" class="btn btn-default btn-hover-green" data-action="save" role="button">Add</button>
+					<button type="button" id="addSubject" class="btn btn-default btn-hover-green" data-action="save" role="button">Добавить</button>
 				</div>
 			</div>
 		</div>
@@ -401,8 +248,8 @@ unset($just);
                                                             <i class="fa fa-tasks fa-5x"></i>
                                                         </div>
                                                         <div class="col-xs-9 text-right">
-                                                            <div class="huge"><?php echo $num_of_students; ?></div>
-                                                            <div>Студенты!</div>
+                                                            <div class="huge" id="studentHuge"><?php echo $num_of_students; ?></div>
+                                                            <div>Студенты</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -418,7 +265,7 @@ unset($just);
                                         
                                              <div class="col-lg-6">
                                              <br>
-                                                    <button data-toggle="modal" data-target="#myModal2" class="btn btn-success btn-lg">Добавить учеников</button>
+                                                    <button data-toggle="modal" data-target="#myModal2" class="btn btn-success btn-lg">Добавить студентов</button>
                                             </div>
 
 <!-- Modal -->
@@ -429,7 +276,7 @@ unset($just);
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Добавьте учеников</h4>
+        <h4 class="modal-title">Добавьте студентов</h4>
       </div>
       <div class="modal-body">
         <div class="ladygaga" style="margin-left:1.2%; margin-right:">
@@ -453,9 +300,6 @@ unset($just);
 		<div class="col-lg-4">
 		<input class="form-control" type='text' name='phone0' id='telephone' placeholder='Телефон'></div><div class="col-lg-4"><input class="form-control" type='text' name='phoneparent0' placeholder='Телефон Мамки'>
 		</div>
-		<div class="col-lg-4">
-		<input class="form-control" type='text' name='payday0' placeholder='День Оплаты'>
-		</div>
 		</div>
 		<p id="studentP"></p>
 		</div></form>
@@ -463,13 +307,13 @@ unset($just);
       <div class="modal-footer">
 			<div class="btn-group btn-group-justified" role="group" aria-label="group button">
 				<div class="btn-group" role="group">
-					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Закрыть</button>
 				</div>
 				<div class="btn-group btn-delete hidden" role="group">
-					<button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
+					<button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Удалить</button>
 				</div>
 				<div class="btn-group" role="group">
-					<button type="button" id="addStudent" class="btn btn-default btn-hover-green" data-action="save" role="button">Add</button>
+					<button type="button" id="addStudent" class="btn btn-default btn-hover-green" data-action="save" role="button">Добавить</button>
 				</div>
 			</div>
 		</div>
@@ -489,8 +333,8 @@ unset($just);
                                                         <i class="fa fa-shopping-cart fa-5x"></i>
                                                     </div>
                                                     <div class="col-xs-9 text-right">
-                                                        <div class="huge"><?php echo $num_of_teachers; ?></div>
-                                                        <div>Учители!</div>
+                                                        <div class="huge" id="teacherHuge"><?php echo $num_of_teachers; ?></div>
+                                                        <div>Учителя</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -559,13 +403,13 @@ unset($just);
       <div class="modal-footer">
 			<div class="btn-group btn-group-justified" role="group" aria-label="group button">
 				<div class="btn-group" role="group">
-					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Закрыть</button>
 				</div>
 				<div class="btn-group btn-delete hidden" role="group">
-					<button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
+					<button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Удалить</button>
 				</div>
 				<div class="btn-group" role="group">
-					<button type="button" id="addteacher" class="btn btn-default btn-hover-green" data-action="save" role="button">Add</button>
+					<button type="button" id="addteacher" class="btn btn-default btn-hover-green" data-action="save" role="button">Добавить</button>
 				</div>
 			</div>
 		</div>
@@ -651,7 +495,7 @@ unset($just);
 			?>
 		</select>
 		<br>
-		Выберите учеников<br>
+		Выберите студентов<br>
 		<?php
 				$sql = "SELECT * FROM student WHERE bool='true'";
 				$result = $con->query($sql);
@@ -720,10 +564,10 @@ unset($just);
       <div class="modal-footer">
 			<div class="btn-group btn-group-justified" role="group" aria-label="group button">
 				<div class="btn-group" role="group">
-					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Закрыть</button>
 				</div>
 				<div class="btn-group btn-delete hidden" role="group">
-					<button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
+					<button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Удалить</button>
 				</div>
 				<div class="btn-group" role="group">
 					<button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">Save</button>
@@ -775,7 +619,7 @@ unset($just);
     <script src="js/plugins/morris/raphael.min.js"></script>
     <script src="js/plugins/morris/morris.min.js"></script>
     <script src="js/plugins/morris/morris-data.js"></script>
-		<script>
+		<script id="scriptik">
 			for(let field of $('.dateStudent').toArray()){
 			  new Cleave(field, {
 				date: true,
@@ -790,8 +634,6 @@ unset($just);
 				datePattern: ['d', 'm', 'Y']
 			  });
 			}
-		</script>
-    <script>
 		var a = "0";
 		$("#eweSubject").click(function(){
 			 a++;
@@ -814,7 +656,13 @@ unset($just);
 				type: 'POST',
 				data: serializedData,
 				success: function(data){
-					 location.reload();
+					notifyBar();
+					//location.reload();
+					$('#myModal').modal('toggle');
+					$(".form-control").val('');
+					$("#subjectHuge").html(parseInt($("#subjectHuge").html()) + parseInt(a + 1));
+					//$('#bodyman').load(document.URL +  '#bodyman');
+					//$("#subjectBody").html("<div class='ladygaga'> <button id='eweSubject' class='btn btn-success'>Еще</button> <button id='eweSubjectdelete' class='btn btn-danger'>Удалить</button> <hr> </div> <form id='subjectForm' method='post'> <div style='max-height:250px; height:250px; padding:10px 10px 10px 0px; overflow-y: scroll; overflow-x:hidden;'> <div class='row'> <div class='col-lg-6'> <input type='text' id='namesubject' name='name0' class='form-control' placeholder='Название'> </div> <div class='col-lg-6'> <input type='text' class='form-control' placeholder='Описание' name='defenition0' required> </div> </div> <p id='subjectP'></p> </div> </form>");
 				}
 			})
 		
@@ -827,12 +675,10 @@ unset($just);
 		}
 	});
 	})
-	</script>
-		<script>
 		var b = "0";
 		$("#eweStudent").click(function(){
 			 b++;
-   			 $("#studentP").append("<hr id='hrstudent"+b+"'><div class='row' id='studentrow"+b+"'><div class='col-lg-4'><input class='form-control' type='text' name='IIN"+b+"' placeholder='ИИН'></div><div class='col-lg-4'><input class='form-control' type='text' name='password"+b+"' placeholder='Пароль'></div><div class='col-lg-4'><input class='form-control' type='text' name='name"+b+"' placeholder='Имя'></div><div class='col-lg-4'><input class='form-control' type='text' name='surname"+b+"' placeholder='Фамилия'></div><div class='col-lg-4'><input class='form-control' type='text' name='father"+b+"'' placeholder='Отчество'></div><div class='col-lg-4'><input class='form-control dateStudent' type='text' name='birthday"+b+"' placeholder='День рождения'></div><div class='col-lg-4'><input class='form-control' type='text' name='phone"+b+"' placeholder='Телефон'></div><div class='col-lg-4'><input class='form-control' type='text' name='phoneparent"+b+"' placeholder='Телефон Мамки'></div><div class='col-lg-4'><input class='form-control' type='text' name='payday"+b+"' placeholder='День Оплаты'></div></div>");
+   			 $("#studentP").append("<hr id='hrstudent"+b+"'><div class='row' id='studentrow"+b+"'><div class='col-lg-4'><input class='form-control' type='text' name='IIN"+b+"' placeholder='ИИН'></div><div class='col-lg-4'><input class='form-control' type='text' name='password"+b+"' placeholder='Пароль'></div><div class='col-lg-4'><input class='form-control' type='text' name='name"+b+"' placeholder='Имя'></div><div class='col-lg-4'><input class='form-control' type='text' name='surname"+b+"' placeholder='Фамилия'></div><div class='col-lg-4'><input class='form-control' type='text' name='father"+b+"'' placeholder='Отчество'></div><div class='col-lg-4'><input class='form-control dateStudent' type='text' name='birthday"+b+"' placeholder='День рождения'></div><div class='col-lg-4'><input class='form-control' type='text' name='phone"+b+"' placeholder='Телефон'></div><div class='col-lg-4'><input class='form-control' type='text' name='phoneparent"+b+"' placeholder='Телефон Мамки'></div></div>");
 			 for(let field of $('.dateStudent').toArray()){
 			  new Cleave(field, {
 				date: true,
@@ -858,7 +704,10 @@ unset($just);
 				type: 'POST',
 				data: serializedData,
 				success: function(data){
-					 location.reload();
+					notifyBar();
+					$('#myModal2').modal('toggle');
+					$(".form-control").val('');
+					$("#studentHuge").html(parseInt($("#studentHuge").html()) + parseInt(b + 1));
 				}
 			})
 		
@@ -871,8 +720,6 @@ unset($just);
 		}
 	});
 	})
-	</script>
-		<script>
 		var c = 0;
 		$("#eweTeacher").click(function(){
 			 c++;
@@ -907,7 +754,10 @@ unset($just);
 				type: 'POST',
 				data: serializedData,
 				success: function(data){
-					 location.reload();
+					notifyBar();
+					$('#myModal3').modal('toggle');
+					$(".form-control").val('');
+					$("#teacherHuge").html(parseInt($("#teacherHuge").html()) + parseInt(c + 1));
 				}
 			})
 		
@@ -921,78 +771,14 @@ unset($just);
 		}
 	});
 	})
+	function notifyBar() {
+	  if(! $('.alert-box').length) {
+		$('<div class="alert-box success" style="z-index:9999999999;">Добавлено</div>').prependTo('body').delay(800).fadeOut(200, function() {
+				$('.alert-box').remove();
+				});
+	  };
+	};
 	</script>
-	<script>
-			$(document).ready(function(){
-				$("#toggling").hide();
-			    $("#toggler").click(function(){
-			        $("#toggling").toggle(500);
-			    });
-			    $("#mondayDiv").hide();
-			    $("#tuesdayDiv").hide();
-			    $("#wednesdayDiv").hide();
-			    $("#thursdayDiv").hide();
-			    $("#fridayDiv").hide();
-			    $("#saturdayDiv").hide();
-			    $("#sundayDiv").hide();
-			    $("#mondayToggler").click(function(){
-			        $("#mondayDiv").toggle(300);
-			        $('input[name=mondayroom]').val("");
-			        $('input[name=monday1]').val("");
-			        $('input[name=monday2]').val("");
-			        $('input[name=monday3]').val("");
-			        $('input[name=monday4]').val("");
-			    });
-			    $("#tuesdayToggler").click(function(){
-			        $("#tuesdayDiv").toggle(300);
-			        $('input[name=tuesdayroom]').val("");
-			        $('input[name=tuesday1]').val("");
-			        $('input[name=tuesday2]').val("");
-			        $('input[name=tuesday3]').val("");
-			        $('input[name=tuesday4]').val("");
-			    });
-			    $("#wednesdayToggler").click(function(){
-			        $("#wednesdayDiv").toggle(300);
-			        $('input[name=wednesdayroom]').val("");
-			        $('input[name=wednesday1]').val("");
-			        $('input[name=wednesday2]').val("");
-			        $('input[name=wednesday3]').val("");
-			        $('input[name=wednesday4]').val("");
-			    });
-			    $("#thursdayToggler").click(function(){
-			        $("#thursdayDiv").toggle(300);
-			        $('input[name=thursdayroom]').val("");
-			        $('input[name=thursday1]').val("");
-			        $('input[name=thursday2]').val("");
-			        $('input[name=thursday3]').val("");
-			        $('input[name=thursday4]').val("");
-			    });
-			    $("#fridayToggler").click(function(){
-			        $("#fridayDiv").toggle(300);
-			        $('input[name=fridayroom]').val("");
-			        $('input[name=friday1]').val("");
-			        $('input[name=friday2]').val("");
-			        $('input[name=friday3]').val("");
-			        $('input[name=friday4]').val("");
-			    });
-			    $("#saturdayToggler").click(function(){
-			        $("#saturdayDiv").toggle(300);
-			        $('input[name=saturdayroom]').val("");
-			        $('input[name=saturday1]').val("");
-			        $('input[name=saturday2]').val("");
-			        $('input[name=saturday3]').val("");
-			        $('input[name=saturday4]').val("");
-			    });
-			    $("#sundayToggler").click(function(){
-			        $("#sundayDiv").toggle(300);
-			        $('input[name=sundayroom]').val("");
-			        $('input[name=sunday1]').val("");
-			        $('input[name=sunday2]').val("");
-			        $('input[name=sunday3]').val("");
-			        $('input[name=sunday4]').val("");
-			    });
-			});
-</script>
 </body>
 
 </html>

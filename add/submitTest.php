@@ -14,8 +14,6 @@
 
 		if ($con->query($sql) === TRUE) {
 		    $kongo = $con->insert_id;
-		} else {
-		    echo "Error: " . $sql . "<br>" . $con->error;
 		}
 
 		for($j = 0; $j < strlen($array); $j++){
@@ -26,8 +24,6 @@
 
 				if ($con->query($sql) === TRUE) {
 				    $kongo2 = $con->insert_id;
-				} else {
-				    echo "Error: " . $sql . "<br>" . $con->error;
 				}
 				for($k = 0; $k < $numberAns; $k++){
 					if(isset($_POST['answer'.$i.$k])){
@@ -36,8 +32,6 @@
 
 						if ($con->query($sql) === TRUE) {
 						    
-						} else {
-						    echo "Error: " . $sql . "<br>" . $con->error;
 						}
 					}else{
 						$variant = $_POST['answerZamena'.$i.$k];
@@ -45,8 +39,6 @@
 
 						if ($con->query($sql) === TRUE) {
 						    
-						} else {
-						    echo "Error: " . $sql . "<br>" . $con->error;
 						}
 					}
 				}
@@ -56,4 +48,8 @@
 				$numberAns = $numberAns + $array[$j];
 			}
 		}
+		if($_SESSION['isTeacher'] == true)
+			header("Location: ../teacher_tests.php");
+		else
+			header("Location: ../admin_tests.php");
 ?>

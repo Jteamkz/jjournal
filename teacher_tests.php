@@ -5,7 +5,8 @@ include 'php/db/connect_db.php';
 include 'php/db/get_all_data.php';
 include 'php/db/get.php';
 include 'php/db/get_query.php';
-
+include "php/SQLconnect.php";
+include "php/connectOS.php";
     $connection->set_charset("utf8");
 $just = getAllData('about', $connection);
 $about = $just->fetch_assoc();
@@ -46,164 +47,13 @@ unset($just);
 </head>
 <body>
 <div id="wrapper">
-    <nav class="navbar navbar-default navbar-jjournal navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="admin_panel.php"><?php echo $about['name']; ?></a>
-            </div>
-            <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu message-dropdown">
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo $db_name; ?> <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav side-jjournal">
-                    <li class="">
-                        <a class="jjournal-white" href="teacher_panel.php"><i class="fa fa-fw fa-dashboard"></i> Панель управления</a>
-                    </li>
-                    <li >
-                        <a  class="jjournal-white" href="teacher_students.php"><i class="fa fa-fw fa-bar-chart-o"></i> Студенты</a>
-                    </li>
-                    <li>
-                        <a  class="jjournal-white" href="admin_teachers.php"><i class="fa fa-fw fa-table"></i> Учители</a>
-                    </li>
-                    <li>
-                        <a  class="jjournal-white" href="admin_subjects.php"><i class="fa fa-fw fa-edit"></i> Предметы</a>
-                    </li>
-                    <li>
-                        <a  class="jjournal-white" href="admin_groups.php"><i class="fa fa-fw fa-desktop"></i> Группы</a>
-                    </li>
-                    <li class="active">
-                        <a  class="jjournal-white" href="#"><i class="fa fa-fw fa-wrench"></i> Тесты</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="#">Dropdown Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Dropdown Item</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-    </nav>
-
+    <?php include "php/headers/teacher.php"; ?>
     <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-header">
-                        <h2>Список тестов</h2>
+                        <h2>Список тестов <a href="add/test.php" class="btn btn-success">Добавить тест</a></h2>
                     </div>
                     <div>
                         <p>Искать</p>
@@ -233,32 +83,47 @@ unset($just);
                         </thead>
                         <tbody id="ok">
                             <?php 
-                                $result = getAllData('tests', $connection);
+                                $result = get_query(' teacher_id = '.$_SESSION['id'], 'class', $connection);
 
                                 if ($result->num_rows > 0) {
                                     $shady = 0;
-                                    while ($row = $result->fetch_assoc()) { 
+                                    while ($row = $result->fetch_assoc()) {
+										$idTest = $row['id'];
                                         $shady++;
+										$sql45 = "SELECT * FROM relation_gt WHERE group_id = $idTest";
+										$result45 = $con->query($sql45);
+
+										if ($result45->num_rows > 0) {
+											// output data of each row
+											while($row45 = $result45->fetch_assoc()) {
+													$idtestik = $row45['test_id'];
+													$sql55 = "SELECT * FROM tests WHERE id = $idtestik";
+													$result55 = $con->query($sql55);
+
+													if ($result55->num_rows > 0) {
+														// output data of each row
+														while($row55 = $result55->fetch_assoc()) {
                                     ?>                                    
                                         <tr class="middlel" id="tr<?php echo $shady; ?>">
-                                            <th><?php echo $row['name']; ?></th>
-                                            <td><?php echo $row['description']; ?></td>
-                                            <td><?php echo $row['numberquests']; ?></td>
+                                            <th><?php echo $row55['name']; ?></th>
+                                            <td><?php echo $row55['description']; ?></td>
+                                            <td><?php echo $row55['numberquests'] + 1; ?></td>
                                             <td><?php 
                                                 $data_groups = array();
-                                                $query = "test_id = ".$row['id'];
+                                                $query = "test_id = ".$row55['id'];
                                                 $result_gt = get_query($query, 'relation_gt', $connection);
                                                 if ($result_gt->num_rows > 0) {
                                                     $temp = 0;
                                                     while ($row_gt = $result_gt->fetch_assoc()) {
                                                         $temp++;
                                                         $query_s = "id = ".$row_gt['group_id'];
+														$idGroup = $row_gt['group_id'];
                                                         $result_sb = get_query($query_s, 'class', $connection);
                                                         while ($row_sb = $result_sb->fetch_assoc()) {
                                                             if ($temp < $result_ts->num_rows) {
-                                                                echo "<a href='result_test.php?id_group=".$idGroup."&id_test=".$idTest."'>".$row_sb['name_group']."</a><br>";
+                                                                echo "<a href='result_test.php?id_group=".$idGroup."&id_test=".$idtestik."'>".$row_sb['name_group']."</a><br>";
                                                             }else{
-                                                                echo "<a href='result_test.php?id_group=".$idGroup."&id_test=".$idTest."'>".$row_sb['name_group']."</a><br>";
+                                                                echo "<a href='result_test.php?id_group=".$idGroup."&id_test=".$idtestik."'>".$row_sb['name_group']."</a><br>";
                                                             }
                                                             $data_subjects[$temp - 1] = $row_sb['name'];
                                                         }
@@ -274,103 +139,112 @@ unset($just);
                                                 <button style="width: 25px; height: 25px" data-toggle="modal" data-target="#squarespaceModal<?php echo $shady; ?>" type="button" class="btn btn-success btn-xs btn-update"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
                                                 <button shady="<?php echo $shady; ?>" test = "<?php echo $row['id']; ?>" style="width: 25px; height: 25px" type="button" class="btn btn-danger btn-xs delete_test"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
                                             </td>
+                                        </tr>
+
+                            <?php
+								}}
+							}
+                                }
+									}
+								}
+                            ?>
+                            
+                            <!-- Repeat -->
+                            
+                        </tbody>
+                    </table>
+                            <?php 
+                                $result = getAllData('tests', $connection);
+
+                                if ($result->num_rows > 0) {
+                                    $shady = 0;
+                                    while ($row = $result->fetch_assoc()) {
+										$idTest = $row['id'];
+                                        $shady++;
+                                    ?>
+                                            <?php 
+                                                $data_groups = array();
+                                                $query = "test_id = ".$row['id'];
+                                                $result_gt = get_query($query, 'relation_gt', $connection);
+                                                if ($result_gt->num_rows > 0) {
+                                                    $temp = 0;
+                                                    while ($row_gt = $result_gt->fetch_assoc()) {
+                                                        $temp++;
+                                                        $query_s = "id = ".$row_gt['group_id'];
+														$idGroup = $row_gt['group_id'];
+                                                        $result_sb = get_query($query_s, 'class', $connection);
+                                                        while ($row_sb = $result_sb->fetch_assoc()) {
+                                                            if ($temp < $result_ts->num_rows) {
+                                                                //echo "<a href='result_test.php?id_group=".$idGroup."&id_test=".$idTest."'>".$row_sb['name_group']."</a><br>";
+                                                            }else{
+                                                                //echo "<a href='result_test.php?id_group=".$idGroup."&id_test=".$idTest."'>".$row_sb['name_group']."</a><br>";
+                                                            }
+                                                            $data_subjects[$temp - 1] = $row_sb['name'];
+                                                        }
+                                                    }
+                                                }else{
+                                                    //echo "Тест не привязан";
+                                                }
+                                                // print_r($data_subjects);
+                                            ?>
                                             <div class="modal fade" id="squarespaceModal<?php echo $shady; ?>" shady="<?php echo $shady; ?>" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
                                                   <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                                            <h3 class="modal-title" id="lineModalLabel">Введите новые значения</h3>
+                                                            <h3 class="modal-title" id="lineModalLabel">Привяжите тест к группе</h3>
                                                         </div>
-                                                        <form id="changeForm<?php echo $shady; ?>" enctype="multipart/form-data">
                                                             <div class="modal-body">
-                                                                <div class="row">
-                                                                    <div class="col-lg-4">
-                                                                        <div class="form-group">
-                                                                        <label for="InputFirstname">Фамилия</label>
-                                                                        <input type="text" name="surname" class="form-control" id="InputFirstname" placeholder="Введите фамилию" value="<?php echo $row['lastname']; ?>">
-                                                                      </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4"> 
-                                                                        <div class="form-group">
-                                                                            <label for="InputName">Имя</label>
-                                                                            <input name="name" type="text" class="form-control" id="InputName" placeholder="Введите Имя" value="<?php echo $row['firstname']; ?>">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4"> 
-                                                                        <div class="form-group">
-                                                                            <label for="InputFathername">Отчество</label>
-                                                                            <input name="fathername" type="text" class="form-control" id="InputFathername" placeholder="Отчество" value="<?php echo $row['fathername']; ?>">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <hr>
-                                                                <div class="row">
-                                                                    <div class="col-lg-6">
-                                                                        <div class="form-group">
-                                                                            <label for="InputTele">Номер телефона</label>
-                                                                            <input name="tele" type="text" class="form-control" id="InputTele" placeholder="Номер телефона" value="<?php echo $row['telephone']; ?>">
-                                                                        </div>
-                                                                    </div>
-                                                                    
-                                                                    <div class="col-lg-6">
-                                                                        <div class="form-group">
-                                                                            <label for="IIIN">ИИН</label>
-                                                                            <input name="iin" type="text" class="form-control" id="IIIN" placeholder="ИИН" value="<?php echo $row['iin']; ?>">
-                                                                            <input name="id" type="text" style="display: none" value="<?php echo $row['id']; ?>">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <hr>
-                                                                <div class="row">
-                                                                    <div class="col-lg-6">
-                                                                        <div class="form-group">
-                                                                            <label for="dayb">День рождения</label>
-                                                                            <input name="birthday" type="text" class="form-control" id="dayb" placeholder="День рождения" value="<?php echo $row['birthday']; ?>">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-6">
-                                                                        <div class="form-group">
-                                                                            <label for="pass">Пароль для входа в систему</label>
-                                                                            <input name="password" type="text" class="form-control" id="pass" placeholder="Пароль для входа в систему" value="<?php echo $row['password']; ?>">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <hr>
                                                                 <div class="row">
                                                                     <div class="col-lg-6">
                                                                         <div class="form-group">
                                                                             <label>Группы</label>
-                                                                            <div style="max-height: 105px; overflow-y:scroll">
-                                <?php 
-                                    $result_all_group = getAllData('relation_gt', $connection);
-                                    if ($result_all_group->num_rows > 0) {
-                                        while ($ross = $result_all_group->fetch_assoc()) {
-                                            $t = false;
-                                            if (sizeof($data) > 0) {
-                                                for($y=0; $y < sizeof($data); $y++){
-                                                    if (($ross['name_group'] == $data[$y])) {
-                                                        echo "<label>\n";
-                                                        echo "<input type='checkbox' atta='".$ross['id']."' name='checkboxname[]' value='".$ross['name_group']."' checked> ".$ross['name_group']."\n";
-                                                        echo "</label><br>";
-                                                        $t = true;
-                                                    }
-                                                }   
-                                            }
-                                            if (($t != true) && (is_null($ross['teacher_id']))) {
-                                                echo "<label>\n";
-                                                echo "<input type='checkbox' atta='".$ross['id']."' value='".$ross['name_group']."' name='checkboxname[]'> ".$ross['name_group']."\n";
-                                                echo "</label><br>";
-                                            }
-                                        }
-                                    }else{
-                                        echo "Группы не добавлены";
-                                    }
+                                                                            <div style="max-height: 155px; overflow-y:scroll">
+																			<form id="changeForm<?php echo $idTest; ?>" method="post">
+                                <?php
+                                    $sql = "SELECT * FROM relation_gt WHERE test_id = $idTest";
+									$result2 = $con->query($sql);
+									if ($result2->num_rows > 0) {
+										$groups = array();
+										// output data of each row
+										while($row = $result2->fetch_assoc()) {
+											array_push($groups, $row['group_id']);
+										}
+										$sql1 = "SELECT * FROM class";
+										$result1 = $con->query($sql1);
+
+										if ($result1->num_rows > 0) {
+											// output data of each row
+											while($row1 = $result1->fetch_assoc()) {
+												if(!in_array($row1['id'], $groups)){
+													//echo "<label>\n";
+													echo "<input type='checkbox' atta='".$row1['id']."' value='".$row1['id']."' name='checkboxname[]'> ".$row1['name_group']."\n";
+													//echo "</label><br>";
+													echo "<br>";
+												}
+											}
+										}
+										unset($groups);
+									}else{
+										$sql1 = "SELECT * FROM class";
+										$result1 = $con->query($sql1);
+
+										if ($result1->num_rows > 0) {
+											// output data of each row
+											while($row1 = $result1->fetch_assoc()) {
+												//echo "<label>\n";
+												echo "<input type='checkbox' atta='".$row1['id']."' value='".$row1['id']."' name='checkboxname[]'> ".$row1['name_group']."\n";
+												//echo "</label><br>";
+												echo "<br>";
+											}
+										}
+									}
                                 ?>
+								</form>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <div class="btn-group btn-group-justified" role="group" aria-label="group button">
@@ -378,26 +252,21 @@ unset($just);
                                                                         <button type="button" id="closeNew" class="btn btn-default closer" data-dismiss="modal"  role="button">Close</button>
                                                                     </div>
                                                                     <div class="btn-group" role="group">
-                                                                        <button type="button" id="saveNew<?php echo $shady; ?>" shady="<?php echo $shady; ?>" data-dismiss="modal" class="btn btn-default btn-hover-green saver_teacher" data-action="save" role="button">Save</button>
+                                                                        <button type="button" id="saveNew<?php echo $shady; ?>" idTest="<?php echo $idTest; ?>" data-dismiss="modal" class="btn btn-default btn-hover-green saver_test" data-action="save" role="button">Save</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </form>
                                                     </div>
+													</form>
                                                   </div>
                                             </div>
                                         </tr>
 
                             <?php   }
                                 }else{
-                                    exit('No tests in database');
+                                    exit('');
                                 }
                             ?>
-                            
-                            <!-- Repeat -->
-                            
-                        </tbody>
-                    </table>
                 </div>
                 </div>
             </div>

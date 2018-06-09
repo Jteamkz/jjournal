@@ -1,11 +1,15 @@
 <?php
 include 'php/class/one_schedule.php';
-$teacher_id = $personal['id'];
+include 'php/db/connect_db.php';
+
+$id_schedules = array();
+
+/*$teacher_id = $personal['id'];
 
 $sql = "teacher_id = ".$teacher_id;
 
 $data_groups = get_query($sql, "class", $connection);
-$id_schedules = array();
+
 $order = 0;
 $id_groups = array();
 $name_groups = array();
@@ -17,8 +21,11 @@ while ($data_group = $data_groups->fetch_assoc()) {
     $order++;
 }
 
-$order = 0;
+$order = 0;*/
+
 $data_schedule = array();
+
+array_push($id_schedules, $_GET['id']);
 foreach($id_schedules as $id_schedule){
     $sql_schedule = "id = ".$id_schedule;
     

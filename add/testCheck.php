@@ -55,7 +55,7 @@
 				$numberAns = $numberAns + $array[$j];
 			}
 		}
-		$idStudent = $_SESSION['iin'];
+		/*$idStudent = $_SESSION['iin'];
 		
 		$sql9 = "SELECT id FROM student WHERE iin = '$idStudent'";
 			$result9 = $con->query($sql9);
@@ -65,8 +65,11 @@
 				while($row9 = $result9->fetch_assoc()) {
 					$student_id = $row9['id'];
 				}
-		}
+		}*/
+		$student_id = $_SESSION['id'];
+
 		
+
 		$sql1 = "SELECT * FROM relation_st WHERE id_student = '$student_id' AND id_test = '$idTest'";
 		$result1 = $con->query($sql1);
 		$isExamined = false;
@@ -78,12 +81,9 @@
 			$sql = "INSERT INTO relation_st (id_student, id_test, points) VALUES ('$student_id', '$idTest', '$rights')";
 			
 			if ($con->query($sql) === TRUE) {
-				echo "Ты набрал: ".$rights." <a href='../student_panel.php'>Назад</a>";
-			} else {
-				echo "Error: " . $sql . "<br>" . $con->error;
+				
 			}
 			
-		}else{
-			echo "eee onbagan";
 		}
+		header("Location: ../student_panel.php ");
 ?>

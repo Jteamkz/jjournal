@@ -54,7 +54,7 @@ $about = $result->fetch_assoc();
 <body>
 
     <div id="wrapper">
-        <?php include "php/headers/student.php"; ?>
+		<?php include "php/headers/teacher.php"; ?>
         <div id="page-wrapper">
 
             <div class="container-fluid schedule" id="myAppDobro">

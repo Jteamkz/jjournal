@@ -1,29 +1,15 @@
 <?php 
 session_start();
-
 $db_name = $_SESSION['studycenter'];
-if (isset($_SESSION['tele'])) {
-    $iin_b = FALSE;
-    $tele = $_SESSION['tele'];
-}
-else if(isset($_SESSION['iin'])){
-    $iin_b = TRUE;
-    $iin = $_SESSION['iin'];
-}
-
 include 'php/db/connect_db.php';
 include 'php/db/get_all_data.php';
 include 'php/db/get.php';
 include 'php/db/get_query.php';
-include 'php/db/get_personal.php';
 
-$_SESSION['id'] = $personal['id'];
-$_SESSION['iin'] = $personal['iin'];
-$connection->set_charset("utf8");
-
-$result = getAllData('about', $connection);
-$about = $result->fetch_assoc();
-
+    $connection->set_charset("utf8");
+$just = getAllData('about', $connection);
+$about = $just->fetch_assoc();
+unset($just);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +40,7 @@ $about = $result->fetch_assoc();
 <body>
 
     <div id="wrapper">
-        <?php include "php/headers/student.php"; ?>
+		<?php include "php/headers/admin.php"; ?>
         <div id="page-wrapper">
 
             <div class="container-fluid schedule" id="myAppDobro">

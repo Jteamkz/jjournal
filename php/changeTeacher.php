@@ -128,14 +128,14 @@ if ($connection->query($delete_realtion) === TRUE) {
 }
 
 
-$update_query = "UPDATE teacher SET firstname = '$firstname', lastname = '$lastname', fathername = '$fathername', telephone = '$phone', iin = '$iin', birthday = '$birthday', password = '$password' WHERE iin = '$izno'";
+$update_query = "UPDATE teacher SET firstname = '$firstname', lastname = '$lastname', fathername = '$fathername', telephone = '$phone', iin = '$iin', birthday = '$birthday' WHERE iin = '$izno'";
 
 if ($connection->query($update_query) === TRUE) {
     
 } else {
     echo "Error updating record: " . $connection->error;
 }
-$update_query_inAll = "UPDATE users SET iin = '$iin', tele = '$phone', password = '$password' WHERE iin = '$izno'";
+$update_query_inAll = "UPDATE users SET iin = '$iin', tele = '$phone' WHERE iin = '$izno'";
 
 include 'db/get_all_db.php';
 

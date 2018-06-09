@@ -61,7 +61,6 @@ echo "</td>
         echo $zhk['name'];
     }
     echo "</td>
-    <td>Insert to Database</td>
     <td>
 <ul style='list-style: none; padding-left: 10px'>";
 	$query = "class_id = ".$id;

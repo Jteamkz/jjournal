@@ -23,7 +23,7 @@
 		    echo "Error: " . $sql . "<br>" . $cuni->error;
 		}
 
-		$sql = "INSERT INTO teacher (iin, firstname, lastname, fathername, birthday, telephone, password) VALUES ('$IIN', '$name', '$surname', '$father', '$birthday', '$phone', '$password')";
+		$sql = "INSERT INTO teacher (iin, firstname, lastname, fathername, birthday, telephone) VALUES ('$IIN', '$name', '$surname', '$father', '$birthday', '$phone')";
 
 		if ($con->query($sql) === TRUE) {
 		    $lastik = $con->insert_id;

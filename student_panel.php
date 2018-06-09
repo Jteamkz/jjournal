@@ -14,8 +14,10 @@
 	include 'php/db/get.php';
 	include 'php/db/get_query.php';
 	include 'php/db/get_personal.php';
+	include 'php/SQLconnect.php';
 
 $_SESSION['id'] = $personal['id'];
+$id_okushy = $_SESSION['id'];
 //$_SESSION['iin'] = $personal['iin'];
 $connection->set_charset("utf8");
 $result = getAllData('about', $connection);
@@ -49,240 +51,55 @@ $about = $result->fetch_assoc();
 </head>
 
 <body>
-
+<?php include "php/headers/student.php"; ?>
     <div id="wrapper">
-        <nav class="navbar navbar-default navbar-jjournal navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="te.php"><?php echo $about['name']; ?></a>
-            </div>
-            <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu message-dropdown">
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo $db_name; ?> <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav side-jjournal">
-                    <li class="active">
-                        <a class="jjournal-white" href=""><i class="fa fa-fw fa-dashboard"></i> Панель управления</a>
-                    </li>
-                    <li>
-                        <a  class="jjournal-white" href="teacher_students.php"><i class="fa fa-fw fa-bar-chart-o"></i> Студенты</a>
-                    </li>
-                    <li>
-                        <a  class="jjournal-white" href="admin_teachers.php"><i class="fa fa-fw fa-table"></i> Учители</a>
-                    </li>
-                    <li>
-                        <a  class="jjournal-white" href="admin_subjects.php"><i class="fa fa-fw fa-edit"></i> Предметы</a>
-                    </li>
-                    <li>
-                        <a  class="jjournal-white" href="admin_groups.php"><i class="fa fa-fw fa-desktop"></i> Группы</a>
-                    </li>
-                    <li>
-                        <a  class="jjournal-white" href="#"><i class="fa fa-fw fa-wrench"></i> Тесты</a>
-
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="#">Dropdown Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Dropdown Item</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </nav>
-
         <div id="page-wrapper">
-
-            <div class="container-fluid" id="myAppDobro">
-
-                <div class="row" style="margin-left: 0px; margin-right: 0px">
-                    <div>
-                        <div class="col-lg-6">
-                            <div class="jjournal-panel-top">
-                                <p class="jjournal-orange">Предстоящие занятия</p>
-                                <p class="jjournal-orange" style="float: right"><a href="schedule_student.php">Посмотреть расписание</a></p>
-                            </div>
-                            <div class="scroll-j">
-                                <ul class="jjournal-orders">
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                Группа: I 1603                                         
-                                            </div>
-                                            <div class="col-lg-6">
-                                                в Понедельник 16:30
-                                            </div>
-                                        </div>  
-                                    </li>
-                                    <li>
-                                    rewq  
-                                    </li>
-                                    <li>
-                                    asdf 
-                                    </li>
-                                    <li>
-                                        fdsa
-                                    </li>
-                                </ul>
-                            </div>
-                            
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-header">
+                        <h2>Мои группы</h2>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="jjournal-panel-top">
-                            <p class="jjournal-green">Предстоящие дни рождения</p>
+                    <hr>
+                    <div class="table-responsive" data-pattern="priority-columns">
+                    <table cellspacing="0" class="table table-small-font table-bordered table-striped results">
+                        <thead>
+                            <tr>
+                                <th>Группа</th>
+                                <th data-priority="1">Расписание</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ok">
                             <?php
-                                //include "php/teacher_panel/birthdays.php";
-                            ?>
-                        </div>
-                        <div class="scroll-j">
-                        
-                        <ul class="jjournal-orders">
-                                
-                        </ul>
-                        </div>
-                        
-                    </div>
-                     <div class="col-lg-6">
-                        <div class="alert alert-info alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i>  <strong>Like SB Admin?</strong> Try out <a href="http://startbootstrap.com/template-overviews/sb-admin-2" class="alert-link">SB Admin 2</a> for additional features!
-                        </div>
-                    </div> 
-
+								$sql = "SELECT * FROM relation_cs WHERE student_id = $id_okushy";
+								$result = $con->query($sql);
+								if ($result->num_rows > 0) {
+									// output data of each row
+									$i = 0;
+									while($row = $result->fetch_assoc()) {
+										$group_id = $row['class_id'];
+										$sql1 = "SELECT * FROM class WHERE id = $group_id";
+										$result1 = $con->query($sql1);
+										$row1 = $result1->fetch_assoc();
+							?>
+								<tr>
+                                            <td><?php echo $row1['name_group']; ?></td>
+                                            <td><a href="schedule_student.php?id=<?php echo $row1['schedule']; ?>">Посмотреть</a></td>
+								</tr>
+							<?php
+									}
+								}
+								//$conn->close(); 
+							?>
+                        </tbody>
+                    </table>
                 </div>
-                
-                <div class="row">
-                    <div class="col-lg-12">
-                    
-                        <a data-toggle="modal" data-target="#myModal" class="btn btn-success">Test database</a>
-                        <a class="btn btn-success">Test a group</a>
-                        <a class="btn btn-success">Create test</a>
-                    </div>
-                    
                 </div>
-                
-                <div>
-                    
-                </div>
-
             </div>
-        </div>
-    </div>
-		
-			<div style="padding-left:10px;" class="jjournal-panel-top">
+					<div class="page-header">
+                        <h2>Не сданные тесты</h2>
+                    </div>
+                <div style="padding-left:10px; padding-top:10px; padding-bottom:15px;" class="jjournal-panel-top">
 				<?php
 					include 'php/SQLconnect.php';
 					include 'php/connectOS.php';
@@ -291,6 +108,7 @@ $about = $result->fetch_assoc();
 					$sql = "SELECT * FROM student WHERE iin = '$iin' OR phone = '$tele'";
 					$result = $con->query($sql);
 					$tests = array();
+					$testter = array();
 					if ($result->num_rows > 0) {
 						while($row = $result->fetch_assoc()) {
 							$student_id_list = $row['id'];
@@ -319,32 +137,39 @@ $about = $result->fetch_assoc();
 											}
 										}
 									}
-								}
-							}
-						}
-					}
-							$sql4 = "SELECT * FROM relation_gt WHERE group_id = $group_id_list";
-							$result4 = $con->query($sql4);
-							
-							if ($result4->num_rows > 0) {
-								// output data of each row
-								while($row4 = $result4->fetch_assoc()) {
-									if(!in_array($row4['test_id'], $tests)){
-										$idId = $row4['test_id'];
-										$sql5 = "SELECT * FROM tests WHERE id=$idId";
-										$result5 = $con->query($sql5);
+									$sql4 = "SELECT * FROM relation_gt WHERE group_id = $group_id_list";
+									$result4 = $con->query($sql4);
+									if ($result4->num_rows > 0) {
+										// output data of each row
+										while($row4 = $result4->fetch_assoc()) {
+											if(!in_array($row4['test_id'], $tests)){
+												$idId = $row4['test_id'];
+												$sql5 = "SELECT * FROM tests WHERE id=$idId";
+												$result5 = $con->query($sql5);
 
-										if ($result5->num_rows > 0) {
-											// output data of each row
-											while($row5 = $result5->fetch_assoc()) {
-												echo "<a style='margin-top:5px; width:100px;' class='btn btn-success' href='add/testPage.php?id=".$row5['id']."'>".$row5['name']."</a><br>";
+												if ($result5->num_rows > 0) {
+													// output data of each row
+													while($row5 = $result5->fetch_assoc()) {
+														if(!in_array($row5['id'], $testter))
+															echo "<a style='margin-top:5px; width:100px;' class='btn btn-success' href='add/testPage.php?id=".$row5['id']."'>".$row5['name']."</a><br>";
+														array_push($testter, $row5['id']);
+													}
+												}
 											}
 										}
 									}
 								}
 							}
+						}
+					}
 				?>
 			</div>
+                <br>
+                <br>
+
+
+            </div> <!-- end container -->
+    </div>
         <!-- /#page-wrapper -->
 
     </div>

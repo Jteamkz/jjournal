@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 if (isset($_POST['user_name'])) {$user_name = $_POST['user_name']; if ($user_name == '') { unset($user_name);} }
@@ -10,7 +10,10 @@ if (!isset($user_name) || !isset($password)) {
 include '../db/get_all_db.php';
 include '../db/get_query.php';
 $sql = "SELECT * FROM users WHERE iin = '".$user_name."' OR tele = '".$user_name."'";
-
+unset($_SESSION['iin']);
+unset($_SESSION['tele']);
+unset($_SESSION['isStudent']);
+unset($_SESSION['isTeacher']);
 $result = $conn->query($sql);	
 
 if($result->num_rows > 0){
@@ -22,6 +25,8 @@ if($result->num_rows > 0){
 			$_SESSION['studycenter'] = $export_db_name;
 			header($to_admin);
 		}else if($row['status'] == 'student'){
+			$_SESSION['isStudent'] = true;
+			$_SESSION['isTeacher'] = false;
 			if(strlen($user_name) > 11){
 				$to_admin = "Location: ../../student_panel.php";
 				//?iin=".$row['iin']
@@ -39,6 +44,7 @@ if($result->num_rows > 0){
 			header($to_admin);
 		}else if($row['status'] == 'teacher'){
 			$_SESSION['isStudent'] = false;
+			$_SESSION['isTeacher'] = true;
 			if(strlen($user_name) > 11){
 				$to_admin = "Location: ../../teacher_panel.php";
 				//?iin=".$row['iin']

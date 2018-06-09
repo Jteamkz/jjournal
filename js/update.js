@@ -17,6 +17,7 @@ $(document).on('click',  '.saver_test', function(e){
 			url: $url,
 			data: changes,
 			success: function(data){
+				sessionStorage.setItem("reloading", "true");
 				location.reload();
 				// $($tr).html(data);
 				//console.log(this.load("php/teacher_part.php"));
@@ -36,12 +37,13 @@ $(document).on('click',  '.saver_teacher', function(e){
 		$url = 'php/changeTeacher.php?izno='+$izno+'&shady='+$shady;
 		
 		$tr = "#tr" + $shady;
-		alert($izno);
+		//alert($izno);
 		$.ajax({
 			type: 'POST',
 			url: $url,
 			data: $changes,
 			success: function(data){
+				sessionStorage.setItem("reloading", "true");
 				location.reload();
 			}
 		})
@@ -65,7 +67,9 @@ $(document).on('click',  '.saver_group', function(e){
 			url: $url,
 			data: $changes,
 			success: function(data){
-				$($tr).html(data);
+				//$($tr).html(data);
+				sessionStorage.setItem("reloading", "true");
+				location.reload();
 			}
 		})
 });
@@ -80,13 +84,42 @@ $(document).on('click',  '.saver', function(e){
 		e.preventDefault();
 		$url = 'php/changeStudent.php?izno='+$izno+'&shady='+$shady;
 		$tr = "#tr" + $shady;
-		alert($izno);
+		
 		$.ajax({
 			type: 'POST',
 			url: $url,
 			data: $changes,
 			success: function(data){
-				$($tr).html(data);
+				//$($tr).html(data);
+				sessionStorage.setItem("reloading", "true");
+				location.reload();
+			}
+		})
+});
+
+$(document).on('click',  '.update_pass', function(e){
+		//var idTest = $(this).attr('idTest');
+		//$spaceModalShady = '#squarespaceModal' + $shady;
+
+		//$izno = $($spaceModalShady).find("#IIIN").val();
+
+		//$formId = '#changeForm'+$shady;
+		var form = $('#changePass');
+		var changes = form.serialize();
+		e.preventDefault();
+		$url = 'add/changePass.php';
+		
+		//$tr = "#tr" + $shady;
+
+		$.ajax({
+			type: 'POST',
+			url: $url,
+			data: changes,
+			success: function(data){
+				sessionStorage.setItem("reloading", "true");
+				location.reload();
+				// $($tr).html(data);
+				//console.log(this.load("php/teacher_part.php"));
 			}
 		})
 });
@@ -103,3 +136,18 @@ $(document).ajaxStart(function(){
 $(document).ajaxStop(function(){
 	endSpin();
 })
+function notifyBars() {
+	  if(! $('.alert-box').length) {
+		$('<div class="alert-box success" style="z-index:9999999999;">Изменено</div>').prependTo('body').delay(800).fadeOut(200, function() {
+				$('.alert-box').remove();
+				});
+	  };
+};
+
+window.onload = function() {
+    var reloading = sessionStorage.getItem("reloading");
+    if (reloading) {
+        sessionStorage.removeItem("reloading");
+        notifyBars();
+    }
+}

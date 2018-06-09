@@ -45,8 +45,7 @@ unset($just);
 </head>
 <body>
 <div id="wrapper">
-    <?php include "php/headers/admin.php"; ?>
-
+   <?php include "php/headers/teacher.php"; ?>
     <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -83,13 +82,13 @@ unset($just);
                         <tbody>
                             <?php
                                 $result = getAllData('class', $connection);
-                                if ($result->num_rows > 0) {
+                                if ($result->num_rows > 1) {
                                     $shady = 0;
                                     while ($row = $result->fetch_assoc()) { 
                                         $shady++;
                                     ?>
                                     <tr class="middlel" id="tr<?php echo $shady; ?>">
-                                    <th><a href="schedule_admin.php?id=<?php echo $row['schedule']; ?>"><?php echo $row['name_group']; ?></a></th>
+                                    <th><?php echo $row['name_group']; ?></th>
                                     <td><?php 
                                         $teacher_id = -1;
                                         if ($row['teacher_id']!=null) {
@@ -287,7 +286,7 @@ if ($subject == -1) {
 </div>
     
 
-   <script src="js/jquery.js"></script>
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
