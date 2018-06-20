@@ -94,6 +94,26 @@ $(document).on('click',  '.delete_subject', function(e){
 			}
 		})
 });
+$(document).on('click',  '.delete_material', function(e){
+        $shady = $(this).attr('shady');
+        //alert("eminem");
+		$student = $(this).attr('material');
+		$link = $(this).attr('link');
+		e.preventDefault();
+		$url = 'php/deleteMaterial.php?id='+$student+'&link='+$link;
+		$tr = "#tr" + $shady;
+
+		$.ajax({
+			type: 'POST',
+			url: $url,
+			success: function(data){
+				notifyBar();
+				//location.reload();
+				$($tr).html(data);
+				// console.log(this.load("php/teacher_part.php"));
+			}
+		})
+});
 function notifyBar() {
 	  if(! $('.alert-box').length) {
 		$('<div class="alert-box success" style="z-index:9999999999;">Удалено</div>').prependTo('body').delay(800).fadeOut(200, function() {

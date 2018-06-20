@@ -10251,3 +10251,7 @@ if ( !noGlobal ) {
 
 return jQuery;
 } );
+$( document ).ready(function() {
+	var heightwindow = $(document).height();
+	$("#page-wrapper").height(heightwindow);
+});

@@ -194,8 +194,8 @@ $dender = array("понедельник", "вторник", "среда", "че�
 	$( document ).ready(function() {
 		for(var i = 0; i < 7; i++){
 			var width = $("#denok"+i).css("width");
-			var gg = width - 1;
-			$("#sabak"+i).css("width", gg);
+			width = width.slice(0, -2);
+			$("#sabak"+i).width(width - 1);
 		}
 	});
 	</script>

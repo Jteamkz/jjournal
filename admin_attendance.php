@@ -52,7 +52,7 @@ unset($just);
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-header">
-                        <h2>Список групп</h2>
+                        <h2>Список групп Посещаемость</h2>
                     </div>
                     <hr>
                     <div class="table-responsive" data-pattern="priority-columns">
@@ -67,7 +67,7 @@ unset($just);
                         </thead>
                         <tbody>
                             <?php
-                                $sql = "SELECT * FROM class WHERE teacher_id = ".$_SESSION['id'];
+                                if(isset($_SESSION['isTeacher'])) $sql = "SELECT * FROM class WHERE teacher_id = ".$_SESSION['id']; else $sql = "SELECT * FROM class";
 								$result = $connection->query($sql);
 								
                                 if ($result->num_rows > 0) {

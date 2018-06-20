@@ -107,7 +107,7 @@ unset($just);
                                         <tr class="middlel" id="tr<?php echo $shady; ?>">
                                             <th><?php echo $row55['name']; ?></th>
                                             <td><?php echo $row55['description']; ?></td>
-                                            <td><?php echo $row55['numberquests'] + 1; ?></td>
+                                            <td><?php echo $row55['numberquests'] + 1; $numberquests = $row55['numberquests'] + 1; ?></td>
                                             <td><?php 
                                                 $data_groups = array();
                                                 $query = "test_id = ".$row55['id'];
@@ -121,9 +121,9 @@ unset($just);
                                                         $result_sb = get_query($query_s, 'class', $connection);
                                                         while ($row_sb = $result_sb->fetch_assoc()) {
                                                             if ($temp < $result_ts->num_rows) {
-                                                                echo "<a href='result_test.php?id_group=".$idGroup."&id_test=".$idtestik."'>".$row_sb['name_group']."</a><br>";
+                                                                echo "<a href='result_test.php?numberquests=$numberquests&id_group=".$idGroup."&id_test=".$idtestik."'>".$row_sb['name_group']."</a><br>";
                                                             }else{
-                                                                echo "<a href='result_test.php?id_group=".$idGroup."&id_test=".$idtestik."'>".$row_sb['name_group']."</a><br>";
+                                                                echo "<a href='result_test.php?numberquests=$numberquests&id_group=".$idGroup."&id_test=".$idtestik."'>".$row_sb['name_group']."</a><br>";
                                                             }
                                                             $data_subjects[$temp - 1] = $row_sb['name'];
                                                         }
@@ -280,7 +280,7 @@ unset($just);
 </div>
     
 
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+   <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>

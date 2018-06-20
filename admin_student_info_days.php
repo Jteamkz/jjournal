@@ -5,9 +5,11 @@ include 'php/db/connect_db.php';
 include 'php/db/get_all_data.php';
 include 'php/db/get.php';
 include 'php/db/get_query.php';
+include 'php/connectOS.php';
 include 'php/SQLconnect.php';
 
-    $connection->set_charset("utf8");
+$id_okushy = $_GET['id'];
+$connection->set_charset("utf8");
 $just = getAllData('about', $connection);
 $about = $just->fetch_assoc();
 unset($just);
@@ -46,54 +48,22 @@ unset($just);
 </head>
 <body>
 <div id="wrapper">
-    <?php if(isset($_SESSION['isTeacher'])) include "php/headers/teacher.php"; else include "php/headers/admin.php"; ?>
+	<?php include "php/headers/admin.php"; ?>
 
     <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-header">
-                        <h2>Список уроков в группе <?php echo $_GET['name_group']; ?> <button data-toggle="modal" data-target="#myModal" class="btn btn-success">Добавить урок</button></h2>
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Добавьте уроки</h4>
-      </div>
-      <div class="modal-body">
-	<form id="lessonForm" method='post'>
-		<input type="hidden" name="group_id" value="<?php echo $_GET['id']; ?>">
-		<input type='text' class="form-control" placeholder='Название или дата урока' name='name' required>
-    </form>
-      </div>
-      <div class="modal-footer">
-			<div class="btn-group btn-group-justified" role="group" aria-label="group button">
-				<div class="btn-group" role="group">
-					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Закрыть</button>
-				</div>
-				<div class="btn-group btn-delete hidden" role="group">
-					<button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Удалить</button>
-				</div>
-				<div class="btn-group" role="group">
-					<button type="button" id="addLesson" class="btn btn-default btn-hover-green" data-action="save" role="button">Добавить</button>
-				</div>
-			</div>
-		</div>
-    </div>
-
-  </div>
-</div>						
+                        <h2>Посещаемость студента <?php echo $_GET['name']; ?> в группе <?php echo $_GET['name_group']; ?></h2>					
                     </div>
                     <hr>
                     <div class="table-responsive" data-pattern="priority-columns">
                     <table cellspacing="0" class="table table-small-font table-bordered table-striped results">
                         <thead>
                             <tr>
-                                <th>Название или дата урока</th>
-								<th></th>
+                                <th>Название или дата</th>
+								<th>Был / Не был</th>
                             </tr>
                             <tr class="warning no-result">
                               <td colspan="7"><i class="fa fa-warning"></i> Ничего не найдено</td>
@@ -107,36 +77,28 @@ unset($just);
 					
 								if ($result->num_rows > 0) {
 									while($row = $result->fetch_assoc()) {
+										$lesson_id = $row['id'];
+										$sql1 = "SELECT * FROM attendance WHERE lesson_id = $lesson_id AND student_id = ".$_GET['student_id'];
+										$result1 = $con->query($sql1);
+							
+										if ($result1->num_rows > 0) {
+											while($row1 = $result1->fetch_assoc()) {
                             ?>
 							<tr>
 								<td><?php echo $row['name']; ?></td>
-								<?php 
-									if($row['isset'] == "not"){
-										?>
-										<td><a href="admin_attendance_days_setstudents.php?group_id=<?php echo $group_id; ?>&lesson_id=<?php echo $row['id']; ?>&name_group=<?php echo $_GET['name_group']; ?>">Поставить посещаемость</a></td>
-										<?php
-									}else{
-									?>
-										<td><a href="admin_attendance_days_lookstudents.php?lesson_id=<?php echo $row['id']; ?>">Просмотреть</a></td>
-									<?php } ?>
+								<td><?php if($row1['bool']== "yes") echo "Был"; else echo "Не был"; ?></td>
 							</tr>
                             <?php
+											}
+										}
 									}
 								}
                             ?>
-                            
-                            <!-- Repeat -->
-                            
                         </tbody>
                     </table>
                 </div>
                 </div>
             </div>
-                
-                <br>
-                <br>
-
-
             </div> <!-- end container -->
     </div>
 </div>
@@ -165,27 +127,12 @@ unset($just);
 					type: 'POST',
 					data: serializedData,
 					success: function(data){
-						sessionStorage.setItem("reloading", "true");
-						location.reload();
+						 location.reload();
 					}
 				})
 			
 		});
 	});
-	function notifyBar() {
-	  if(! $('.alert-box').length) {
-		$('<div class="alert-box success" style="z-index:9999999999;">Добавлено</div>').prependTo('body').delay(800).fadeOut(200, function() {
-				$('.alert-box').remove();
-				});
-	  };
-	};
-	window.onload = function() {
-		var reloading = sessionStorage.getItem("reloading");
-		if (reloading) {
-			sessionStorage.removeItem("reloading");
-			notifyBar();
-		}
-	}
 	</script>
 </body>
 </html>

@@ -59,13 +59,12 @@ $about = $result->fetch_assoc();
 <body>
 <div id="wrapper">
     <?php include "php/headers/student.php"; ?>
-
     <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-header">
-                        <h2>Список групп Посещаемость</h2>
+                        <h2>Список групп Материалы</h2>
                     </div>
                     <hr>
                     <div class="table-responsive" data-pattern="priority-columns">
@@ -80,22 +79,23 @@ $about = $result->fetch_assoc();
                         </thead>
                         <tbody>
                             <?php
-                                $sql2 = "SELECT * FROM relation_cs WHERE student_id = ".$_SESSION['id'];
-								$result2 = $connection->query($sql2);
+								$sql5 = "SELECT * FROM relation_cs WHERE student_id = ".$_SESSION['id'];
+								$result5 = $con->query($sql5);
 								
-                                if ($result2->num_rows > 0) {
-                                    while ($row2 = $result2->fetch_assoc()) {
-										$group_id = $row2['class_id'];
-										$sql1 = "SELECT * FROM class WHERE id = $group_id";
-										$result1 = $connection->query($sql1);
+                                if ($result5->num_rows > 0) {
+                                    while ($row5 = $result5->fetch_assoc()) { 
+										$sql = "SELECT * FROM class WHERE id = ".$row5['class_id'];
+										$result = $connection->query($sql);
 										
-										if ($result1->num_rows > 0) {
-											while ($row1 = $result1->fetch_assoc()) {
-                            ?>
+										if ($result->num_rows > 0) {
+											$shady = 0;
+											while ($row = $result->fetch_assoc()) { 
+												$shady++;
+                                    ?>
                                     <tr class="middlel" id="tr<?php echo $shady; ?>">
-                                    <th><?php echo "<a href='student_attendance_days.php?id=".$row1['id']."&name_group=".$row1['name_group']."'>"."<text style='font-weight:normal;'>группа </text> ".$row1['name_group']."</a>"; ?></th>
+                                    <th><?php echo "<a href='student_materials_files.php?id=".$row['id']."&name_group=".$row['name_group']."'>"."<text style='font-weight:normal;'>Материалы </text> ".$row['name_group']."</a>"; ?></th>
                                     </tr>
-                            <?php             
+                            <?php
 											}
 										}
 									}
@@ -114,9 +114,11 @@ $about = $result->fetch_assoc();
                 <br>
 
 
-        </div> <!-- end container -->
+            </div> <!-- end container -->
     </div>
 </div>
+    
+
    <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->

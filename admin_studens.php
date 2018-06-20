@@ -98,7 +98,7 @@ unset($just);
                                         ?>
                                         <tr class="middlel" id="tr<?php echo $shady; ?>">
                                             
-                                            <th><?php echo $row['lastname']." ".$row['firstname']." ".$row['fathername']; ?></td>
+                                            <th><a href="admin_student_info.php?id=<?php echo $row['id']; ?>&name=<?php echo $row['firstname']; ?>"><?php echo $row['lastname']." ".$row['firstname']." ".$row['fathername']; ?></a></td>
                                             <td><?php echo $row['phone']; ?></td>
                                             <td><?php echo $row['phone_parent']; ?></td>
                                             <td>

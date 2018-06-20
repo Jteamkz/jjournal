@@ -1,29 +1,16 @@
-<?php
-	session_start();
-	$db_name = $_SESSION['studycenter'];
-	if (isset($_SESSION['tele'])) {
-    $iin_b = FALSE;
-    $tele = $_SESSION['tele'];
-	}
-	else if(isset($_SESSION['iin'])){
-			$iin_b = TRUE;
-			$iin = $_SESSION['iin'];
-	}
-	include 'php/db/connect_db.php';
-	include 'php/db/get_all_data.php';
-	include 'php/db/get.php';
-	include 'php/db/get_query.php';
-	include 'php/db/get_personal.php';
-	include 'php/SQLconnect.php';
-	include 'php/connectOS.php';
+<?php 
+session_start();
+$db_name = $_SESSION['studycenter'];
+include 'php/db/connect_db.php';
+include 'php/db/get_all_data.php';
+include 'php/db/get.php';
+include 'php/db/get_query.php';
 
-	$id_okushy = $_SESSION['id'];
-//$_SESSION['iin'] = $personal['iin'];
-$connection->set_charset("utf8");
-$result = getAllData('about', $connection);
-$about = $result->fetch_assoc();
-	
-	?>
+    $connection->set_charset("utf8");
+$just = getAllData('about', $connection);
+$about = $just->fetch_assoc();
+unset($just);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,14 +45,13 @@ $about = $result->fetch_assoc();
 </head>
 <body>
 <div id="wrapper">
-    <?php include "php/headers/student.php"; ?>
-
+    <?php if(isset($_SESSION['isTeacher'])) include "php/headers/teacher.php"; else include "php/headers/admin.php"; ?>
     <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-header">
-                        <h2>Список групп Посещаемость</h2>
+                        <h2>Список групп Материалы</h2>
                     </div>
                     <hr>
                     <div class="table-responsive" data-pattern="priority-columns">
@@ -80,26 +66,22 @@ $about = $result->fetch_assoc();
                         </thead>
                         <tbody>
                             <?php
-                                $sql2 = "SELECT * FROM relation_cs WHERE student_id = ".$_SESSION['id'];
-								$result2 = $connection->query($sql2);
+                                if(isset($_SESSION['isTeacher'])) $sql = "SELECT * FROM class WHERE teacher_id = ".$_SESSION['id']; else $sql = "SELECT * FROM class";
+								$result = $connection->query($sql);
 								
-                                if ($result2->num_rows > 0) {
-                                    while ($row2 = $result2->fetch_assoc()) {
-										$group_id = $row2['class_id'];
-										$sql1 = "SELECT * FROM class WHERE id = $group_id";
-										$result1 = $connection->query($sql1);
-										
-										if ($result1->num_rows > 0) {
-											while ($row1 = $result1->fetch_assoc()) {
-                            ?>
+                                if ($result->num_rows > 0) {
+                                    $shady = 0;
+                                    while ($row = $result->fetch_assoc()) { 
+                                        $shady++;
+                                    ?>
                                     <tr class="middlel" id="tr<?php echo $shady; ?>">
-                                    <th><?php echo "<a href='student_attendance_days.php?id=".$row1['id']."&name_group=".$row1['name_group']."'>"."<text style='font-weight:normal;'>группа </text> ".$row1['name_group']."</a>"; ?></th>
+                                    <th><?php echo "<a href='admin_materials_files.php?id=".$row['id']."&name_group=".$row['name_group']."'>"."<text style='font-weight:normal;'>Материалы </text> ".$row['name_group']."</a>"; ?></th>
                                     </tr>
                             <?php             
-											}
-										}
-									}
-								}
+                                    }
+                                }else{
+
+                                }
                             ?>
                             
                             <!-- Repeat -->
@@ -114,9 +96,11 @@ $about = $result->fetch_assoc();
                 <br>
 
 
-        </div> <!-- end container -->
+            </div> <!-- end container -->
     </div>
 </div>
+    
+
    <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->

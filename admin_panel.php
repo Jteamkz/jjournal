@@ -656,13 +656,8 @@ unset($just);
 				type: 'POST',
 				data: serializedData,
 				success: function(data){
-					notifyBar();
-					//location.reload();
-					$('#myModal').modal('toggle');
-					$(".form-control").val('');
-					$("#subjectHuge").html(parseInt($("#subjectHuge").html()) + parseInt(a + 1));
-					//$('#bodyman').load(document.URL +  '#bodyman');
-					//$("#subjectBody").html("<div class='ladygaga'> <button id='eweSubject' class='btn btn-success'>Еще</button> <button id='eweSubjectdelete' class='btn btn-danger'>Удалить</button> <hr> </div> <form id='subjectForm' method='post'> <div style='max-height:250px; height:250px; padding:10px 10px 10px 0px; overflow-y: scroll; overflow-x:hidden;'> <div class='row'> <div class='col-lg-6'> <input type='text' id='namesubject' name='name0' class='form-control' placeholder='Название'> </div> <div class='col-lg-6'> <input type='text' class='form-control' placeholder='Описание' name='defenition0' required> </div> </div> <p id='subjectP'></p> </div> </form>");
+					sessionStorage.setItem("reloading", "true");
+					location.reload();
 				}
 			})
 		
@@ -704,10 +699,8 @@ unset($just);
 				type: 'POST',
 				data: serializedData,
 				success: function(data){
-					notifyBar();
-					$('#myModal2').modal('toggle');
-					$(".form-control").val('');
-					$("#studentHuge").html(parseInt($("#studentHuge").html()) + parseInt(b + 1));
+					sessionStorage.setItem("reloading", "true");
+					location.reload();
 				}
 			})
 		
@@ -754,10 +747,8 @@ unset($just);
 				type: 'POST',
 				data: serializedData,
 				success: function(data){
-					notifyBar();
-					$('#myModal3').modal('toggle');
-					$(".form-control").val('');
-					$("#teacherHuge").html(parseInt($("#teacherHuge").html()) + parseInt(c + 1));
+					sessionStorage.setItem("reloading", "true");
+					location.reload();
 				}
 			})
 		
@@ -778,6 +769,13 @@ unset($just);
 				});
 	  };
 	};
+	window.onload = function() {
+		var reloading = sessionStorage.getItem("reloading");
+		if (reloading) {
+			sessionStorage.removeItem("reloading");
+			notifyBar();
+		}
+	}
 	</script>
 </body>
 

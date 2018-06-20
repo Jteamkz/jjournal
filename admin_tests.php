@@ -94,7 +94,7 @@ unset($just);
                                         <tr class="middlel" id="tr<?php echo $shady; ?>">
                                             <th><?php echo $row['name']; ?></th>
                                             <td><?php echo $row['description']; ?></td>
-                                            <td><?php echo $row['numberquests'] + 1; ?></td>
+                                            <td><?php echo $row['numberquests'] + 1; $numberquests = $row['numberquests'] + 1; ?></td>
                                             <td><?php 
                                                 $data_groups = array();
                                                 $query = "test_id = ".$row['id'];
@@ -108,9 +108,9 @@ unset($just);
                                                         $result_sb = get_query($query_s, 'class', $connection);
                                                         while ($row_sb = $result_sb->fetch_assoc()) {
                                                             if ($temp < $result_ts->num_rows) {
-                                                                echo "<a href='result_test.php?id_group=".$idGroup."&id_test=".$idTest."'>".$row_sb['name_group']."</a><br>";
+                                                                echo "<a href='result_test.php?numberquests=$numberquests&id_group=".$idGroup."&id_test=".$idTest."'>".$row_sb['name_group']."</a><br>";
                                                             }else{
-                                                                echo "<a href='result_test.php?id_group=".$idGroup."&id_test=".$idTest."'>".$row_sb['name_group']."</a><br>";
+                                                                echo "<a href='result_test.php?numberquests=$numberquests&id_group=".$idGroup."&id_test=".$idTest."'>".$row_sb['name_group']."</a><br>";
                                                             }
                                                             $data_subjects[$temp - 1] = $row_sb['name'];
                                                         }

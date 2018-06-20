@@ -1,17 +1,29 @@
-<?php 
-session_start();
-$db_name = $_SESSION['studycenter'];
-include 'php/db/connect_db.php';
-include 'php/db/get_all_data.php';
-include 'php/db/get.php';
-include 'php/db/get_query.php';
-include 'php/SQLconnect.php';
+<?php
+	session_start();
+	$db_name = $_SESSION['studycenter'];
+	if (isset($_SESSION['tele'])) {
+    $iin_b = FALSE;
+    $tele = $_SESSION['tele'];
+	}
+	else if(isset($_SESSION['iin'])){
+			$iin_b = TRUE;
+			$iin = $_SESSION['iin'];
+	}
+	include 'php/db/connect_db.php';
+	include 'php/db/get_all_data.php';
+	include 'php/db/get.php';
+	include 'php/db/get_query.php';
+	include 'php/db/get_personal.php';
+	include 'php/SQLconnect.php';
+	include 'php/connectOS.php';
 
-    $connection->set_charset("utf8");
-$just = getAllData('about', $connection);
-$about = $just->fetch_assoc();
-unset($just);
-?>
+	$id_okushy = $_SESSION['id'];
+//$_SESSION['iin'] = $personal['iin'];
+$connection->set_charset("utf8");
+$result = getAllData('about', $connection);
+$about = $result->fetch_assoc();
+	
+	?>
 <!DOCTYPE html>
 <html>
 <head>

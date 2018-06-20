@@ -105,7 +105,7 @@ $id_group = $_GET['id_group'];
                                                 if ($result_st->num_rows > 0) {
                                                     $temp = 0;
                                                     while ($row_st = $result_st->fetch_assoc()) {
-                                                        echo $row_st['points'];
+                                                        echo $row_st['points']." / ".$_GET['numberquests'];
                                                     }
                                                 }else{
                                                     echo "Не писал тест";
@@ -195,7 +195,7 @@ $id_group = $_GET['id_group'];
 										}
 									}
 								}else{
-                                    exit('No tests in database');
+                                    
                                 }
                             ?>
                             

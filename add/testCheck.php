@@ -67,7 +67,6 @@
 				}
 		}*/
 		$student_id = $_SESSION['id'];
-
 		
 
 		$sql1 = "SELECT * FROM relation_st WHERE id_student = '$student_id' AND id_test = '$idTest'";
@@ -80,10 +79,7 @@
 			
 			$sql = "INSERT INTO relation_st (id_student, id_test, points) VALUES ('$student_id', '$idTest', '$rights')";
 			
-			if ($con->query($sql) === TRUE) {
-				
-			}
-			
+			$con->query($sql);
 		}
 		header("Location: ../student_panel.php ");
 ?>
