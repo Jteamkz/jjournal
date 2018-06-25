@@ -3,7 +3,7 @@
 	$db_name = $_SESSION['studycenter'];
 	include "../php/SQLconnect.php";
 	$group_id = $_POST['group_id'];
-	$name = $_POST["name"];
+	$name = mysqli_real_escape_string($con, $_POST["name"]);
 	
 	$sql = "INSERT INTO lessons (group_id, name, isset) VALUES ($group_id, '$name','not')";
 

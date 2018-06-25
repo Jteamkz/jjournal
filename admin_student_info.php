@@ -121,7 +121,7 @@ unset($just);
 											while ($row1 = $result1->fetch_assoc()) {
                             ?>
                                     <tr class="middlel" id="tr<?php echo $shady; ?>">
-                                    <th><?php echo "<a href='admin_student_info_days.php?student_id=".$_GET['id']."&id=".$row1['id']."&name_group=".$row1['name_group']."&name=".$_GET['name']."'>"."<text style='font-weight:normal;'>группа </text> ".$row1['name_group']."</a>"; ?></th>
+                                    <th><?php echo "<a href='admin_student_info_days?student_id=".$_GET['id']."&id=".$row1['id']."&name_group=".$row1['name_group']."&name=".$_GET['name']."'>"."<text style='font-weight:normal;'>группа </text> ".$row1['name_group']."</a>"; ?></th>
                                     </tr>
                             <?php             
 											}

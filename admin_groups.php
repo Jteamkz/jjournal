@@ -89,7 +89,7 @@ unset($just);
                                         $shady++;
                                     ?>
                                     <tr class="middlel" id="tr<?php echo $shady; ?>">
-                                    <th><a href="schedule_admin.php?id=<?php echo $row['schedule']; ?>"><?php echo $row['name_group']; ?></a></th>
+                                    <th><a href="schedule_admin?id=<?php echo $row['schedule']; ?>"><?php echo $row['name_group']; ?></a></th>
                                     <td><?php 
                                         $teacher_id = -1;
                                         if ($row['teacher_id']!=null) {
@@ -132,7 +132,7 @@ unset($just);
                                                     $query_ins = "id = ".$row_students['student_id'];
                                                     $single = get_query($query_ins, 'student', $connection);
                                                     $row_student = $single->fetch_assoc();
-                                                    echo "<li><a href='admin_studens.php?name=".$row_student['firstname']." ".$row_student['lastname']."'>".$row_student['firstname']." ".$row_student['lastname']."</a></li>";
+                                                    echo "<li><a href='admin_studens?name=".$row_student['firstname']." ".$row_student['lastname']."'>".$row_student['firstname']." ".$row_student['lastname']."</a></li>";
                                                 }
                                             }else{
                                                 echo "Ученики не привязаны";

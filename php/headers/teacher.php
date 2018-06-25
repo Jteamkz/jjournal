@@ -1,6 +1,6 @@
 <?php
 	if(!isset($_SESSION['isTeacher'])){
-		echo "<script>window.location.href = 'index.php';</script>";
+		echo "<script>window.location.href = 'index';</script>";
 	}
 ?>
   <nav class="navbar navbar-default navbar-jjournal navbar-fixed-top" role="navigation">
@@ -20,7 +20,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo $db_name; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="php/exit.php"><i class="fa fa-fw fa-power-off"></i> Выйти</a>
+                            <a href="php/exit"><i class="fa fa-fw fa-power-off"></i> Выйти</a>
                         </li>
                     </ul>
                 </li>
@@ -28,22 +28,22 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav side-jjournal">
                     <li>
-                        <a class="jjournal-white" href="teacher_panel.php"><i class="glyphicon glyphicon-home"> </i> Главная</a>
+                        <a class="jjournal-white" href="teacher_panel"><i class="glyphicon glyphicon-home"> </i> Главная</a>
                     </li>
 					<li>
-                        <a  class="jjournal-white" href="teachers_ownschedule.php"><i class="glyphicon glyphicon-calendar"> </i> Мое расписание</a>
+                        <a  class="jjournal-white" href="teachers_ownschedule"><i class="glyphicon glyphicon-calendar"> </i> Мое расписание</a>
                     </li>
                     <li>
-                        <a  class="jjournal-white" href="teacher_tests.php"><i class="glyphicon glyphicon-list-alt"> </i> Мои тесты</a>
+                        <a  class="jjournal-white" href="teacher_tests"><i class="glyphicon glyphicon-list-alt"> </i> Мои тесты</a>
                     </li>
 					<li>
-                        <a  class="jjournal-white" href="teacher_profile.php"><i class="glyphicon glyphicon-user"> </i> Мой профиль</a>
+                        <a  class="jjournal-white" href="teacher_profile"><i class="glyphicon glyphicon-user"> </i> Мой профиль</a>
                     </li>
 					<li>
-                        <a  class="jjournal-white" href="admin_attendance.php"><i class="glyphicon glyphicon-check"></i> Посещаемость</a>
+                        <a  class="jjournal-white" href="admin_attendance"><i class="glyphicon glyphicon-check"></i> Посещаемость</a>
                     </li>
 					<li>
-                        <a  class="jjournal-white" href="admin_materials.php"><i class="glyphicon glyphicon-floppy-disk"></i> Материал</a>
+                        <a  class="jjournal-white" href="admin_materials"><i class="glyphicon glyphicon-floppy-disk"></i> Материал</a>
                     </li>
                 </ul>
             </div>

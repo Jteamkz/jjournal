@@ -189,7 +189,7 @@ unset($just);
             <div class="container-fluid">
 
                 <div class="formGroupAdding">
-    <form method="post" action="add/groupAdd.php">
+    <form method="post" action="add/groupAdd">
         <div class="row">
             <div class="col-lg-8">
             	<div class="row">

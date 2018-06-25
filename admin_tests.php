@@ -53,7 +53,7 @@ unset($just);
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-header">
-                        <h2>Список тестов <a href="add/test.php" class="btn btn-success">Добавить тест</a></h2>
+                        <h2>Список тестов <a href="add/test" class="btn btn-success">Добавить тест</a></h2>
                     </div>
                     <div>
                         <p>Искать</p>
@@ -108,9 +108,9 @@ unset($just);
                                                         $result_sb = get_query($query_s, 'class', $connection);
                                                         while ($row_sb = $result_sb->fetch_assoc()) {
                                                             if ($temp < $result_ts->num_rows) {
-                                                                echo "<a href='result_test.php?numberquests=$numberquests&id_group=".$idGroup."&id_test=".$idTest."'>".$row_sb['name_group']."</a><br>";
+                                                                echo "<a href='result_test?numberquests=$numberquests&id_group=".$idGroup."&id_test=".$idTest."'>".$row_sb['name_group']."</a><br>";
                                                             }else{
-                                                                echo "<a href='result_test.php?numberquests=$numberquests&id_group=".$idGroup."&id_test=".$idTest."'>".$row_sb['name_group']."</a><br>";
+                                                                echo "<a href='result_test?numberquests=$numberquests&id_group=".$idGroup."&id_test=".$idTest."'>".$row_sb['name_group']."</a><br>";
                                                             }
                                                             $data_subjects[$temp - 1] = $row_sb['name'];
                                                         }

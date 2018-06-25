@@ -174,7 +174,7 @@ unset($just);
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <a href="admin_subjects.php">
+                                                    <a href="admin_subjects">
                                                         <div class="panel-footer">
                                                             <span class="pull-left">View Details</span>
                                                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -253,7 +253,7 @@ unset($just);
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <a href="admin_studens.php">
+                                                <a href="admin_studens">
                                                     <div class="panel-footer">
                                                         <span class="pull-left">View Details</span>
                                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -338,7 +338,7 @@ unset($just);
                                                     </div>
                                                 </div>
                                             </div>
-                                            <a href="admin_teachers.php">
+                                            <a href="admin_teachers">
                                                 <div class="panel-footer">
                                                     <span class="pull-left">View Details</span>
                                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -445,7 +445,7 @@ unset($just);
                                             </div>
                                              <div class="col-xs-3">
                                                 <!--<form method="POST" action="add/group.php">-->
-                                                    <br><a href="groupPage.php" class="btn btn-success btn-lg">Добавить группу</a>
+                                                    <br><a href="groupPage" class="btn btn-success btn-lg">Добавить группу</a>
                                                 <!--</form>-->
 
 <!-- Modal -->

@@ -3,10 +3,10 @@
 		$db_name = $_SESSION['studycenter'];
 		include "../php/SQLconnect.php";
 		include "../php/connectOS.php";
-		$name = $_POST["name"];
-		$subject = $_POST["subject"];
-		$name = $_POST["name".$i];
-		$teacher = $_POST["teacher"];
+		$name = mysqli_real_escape_string($con, $_POST["name"]);
+		$subject = mysqli_real_escape_string($con, $_POST["subject"]);
+		$name = mysqli_real_escape_string($con, $_POST["name".$i]);
+		$teacher = mysqli_real_escape_string($con, $_POST["teacher"]);
 		$_POST["monday1"] = foo($_POST["monday1"]);
 		$_POST["monday2"] = foo($_POST["monday2"]);
 		$_POST["monday3"] = foo($_POST["monday3"]);
@@ -42,13 +42,13 @@
 		$friday = $_POST["friday1"]." ".$_POST["friday2"]." ".$_POST["friday3"]." ".$_POST["friday4"];
 		$saturday = $_POST["saturday1"]." ".$_POST["saturday2"]." ".$_POST["saturday3"]." ".$_POST["saturday4"];
 		$sunday = $_POST["sunday1"]." ".$_POST["sunday2"]." ".$_POST["sunday3"]." ".$_POST["sunday4"];
-		$mr = $_POST['mondayroom'];
-		$tur = $_POST['tuesdayroom'];
-		$wr = $_POST['wednesdayroom'];
-		$thr = $_POST['thursdayroom'];
-		$fr = $_POST['fridayroom'];
-		$sar = $_POST['saturdayroom'];
-		$sur = $_POST['sundayroom'];
+		$mr = mysqli_real_escape_string($con, $_POST['mondayroom']);
+		$tur = mysqli_real_escape_string($con, $_POST['tuesdayroom']);
+		$wr = mysqli_real_escape_string($con, $_POST['wednesdayroom']);
+		$thr = mysqli_real_escape_string($con, $_POST['thursdayroom']);
+		$fr = mysqli_real_escape_string($con, $_POST['fridayroom']);
+		$sar = mysqli_real_escape_string($con, $_POST['saturdayroom']);
+		$sur = mysqli_real_escape_string($con, $_POST['sundayroom']);
 		if($_POST['checkbox']){
 			$students = join(',',$_POST['checkbox']);
 			$sql = "UPDATE student SET bool='false' WHERE id IN(".$students.")";

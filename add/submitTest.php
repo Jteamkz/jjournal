@@ -7,8 +7,8 @@
 	$db_name = $_SESSION['studycenter'];
 	include "../php/SQLconnect.php";
 	include "../php/connectOS.php";
-		$name = $_POST["name"];
-		$description = $_POST["description"];
+		$name = mysqli_real_escape_string($con, $_POST["name"]);
+		$description = mysqli_real_escape_string($con, $_POST["description"]);
 		
 		$sql = "INSERT INTO tests (name, description, array, numberquests) VALUES ('$name', '$description', '$array', '$numberquests')";
 
@@ -18,7 +18,7 @@
 
 		for($j = 0; $j < strlen($array); $j++){
 			if($array[$j] == ','){
-				$question = $_POST["vopros".$i];
+				$question = mysqli_real_escape_string($con, $_POST["vopros".$i]);
 				
 				$sql = "INSERT INTO questions (question, ids) VALUES ('$question', '$kongo')";
 
@@ -27,14 +27,14 @@
 				}
 				for($k = 0; $k < $numberAns; $k++){
 					if(isset($_POST['answer'.$i.$k])){
-						$variant = $_POST['answer'.$i.$k];
+						$variant = mysqli_real_escape_string($con, $_POST['answer'.$i.$k]);
 						$sql = "INSERT INTO variant (content, ids, bool) VALUES ('$variant', '$kongo2', 1)";
 
 						if ($con->query($sql) === TRUE) {
 						    
 						}
 					}else{
-						$variant = $_POST['answerZamena'.$i.$k];
+						$variant = mysqli_real_escape_string($con, $_POST['answerZamena'.$i.$k]);
 						$sql = "INSERT INTO variant (content, ids, bool) VALUES ('$variant', '$kongo2', 0)";
 
 						if ($con->query($sql) === TRUE) {

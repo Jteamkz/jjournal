@@ -93,7 +93,7 @@ $about = $result->fetch_assoc();
 												$shady++;
                                     ?>
                                     <tr class="middlel" id="tr<?php echo $shady; ?>">
-                                    <th><?php echo "<a href='student_materials_files.php?id=".$row['id']."&name_group=".$row['name_group']."'>"."<text style='font-weight:normal;'>Материалы </text> ".$row['name_group']."</a>"; ?></th>
+                                    <th><?php echo "<a href='student_materials_files?id=".$row['id']."&name_group=".$row['name_group']."'>"."<text style='font-weight:normal;'>Материалы </text> ".$row['name_group']."</a>"; ?></th>
                                     </tr>
                             <?php
 											}

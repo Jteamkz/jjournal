@@ -57,7 +57,7 @@ $id_group = $_GET['id_group'];
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-header">
-                        <h2>Список тестов <a href="add/test.php" class="btn btn-success">Добавить тест</a></h2>
+                        <h2>Список тестов <a href="add/test" class="btn btn-success">Добавить тест</a></h2>
                     </div>
                     <div>
                         <p>Искать</p>

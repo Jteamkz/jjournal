@@ -113,11 +113,11 @@ unset($just);
 								<?php 
 									if($row['isset'] == "not"){
 										?>
-										<td><a href="admin_attendance_days_setstudents.php?group_id=<?php echo $group_id; ?>&lesson_id=<?php echo $row['id']; ?>&name_group=<?php echo $_GET['name_group']; ?>">Поставить посещаемость</a></td>
+										<td><a href="admin_attendance_days_setstudents?group_id=<?php echo $group_id; ?>&lesson_id=<?php echo $row['id']; ?>&name_group=<?php echo $_GET['name_group']; ?>">Поставить посещаемость</a></td>
 										<?php
 									}else{
 									?>
-										<td><a href="admin_attendance_days_lookstudents.php?lesson_id=<?php echo $row['id']; ?>">Просмотреть</a></td>
+										<td><a href="admin_attendance_days_lookstudents?lesson_id=<?php echo $row['id']; ?>">Просмотреть</a></td>
 									<?php } ?>
 							</tr>
                             <?php

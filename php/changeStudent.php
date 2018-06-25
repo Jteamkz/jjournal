@@ -7,15 +7,15 @@ include 'connectOS.php';
 $connection->set_charset("utf8");
 $shady = $_GET['shady'];
 $izno = $_GET['izno'];
-$password = $_POST['password'];
-$firstname = $_POST['name'];
-$lastname = $_POST['surname'];
-$fathername = $_POST['fathername'];
-$phone = $_POST['tele'];
-$iin = $_POST['iin'];
-$phone_parent = $_POST['tele_rod'];
-$payday = $_POST['payday'];
-$birthday = $_POST['birthday'];
+$password = mysqli_real_escape_string($connection, $_POST['password']);
+$firstname = mysqli_real_escape_string($connection, $_POST['name']);
+$lastname = mysqli_real_escape_string($connection, $_POST['surname']);
+$fathername = mysqli_real_escape_string($connection, $_POST['fathername']);
+$phone = mysqli_real_escape_string($connection, $_POST['tele']);
+$iin = mysqli_real_escape_string($connection, $_POST['iin']);
+$phone_parent = mysqli_real_escape_string($connection, $_POST['tele_rod']);
+$payday = mysqli_real_escape_string($connection, $_POST['payday']);
+$birthday = mysqli_real_escape_string($connection, $_POST['birthday']);
 
 if (isset($_POST['checkboxname'])) {
 	$groups = $_POST['checkboxname'];

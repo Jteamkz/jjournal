@@ -11,9 +11,9 @@ include 'db/get_query.php';
 $shady = $_GET['shady'];
 $id = $_GET['izno'];
 
-$name = $_POST['name'];
-$teacher = $_POST['teacher'];
-$subject = $_POST['subject'];
+$name = mysqli_real_escape_string($connection, $_POST['name']);
+$teacher = mysqli_real_escape_string($connection, $_POST['teacher']);
+$subject = mysqli_real_escape_string($connection, $_POST['subject']);
 $subect = -2;
 if ($teacher == -1) {
     if ($subject == -1) {

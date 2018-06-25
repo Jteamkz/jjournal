@@ -6,7 +6,7 @@
     include 'db/get_all_data.php';
     $connection->set_charset("utf8");
     $id = $_GET['id'];
-	$iin = $_GET['iin'];
+	$iin = mysqli_real_escape_string($connection, $_GET['iin']);
     if(!isset($id)){
         echo "FUCK";
     }

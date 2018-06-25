@@ -76,7 +76,7 @@ unset($just);
                                         $shady++;
                                     ?>
                                     <tr class="middlel" id="tr<?php echo $shady; ?>">
-                                    <th><?php echo "<a href='admin_attendance_days.php?id=".$row['id']."&name_group=".$row['name_group']."'>"."<text style='font-weight:normal;'>Поставить посещаемость в группе</text> ".$row['name_group']."</a>"; ?></th>
+                                    <th><?php echo "<a href='admin_attendance_days?id=".$row['id']."&name_group=".$row['name_group']."'>"."<text style='font-weight:normal;'>Поставить посещаемость в группе</text> ".$row['name_group']."</a>"; ?></th>
                                     </tr>
                             <?php             
                                     }

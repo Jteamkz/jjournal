@@ -42,14 +42,14 @@ $(document).ready(function(){
 			var serializedData = $form.serialize();
 			
 			$.ajax({
-				url: 'php/login/login.php',
+				url: 'php/login/login',
 				type: 'POST',
 				data: serializedData,
 				success: function(data){
 					if(data == "False"){
 						$("#error").html("Логин или пароль введен неправильно");
 					}else{
-						window.location.replace(data+"_panel.php");
+						window.location.replace(data+"_panel");
 					}
 				}
 			})

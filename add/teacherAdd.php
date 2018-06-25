@@ -6,14 +6,14 @@
 	$n = $_GET['numberTeacher'];
 	
 	for($i = 0; $i <= $n; $i++){
-		$IIN = $_POST["IIN".$i];
-		$password = $_POST["password".$i];
-		$name = $_POST["name".$i];
-		$surname = $_POST["surname".$i];
-		$father = $_POST["father".$i];
-		$birthday = $_POST["birthday".$i];
-		$phone = $_POST["phone".$i];
-		$subject = $_POST["subject".$i];
+		$IIN = mysqli_real_escape_string($con, $_POST["IIN".$i]);
+		$password = mysqli_real_escape_string($con, $_POST["password".$i]);
+		$name = mysqli_real_escape_string($con, $_POST["name".$i]);
+		$surname = mysqli_real_escape_string($con, $_POST["surname".$i]);
+		$father = mysqli_real_escape_string($con, $_POST["father".$i]);
+		$birthday = mysqli_real_escape_string($con, $_POST["birthday".$i]);
+		$phone = mysqli_real_escape_string($con, $_POST["phone".$i]);
+		$subject = mysqli_real_escape_string($con, $_POST["subject".$i]);
 
 		$sql = "INSERT INTO users (iin, password, status, database_name, tele) VALUES ('$IIN', '$password', 'teacher', '$db_name', '$phone')";
 

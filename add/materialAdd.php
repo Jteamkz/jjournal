@@ -5,7 +5,7 @@
 	
 	$img_dir = "../material/";
 	$group_id = $_GET['group_id'];
-	$name = $_GET['name'];
+	$name = mysqli_real_escape_string($con, $_GET['name']);
 	
 	$temp = explode(".", $_FILES["file"]["name"]);
 	$img = $img_dir . round(microtime(true)) . '.' . end($temp);

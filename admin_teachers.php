@@ -95,7 +95,7 @@ unset($just);
                                         $shady++;
                                     ?>                                    
                                         <tr class="middlel" id="tr<?php echo $shady; ?>">
-                                            <th><a href="teachers_schedule.php?id=<?php echo $row['id']; ?>&name=<?php echo $row['lastname']." ".$row['firstname']; ?>"><?php echo $row['lastname']." ".$row['firstname']; ?></a></th>
+                                            <th><a href="teachers_schedule?id=<?php echo $row['id']; ?>&name=<?php echo $row['lastname']." ".$row['firstname']; ?>"><?php echo $row['lastname']." ".$row['firstname']; ?></a></th>
                                             <td><?php echo $row['telephone']; ?></td>
                                             <td><?php echo $row['birthday']; ?></td>
                                             <td><?php 
@@ -110,9 +110,9 @@ unset($just);
                                                         $result_sb = get_query($query_s, 'subjects', $connection);
                                                         while ($row_sb = $result_sb->fetch_assoc()) {
                                                             if ($temp < $result_ts->num_rows) {
-                                                                echo "<a href='admin_subjects.php?name=".$row_sb['name']."'>".$row_sb['name']."</a>, ";
+                                                                echo "<a href='admin_subjects?name=".$row_sb['name']."'>".$row_sb['name']."</a>, ";
                                                             }else{
-                                                                echo "<a href='admin_subjects.php?name=".$row_sb['name']."'>".$row_sb['name']."</a>";
+                                                                echo "<a href='admin_subjects?name=".$row_sb['name']."'>".$row_sb['name']."</a>";
                                                             }
                                                             $data_subjects[$temp - 1] = $row_sb['name'];
                                                         }
@@ -133,9 +133,9 @@ unset($just);
                                                     while ($row_cl = $result_cl->fetch_assoc()) {
                                                         $tempp++;
                                                         if ($tempp < $result_cl->num_rows) {
-                                                            echo "<a href='admin_subjects.php?name=".$row_cl['name_group']."'>".$row_cl['name_group']."</a>, ";
+                                                            echo "<a href='admin_subjects?name=".$row_cl['name_group']."'>".$row_cl['name_group']."</a>, ";
                                                         }else{
-                                                            echo "<a href='admin_subjects.php?name=".$row_cl['name_group']."'>".$row_cl['name_group']."</a>";
+                                                            echo "<a href='admin_subjects?name=".$row_cl['name_group']."'>".$row_cl['name_group']."</a>";
                                                         }
                                                         $data[$tempp - 1] = $row_cl['name_group'];
                                                     }

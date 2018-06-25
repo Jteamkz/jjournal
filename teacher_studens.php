@@ -124,9 +124,9 @@ unset($just);
                                                     // print_r($data);
                                                     for ($i=0; $i < $order; $i++) {
                                                         if($i == $order-1){
-                                                            echo "<a href ='admin_groups.php?name=".$data[$i]."'>".$data[$i]."</a>";
+                                                            echo "<a href ='admin_groups?name=".$data[$i]."'>".$data[$i]."</a>";
                                                         }else{
-                                                            echo "<a href='admin_groups.php?name=".$data[$i]."' >".$data[$i]."</a>, ";
+                                                            echo "<a href='admin_groups?name=".$data[$i]."' >".$data[$i]."</a>, ";
                                                         }                                                    
                                                     }
                                                 }else{

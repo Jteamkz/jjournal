@@ -98,7 +98,7 @@ unset($just);
                                         ?>
                                         <tr class="middlel" id="tr<?php echo $shady; ?>">
                                             
-                                            <th><a href="admin_student_info.php?id=<?php echo $row['id']; ?>&name=<?php echo $row['firstname']; ?>"><?php echo $row['lastname']." ".$row['firstname']." ".$row['fathername']; ?></a></td>
+                                            <th><a href="admin_student_info?id=<?php echo $row['id']; ?>&name=<?php echo $row['firstname']; ?>"><?php echo $row['lastname']." ".$row['firstname']." ".$row['fathername']; ?></a></td>
                                             <td><?php echo $row['phone']; ?></td>
                                             <td><?php echo $row['phone_parent']; ?></td>
                                             <td>
@@ -123,9 +123,9 @@ unset($just);
                                                     // print_r($data);
                                                     for ($i=0; $i < $order; $i++) {
                                                         if($i == $order-1){
-                                                            echo "<a href ='admin_groups.php?name=".$data[$i]."'>".$data[$i]."</a>";
+                                                            echo "<a href ='admin_groups?name=".$data[$i]."'>".$data[$i]."</a>";
                                                         }else{
-                                                            echo "<a href='admin_groups.php?name=".$data[$i]."' >".$data[$i]."</a>, ";
+                                                            echo "<a href='admin_groups?name=".$data[$i]."' >".$data[$i]."</a>, ";
                                                         }                                                    
                                                     }
                                                 }else{

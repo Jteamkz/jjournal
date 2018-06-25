@@ -93,7 +93,7 @@ $about = $result->fetch_assoc();
 											while ($row1 = $result1->fetch_assoc()) {
                             ?>
                                     <tr class="middlel" id="tr<?php echo $shady; ?>">
-                                    <th><?php echo "<a href='student_attendance_days.php?id=".$row1['id']."&name_group=".$row1['name_group']."'>"."<text style='font-weight:normal;'>группа </text> ".$row1['name_group']."</a>"; ?></th>
+                                    <th><?php echo "<a href='student_attendance_days?id=".$row1['id']."&name_group=".$row1['name_group']."'>"."<text style='font-weight:normal;'>группа </text> ".$row1['name_group']."</a>"; ?></th>
                                     </tr>
                             <?php             
 											}

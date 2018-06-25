@@ -123,9 +123,9 @@ unset($just);
                                                         $row_teachers = $result_te->fetch_assoc(); 
                                                             $tess++;
                                                             if($tess < $result_ts->num_rows){
-                                                            echo "<a href='admin_teachers.php?name=".$row_teachers['firstname']." ".$row_teachers['lastname']."'>".$row_teachers['firstname']." ".$row_teachers['lastname']."</a>, ";
+                                                            echo "<a href='admin_teachers?name=".$row_teachers['firstname']." ".$row_teachers['lastname']."'>".$row_teachers['firstname']." ".$row_teachers['lastname']."</a>, ";
                                                             }else{
-                                                                echo "<a href='admin_teachers.php?name=".$row_teachers['firstname']." ".$row_teachers['lastname']."'>".$row_teachers['firstname']." ".$row_teachers['lastname']."</a>";
+                                                                echo "<a href='admin_teachers?name=".$row_teachers['firstname']." ".$row_teachers['lastname']."'>".$row_teachers['firstname']." ".$row_teachers['lastname']."</a>";
                                                             }
                                                         
                                                     }

@@ -64,7 +64,7 @@ $about = $result->fetch_assoc();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="te.php"><?php echo $about['name']; ?></a>
+                <a class="navbar-brand" href="te"><?php echo $about['name']; ?></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -174,16 +174,16 @@ $about = $result->fetch_assoc();
                         <a class="jjournal-white" href=""><i class="fa fa-fw fa-dashboard"></i> Панель управления</a>
                     </li>
                     <li>
-                        <a  class="jjournal-white" href="teacher_students.php"><i class="fa fa-fw fa-bar-chart-o"></i> Студенты</a>
+                        <a  class="jjournal-white" href="teacher_students"><i class="fa fa-fw fa-bar-chart-o"></i> Студенты</a>
                     </li>
                     <li>
-                        <a  class="jjournal-white" href="admin_teachers.php"><i class="fa fa-fw fa-table"></i> Учители</a>
+                        <a  class="jjournal-white" href="admin_teachers"><i class="fa fa-fw fa-table"></i> Учители</a>
                     </li>
                     <li>
-                        <a  class="jjournal-white" href="admin_subjects.php"><i class="fa fa-fw fa-edit"></i> Предметы</a>
+                        <a  class="jjournal-white" href="admin_subjects"><i class="fa fa-fw fa-edit"></i> Предметы</a>
                     </li>
                     <li>
-                        <a  class="jjournal-white" href="admin_groups.php"><i class="fa fa-fw fa-desktop"></i> Группы</a>
+                        <a  class="jjournal-white" href="admin_groups"><i class="fa fa-fw fa-desktop"></i> Группы</a>
                     </li>
                     <li>
                         <a  class="jjournal-white" href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>

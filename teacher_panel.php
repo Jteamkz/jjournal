@@ -84,7 +84,7 @@ $about = $result->fetch_assoc();
 							?>
 								<tr>
                                             <td><?php echo $row['name_group']; ?></td>
-                                            <td><a href="schedule_teacher.php?id=<?php echo $row['schedule']; ?>">Посмотреть</a></td>
+                                            <td><a href="schedule_teacher?id=<?php echo $row['schedule']; ?>">Посмотреть</a></td>
 								</tr>
 							<?php
 									}

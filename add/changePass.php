@@ -5,10 +5,10 @@
 	include "../php/connectOS.php";
 	
 	$id_okushy = $_SESSION['id'];
-	$old_pass = $_POST['oldpass'];
-	$new_pass = $_POST['newpass'];
-	$rep_new_pass = $_POST['repnewpass'];
-	$table_name = $_POST['table'];
+	$old_pass = mysqli_real_escape_string($con, $_POST['oldpass']);
+	$new_pass = mysqli_real_escape_string($con, $_POST['newpass']);
+	$rep_new_pass = mysqli_real_escape_string($con, $_POST['repnewpass']);
+	$table_name = mysqli_real_escape_string($con, $_POST['table']);
 	
 	$sql = "SELECT * FROM $table_name WHERE id = $id_okushy";
 	$result = $con->query($sql);

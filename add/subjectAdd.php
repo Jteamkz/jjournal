@@ -5,8 +5,8 @@
 	$n = $_GET['numberSubject'];
 	
 	for($i = 0; $i <= $n; $i++){
-		$name = $_POST["name".$i];
-		$defenition = $_POST["defenition".$i];
+		$name = mysqli_real_escape_string($con, $_POST["name".$i]);
+		$defenition = mysqli_real_escape_string($con, $_POST["defenition".$i]);
 		$sql = "INSERT INTO subjects (name, description) VALUES ('$name', '$defenition')";
 
 		if ($con->query($sql) === TRUE) {

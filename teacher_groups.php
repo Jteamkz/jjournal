@@ -131,7 +131,7 @@ unset($just);
                                                     $query_ins = "id = ".$row_students['student_id'];
                                                     $single = get_query($query_ins, 'student', $connection);
                                                     $row_student = $single->fetch_assoc();
-                                                    echo "<li><a href='admin_studens.php?name=".$row_student['firstname']." ".$row_student['lastname']."'>".$row_student['firstname']." ".$row_student['lastname']."</a></li>";
+                                                    echo "<li><a href='admin_studens?name=".$row_student['firstname']." ".$row_student['lastname']."'>".$row_student['firstname']." ".$row_student['lastname']."</a></li>";
                                                 }
                                             }else{
                                                 echo "Ученики не привязаны";

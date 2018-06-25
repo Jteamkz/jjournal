@@ -16,15 +16,15 @@ $izno = $_GET['izno'];
 
 
 
-$firstname = $_POST['name'];
-$lastname = $_POST['surname'];
-$fathername = $_POST['fathername'];
-$phone = $_POST['tele'];
+$firstname = mysqli_real_escape_string($connection, $_POST['name']);
+$lastname = mysqli_real_escape_string($connection, $_POST['surname']);
+$fathername = mysqli_real_escape_string($connection, $_POST['fathername']);
+$phone = mysqli_real_escape_string($connection, $_POST['tele']);
 
-$iin = $_POST['iin'];
-$birthday = $_POST['birthday'];
+$iin = mysqli_real_escape_string($connection, $_POST['iin']);
+$birthday = mysqli_real_escape_string($connection, $_POST['birthday']);
 
-$password = $_POST['password'];
+$password = mysqli_real_escape_string($connection, $_POST['password']);
 
 $id = $_POST['id'];
 $group_subjects = array();

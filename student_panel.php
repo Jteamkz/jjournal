@@ -84,7 +84,7 @@ $about = $result->fetch_assoc();
 							?>
 								<tr>
                                             <td><?php echo $row1['name_group']; ?></td>
-                                            <td><a href="schedule_student.php?id=<?php echo $row1['schedule']; ?>">Посмотреть</a></td>
+                                            <td><a href="schedule_student?id=<?php echo $row1['schedule']; ?>">Посмотреть</a></td>
 								</tr>
 							<?php
 									}
@@ -151,7 +151,7 @@ $about = $result->fetch_assoc();
 													// output data of each row
 													while($row5 = $result5->fetch_assoc()) {
 														if(!in_array($row5['id'], $testter))
-															echo "<a style='margin-top:5px; width:100px;' class='btn btn-success' href='add/testPage.php?id=".$row5['id']."'>".$row5['name']."</a><br>";
+															echo "<a style='margin-top:5px; width:100px;' class='btn btn-success' href='add/testPage?id=".$row5['id']."'>".$row5['name']."</a><br>";
 														array_push($testter, $row5['id']);
 													}
 												}
