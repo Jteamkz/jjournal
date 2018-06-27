@@ -27,7 +27,7 @@ $about = $result->fetch_assoc();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Группы</title>
+    <title>Jjournal</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

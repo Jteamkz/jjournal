@@ -51,7 +51,7 @@ $dender = array("понедельник", "вторник", "среда", "че�
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Jjournal <?php echo $personal['id']; ?></title>
+    <title>Jjournal</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
 

@@ -35,10 +35,13 @@ for ($d=0; $d < sizeof($groups); $d++) {
 $zivert = false;
 
 if ($connection->query($update_query_groups) === TRUE) {
+	$boolean_update1 = "UPDATE student SET bool = 'true' WHERE id = $id";
+	$connection->query($boolean_update1);
 	for ($g=0; $g < sizeof($groups); $g++) { 
 		$temp_id = $id_groups[$g];
 		$insertion = "INSERT INTO relation_cs (class_id, student_id) VALUES ('$temp_id', '$id')";
-		
+		$boolean_update = "UPDATE student SET bool = 'false' WHERE id = $id";
+		$connection->query($boolean_update);
 		if ($connection->query($insertion) === TRUE) {
 			continue;
 		}else{

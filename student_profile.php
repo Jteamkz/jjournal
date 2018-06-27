@@ -51,7 +51,18 @@ $about = $result->fetch_assoc();
 </head>
 
 <body>
-
+<?php 
+		$sql = "SELECT * FROM student WHERE id = $id_okushy";
+		$result = $con->query($sql);
+		if ($result->num_rows > 0) {
+			// output data of each row
+			$i = 0;
+			while($row = $result->fetch_assoc()) {
+				$iin_student = $row['iin'];
+				$firstname=$row['firstname'];
+				$lastname=$row['lastname'];
+			}
+?>
     <div id="wrapper">
         <?php include "php/headers/student.php"; ?>
         <div id="page-wrapper">
@@ -59,7 +70,7 @@ $about = $result->fetch_assoc();
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-header">
-                        <h2>Мои профиль</h2>
+                        <h2>Профиль студента <?= $firstname ?> <?= $lastname ?></h2>
                     </div>
                     <hr>
                     <div class="table-responsive" data-pattern="priority-columns">
@@ -71,15 +82,7 @@ $about = $result->fetch_assoc();
                             </tr>
                         </thead>
                         <tbody id="ok">
-                            <?php
-								$sql = "SELECT * FROM student WHERE id = $id_okushy";
-								$result = $con->query($sql);
-								if ($result->num_rows > 0) {
-									// output data of each row
-									$i = 0;
-									while($row = $result->fetch_assoc()) {
-							?>
-								<tr>
+							<tr>
                                             <td>
 												<?php
 													$sql9 = "SELECT * FROM users";
@@ -88,7 +91,7 @@ $about = $result->fetch_assoc();
 													if ($result9->num_rows > 0) {
 														// output data of each row
 														while($row9 = $result9->fetch_assoc()) {
-															if($row['iin'] == $row9['iin']){
+															if($iin_student == $row9['iin']){
 																for($i = 0; $i<strlen($row9['password']); $i++){
 																	echo "*";
 																}
@@ -100,7 +103,6 @@ $about = $result->fetch_assoc();
                                             <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Изменить</button></td>
 								</tr>
 							<?php
-									}
 								}
 								//$conn->close(); 
 							?>

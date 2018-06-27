@@ -149,7 +149,7 @@ unset($just);
                                                   <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Закрыть</span></button>
                                                             <h3 class="modal-title" id="lineModalLabel">Введите новые значения</h3>
                                                         </div>
                                                         <form id="changeForm<?php echo $shady; ?>" enctype="multipart/form-data">
@@ -250,10 +250,10 @@ if ($subject == -1) {
                                                             <div class="modal-footer">
                                                                 <div class="btn-group btn-group-justified" role="group" aria-label="group button">
                                                                     <div class="btn-group" role="group">
-                                                                        <button type="button" id="closeNew" class="btn btn-default closer" data-dismiss="modal"  role="button">Close</button>
+                                                                        <button type="button" id="closeNew" class="btn btn-default closer" data-dismiss="modal"  role="button">Закрыть</button>
                                                                     </div>
                                                                     <div class="btn-group" role="group">
-                                                                        <button type="button" id="saveNew<?php echo $shady; ?>" shady="<?php echo $shady; ?>" data-dismiss="modal" class="btn btn-default btn-hover-green saver_group" data-action="save" role="button">Save</button>
+                                                                        <button type="button" id="saveNew<?php echo $shady; ?>" shady="<?php echo $shady; ?>" data-dismiss="modal" class="btn btn-default btn-hover-green saver_group" data-action="save" role="button">Сохранить</button>
                                                                     </div>
                                                                 </div>
                                                             </div>

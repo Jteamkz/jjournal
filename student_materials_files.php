@@ -27,15 +27,13 @@ $about = $result->fetch_assoc();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Предметы</title>
+    <title>Jjournal</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>Jjournal - Admin Page</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">

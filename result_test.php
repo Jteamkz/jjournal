@@ -17,7 +17,7 @@ $id_group = $_GET['id_group'];
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Учители</title>
+    <title>Jjournal</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,7 +25,7 @@ $id_group = $_GET['id_group'];
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Jjournal - Admin Page</title>
+    <title>Jjournal</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">

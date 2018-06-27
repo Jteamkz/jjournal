@@ -5,7 +5,7 @@
     include 'db/get_all_data.php';
     $connection->set_charset("utf8");
     $id = $_GET['id'];
-	$link = $_GET['link'];
+	$link = mysqli_real_escape_string($connection, $_GET['link']);
 	
     if(!isset($id)){
         echo "FUCK";

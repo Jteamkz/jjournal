@@ -15,6 +15,7 @@
 	$str3 = "DELETE FROM relation_gt WHERE group_id = ".$id;
 	$str4 = "DELETE FROM schedule WHERE id = ".$schedule_id;
 	$sql5 = "SELECT * FROM lessons WHERE group_id = ".$id;
+	$str7 = "DELETE FROM materials WHERE group_id = ".$id;
 	$result = $con->query($sql5);
 					
 	if ($result->num_rows > 0) {
@@ -28,15 +29,10 @@
 	}
     
 if ($connection->query($str) === TRUE) {
-    if($connection->query($str2) === TRUE){
-
-    }
-	if($connection->query($str3) === TRUE){
-
-    }
-	if($connection->query($str4) === TRUE){
-
-    }
+    $connection->query($str2);
+	$connection->query($str3);
+	$connection->query($str4);
+	$connection->query($str7);
 }else{
     exit("ERROR".$connection->error);
 }
