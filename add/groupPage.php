@@ -64,7 +64,7 @@ include 'php/connectOS.php'
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Thousand - Admin Page</title>
+    <title>Jjournal</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
 

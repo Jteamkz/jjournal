@@ -16,37 +16,7 @@ $id_group = $_GET['id_group'];
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Jjournal</title>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Jjournal</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <!-- <link href="css/plugins/morris.css" rel="stylesheet"> -->
-
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" type="text/css" href="css/rwd-table.css">
-
-    <link rel="stylesheet" type="text/css" href="css/finder.css">
-
-    <link rel="stylesheet" type="text/css" href="css/custum.css">
-    <link rel="stylesheet" type="text/css" href="css/spinner.css">
-
-</head>
+<?php include "php/head.php"; ?>
 <body>
 <div id="wrapper">
                     <?php if($_SESSION['isTeacher']){ 
@@ -77,7 +47,6 @@ $id_group = $_GET['id_group'];
                             <tr>
                                 <th>Ф.И.О</th>
                                 <th data-priority="1">Результат</th>
-                                <th></th>
                             </tr>
                             <tr class="warning no-result">
                               <td colspan="7"><i class="fa fa-warning"></i> Ничего не найдено</td>
@@ -112,11 +81,6 @@ $id_group = $_GET['id_group'];
                                                 }
                                                 // print_r($data_subjects);
                                             ?>
-                                            </td>
-                                            
-                                            <td>
-                                                <button style="width: 25px; height: 25px" data-toggle="modal" data-target="#squarespaceModal<?php echo $shady; ?>" type="button" class="btn btn-success btn-xs btn-update"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
-                                                <button shady="<?php echo $shady; ?>" test = "<?php echo $row['id']; ?>" style="width: 25px; height: 25px" type="button" class="btn btn-danger btn-xs delete_test"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
                                             </td>
                                             <div class="modal fade" id="squarespaceModal<?php echo $shady; ?>" shady="<?php echo $shady; ?>" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
                                                   <div class="modal-dialog">
@@ -215,7 +179,7 @@ $id_group = $_GET['id_group'];
     </div>
     
 
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+   <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>

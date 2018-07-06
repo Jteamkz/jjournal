@@ -13,36 +13,7 @@ unset($just);
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Группы</title>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Thousand - Admin Page</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <!-- <link href="css/plugins/morris.css" rel="stylesheet"> -->
-
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" type="text/css" href="css/rwd-table.css">
-
-    <link rel="stylesheet" type="text/css" href="css/finder.css">
-
-    <link rel="stylesheet" type="text/css" href="css/custum.css">
-    <link rel="stylesheet" type="text/css" href="css/spinner.css">
-</head>
+<?php include "php/head.php"; ?>
 <body>
 <div id="wrapper">
     <?php include "php/headers/admin.php"; ?>
@@ -96,7 +67,7 @@ unset($just);
                                             $query = "id = ".$row['teacher_id'];
                                             $teacher = get_query($query, 'teacher', $connection);
                                             $row_teacher = $teacher->fetch_assoc();
-                                            echo $row_teacher['firstname']." ".$row_teacher['lastname']." ".$row_teacher['fathername'];
+                                            echo "<a href='admin_teachers?name=".$row_teacher['firstname']." ".$row_teacher['lastname']."'>".$row_teacher['firstname']." ".$row_teacher['lastname']." ".$row_teacher['fathername']."</a>";
                                             $teacher_id = $row['teacher_id'];
                                             unset($query);
                                         }else{

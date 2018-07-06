@@ -13,36 +13,7 @@ unset($just);
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Предметы</title>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Jjournal - Admin Page</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <!-- <link href="css/plugins/morris.css" rel="stylesheet"> -->
-
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" type="text/css" href="css/rwd-table.css">
-
-    <link rel="stylesheet" type="text/css" href="css/finder.css">
-
-    <link rel="stylesheet" type="text/css" href="css/custum.css">
-
-</head>
+<?php include "php/head.php"; ?>
 <body>
 <div id="wrapper">
     <?php include "php/headers/admin.php"; ?>
@@ -72,6 +43,9 @@ unset($just);
                                 <th data-priority="1">Группы</th>
                                 <th data-priority="1">Учетеля</th>
                                 <th></th>
+                            </tr>
+                            <tr class="warning no-result">
+                              <td colspan="7"><i class="fa fa-warning"></i> Ничего не найдено</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -123,7 +97,7 @@ unset($just);
                                                         $row_teachers = $result_te->fetch_assoc(); 
                                                             $tess++;
                                                             if($tess < $result_ts->num_rows){
-                                                            echo "<a href='admin_teachers?name=".$row_teachers['firstname']." ".$row_teachers['lastname']."'>".$row_teachers['firstname']." ".$row_teachers['lastname']."</a>, ";
+																echo "<a href='admin_teachers?name=".$row_teachers['firstname']." ".$row_teachers['lastname']."'>".$row_teachers['firstname']." ".$row_teachers['lastname']."</a>, ";
                                                             }else{
                                                                 echo "<a href='admin_teachers?name=".$row_teachers['firstname']." ".$row_teachers['lastname']."'>".$row_teachers['firstname']." ".$row_teachers['lastname']."</a>";
                                                             }

@@ -13,8 +13,7 @@ include '../db/get_query.php';
 $sql = "SELECT * FROM users WHERE iin = '".$user_name."' OR tele = '".$user_name."'";
 unset($_SESSION['iin']);
 unset($_SESSION['tele']);
-unset($_SESSION['isStudent']);
-unset($_SESSION['isTeacher']);
+
 $result = $conn->query($sql);	
 
 if($result->num_rows > 0){
@@ -27,7 +26,6 @@ if($result->num_rows > 0){
 			echo $to_admin;
 		}else if($row['status'] == 'student'){
 			$_SESSION['isStudent'] = true;
-			$_SESSION['isTeacher'] = false;
 			if(strlen($user_name) > 11){
 				$to_admin = "student";
 				//?iin=".$row['iin']
@@ -44,7 +42,6 @@ if($result->num_rows > 0){
 			
 			echo $to_admin;
 		}else if($row['status'] == 'teacher'){
-			$_SESSION['isStudent'] = false;
 			$_SESSION['isTeacher'] = true;
 			if(strlen($user_name) > 11){
 				$to_admin = "teacher";

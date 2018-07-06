@@ -13,34 +13,7 @@ unset($just);
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Материалы</title>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <!-- <link href="css/plugins/morris.css" rel="stylesheet"> -->
-
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" type="text/css" href="css/rwd-table.css">
-
-    <link rel="stylesheet" type="text/css" href="css/finder.css">
-
-    <link rel="stylesheet" type="text/css" href="css/custum.css">
-
-</head>
+<?php include "php/head.php"; ?>
 <body>
 <div id="wrapper">
     <?php if(isset($_SESSION['isTeacher'])) include "php/headers/teacher.php"; else include "php/headers/admin.php"; ?>
@@ -101,6 +74,9 @@ unset($just);
                             <tr>
                                 <th>Название</th>
                                 <th></th>
+                            </tr>
+                            <tr class="warning no-result">
+                              <td colspan="7"><i class="fa fa-warning"></i> Ничего не найдено</td>
                             </tr>
                         </thead>
                         <tbody>

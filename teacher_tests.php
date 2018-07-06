@@ -81,34 +81,21 @@ unset($just);
                         </thead>
                         <tbody id="ok">
                             <?php 
-                                $result = get_query(' teacher_id = '.$_SESSION['id'], 'class', $connection);
+                                $result = getAllData('tests', $connection);
 
                                 if ($result->num_rows > 0) {
                                     $shady = 0;
                                     while ($row = $result->fetch_assoc()) {
 										$idTest = $row['id'];
                                         $shady++;
-										$sql45 = "SELECT * FROM relation_gt WHERE group_id = $idTest";
-										$result45 = $con->query($sql45);
-
-										if ($result45->num_rows > 0) {
-											// output data of each row
-											while($row45 = $result45->fetch_assoc()) {
-													$idtestik = $row45['test_id'];
-													$sql55 = "SELECT * FROM tests WHERE id = $idtestik";
-													$result55 = $con->query($sql55);
-
-													if ($result55->num_rows > 0) {
-														// output data of each row
-														while($row55 = $result55->fetch_assoc()) {
                                     ?>                                    
                                         <tr class="middlel" id="tr<?php echo $shady; ?>">
-                                            <th><?php echo $row55['name']; ?></th>
-                                            <td><?php echo $row55['description']; ?></td>
-                                            <td><?php echo $row55['numberquests'] + 1; $numberquests = $row55['numberquests'] + 1; ?></td>
+                                            <th><?php echo $row['name']; ?></th>
+                                            <td><?php echo $row['description']; ?></td>
+                                            <td><?php echo $row['numberquests'] + 1; $numberquests = $row['numberquests'] + 1; ?></td>
                                             <td><?php 
                                                 $data_groups = array();
-                                                $query = "test_id = ".$row55['id'];
+                                                $query = "test_id = ".$row['id'];
                                                 $result_gt = get_query($query, 'relation_gt', $connection);
                                                 if ($result_gt->num_rows > 0) {
                                                     $temp = 0;
@@ -119,9 +106,9 @@ unset($just);
                                                         $result_sb = get_query($query_s, 'class', $connection);
                                                         while ($row_sb = $result_sb->fetch_assoc()) {
                                                             if ($temp < $result_ts->num_rows) {
-                                                                echo "<a href='result_test?numberquests=$numberquests&id_group=".$idGroup."&id_test=".$idtestik."'>".$row_sb['name_group']."</a><br>";
+                                                                echo "<a href='result_test?numberquests=$numberquests&id_group=".$idGroup."&id_test=".$idTest."'>".$row_sb['name_group']."</a><br>";
                                                             }else{
-                                                                echo "<a href='result_test?numberquests=$numberquests&id_group=".$idGroup."&id_test=".$idtestik."'>".$row_sb['name_group']."</a><br>";
+                                                                echo "<a href='result_test?numberquests=$numberquests&id_group=".$idGroup."&id_test=".$idTest."'>".$row_sb['name_group']."</a><br>";
                                                             }
                                                             $data_subjects[$temp - 1] = $row_sb['name'];
                                                         }
@@ -139,12 +126,8 @@ unset($just);
                                             </td>
                                         </tr>
 
-                            <?php
-								}}
-							}
+                            <?php   }
                                 }
-									}
-								}
                             ?>
                             
                             <!-- Repeat -->
@@ -189,7 +172,7 @@ unset($just);
                                                   <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Закрыть</span></button>
                                                             <h3 class="modal-title" id="lineModalLabel">Привяжите тест к группе</h3>
                                                         </div>
                                                             <div class="modal-body">
@@ -217,6 +200,11 @@ unset($just);
 												if(!in_array($row1['id'], $groups)){
 													//echo "<label>\n";
 													echo "<input type='checkbox' atta='".$row1['id']."' value='".$row1['id']."' name='checkboxname[]'> ".$row1['name_group']."\n";
+													//echo "</label><br>";
+													echo "<br>";
+												}else{
+													//echo "<label>\n";
+													echo "<input type='checkbox' atta='".$row1['id']."' value='".$row1['id']."' name='checkboxname[]' checked> ".$row1['name_group']."\n";
 													//echo "</label><br>";
 													echo "<br>";
 												}
@@ -247,10 +235,10 @@ unset($just);
                                                             <div class="modal-footer">
                                                                 <div class="btn-group btn-group-justified" role="group" aria-label="group button">
                                                                     <div class="btn-group" role="group">
-                                                                        <button type="button" id="closeNew" class="btn btn-default closer" data-dismiss="modal"  role="button">Close</button>
+                                                                        <button type="button" id="closeNew" class="btn btn-default closer" data-dismiss="modal"  role="button">Закрыть</button>
                                                                     </div>
                                                                     <div class="btn-group" role="group">
-                                                                        <button type="button" id="saveNew<?php echo $shady; ?>" idTest="<?php echo $idTest; ?>" data-dismiss="modal" class="btn btn-default btn-hover-green saver_test" data-action="save" role="button">Save</button>
+                                                                        <button type="button" id="saveNew<?php echo $shady; ?>" idTest="<?php echo $idTest; ?>" data-dismiss="modal" class="btn btn-default btn-hover-green saver_test" data-action="save" role="button">Сохранить</button>
                                                                     </div>
                                                                 </div>
                                                             </div>

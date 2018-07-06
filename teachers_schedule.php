@@ -45,28 +45,7 @@ $dender = array("понедельник", "вторник", "среда", "че�
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Jjournal <?php echo $personal['id']; ?></title>
-
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <link href="css/sb-admin.css" rel="stylesheet">    
-
-    <link href="css/plugins/morris.css" rel="stylesheet">
-
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" type="text/css" href="css/teacher.css">
-    <link rel="stylesheet" type="text/css" href="css/custum.css">
-    <link rel="stylesheet" type="text/css" href="css/spinner.css">
-</head>
-
+<?php include "php/head.php"; ?>
 <body>
 
     <div id="wrapper">
@@ -133,7 +112,7 @@ $dender = array("понедельник", "вторник", "среда", "че�
 						$lo = 0;
 						foreach($dender as $kun){
 					?>
-						<td id="denok<?php echo $lo; ?>" style="width:130px; border:solid 1px black;"><?php echo $kun; ?></td>
+						<td id="denok<?php echo $lo; ?>" style="width:144px; border:solid 1px black;"><?php echo $kun; ?></td>
 					<?php
 						$lo++;
 						}
@@ -154,7 +133,7 @@ $dender = array("понедельник", "вторник", "среда", "че�
 											}
 											if($i == $bastalus[$numba]){
 									?>
-										<td style="border:black solid 1px;height:100px; padding:0"><div id="sabak<?php echo $k; ?>" style="padding-top:10px;vertical-align:middle;text-align:center;position:absolute;margin-top:<?php echo 100*($bastalum[$numba]/60); ?>px;height:<?php echo 100*($durations[$numba]/60); ?>px;background-color:<?php echo $tuster[$numba]; ?>; width:140px;"><?php echo $gruppa[$numba]."<br>".$bastalus[$numba].":".$bastalum[$numba]." - ".$ayaktalus[$numba].":".$ayaktalum[$numba]."<br>".$kabinet[$numba]; ?></div></td>
+										<td style="border:black solid 1px;height:100px; padding:0"><div class="sabak<?php echo $k; ?>" style="padding-top:10px;vertical-align:middle;text-align:center;position:absolute;margin-top:<?php echo 100*($bastalum[$numba]/60); ?>px;height:<?php echo 100*($durations[$numba]/60); ?>px;background-color:<?php echo $tuster[$numba]; ?>; width:140px;"><?php echo $gruppa[$numba]."<br>".$bastalus[$numba].":".$bastalum[$numba]." - ".$ayaktalus[$numba].":".$ayaktalum[$numba]."<br>".$kabinet[$numba]; ?></div></td>
 									<?php
 											array_splice($gruppa, $numba, 1);
 											array_splice($kabinet, $numba, 1);
@@ -195,7 +174,7 @@ $dender = array("понедельник", "вторник", "среда", "че�
 		for(var i = 0; i < 7; i++){
 			var width = $("#denok"+i).css("width");
 			width = width.slice(0, -2);
-			$("#sabak"+i).width(width - 1);
+			$(".sabak"+i).width(width - 1);
 		}
 	});
 	</script>

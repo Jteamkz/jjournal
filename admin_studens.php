@@ -6,6 +6,7 @@ include 'php/db/get_all_data.php';
 include 'php/db/get.php';
 include 'php/db/get_query.php';
 include 'php/connectOS.php';
+include 'php/functions.php';
 
 	$connection->set_charset("utf8");
 $just = getAllData('about', $connection);
@@ -14,35 +15,7 @@ unset($just);
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Студенты</title>
-	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Jjournal - Admin Page</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <!-- <link href="css/plugins/morris.css" rel="stylesheet"> -->
-
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" type="text/css" href="css/rwd-table.css">
-
-    <link rel="stylesheet" type="text/css" href="css/finder.css">
-
-    <link rel="stylesheet" type="text/css" href="css/custum.css">
-    <link rel="stylesheet" type="text/css" href="css/spinner.css">
-</head>
+<?php include "php/head.php"; ?>
 <body>
 
 
@@ -78,7 +51,7 @@ unset($just);
                                     <th data-priority="1">Группы</th>
                                     <th data-priority="1">ИИН</th>
                                     <th data-priority="1">Пароль</th>
-                                    <th data-priority="1">День Рождения</th>
+                                    <th data-priority="1">Возраст</th>
                                     <th></th>
                                 </tr>
                                 <tr class="warning no-result">
@@ -99,8 +72,8 @@ unset($just);
                                         <tr class="middlel" id="tr<?php echo $shady; ?>">
                                             
                                             <th><a href="admin_student_info?id=<?php echo $row['id']; ?>&name=<?php echo $row['firstname']; ?>"><?php echo $row['lastname']." ".$row['firstname']." ".$row['fathername']; ?></a></td>
-                                            <td><?php echo $row['phone']; ?></td>
-                                            <td><?php echo $row['phone_parent']; ?></td>
+                                            <td><?= $row['phone'] ?></td>
+                                            <td><?= $row['phone_parent'] ?></td>
                                             <td>
 
                                             <?php 
@@ -134,7 +107,7 @@ unset($just);
                                             ?>
                                                 
                                             </td>
-                                            <td><?php echo $row['iin']; ?></td>
+                                            <td><?= $row['iin'] ?></td>
                                             <td>
 											<?php
 												$sql9 = "SELECT * FROM users";
@@ -151,7 +124,7 @@ unset($just);
 												}
 											?>
 											</td>
-                                            <td><?php echo $row['birthday']; ?></td>
+                                            <td><?= getAge(date('d.m.Y'), $row['birthday']) ?> лет</td>
                                             <td>
                                                     <button style="width: 25px; height: 25px" data-toggle="modal" data-target="#squarespaceModal<?php echo $shady; ?>" type="button" class="btn btn-success btn-xs btn-update"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
                                                     <button shady="<?php echo $shady; ?>" iin="<?php echo $row['iin']; ?>" student = "<?php echo $row['id']; ?>" style="width: 25px; height: 25px" type="button" class="btn btn-danger btn-xs delete_student"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
@@ -297,9 +270,8 @@ unset($just);
     </div>
 </div>
     
-
-   <script type="text/javascript" src="js/jquery.js"></script>
-   <!-- <script type="text/javascript" src="js/jquery.js"></script> -->
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<!-- <script type="text/javascript" src="js/jquery.js"></script> -->
     <script src="js/bootstrap.min.js"></script>
  
     <script type="text/javascript" src="js/spinn.js"></script>

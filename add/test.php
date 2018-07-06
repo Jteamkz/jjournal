@@ -124,7 +124,7 @@
 	</script>
 	<body style="padding-left:5px;">
 	<br><button type="button" id="ewevopros" class="btn btn-success">Еще</button>
-	<form method='post' id="voprosForm" action="selectAns.php">
+	<form method='post' id="voprosForm" action="selectAns.php?array=2&numberquests=0">
 		<div style="margin-top:5px;">
 	<input type='text' name='name' placeholder='Название'>
 	<input type='text' name='description' placeholder='Описание'>

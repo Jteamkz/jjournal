@@ -6,6 +6,7 @@ include 'php/db/get_all_data.php';
 include 'php/db/get.php';
 include 'php/db/get_query.php';
 include 'php/connectOS.php';
+include 'php/functions.php';
 
     $connection->set_charset("utf8");
 $just = getAllData('about', $connection);
@@ -14,35 +15,7 @@ unset($just);
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Учители</title>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <!-- <link href="css/plugins/morris.css" rel="stylesheet"> -->
-
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" type="text/css" href="css/rwd-table.css">
-
-    <link rel="stylesheet" type="text/css" href="css/finder.css">
-
-    <link rel="stylesheet" type="text/css" href="css/custum.css">
-    <link rel="stylesheet" type="text/css" href="css/spinner.css">
-
-</head>
+<?php include "php/head.php"; ?>
 <body>
 <div id="wrapper">
     <?php include "php/headers/admin.php"; ?>
@@ -72,7 +45,7 @@ unset($just);
                             <tr>
                                 <th>Ф.И.О</th>
                                 <th data-priority="1">Номер телефона</th>
-                                <th data-priority="1">Дата рождения</th>
+                                <th data-priority="1">Возраст</th>
                                 <th data-priority="1">Уроки</th>
                                 <th data-priority="1">Группы</th>
                                 <th data-priority="1">ИИН</th>
@@ -94,8 +67,8 @@ unset($just);
                                     ?>                                    
                                         <tr class="middlel" id="tr<?php echo $shady; ?>">
                                             <th><a href="teachers_schedule?id=<?php echo $row['id']; ?>&name=<?php echo $row['lastname']." ".$row['firstname']; ?>"><?php echo $row['lastname']." ".$row['firstname']; ?></a></th>
-                                            <td><?php echo $row['telephone']; ?></td>
-                                            <td><?php echo $row['birthday']; ?></td>
+                                            <td><?= $row['telephone'] ?></td>
+                                            <td><?= getAge(date('d.m.Y'),$row['birthday']) ?></td>
                                             <td><?php 
                                                 $data_subjects = array();
                                                 $query = "id_t = ".$row['id'];
@@ -142,7 +115,7 @@ unset($just);
                                                 }
                                             ?>
                                             </td>
-                                            <td><?php echo $row['iin']; ?></td>
+                                            <td><?= $row['iin'] ?></td>
                                             <td>
 											<?php
 												$sql9 = "SELECT * FROM users";

@@ -15,7 +15,7 @@ unset($just);
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Тесты</title>
+    <title>Jjournal</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -172,7 +172,7 @@ unset($just);
                                                   <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Закрыть</span></button>
                                                             <h3 class="modal-title" id="lineModalLabel">Привяжите тест к группе</h3>
                                                         </div>
                                                             <div class="modal-body">
@@ -200,6 +200,11 @@ unset($just);
 												if(!in_array($row1['id'], $groups)){
 													//echo "<label>\n";
 													echo "<input type='checkbox' atta='".$row1['id']."' value='".$row1['id']."' name='checkboxname[]'> ".$row1['name_group']."\n";
+													//echo "</label><br>";
+													echo "<br>";
+												}else{
+													//echo "<label>\n";
+													echo "<input type='checkbox' atta='".$row1['id']."' value='".$row1['id']."' name='checkboxname[]' checked> ".$row1['name_group']."\n";
 													//echo "</label><br>";
 													echo "<br>";
 												}
@@ -230,10 +235,10 @@ unset($just);
                                                             <div class="modal-footer">
                                                                 <div class="btn-group btn-group-justified" role="group" aria-label="group button">
                                                                     <div class="btn-group" role="group">
-                                                                        <button type="button" id="closeNew" class="btn btn-default closer" data-dismiss="modal"  role="button">Close</button>
+                                                                        <button type="button" id="closeNew" class="btn btn-default closer" data-dismiss="modal"  role="button">Закрыть</button>
                                                                     </div>
                                                                     <div class="btn-group" role="group">
-                                                                        <button type="button" id="saveNew<?php echo $shady; ?>" idTest="<?php echo $idTest; ?>" data-dismiss="modal" class="btn btn-default btn-hover-green saver_test" data-action="save" role="button">Save</button>
+                                                                        <button type="button" id="saveNew<?php echo $shady; ?>" idTest="<?php echo $idTest; ?>" data-dismiss="modal" class="btn btn-default btn-hover-green saver_test" data-action="save" role="button">Сохранить</button>
                                                                     </div>
                                                                 </div>
                                                             </div>

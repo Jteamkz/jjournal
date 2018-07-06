@@ -374,9 +374,10 @@ unset($just);
             </div>
 			</div>
         </div>
-        Выберите учеников<br>
+		Выберите учеников <br>
         <div class="col-lg-4" style='background-color: white;padding:0px;'>
-            <div style="overflow-y:scroll; min-height:400px; max-height:400px;">
+            <div style="overflow-y:scroll; overflow-x:hidden; min-height:400px; max-height:400px;">
+			<input type="text" id="searchStudents">
         <?php
                 $sql = "SELECT * FROM student WHERE bool='true'";
                 $result = $con->query($sql);
@@ -384,7 +385,7 @@ unset($just);
                 if ($result->num_rows > 0) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
-                        echo "<li id='".$row['id']."'>".$row['firstname']." ".$row['lastname']." ".$row['father']."<div class='checkboxGroup checkboxGroup-info'> <input name='checkbox[]' id='checkSt".$row['id']."' type='checkbox' style='float:right; margin-right:10px;' value='".$row['id']."'/> <label shama='tuesday' for='tuesdayCheck'> </label> </div></li>";
+                        echo "<li id='".$row['id']."'><text>".$row['firstname']." ".$row['lastname']." ".$row['fathername']."</text><div class='checkboxGroup checkboxGroup-info'> <input name='checkbox[]' id='checkSt".$row['id']."' type='checkbox' style='float:right; margin-right:10px;' value='".$row['id']."'/> <label shama='tuesday' for='tuesdayCheck'> </label> </div></li>";
                     }
                 } else {
                     
@@ -398,7 +399,7 @@ unset($just);
                 if ($result->num_rows > 0) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
-                        echo "<li id='".$row['id']."'>".$row['firstname']." ".$row['lastname']." ".$row['father']."<div class='checkboxGroup checkboxGroup-info'> <input name='checkbox[]' id='checkSt".$row['id']."' type='checkbox' style='float:right; margin-right:10px;' value='".$row['id']."'/> <label shama='tuesday' for='tuesdayCheck'> </label> </div></li>";
+                        echo "<li id='".$row['id']."'><text>".$row['firstname']." ".$row['lastname']." ".$row['fathername']."</text><div class='checkboxGroup checkboxGroup-info'> <input name='checkbox[]' id='checkSt".$row['id']."' type='checkbox' style='float:right; margin-right:10px;' value='".$row['id']."'/> <label shama='tuesday' for='tuesdayCheck'> </label> </div></li>";
                     }
                 } else {
                     
@@ -453,6 +454,36 @@ unset($just);
                 });
             }
             });
+			$("#searchStudents").on("change paste keyup", function() {
+                var search = $("#searchStudents").val();
+				var lis = $(".jjournal-orders li");
+				var texts = $(".jjournal-orders li text");
+				
+				for(var i = 0; i < texts.length; i++){
+					if(!contains(search, texts[i].innerHTML)){
+						$(lis[i]).css("display","none");
+					}else{
+						$(lis[i]).css("display","block");
+					}
+				}
+            });
+			function contains(chars, word){
+				// console.log(word.length - chars.length);
+				for(var i = 0; i < word.length - chars.length; i++){
+					// console.log(substr(word, i, i + chars.length - 1)+" "+chars);
+					if(substr(word, i, i + chars.length - 1) == chars){
+						return true;
+					}
+				}
+				return false;
+			}
+			function substr(word, k, end){
+				var new_word = "";
+				for(var i = k; i <= end; i++){
+					new_word = new_word + word[i];
+				}
+				return new_word;
+			}
         </script>
 </body>
 

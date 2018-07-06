@@ -183,7 +183,8 @@ $result_all_group = getAllData('subjects', $connection);
                             </div>
                                             </div>";
 }else{
-    exit("ERROR");
+    // exit("ERROR");
+	echo $connection->error;
 }
 
 $connection->close();

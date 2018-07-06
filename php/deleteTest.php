@@ -14,7 +14,7 @@
 	$str4 = "DELETE FROM relation_st WHERE id_test =".$id;
 
 if ($connection->query($str) === TRUE) {
-	$sql = "SELECT * FROM questions";
+	$sql = "SELECT * FROM questions WHERE ids = ".$id;
 	$result = $connection->query($sql);
 
 	if ($result->num_rows > 0) {

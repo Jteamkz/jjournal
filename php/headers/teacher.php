@@ -1,5 +1,5 @@
 <?php
-	if(!isset($_SESSION['isTeacher'])){
+	if(!isset($_SESSION['isTeacher']) || isset($_SESSION['isStudent'])){
 		echo "<script>window.location.href = 'index';</script>";
 	}
 ?>
