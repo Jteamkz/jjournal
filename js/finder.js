@@ -18,7 +18,7 @@ $(document).ready(function() {
   });
 
   var jobCount = $('.results tbody tr[visible="true"]').length;
-    $('.counter').text('Результат поиска: ' + jobCount + ' полей');
+    $('.counter').text('Результат поиска: ' + (jobCount * 2) + ' полей');
 
   if(jobCount == '0') {$('.no-result').show();}
     else {$('.no-result').hide();}
@@ -42,7 +42,7 @@ $(document).ready(function() {
   });
 
   var jobCount = $('.results tbody tr[visible="true"]').length/2;
-    $('.counter').text('Результат поиска: ' + jobCount + ' полей');
+    $('.counter').text('Результат поиска: ' + (jobCount * 2) + ' полей');
 
   if(jobCount == '0') {$('.no-result').show();}
     else {$('.no-result').hide();}

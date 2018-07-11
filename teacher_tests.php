@@ -28,7 +28,7 @@ unset($just);
 
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
-
+	<link rel="shortcut icon" href="img/logo.png">
     <!-- Morris Charts CSS -->
     <!-- <link href="css/plugins/morris.css" rel="stylesheet"> -->
 

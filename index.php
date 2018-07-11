@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Jjournal</title>
+	<link rel="shortcut icon" href="img/logo.png">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/login.css">
 </head>

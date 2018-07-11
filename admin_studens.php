@@ -7,8 +7,9 @@ include 'php/db/get.php';
 include 'php/db/get_query.php';
 include 'php/connectOS.php';
 include 'php/functions.php';
+include 'php/tables.php';
 
-	$connection->set_charset("utf8");
+$connection->set_charset("utf8");
 $just = getAllData('about', $connection);
 $about = $just->fetch_assoc();
 unset($just);
@@ -55,207 +56,11 @@ unset($just);
                                     <th></th>
                                 </tr>
                                 <tr class="warning no-result">
-                                  <td colspan="7"><i class="fa fa-warning"></i> Ничего не найдено</td>
+                                  <td colspan="8"><i class="fa fa-warning"></i> Ничего не найдено</td>
                                 </tr>
                             </thead>
                             <tbody>
-
-                                <?php 
-                                    
-                                    $result = getAllData('student', $connection);
-
-                                    if ($result->num_rows > 0) {
-                                        $shady = 0;
-                                        while ($row = $result->fetch_assoc()) {
-                                            $shady++;
-                                        ?>
-                                        <tr class="middlel" id="tr<?php echo $shady; ?>">
-                                            
-                                            <th><a href="admin_student_info?id=<?php echo $row['id']; ?>&name=<?php echo $row['firstname']; ?>"><?php echo $row['lastname']." ".$row['firstname']." ".$row['fathername']; ?></a></td>
-                                            <td><?= $row['phone'] ?></td>
-                                            <td><?= $row['phone_parent'] ?></td>
-                                            <td>
-
-                                            <?php 
-                                                $data = array();
-                                                $q = "student_id = ".$row['id'];
-                                                $result_groups = get_query($q, 'relation_cs', $connection);
-                                                $order = 0;
-
-                                                if($result_groups->num_rows > 0){
-
-                                                    // print_r($result_groups);
-                                                    while ($row_cs = $result_groups->fetch_assoc()) {
-                                                        $qo = "id = ".$row_cs['class_id'];
-                                                        $result_group = get_query($qo, 'class', $connection);
-                                                        while ($row_group = $result_group->fetch_assoc()) {
-                                                            $data[$order] = $row_group['name_group'];
-                                                        }
-                                                        $order++;
-                                                    }
-                                                    // print_r($data);
-                                                    for ($i=0; $i < $order; $i++) {
-                                                        if($i == $order-1){
-                                                            echo "<a href ='admin_groups?name=".$data[$i]."'>".$data[$i]."</a>";
-                                                        }else{
-                                                            echo "<a href='admin_groups?name=".$data[$i]."' >".$data[$i]."</a>, ";
-                                                        }                                                    
-                                                    }
-                                                }else{
-                                                    echo 'Группы не привязаны';
-                                                }
-                                            ?>
-                                                
-                                            </td>
-                                            <td><?= $row['iin'] ?></td>
-                                            <td>
-											<?php
-												$sql9 = "SELECT * FROM users";
-												$result9 = $cuni->query($sql9);
-
-												if ($result9->num_rows > 0) {
-													// output data of each row
-													while($row9 = $result9->fetch_assoc()) {
-														if($row['iin'] == $row9['iin']){
-															echo $row9['password'];
-															break;
-														}
-													}
-												}
-											?>
-											</td>
-                                            <td><?= getAge(date('d.m.Y'), $row['birthday']) ?> лет</td>
-                                            <td>
-                                                    <button style="width: 25px; height: 25px" data-toggle="modal" data-target="#squarespaceModal<?php echo $shady; ?>" type="button" class="btn btn-success btn-xs btn-update"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
-                                                    <button shady="<?php echo $shady; ?>" iin="<?php echo $row['iin']; ?>" student = "<?php echo $row['id']; ?>" style="width: 25px; height: 25px" type="button" class="btn btn-danger btn-xs delete_student"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
-                                                
-                                            </td>
-                                            <div class="modal fade" id="squarespaceModal<?php echo $shady; ?>" shady="<?php echo $shady; ?>" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-                                                  <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Закрыть</span></button>
-                                                            <h3 class="modal-title" id="lineModalLabel">Введите новые значения</h3>
-                                                        </div>
-                                                        <form id="changeForm<?php echo $shady; ?>" enctype="multipart/form-data">
-                                                            <div class="modal-body">
-                                                                <div class="row">
-                                                                    <div class="col-lg-4">
-                                                                        <div class="form-group">
-                                                                        <label for="InputFirstname">Фамилия</label>
-                                                                        <input type="text" name="surname" class="form-control" id="InputFirstname" placeholder="Введите фамилию" value="<?php echo $row['lastname']; ?>">
-                                                                      </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4"> 
-                                                                        <div class="form-group">
-                                                                            <label for="InputName">Имя</label>
-                                                                            <input name="name" type="text" class="form-control" id="InputName" placeholder="Введите Имя" value="<?php echo $row['firstname']; ?>">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4"> 
-                                                                        <div class="form-group">
-                                                                            <label for="InputFathername">Отчество</label>
-                                                                            <input name="fathername" type="text" class="form-control" id="InputFathername" placeholder="Отчество" value="<?php echo $row['fathername']; ?>">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <hr>
-                                                                <div class="row">
-                                                                    <div class="col-lg-4">
-                                                                        <div class="form-group">
-                                                                            <label for="InputTele">Номер телефона</label>
-                                                                            <input name="tele" type="text" class="form-control" id="InputTele" placeholder="Отчество" value="<?php echo $row['phone']; ?>">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4">
-                                                                        <div class="form-group">
-                                                                            <label for="InputTeleP">Номер родителей</label>
-                                                                            <input name="tele_rod" type="text" class="form-control" id="InputTeleP" placeholder="Отчество" value="<?php echo $row['phone_parent']; ?>">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4">
-                                                                        <div class="form-group">
-                                                                            <label for="IIIN">ИИН</label>
-
-                                                                            <input name="iin" type="text" class="form-control" placeholder="Отчество" value="<?php echo $row['iin']; ?>">
-                                                                            <input name="id" type="text" style="display: none" value="<?php echo $row['id']; ?>">
-                                                                            <input name="iznoo" type="text" style="display: none" id="IIIN"  value="<?php echo $row['iin']; ?>">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <hr>
-                                                                <div class="row">
-                                                                    <div class="col-lg-6">
-                                                                        <div class="form-group">
-                                                                            <label for="dayb">День рождения</label>
-                                                                            <input name="birthday" type="text" class="form-control" id="dayb" placeholder="День рождения" value="<?php echo $row['birthday']; ?>">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-6">
-                                                                        <div class="form-group">
-                                                                            <label>Группы</label>
-                                                                            <div style="max-height: 105px; overflow-y:scroll">
-                                                                    <?php 
-                                                                    $result_all_group = getAllData('class', $connection);
-                                                                    if ($result_all_group->num_rows > 0) {
-                                                                        while ($ross = $result_all_group->fetch_assoc()) {
-                                                                        $t = false;
-                                                                        if ($order > 0) {
-                                                                            for($y=0; $y < $order; $y++){
-                                                                                if ($ross['name_group'] == $data[$y]) {
-                                                                                    echo "<label>\n";
-                                                                                    echo "<input type='checkbox' atta='".$ross['id']."' name='checkboxname[]' value='".$ross['name_group']."' checked> ".$ross['name_group']."\n";
-                                                                                    echo "</label><br>";
-                                                                                    $t = true;
-                                                                                }
-                                                                            }   
-                                                                        }
-                                                                        
-                                                                        if ($t != true) {
-                                                                            echo "<label>\n";
-                                                                            echo "<input type='checkbox' atta='".$ross['id']."' value='".$ross['name_group']."' name='checkboxname[]'> ".$ross['name_group']."\n";
-                                                                            echo "</label><br>";
-                                                                        }
-                                                                        }
-                                                                        }else{
-                                                                            echo "Группы не добавлены";
-                                                                        }
-                                                                    ?>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <div class="btn-group btn-group-justified" role="group" aria-label="group button">
-                                                                    <div class="btn-group" role="group">
-                                                                        <button type="button" id="closeNew" class="btn btn-default closer" data-dismiss="modal"  role="button">Закрыть</button>
-                                                                    </div>
-                                                                    <!--
-                                                                    <div class="btn-group btn-delete" role="group">
-                                                                        <button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
-                                                                    </div>-->
-                                                                    <div class="btn-group" role="group">
-                                                                        <button type="button" id="saveNew<?php echo $shady; ?>" shady="<?php echo $shady; ?>" data-dismiss="modal" class="btn btn-default btn-hover-green saver" data-action="save" role="button">Сохранить</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                  </div>
-                                            </div>
-                                        <tr>
-
-
-
-
-
-                                <?php
-                                unset($order);
-                                   }
-                                    }
-                                ?>
+                                <?= tableStudent($connection, $cuni) ?>
                             </tbody>
                         </table>
                     </div>
@@ -271,7 +76,6 @@ unset($just);
 </div>
     
 	<script type="text/javascript" src="js/jquery.js"></script>
-	<!-- <script type="text/javascript" src="js/jquery.js"></script> -->
     <script src="js/bootstrap.min.js"></script>
  
     <script type="text/javascript" src="js/spinn.js"></script>

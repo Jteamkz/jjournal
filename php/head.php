@@ -6,7 +6,9 @@
     <meta name="author" content="">
 
     <title>Jjournal</title>
-
+	
+	<link rel="shortcut icon" href="img/logo.png">
+	
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <link href="css/sb-admin.css" rel="stylesheet">    

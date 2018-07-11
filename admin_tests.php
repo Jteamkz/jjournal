@@ -25,7 +25,7 @@ unset($just);
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+	<link rel="shortcut icon" href="img/logo.png">
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
 

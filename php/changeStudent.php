@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 $db_name = $_SESSION['studycenter'];
 include 'db/connect_db.php';
@@ -49,8 +49,11 @@ if ($connection->query($update_query_groups) === TRUE) {
 			break;
 		}
 	}
+	if(sizeof($groups) == 0){
+		$boolean_update = "UPDATE student SET bool = 'true' WHERE id = $id";
+		$connection->query($boolean_update);
+	}
 }
-
 
 $update_query = "UPDATE student SET firstname = '$firstname', lastname = '$lastname', fathername = '$fathername', phone = '$phone', iin = '$iin', phone_parent = '$phone_parent', birthday = '$birthday' WHERE iin = '$izno'";
 

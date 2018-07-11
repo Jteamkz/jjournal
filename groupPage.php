@@ -166,7 +166,7 @@ unset($just);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Thousand - Admin Page</title>
+    <title>JJournal</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
 

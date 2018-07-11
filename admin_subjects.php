@@ -5,6 +5,7 @@ include 'php/db/connect_db.php';
 include 'php/db/get_all_data.php';
 include 'php/db/get.php';
 include 'php/db/get_query.php';
+include 'php/tables.php';
 
     $connection->set_charset("utf8");
 $just = getAllData('about', $connection);
@@ -49,76 +50,7 @@ unset($just);
                             </tr>
                         </thead>
                         <tbody>
-                            <?php 
-                                $result = getAllData('subjects', $connection);
-
-                                if ($result->num_rows > 0) {
-                                    $shady = 0;
-                                    while ($row = $result->fetch_assoc()) { 
-                                        $shady++;
-                                    ?>
-                                    
-                                        <tr class="middlel" id="tr<?php echo $shady; ?>">
-                                            <th><?php echo $row['name']?></th>
-                                            <td>
-                                            <?php 
-                                                $query_group = "subject = ".$row['id'];
-                                                $result_groups = get_query($query_group, 'class', $connection);
-
-                                                if($result_groups->num_rows > 0){
-                                                    $temp = 0;
-                                                    while ($row_groups = $result_groups->fetch_assoc()) {
-                                                        $temp++;
-                                                        if($temp < $result_groups->num_rows){
-                                                            echo $row_groups['name_group'].", ";
-                                                        }else{
-                                                            echo $row_groups['name_group'];
-                                                        }
-                                                    }
-                                                }else{
-                                                    echo "Нет привязанныч групп";
-                                                }
-
-                                            ?>
-                                                
-                                            </td>
-                                            <td>
-                                             <?php 
-                                                $query_ts = "id_s = ".$row['id'];
-                                                $result_ts = get_query($query_ts, 'relation_ts', $connection);
-
-                                                if($result_ts->num_rows > 0){
-                                                    $tess = 0;
-                                                    while ($row_groups = $result_ts->fetch_assoc()) {
-                                                        $query_te = "id = ".$row_groups['id_t'];
-                                                        $result_te = get_query($query_te, 'teacher', $connection);
-                                                        
-                                                        
-                                                        $row_teachers = $result_te->fetch_assoc(); 
-                                                            $tess++;
-                                                            if($tess < $result_ts->num_rows){
-																echo "<a href='admin_teachers?name=".$row_teachers['firstname']." ".$row_teachers['lastname']."'>".$row_teachers['firstname']." ".$row_teachers['lastname']."</a>, ";
-                                                            }else{
-                                                                echo "<a href='admin_teachers?name=".$row_teachers['firstname']." ".$row_teachers['lastname']."'>".$row_teachers['firstname']." ".$row_teachers['lastname']."</a>";
-                                                            }
-                                                        
-                                                    }
-                                                }else{
-                                                    echo "Нет обучающих учителей";
-                                                }
-                                            ?>
-
-                                            </td>
-                                            <td>
-                                                <button style="width: 25px; height: 25px" shady="<?php echo $shady; ?>" subject="<?php echo $row['id']; ?>" type="button" class="btn btn-danger btn-xs delete_subject"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
-                                            </td>
-                                        </tr>
-
-                            <?php   }
-                                }
-                            ?>
-                            <!-- Repeat -->
-                            
+                            <?= tableSubject($connection, $cuni) ?>
                         </tbody>
                     </table>
                 </div>
